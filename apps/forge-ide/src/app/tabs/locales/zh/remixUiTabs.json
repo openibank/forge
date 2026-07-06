@@ -1,0 +1,7 @@
+{
+  "forgeUiTabs.tooltipText1": "执行脚本 (CTRL + SHIFT + S)",
+  "forgeUiTabs.tooltipText2": "编译 CTRL + S",
+  "forgeUiTabs.tooltipText3": "选择 .sol 或 .yul 文件进行编译，或选择 .ts 或 .js 文件并运行它",
+  "forgeUiTabs.zoomOut": "缩小",
+  "forgeUiTabs.zoomIn": "放大"
+}

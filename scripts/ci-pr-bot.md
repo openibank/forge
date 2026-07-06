@@ -31,8 +31,8 @@ export CI_PR_BOT_INSTALLATION_ID=9876543
 export CI_PR_BOT_PRIVATE_KEY="$(cat ~/Downloads/ci-comment-app.private-key.pem)"
 export CIRCLECI_TOKEN=xxxxx
 # These are usually set in CI, but for local dry-runs you can provide them:
-export CIRCLE_PROJECT_USERNAME=remix-project-org
-export CIRCLE_PROJECT_REPONAME=remix-project
+export CIRCLE_PROJECT_USERNAME=openibank
+export CIRCLE_PROJECT_REPONAME=forge
 export CIRCLE_PROJECT_SLUG=gh/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}
 export CIRCLE_BUILD_NUM=123456789
 export CIRCLE_PULL_REQUESTS="https://github.com/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/pull/1234"

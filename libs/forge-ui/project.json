@@ -1,0 +1,20 @@
+{
+    "name": "forge-ui",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "libs/forge-ui/src",
+    "projectType": "application",
+    "implicitDependencies": [
+    ],
+    "targets": {
+      "lint": {
+        "executor": "@nrwl/linter:eslint",
+        "outputs": ["{options.outputFile}"],
+        "options": {
+          "lintFilePatterns": ["libs/forge-ui/**/*.{ts,tsx,js,jsx}"],
+          "eslintConfig": "libs/forge-ui/.eslintrc"
+        }
+      }
+    },
+    "tags": []
+  }
+  

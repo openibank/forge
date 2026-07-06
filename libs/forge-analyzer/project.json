@@ -1,0 +1,35 @@
+{
+    "name": "forge-analyzer",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "libs/forge-analyzer/src",
+    "projectType": "library",
+    "implicitDependencies": [
+      "forge-astwalker",
+      "forge-lib"
+    ],
+    "targets": {
+      "build": {
+        "executor": "@nrwl/js:tsc",
+        "outputs": ["{options.outputPath}"],
+        "options": {
+          "outputPath": "dist/libs/forge-analyzer",
+          "main": "libs/forge-analyzer/src/index.ts",
+          "tsConfig": "libs/forge-analyzer/tsconfig.lib.json",
+          "assets": [
+            "libs/forge-analyzer/*.md"
+          ],
+          "updateBuildableProjectDepsInPackageJson": false
+        }
+      },
+      "lint": {
+        "executor": "@nrwl/linter:eslint",
+        "outputs": ["{options.outputFile}"],
+        "options": {
+          "lintFilePatterns": ["libs/forge-analyzer/**/*.ts"],
+          "eslintConfig": "libs/forge-analyzer/.eslintrc"
+        }
+      }
+    },
+    "tags": []
+  }
+  

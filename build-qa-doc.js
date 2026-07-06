@@ -25,7 +25,7 @@ console.log('done.txt updated')
 /*
 
  gh api graphql -f query='{
-  repository(owner: "ethereum", name: "remix-project") {
+  repository(owner: "ethereum", name: "forge-project") {
     name
     projectV2(number: 11) {
       url

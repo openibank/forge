@@ -1,0 +1,50 @@
+{
+  "name": "forge-tests",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/forge-tests/src",
+  "projectType": "library",
+  "implicitDependencies": [
+    "forge-lib",
+    "forge-simulator",
+    "forge-solidity"
+  ],
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/libs/forge-tests",
+        "main": "libs/forge-tests/src/index.ts",
+        "tsConfig": "libs/forge-tests/tsconfig.lib.json",
+        "updateBuildableProjectDepsInPackageJson": false,
+        "assets": [
+          {
+            "glob": "forge-tests",
+            "input": "libs/forge-tests/bin/",
+            "output": "bin/"
+          },
+          {
+            "glob": "*.md",
+            "input": "libs/forge-tests/",
+            "output": "/"
+          }
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "libs/forge-tests/**/*.ts"
+        ],
+        "eslintConfig": "libs/forge-tests/.eslintrc"
+      }
+    }
+  },
+  "tags": []
+}

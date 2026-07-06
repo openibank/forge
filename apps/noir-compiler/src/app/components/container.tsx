@@ -1,10 +1,10 @@
 import { useContext } from 'react'
-import { CompileBtn, CompilerFeedback, CompilerReport, CustomTooltip, extractNameFromKey, RenderIf } from '@remix-ui/helper'
+import { CompileBtn, CompilerFeedback, CompilerReport, CustomTooltip, extractNameFromKey, RenderIf } from '@creditchain/forge-ui/helper'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { NoirAppContext } from '../contexts'
-import { CompileOptions } from '@remix-ui/helper'
+import { CompileOptions } from '@creditchain/forge-ui/helper'
 import { compileNoirCircuit } from '../actions'
-import { trackMatomoEvent, MatomoCategories } from '@remix-api'
+import { trackMatomoEvent, MatomoCategories } from '@creditchain/forge-api'
 
 const NOIR_VERSION = 'v1.0.0-beta.12'
 const BARRETENBERG_VERSION = 'v0.85.0'

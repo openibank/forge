@@ -1,4 +1,4 @@
-import {CopyToClipboard} from '@remix-ui/clipboard'
+import {CopyToClipboard} from '@creditchain/forge-ui/clipboard'
 import Reaact from 'react'
 import { RemixClient } from '../utils'
 import { VyperCompilationError} from '../utils/types'

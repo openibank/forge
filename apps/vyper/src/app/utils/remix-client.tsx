@@ -5,8 +5,8 @@ import { PluginClient } from '@remixproject/plugin'
 import { Contract, compileContract } from './compiler'
 import { ExampleContract } from '../components/VyperResult'
 import EventEmitter from 'events'
-import { CustomRemixApi } from '@remix-api'
-import { endpointUrls } from '@remix-endpoints-helper'
+import { CustomRemixApi } from '@creditchain/forge-api'
+import { endpointUrls } from '@creditchain/forge-endpoints-helper'
 export class RemixClient extends PluginClient<any, CustomRemixApi> {
   private client = createClient<Api, Readonly<RemixApi>>(this)
   compilerUrl: string = endpointUrls.vyper2

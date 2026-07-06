@@ -4,7 +4,7 @@
  * based on the "main keywords" inferred from e2e test filenames.
  *
  * Heuristics:
- * - Scan apps/remix-ide-e2e/src/tests for test files:
+ * - Scan apps/forge-ide-e2e/src/tests for test files:
  *   - *.test.ts, *.test.js, *.spec.ts, *.spec.js
  *   - Explicitly include plugin_api*.ts (plugin API tests that are not marked as *.test.*)
  * - For each basename (without extension):
@@ -20,7 +20,7 @@ const fs = require('fs');
 const path = require('path');
 
 const REPO_ROOT = path.resolve(__dirname, '..');
-const TESTS_DIR = path.join(REPO_ROOT, 'apps', 'remix-ide-e2e', 'src', 'tests');
+const TESTS_DIR = path.join(REPO_ROOT, 'apps', 'forge-ide-e2e', 'src', 'tests');
 const CIRCLE_CONFIG = path.join(REPO_ROOT, '.circleci', 'config.yml');
 
 /** Read directory and return keyword set */

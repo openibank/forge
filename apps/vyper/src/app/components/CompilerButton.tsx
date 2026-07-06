@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react'
-import { CustomTooltip } from "@remix-ui/helper";
+import { CustomTooltip } from "@creditchain/forge-ui/helper";
 import { isVyper, compile, toStandardOutput, isCompilationError, remixClient, normalizeContractPath, compileContract, RemixClient } from '../utils'
 import Button from 'react-bootstrap/Button'
 

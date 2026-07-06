@@ -1,9 +1,9 @@
 import { PluginClient } from "@remixproject/plugin";
 import { createClient } from "@remixproject/plugin-webview";
-import { onBreakpointClearedListener, onBreakpointAddedListener, onEditorContentChanged, onEnvChangedListener } from '@remix-ui/debugger-ui'
-import { TransactionReceipt, LineColumnLocation } from '@remix-project/remix-debug'
-import { DebuggerApiMixin } from '@remix-ui/debugger-ui'
-import { CompilerAbstract } from '@remix-project/remix-solidity'
+import { onBreakpointClearedListener, onBreakpointAddedListener, onEditorContentChanged, onEnvChangedListener } from '@creditchain/forge-ui/debugger-ui'
+import { TransactionReceipt, LineColumnLocation } from '@creditchain/forge-debug'
+import { DebuggerApiMixin } from '@creditchain/forge-ui/debugger-ui'
+import { CompilerAbstract } from '@creditchain/forge-solidity'
 
 export class DebuggerClientApi extends DebuggerApiMixin(PluginClient) {
   constructor () {

@@ -1,0 +1,45 @@
+{
+  "name": "forge-import-resolver",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/forge-import-resolver/src",
+  "projectType": "library",
+  "implicitDependencies": [],
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/forge-import-resolver",
+        "main": "libs/forge-import-resolver/src/index.ts",
+        "tsConfig": "libs/forge-import-resolver/tsconfig.lib.json",
+        "updateBuildableProjectDepsInPackageJson": false,
+        "assets": [
+          "libs/forge-import-resolver/*.md"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+  "command": "TS_NODE_PROJECT=libs/forge-import-resolver/tsconfig.spec.json mocha -r ts-node/register -r tsconfig-paths/register \"libs/forge-import-resolver/test/**/*.spec.ts\"",
+        "cwd": "."
+      }
+    },
+    "test:suite": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "command": "TS_NODE_PROJECT=libs/forge-import-resolver/tsconfig.spec.json mocha -r ts-node/register -r tsconfig-paths/register {args.suite}",
+        "cwd": "."
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/forge-import-resolver/**/*.ts"],
+        "eslintConfig": "libs/forge-solidity/.eslintrc"
+      }
+    }
+  },
+  "tags": []
+}

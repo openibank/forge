@@ -1,0 +1,34 @@
+{
+    "name": "forge-astwalker",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "libs/forge-astwalker/src",
+    "projectType": "library",
+    "implicitDependencies": [
+      "forge-lib"
+    ],
+    "targets": {
+      "build": {
+        "executor": "@nrwl/js:tsc",
+        "outputs": ["{options.outputPath}"],
+        "options": {
+          "outputPath": "dist/libs/forge-astwalker",
+          "main": "libs/forge-astwalker/src/index.ts",
+          "tsConfig": "libs/forge-astwalker/tsconfig.lib.json",
+          "assets": [
+            "libs/forge-astwalker/*.md"
+          ],
+          "updateBuildableProjectDepsInPackageJson": false
+        }
+      },
+      "lint": {
+        "executor": "@nrwl/linter:eslint",
+        "outputs": ["{options.outputFile}"],
+        "options": {
+          "lintFilePatterns": ["libs/forge-astwalker/**/*.ts"],
+          "eslintConfig": "libs/forge-astwalker/.eslintrc"
+        }
+      }
+    },
+    "tags": []
+  }
+  

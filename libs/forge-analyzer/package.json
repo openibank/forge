@@ -1,0 +1,62 @@
+{
+  "name": "@creditchain/forge-analyzer",
+  "version": "0.5.100",
+  "description": "Tool to perform static analysis on Solidity smart contracts",
+  "scripts": {
+    "test": "./../../node_modules/.bin/ts-node --project ../../tsconfig.base.json --require tsconfig-paths/register ./../../node_modules/.bin/tape ./test/tests.ts"
+  },
+  "types": "src/index.d.ts",
+  "contributors": [
+    {
+      "name": "Alex Beregszaszi",
+      "email": "alex@rtfs.hu"
+    },
+    {
+      "name": "Iuri Matias",
+      "email": "iuri@ethereum.org"
+    },
+    {
+      "name": "Yann Levreau",
+      "email": "yann@ethdev.com"
+    }
+  ],
+  "dependencies": {
+    "@ethereumjs/block": "^10.1.1",
+    "@ethereumjs/tx": "^10.1.1",
+    "@ethereumjs/util": "^10.1.1",
+    "@ethereumjs/vm": "^10.1.1",
+    "@creditchain/forge-astwalker": "^0.0.121",
+    "@creditchain/forge-lib": "^0.5.100",
+    "async": "^2.6.2",
+    "ethers": "^6.14.0",
+    "ethjs-util": "^0.1.6",
+    "fast-levenshtein": "^2.0.6",
+    "string-similarity": "^4.0.4"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "OpeniBank / CreditChain",
+  "license": "MIT",
+  "homepage": "https://github.com/openibank/forge/tree/main/libs/forge-analyzer#readme",
+  "devDependencies": {
+    "@types/node": "^18.16.1",
+    "babel-eslint": "^7.1.1",
+    "babel-plugin-transform-object-assign": "^6.22.0",
+    "babel-preset-es2015": "^6.24.0",
+    "npm-install-version": "^6.0.2",
+    "tape": "^4.6.0",
+    "ts-node": "^8.6.2",
+    "typescript": "^3.7.5"
+  },
+  "typings": "src/index.d.ts",
+  "gitHead": "7ab0c02208f4cc457506acfb22544c35011425a6",
+  "main": "./src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/openibank/forge.git"
+  },
+  "bugs": {
+    "url": "https://github.com/openibank/forge/issues"
+  }
+}

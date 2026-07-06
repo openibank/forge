@@ -27,15 +27,15 @@ app.get('/api/skills', (req, res) => {
   proxy.end()
 })
 
-// Serve static Remix IDE files
-app.use(express.static(path.join(__dirname, 'dist/apps/remix-ide')))
+// Serve static Forge IDE files
+app.use(express.static(path.join(__dirname, 'dist/apps/forge-ide')))
 
 // SPA fallback
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist/apps/remix-ide', 'index.html'))
+  res.sendFile(path.join(__dirname, 'dist/apps/forge-ide', 'index.html'))
 })
 
 app.listen(PORT, '0.0.0.0', () => {
-  console.log(`Remix IDE running on http://0.0.0.0:${PORT}`)
+  console.log(`Forge IDE running on http://0.0.0.0:${PORT}`)
   console.log(`Skills API proxied at http://0.0.0.0:${PORT}/api/skills`)
 })

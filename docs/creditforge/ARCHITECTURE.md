@@ -36,7 +36,7 @@ security scanning, indexing, RPC routing, and deployment approvals.
 
 ```mermaid
 flowchart LR
-  Web["apps/remix-ide CreditStudio"] --> API["apps/api Axum"]
+  Web["apps/forge-ide CreditStudio"] --> API["apps/api Axum"]
   Web --> RPC["apps/rpc-gateway"]
   API --> DB["PostgreSQL"]
   API --> Redis["Redis"]

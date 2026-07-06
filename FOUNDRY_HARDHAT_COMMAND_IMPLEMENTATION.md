@@ -8,7 +8,7 @@ This implementation adds comprehensive support for executing Foundry and Hardhat
 
 ### 1. Plugin Extensions
 
-#### Foundry Plugin (`apps/remixdesktop/src/plugins/foundryPlugin.ts`)
+#### Foundry Plugin (`apps/forge-desktop/src/plugins/foundryPlugin.ts`)
 - **Added method:** `runCommand(commandArgs: string)`
   - Executes any Foundry command (forge, cast, anvil)
   - Validates commands to ensure they start with allowed tools
@@ -18,7 +18,7 @@ This implementation adds comprehensive support for executing Foundry and Hardhat
 
 - **Updated methods list:** Added `'runCommand'` to the profile
 
-#### Hardhat Plugin (`apps/remixdesktop/src/plugins/hardhatPlugin.ts`)
+#### Hardhat Plugin (`apps/forge-desktop/src/plugins/hardhatPlugin.ts`)
 - **Added method:** `runCommand(commandArgs: string)`
   - Executes any Hardhat command
   - Validates commands to ensure they are Hardhat commands
@@ -234,26 +234,26 @@ Example:
 ## Files Modified/Created
 
 ### Created:
-- `libs/remix-ai-core/src/remix-mcp-server/handlers/FoundryHardhatHandler.ts` (initial creation in previous PR)
-- `libs/remix-ai-core/src/remix-mcp-server/handlers/FoundryHardhatHandler.README.md`
+- `libs/forge-ai-core/src/remix-mcp-server/handlers/FoundryHardhatHandler.ts` (initial creation in previous PR)
+- `libs/forge-ai-core/src/remix-mcp-server/handlers/FoundryHardhatHandler.README.md`
 - `FOUNDRY_HARDHAT_COMMAND_IMPLEMENTATION.md` (this file)
 
 ### Modified:
-- `apps/remixdesktop/src/plugins/foundryPlugin.ts`
+- `apps/forge-desktop/src/plugins/foundryPlugin.ts`
   - Added `runCommand` method
   - Updated profile methods list
 
-- `apps/remixdesktop/src/plugins/hardhatPlugin.ts`
+- `apps/forge-desktop/src/plugins/hardhatPlugin.ts`
   - Added `runCommand` method
   - Updated profile methods list
 
-- `libs/remix-ai-core/src/remix-mcp-server/handlers/FoundryHardhatHandler.ts`
+- `libs/forge-ai-core/src/remix-mcp-server/handlers/FoundryHardhatHandler.ts`
   - Added `FoundryRunCommandHandler` class
   - Added `HardhatRunCommandHandler` class
   - Updated `GetFoundryHardhatInfoHandler` to include command execution info
   - Updated `createFoundryHardhatTools()` to register new handlers
 
-- `libs/remix-ai-core/src/remix-mcp-server/handlers/FoundryHardhatHandler.README.md`
+- `libs/forge-ai-core/src/remix-mcp-server/handlers/FoundryHardhatHandler.README.md`
   - Added documentation for new command handlers
   - Added security section
   - Added usage examples
@@ -268,9 +268,9 @@ Example:
 6. **Security:** Command validation prevents arbitrary code execution
 7. **Observability:** All output is logged to Remix terminal for visibility
 
-## Integration with Remix IDE
+## Integration with Forge IDE
 
-The implementation seamlessly integrates with Remix IDE:
+The implementation seamlessly integrates with Forge IDE:
 - Terminal output shows command execution in real-time
 - File watchers sync compilation artifacts automatically
 - Working directory context maintained across commands

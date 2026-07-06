@@ -1,0 +1,43 @@
+{
+    "name": "forge-simulator",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "libs/forge-simulator/src",
+    "projectType": "library",
+    "implicitDependencies": [
+      "forge-lib"
+    ],
+    "targets": {
+      "build": {
+        "executor": "@nrwl/js:tsc",
+        "outputs": ["{options.outputPath}"],
+        "options": {
+          "outputPath": "dist/libs/forge-simulator",
+          "main": "libs/forge-simulator/src/index.ts",
+          "tsConfig": "libs/forge-simulator/tsconfig.lib.json",
+          "updateBuildableProjectDepsInPackageJson": false,
+          "assets": [
+            {
+              "glob": "ethsim",
+              "input": "libs/forge-simulator/bin/",
+              "output": "bin/"
+            },
+            {
+              "glob": "*.md",
+              "input": "libs/forge-simulator/",
+              "output": "/"
+            }
+          ]
+        }
+      },
+      "lint": {
+        "executor": "@nrwl/linter:eslint",
+        "outputs": ["{options.outputFile}"],
+        "options": {
+          "lintFilePatterns": ["libs/forge-simulator/**/*.ts"],
+          "eslintConfig": "libs/forge-simulator/.eslintrc"
+        }
+      }
+    },
+    "tags": []
+  }
+  

@@ -1,0 +1,337 @@
+import { Registry } from '@creditchain/forge-lib'
+import { SettingsActions, SettingsState } from '../types'
+import { onDeepAgentApiKeysChanged } from '@creditchain/forge-ai-core';
+// import { resetOllamaHostOnSettingsChange } from '@creditchain/forge-ai-core';
+const config = Registry.getInstance().get('config').api
+const settingsConfig = Registry.getInstance().get('settingsConfig').api
+const defaultTheme = config.get('settings/theme') ? settingsConfig.themes.find((theme) => theme.name.toLowerCase() === config.get('settings/theme').toLowerCase()) : settingsConfig.themes[0]
+const gistAccessToken = config.get('settings/gist-access-token') || ''
+const githubUserName = config.get('settings/github-user-name') || ''
+const githubEmail = config.get('settings/github-email') || ''
+const ipfsUrl = config.get('settings/ipfs-url') || ''
+const ipfsProtocol = config.get('settings/ipfs-protocol') || ''
+const ipfsPort = config.get('settings/ipfs-port') || ''
+const ipfsProjectId = config.get('settings/ipfs-project-id') || ''
+const ipfsProjectSecret = config.get('settings/ipfs-project-secret') || ''
+const swarmPrivateBeeAddress = config.get('settings/swarm-private-bee-address') || ''
+const swarmPostageStampId = config.get('settings/swarm-postage-stamp-id') || ''
+const sindriAccessToken = config.get('settings/sindri-access-token') || ''
+const etherscanAccessToken = config.get('settings/etherscan-access-token') || ''
+const thegraphAccessToken = config.get('settings/thegraph-access-token') || ''
+const mcpServersEnable = config.get('settings/mcp/servers/enable') || false
+const mcpServerManagement = config.get('settings/mcp-server-management') || false
+// Ollama configuration is temporarily disabled - will be enabled later
+// const ollamaEndpoint = config.get('settings/ollama-endpoint') || 'http://localhost:11434'
+const deepagentApiKeysConfig = config.get('settings/deepagent-api-keys-config') || false
+const deepagentAnthropicApiKey = config.get('settings/deepagent-anthropic-api-key') || ''
+const deepagentMistralApiKey = config.get('settings/deepagent-mistral-api-key') || ''
+const deepagentOpenaiApiKey = config.get('settings/deepagent-openai-api-key') || ''
+const deepagentMoonshotApiKey = config.get('settings/deepagent-moonshot-api-key') || ''
+const enableCodeAnalysisPopover = config.get('settings/editor/code-analysis-popover')
+
+let githubConfig = config.get('settings/github-config') || false
+let ipfsConfig = config.get('settings/ipfs-config') || false
+let swarmConfig = config.get('settings/swarm-config') || false
+let sindriConfig = config.get('settings/sindri-config') || false
+let etherscanConfig = config.get('settings/etherscan-config') || false
+let thegraphConfig = config.get('settings/thegraph-config') || false
+// Ollama configuration is temporarily disabled - will be enabled later
+// let ollamaConfig = config.get('settings/ollama-config') || false
+let generateContractMetadata = config.get('settings/generate-contract-metadata')
+let autoCompletion = config.get('settings/auto-completion')
+let showGas = config.get('settings/show-gas')
+let displayErrors = config.get('settings/display-errors')
+let saveEvmState = config.get('settings/save-evm-state')
+
+if (!githubConfig && (githubUserName || githubEmail || gistAccessToken)) {
+  config.set('settings/github-config', true)
+  githubConfig = true
+}
+if (!ipfsConfig && (ipfsUrl || ipfsProtocol || ipfsPort || ipfsProjectId || ipfsProjectSecret)) {
+  config.set('settings/ipfs-config', true)
+  ipfsConfig = true
+}
+if (!swarmConfig && (swarmPrivateBeeAddress || swarmPostageStampId)) {
+  config.set('settings/swarm-config', true)
+  swarmConfig = true
+}
+if (!sindriConfig && sindriAccessToken) {
+  config.set('settings/sindri-config', true)
+  sindriConfig = true
+}
+if (!etherscanConfig && etherscanAccessToken) {
+  config.set('settings/etherscan-config', true)
+  etherscanConfig = true
+}
+if (!thegraphConfig && thegraphAccessToken) {
+  config.set('settings/thegraph-config', true)
+  thegraphConfig = true
+}
+// Ollama configuration is temporarily disabled - will be enabled later
+// if (!ollamaConfig && ollamaEndpoint !== 'http://localhost:11434') {
+//   config.set('settings/ollama-config', true)
+//   ollamaConfig = true
+// }
+// Auto-enable deepagent API keys config if any API key is set
+let deepagentApiKeysConfigAuto = deepagentApiKeysConfig
+if (!deepagentApiKeysConfigAuto && (deepagentAnthropicApiKey || deepagentMistralApiKey || deepagentOpenaiApiKey || deepagentMoonshotApiKey)) {
+  config.set('settings/deepagent-api-keys-config', true)
+  deepagentApiKeysConfigAuto = true
+}
+if (typeof generateContractMetadata !== 'boolean') {
+  config.set('settings/generate-contract-metadata', true)
+  generateContractMetadata = true
+}
+if (typeof autoCompletion !== 'boolean') {
+  config.set('settings/auto-completion', true)
+  autoCompletion = true
+}
+if (typeof showGas !== 'boolean') {
+  config.set('settings/show-gas', true)
+  showGas = true
+}
+if (typeof displayErrors !== 'boolean') {
+  config.set('settings/display-errors', true)
+  displayErrors = true
+}
+if (typeof saveEvmState !== 'boolean') {
+  config.set('settings/save-evm-state', true)
+  saveEvmState = true
+}
+
+let enableCodeAnalysisPopoverBoolean = enableCodeAnalysisPopover
+if (typeof enableCodeAnalysisPopoverBoolean !== 'boolean') {
+  config.set('settings/editor/code-analysis-popover', true)
+  enableCodeAnalysisPopoverBoolean = true
+}
+
+export const initialState: SettingsState = {
+  'generate-contract-metadata': {
+    value: generateContractMetadata,
+    isLoading: false
+  },
+  'text-wrap': {
+    value: config.get('settings/text-wrap') || false,
+    isLoading: false
+  },
+  'personal-mode': {
+    value: config.get('settings/personal-mode') || false,
+    isLoading: false
+  },
+  'matomo-perf-analytics': {
+    value: config.get('settings/matomo-perf-analytics') || false,
+    isLoading: false
+  },
+  'matomo-analytics': {
+    value: true, // Deprecated --- IGNORE ---
+    isLoading: false
+  },
+  'auto-completion': {
+    value: autoCompletion,
+    isLoading: false
+  },
+  'show-gas': {
+    value: showGas,
+    isLoading: false
+  },
+  'display-errors': {
+    value: displayErrors,
+    isLoading: false
+  },
+  'copilot/suggest/activate': {
+    value: config.get('settings/copilot/suggest/activate') || true,
+    isLoading: false
+  },
+  'save-evm-state': {
+    value: saveEvmState,
+    isLoading: false
+  },
+  'theme': {
+    value: defaultTheme ? defaultTheme.name : "Dark",
+    isLoading: false
+  },
+  'github-config': {
+    value: githubConfig,
+    isLoading: false
+  },
+  'ipfs-config': {
+    value: ipfsConfig,
+    isLoading: false
+  },
+  'swarm-config': {
+    value: swarmConfig,
+    isLoading: false
+  },
+  'sindri-config': {
+    value: sindriConfig,
+    isLoading: false
+  },
+  'etherscan-config': {
+    value: etherscanConfig,
+    isLoading: false
+  },
+  'gist-access-token': {
+    value: gistAccessToken,
+    isLoading: false
+  },
+  'github-user-name': {
+    value: githubUserName,
+    isLoading: false
+  },
+  'github-email': {
+    value: githubEmail,
+    isLoading: false
+  },
+  'ipfs-url': {
+    value: ipfsUrl,
+    isLoading: false
+  },
+  'ipfs-protocol': {
+    value: ipfsProtocol,
+    isLoading: false
+  },
+  'ipfs-port': {
+    value: ipfsPort,
+    isLoading: false
+  },
+  'ipfs-project-id': {
+    value: ipfsProjectId,
+    isLoading: false
+  },
+  'ipfs-project-secret': {
+    value: ipfsProjectSecret,
+    isLoading: false
+  },
+  'swarm-private-bee-address': {
+    value: swarmPrivateBeeAddress,
+    isLoading: false
+  },
+  'swarm-postage-stamp-id': {
+    value: swarmPostageStampId,
+    isLoading: false
+  },
+  'sindri-access-token': {
+    value: sindriAccessToken,
+    isLoading: false
+  },
+  'etherscan-access-token': {
+    value: etherscanAccessToken,
+    isLoading: false
+  },
+  'thegraph-config': {
+    value: thegraphConfig,
+    isLoading: false
+  },
+  'thegraph-access-token': {
+    value: thegraphAccessToken,
+    isLoading: false
+  },
+  'ai-privacy-policy': {
+    value: '',
+    isLoading: false
+  },
+  'mcp/servers/enable': {
+    value: mcpServersEnable,
+    isLoading: false
+  },
+  'mcp-server-management': {
+    value: mcpServerManagement,
+    isLoading: false
+  },
+  'account-manager': {
+    value: '',
+    isLoading: false
+  },
+  'profile-section': {
+    value: '',
+    isLoading: false
+  },
+  'credits-balance': {
+    value: '',
+    isLoading: false
+  },
+  'connected-accounts': {
+    value: '',
+    isLoading: false
+  },
+  'billing-section': {
+    value: '',
+    isLoading: false
+  },
+  // Ollama configuration is temporarily disabled - will be enabled later
+  // 'ollama-config': {
+  //   value: ollamaConfig,
+  //   isLoading: false
+  // },
+  // 'ollama-endpoint': {
+  //   value: ollamaEndpoint,
+  //   isLoading: false
+  // },
+  'deepagent-api-keys-config': {
+    value: deepagentApiKeysConfigAuto,
+    isLoading: false
+  },
+  'deepagent-anthropic-api-key': {
+    value: deepagentAnthropicApiKey,
+    isLoading: false
+  },
+  'deepagent-mistral-api-key': {
+    value: deepagentMistralApiKey,
+    isLoading: false
+  },
+  'deepagent-openai-api-key': {
+    value: deepagentOpenaiApiKey,
+    isLoading: false
+  },
+  'deepagent-moonshot-api-key': {
+    value: deepagentMoonshotApiKey,
+    isLoading: false
+  },
+  //@ts-ignore
+  'editor/code-analysis-popover': {
+    value: enableCodeAnalysisPopoverBoolean,
+    isLoading: false
+  },
+  toaster: {
+    value: '',
+    isLoading: false
+  }
+}
+
+export const settingReducer = (state: SettingsState, action: SettingsActions): SettingsState => {
+  switch (action.type) {
+  case 'SET_VALUE':
+    config.set('settings/' + action.payload.name, action.payload.value)
+    // Ollama configuration is temporarily disabled - will be enabled later
+    // // Reset Ollama host cache when endpoint is changed
+    // if (action.payload.name === 'ollama-endpoint') {
+    //   try {
+    //     resetOllamaHostOnSettingsChange();
+    //   } catch (error) {
+    //     // Ignore errors - Ollama functionality is optional
+    //   }
+    // }
+
+    // Reinitialize DeepAgent when API key settings change
+    if (action.payload.name === 'deepagent-api-keys-config' ||
+        action.payload.name === 'deepagent-anthropic-api-key' ||
+        action.payload.name === 'deepagent-mistral-api-key' ||
+        action.payload.name === 'deepagent-openai-api-key' ||
+        action.payload.name === 'deepagent-moonshot-api-key') {
+      try {
+        onDeepAgentApiKeysChanged();
+      } catch (error) {
+        // Ignore errors - DeepAgent functionality is optional
+      }
+    }
+
+    return { ...state, [action.payload.name]: { ...(state as any)[action.payload.name], value: action.payload.value, isLoading: false } }
+  case 'SET_LOADING':
+    return { ...state, [action.payload.name]: { ...(state as any)[action.payload.name], isLoading: true } }
+
+  case 'SET_TOAST_MESSAGE':
+    return { ...state, toaster: { ...state.toaster, value: action.payload.value, isLoading: false } }
+  default:
+    return state
+  }
+}

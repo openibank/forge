@@ -1,268 +1,243 @@
 {
-    "compilerOptions": {
-        "paths": {
-            "@forge/creditchain-config": [
-              "libs/forge/creditchain-config/src/index.ts"
-            ],
-            "@remix-project/core-plugin": [
-              "libs/remix-core-plugin/src/index.ts"
-            ],
-            "@remix-project/remix-analyzer": [
-              "libs/remix-analyzer/src/index.ts"
-            ],
-            "@remix-project/remix-astwalker": [
-              "libs/remix-astwalker/src/index.ts"
-            ],
-            "@remix-project/remix-debug": [
-              "libs/remix-debug/src/index.ts"
-            ],
-            "@remix-project/remix-lib": [
-              "libs/remix-lib/src/index.ts"
-            ],
-            "@remix-project/remix-niks": [
-              "libs/remix-niks/src/index.ts"
-            ],
-            "@remix-project/remix-node": [
-              "libs/remix-node/src/index.ts"
-            ],
-            "@remix-project/remix-simulator": [
-              "libs/remix-simulator/src/index.ts"
-            ],
-            "@remix-project/remix-solidity": [
-              "libs/remix-solidity/src/index"
-            ],
-            "@remix-project/remix-tests": [
-              "libs/remix-tests/src/index.ts"
-            ],
-            "@remix-project/remix-url-resolver": [
-              "libs/remix-url-resolver/src/index.ts"
-            ],
-            "@remix-project/remix-ws-templates": [
-              "libs/remix-ws-templates/src/index.ts"
-            ],
-            "@remix-project/remixd": [
-              "libs/remixd/index.ts"
-            ],
-            "@creditchain/forged": [
-              "libs/remixd/index.ts"
-            ],
-            "@remix-ui/app": [
-              "libs/remix-ui/app/src/index.ts"
-            ],
-            "@remix-ui/checkbox": [
-              "libs/remix-ui/checkbox/src/index.ts"
-            ],
-            "@remix-ui/clipboard": [
-              "libs/remix-ui/clipboard/src/index.ts"
-            ],
-            "@remix-ui/debugger-ui": [
-              "libs/remix-ui/debugger-ui/src/index.ts"
-            ],
-            "@remix-ui/drag-n-drop": [
-              "libs/remix-ui/drag-n-drop/src/index.ts"
-            ],
-            "@remix-ui/editor": [
-              "libs/remix-ui/editor/src/index.ts"
-            ],
-            "@remix-ui/file-decorators": [
-              "libs/remix-ui/file-decorators/src/index.ts"
-            ],
-            "@remix-ui/file-explorer": [
-              "libs/remix-ui/file-explorer/src/index.ts"
-            ],
-            "@remix-ui/helper": [
-              "libs/remix-ui/helper/src/index.ts"
-            ],
-            "@remix-ui/home-tab": [
-              "libs/remix-ui/home-tab/src/index.ts"
-            ],
-            "@remix-ui/modal-dialog": [
-              "libs/remix-ui/modal-dialog/src/index.ts"
-            ],
-            "@remix-ui/modal-help": [
-              "libs/remix-ui/modal-help/src/index.ts"
-            ],
-            "@remix-ui/plan-manager": [
-              "libs/remix-ui/plan-manager/src/index.ts"
-            ],
-            "@remix-ui/panel": [
-              "libs/remix-ui/panel/src/index.ts"
-            ],
-            "@remix-ui/permission-handler": [
-              "libs/remix-ui/permission-handler/src/index.ts"
-            ],
-            "@remix-ui/plugin-manager": [
-              "libs/remix-ui/plugin-manager/src/index.ts"
-            ],
-            "@remix-ui/publish-to-storage": [
-              "libs/remix-ui/publish-to-storage/src/index.ts"
-            ],
-            "@remix-ui/renderer": [
-              "libs/remix-ui/renderer/src/index.ts"
-            ],
-            "@remix-ui/run-tab": [
-              "libs/remix-ui/run-tab/src/index.ts"
-            ],
-            "@remix-ui/search": [
-              "libs/remix-ui/search/src/index.ts"
-            ],
-            "@remix-ui/settings": [
-              "libs/remix-ui/settings/src/index.ts"
-            ],
-            "@remix-ui/solidity-compile-details": [
-              "libs/remix-ui/solidity-compile-details/src/index.ts"
-            ],
-            "@remix-ui/vyper-compile-details": [
-              "libs/remix-ui/vyper-compile-details/src/index.ts"
-            ],
-            "@remix-ui/remix-ui-grid-view": [
-              "libs/remix-ui/grid-view/src/index.ts"
-            ],
-            "@remix-ui/remix-ui-grid-section": [
-              "libs/remix-ui/grid-view/src/index.ts"
-            ],
-            "@remix-ui/remix-ui-grid-cell": [
-              "libs/remix-ui/grid-view/src/index.ts"
-            ],
-            "@remix-ui/solidity-compiler": [
-              "libs/remix-ui/solidity-compiler/src/index.ts"
-            ],
-            "@remix-ui/solidity-unit-testing": [
-              "libs/remix-ui/solidity-unit-testing/src/index.ts"
-            ],
-            "@remix-ui/static-analyser": [
-              "libs/remix-ui/static-analyser/src/index.ts"
-            ],
-            "@remix-ui/tabs": [
-              "libs/remix-ui/tabs/src/index.ts"
-            ],
-            "@remix-ui/terminal": [
-              "libs/remix-ui/terminal/src/index.ts"
-            ],
-            "@remix-ui/theme-module": [
-              "libs/remix-ui/theme-module/src/index.ts"
-            ],
-            "@remix-ui/toaster": [
-              "libs/remix-ui/toaster/src/index.ts"
-            ],
-            "@remix-ui/toggle": [
-              "libs/remix-ui/toggle/src/index.ts"
-            ],
-            "@remix-ui/tooltip-popup": [
-              "libs/remix-ui/tooltip-popup/src/index.ts"
-            ],
-            "@remix-ui/tree-view": [
-              "libs/remix-ui/tree-view/src/index.ts"
-            ],
-            "@remix-ui/utils": [
-              "libs/remix-ui/utils/src/index.ts"
-            ],
-            "@remix-ui/vertical-icons-panel": [
-              "libs/remix-ui/vertical-icons-panel/src/index.ts"
-            ],
-            "@remix-ui/workspace": [
-              "libs/remix-ui/workspace/src/index.ts"
-            ],
-            "@remixproject/debugger-plugin": [
-              "apps/debugger/src/index.ts"
-            ],
-            "@remixproject/solidity-compiler-plugin": [
-              "apps/solidity-compiler/src/index.ts"
-            ],
-            "remix-node": [
-              "libs/remix-node/src/index.ts"
-            ],
-            "@remix-ui/locale-module": [
-              "libs/remix-ui/locale-module/src/index.ts"
-            ],
-            "@remix-ui/solidity-uml-gen": [
-              "libs/remix-ui/solidity-uml-gen/src/index.ts"
-            ],
-            "@remix-ui/statusbar": [
-              "libs/remix-ui/statusbar/src/index.ts"
-            ],
-            "@remix-ui/walkthrough": [
-              "libs/remix-ui/walkthrough/src/index.ts"
-            ],
-            "@remix-project/ghaction-helper": [
-              "libs/ghaction-helper/src/index.ts"
-            ],
-            "@remixproject/walletconnect-plugin": [
-              "apps/walletconnect/src/index.ts"
-            ],
-            "@remix-ui/xterm": [
-              "libs/remix-ui/xterm/src/index.ts"
-            ],
-            "@remix-ui/remix-ai": [
-              "libs/remix-ui/remix-ai/src/index.ts"
-            ],
-
-            "@remix/remix-ai-core": [
-              "libs/remix-ai-core/src/index.ts"
-            ],
-            "@remix/remix-ai-core/quick-dapp-thegraph-prompts": [
-              "libs/remix-ai-core/src/remix-mcp-server/prompts/quickDappTheGraphPrompts.ts"
-            ],
-            "@remix-ui/git": [
-              "libs/remix-ui/git/src/index.ts"
-            ],
-            "@remix-ui/environment-explorer": [
-              "libs/remix-ui/environment-explorer/src/index.ts"
-          ],
-            "@remix-api": [
-              "libs/remix-api/src/index.ts"
-            ],
-            "@remix-scriptrunner": [
-              "libs/remix-ui/scriptrunner/src/index.ts"
-            ],
-            "@remix-git": [
-              "libs/remix-git/"
-            ],
-            "@remix-endpoints-helper": [
-              "libs/endpoints-helper/src/index.ts"
-            ],
-            "@remix-ui/remix-ai-assistant": [
-              "libs/remix-ui/remix-ai-assistant/src/index.ts"
-            ],
-            "@remix-ui/quick-dapp-v2": [
-              "libs/remix-ui/quick-dapp-v2/src/index.ts"
-            ],
-            "@remix-ui/top-bar": [
-              "libs/remix-ui/top-bar/src/index.ts"
-            ],
-            "@remix-ide/tracking": [
-              "apps/remix-ide/src/app/contexts/TrackingContext"
-            ],
-            "@remix-ui/login": [
-              "libs/remix-ui/login/src/index.ts"
-            ],
-            "@remix-ui/template-explorer-modal": [
-              "libs/remix-ui/template-explorer-modal/src/index.ts"
-            ],
-            "@remix-ui/invites": [
-              "libs/remix-ui/invites/src/index.ts"
-            ],
-            "@remix-ui/run-tab-environment": [
-              "libs/remix-ui/run-tab-environment/src/index.ts"
-            ],
-            "@remix-ui/run-tab-deploy": [
-              "libs/remix-ui/run-tab-deploy/src/index.ts"
-            ],
-            "@remix-ui/run-tab-deployed-contracts": [
-              "libs/remix-ui/run-tab-deployed-contracts/src/index.ts"
-            ],
-            "@remix-ui/run-tab-deployed-contracts/ens-contract-names": [
-              "libs/remix-ui/run-tab-deployed-contracts/src/lib/ens-contract-names.ts"
-            ],
-            "@remix-project/import-resolver": [
-              "libs/remix-import-resolver/src/index.ts"
-            ],
-            "@remix-ui/run-tab-transactions": [
-              "libs/remix-ui/run-tab-transactions/src/index.ts"
-            ],
-            "@remix-ui/thegraph": [
-              "libs/remix-ui/thegraph/src/index.ts"
-            ]
-        }
+  "compilerOptions": {
+    "paths": {
+      "@creditchain/forge-ai-core": [
+        "libs/forge-ai-core/src/index.ts"
+      ],
+      "@creditchain/forge-ai-core/quick-dapp-thegraph-prompts": [
+        "libs/forge-ai-core/src/remix-mcp-server/prompts/quickDappTheGraphPrompts.ts"
+      ],
+      "@creditchain/forge-analyzer": [
+        "libs/forge-analyzer/src/index.ts"
+      ],
+      "@creditchain/forge-api": [
+        "libs/forge-api/src/index.ts"
+      ],
+      "@creditchain/forge-astwalker": [
+        "libs/forge-astwalker/src/index.ts"
+      ],
+      "@creditchain/forge-core-plugin": [
+        "libs/forge-core-plugin/src/index.ts"
+      ],
+      "@creditchain/forge-debug": [
+        "libs/forge-debug/src/index.ts"
+      ],
+      "@creditchain/forge-endpoints-helper": [
+        "libs/endpoints-helper/src/index.ts"
+      ],
+      "@creditchain/forge-ghaction-helper": [
+        "libs/ghaction-helper/src/index.ts"
+      ],
+      "@creditchain/forge-git": [
+        "libs/forge-git/"
+      ],
+      "@creditchain/forge-ide/tracking": [
+        "apps/forge-ide/src/app/contexts/TrackingContext"
+      ],
+      "@creditchain/forge-import-resolver": [
+        "libs/forge-import-resolver/src/index.ts"
+      ],
+      "@creditchain/forge-lib": [
+        "libs/forge-lib/src/index.ts"
+      ],
+      "@creditchain/forge-simulator": [
+        "libs/forge-simulator/src/index.ts"
+      ],
+      "@creditchain/forge-solidity": [
+        "libs/forge-solidity/src/index"
+      ],
+      "@creditchain/forge-tests": [
+        "libs/forge-tests/src/index.ts"
+      ],
+      "@creditchain/forge-ui/app": [
+        "libs/forge-ui/app/src/index.ts"
+      ],
+      "@creditchain/forge-ui/checkbox": [
+        "libs/forge-ui/checkbox/src/index.ts"
+      ],
+      "@creditchain/forge-ui/clipboard": [
+        "libs/forge-ui/clipboard/src/index.ts"
+      ],
+      "@creditchain/forge-ui/debugger-ui": [
+        "libs/forge-ui/debugger-ui/src/index.ts"
+      ],
+      "@creditchain/forge-ui/drag-n-drop": [
+        "libs/forge-ui/drag-n-drop/src/index.ts"
+      ],
+      "@creditchain/forge-ui/editor": [
+        "libs/forge-ui/editor/src/index.ts"
+      ],
+      "@creditchain/forge-ui/environment-explorer": [
+        "libs/forge-ui/environment-explorer/src/index.ts"
+      ],
+      "@creditchain/forge-ui/file-decorators": [
+        "libs/forge-ui/file-decorators/src/index.ts"
+      ],
+      "@creditchain/forge-ui/file-explorer": [
+        "libs/forge-ui/file-explorer/src/index.ts"
+      ],
+      "@creditchain/forge-ui/git": [
+        "libs/forge-ui/git/src/index.ts"
+      ],
+      "@creditchain/forge-ui/grid-cell": [
+        "libs/forge-ui/grid-view/src/index.ts"
+      ],
+      "@creditchain/forge-ui/grid-section": [
+        "libs/forge-ui/grid-view/src/index.ts"
+      ],
+      "@creditchain/forge-ui/grid-view": [
+        "libs/forge-ui/grid-view/src/index.ts"
+      ],
+      "@creditchain/forge-ui/helper": [
+        "libs/forge-ui/helper/src/index.ts"
+      ],
+      "@creditchain/forge-ui/home-tab": [
+        "libs/forge-ui/home-tab/src/index.ts"
+      ],
+      "@creditchain/forge-ui/invites": [
+        "libs/forge-ui/invites/src/index.ts"
+      ],
+      "@creditchain/forge-ui/locale-module": [
+        "libs/forge-ui/locale-module/src/index.ts"
+      ],
+      "@creditchain/forge-ui/login": [
+        "libs/forge-ui/login/src/index.ts"
+      ],
+      "@creditchain/forge-ui/modal-dialog": [
+        "libs/forge-ui/modal-dialog/src/index.ts"
+      ],
+      "@creditchain/forge-ui/modal-help": [
+        "libs/forge-ui/modal-help/src/index.ts"
+      ],
+      "@creditchain/forge-ui/panel": [
+        "libs/forge-ui/panel/src/index.ts"
+      ],
+      "@creditchain/forge-ui/permission-handler": [
+        "libs/forge-ui/permission-handler/src/index.ts"
+      ],
+      "@creditchain/forge-ui/plan-manager": [
+        "libs/forge-ui/plan-manager/src/index.ts"
+      ],
+      "@creditchain/forge-ui/plugin-manager": [
+        "libs/forge-ui/plugin-manager/src/index.ts"
+      ],
+      "@creditchain/forge-ui/publish-to-storage": [
+        "libs/forge-ui/publish-to-storage/src/index.ts"
+      ],
+      "@creditchain/forge-ui/quick-dapp-v2": [
+        "libs/forge-ui/quick-dapp-v2/src/index.ts"
+      ],
+      "@creditchain/forge-ui/remix-ai-assistant": [
+        "libs/forge-ui/remix-ai-assistant/src/index.ts"
+      ],
+      "@creditchain/forge-ui/renderer": [
+        "libs/forge-ui/renderer/src/index.ts"
+      ],
+      "@creditchain/forge-ui/run-tab": [
+        "libs/forge-ui/run-tab/src/index.ts"
+      ],
+      "@creditchain/forge-ui/run-tab-deploy": [
+        "libs/forge-ui/run-tab-deploy/src/index.ts"
+      ],
+      "@creditchain/forge-ui/run-tab-deployed-contracts": [
+        "libs/forge-ui/run-tab-deployed-contracts/src/index.ts"
+      ],
+      "@creditchain/forge-ui/run-tab-deployed-contracts/ens-contract-names": [
+        "libs/forge-ui/run-tab-deployed-contracts/src/lib/ens-contract-names.ts"
+      ],
+      "@creditchain/forge-ui/run-tab-environment": [
+        "libs/forge-ui/run-tab-environment/src/index.ts"
+      ],
+      "@creditchain/forge-ui/run-tab-transactions": [
+        "libs/forge-ui/run-tab-transactions/src/index.ts"
+      ],
+      "@creditchain/forge-ui/scriptrunner": [
+        "libs/forge-ui/scriptrunner/src/index.ts"
+      ],
+      "@creditchain/forge-ui/search": [
+        "libs/forge-ui/search/src/index.ts"
+      ],
+      "@creditchain/forge-ui/settings": [
+        "libs/forge-ui/settings/src/index.ts"
+      ],
+      "@creditchain/forge-ui/solidity-compile-details": [
+        "libs/forge-ui/solidity-compile-details/src/index.ts"
+      ],
+      "@creditchain/forge-ui/solidity-compiler": [
+        "libs/forge-ui/solidity-compiler/src/index.ts"
+      ],
+      "@creditchain/forge-ui/solidity-uml-gen": [
+        "libs/forge-ui/solidity-uml-gen/src/index.ts"
+      ],
+      "@creditchain/forge-ui/solidity-unit-testing": [
+        "libs/forge-ui/solidity-unit-testing/src/index.ts"
+      ],
+      "@creditchain/forge-ui/static-analyser": [
+        "libs/forge-ui/static-analyser/src/index.ts"
+      ],
+      "@creditchain/forge-ui/statusbar": [
+        "libs/forge-ui/statusbar/src/index.ts"
+      ],
+      "@creditchain/forge-ui/tabs": [
+        "libs/forge-ui/tabs/src/index.ts"
+      ],
+      "@creditchain/forge-ui/template-explorer-modal": [
+        "libs/forge-ui/template-explorer-modal/src/index.ts"
+      ],
+      "@creditchain/forge-ui/terminal": [
+        "libs/forge-ui/terminal/src/index.ts"
+      ],
+      "@creditchain/forge-ui/thegraph": [
+        "libs/forge-ui/thegraph/src/index.ts"
+      ],
+      "@creditchain/forge-ui/theme-module": [
+        "libs/forge-ui/theme-module/src/index.ts"
+      ],
+      "@creditchain/forge-ui/toaster": [
+        "libs/forge-ui/toaster/src/index.ts"
+      ],
+      "@creditchain/forge-ui/toggle": [
+        "libs/forge-ui/toggle/src/index.ts"
+      ],
+      "@creditchain/forge-ui/tooltip-popup": [
+        "libs/forge-ui/tooltip-popup/src/index.ts"
+      ],
+      "@creditchain/forge-ui/top-bar": [
+        "libs/forge-ui/top-bar/src/index.ts"
+      ],
+      "@creditchain/forge-ui/tree-view": [
+        "libs/forge-ui/tree-view/src/index.ts"
+      ],
+      "@creditchain/forge-ui/utils": [
+        "libs/forge-ui/utils/src/index.ts"
+      ],
+      "@creditchain/forge-ui/vertical-icons-panel": [
+        "libs/forge-ui/vertical-icons-panel/src/index.ts"
+      ],
+      "@creditchain/forge-ui/vyper-compile-details": [
+        "libs/forge-ui/vyper-compile-details/src/index.ts"
+      ],
+      "@creditchain/forge-ui/walkthrough": [
+        "libs/forge-ui/walkthrough/src/index.ts"
+      ],
+      "@creditchain/forge-ui/workspace": [
+        "libs/forge-ui/workspace/src/index.ts"
+      ],
+      "@creditchain/forge-ui/xterm": [
+        "libs/forge-ui/xterm/src/index.ts"
+      ],
+      "@creditchain/forge-url-resolver": [
+        "libs/forge-url-resolver/src/index.ts"
+      ],
+      "@creditchain/forge-ws-templates": [
+        "libs/forge-ws-templates/src/index.ts"
+      ],
+      "@creditchain/forged": [
+        "libs/forged/index.ts"
+      ],
+      "@forge/creditchain-config": [
+        "libs/forge/creditchain-config/src/index.ts"
+      ]
     }
+  }
 }

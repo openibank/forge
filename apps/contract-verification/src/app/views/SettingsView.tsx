@@ -5,7 +5,7 @@ import { mergeChainSettingsWithDefaults } from '../utils'
 import { AppContext } from '../AppContext'
 import { VerifyFormContext } from '../VerifyFormContext'
 import { FormattedMessage, useIntl } from 'react-intl'
-import { CustomTooltip } from '@remix-ui/helper'
+import { CustomTooltip } from '@creditchain/forge-ui/helper'
 
 export const SettingsView = () => {
   const intl = useIntl()

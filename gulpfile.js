@@ -57,15 +57,15 @@ task('updateChangelog', async function () {
  */
 task('syncLibVersions', async function () {
     const libs = [
-        'remix-analyzer',
-        'remix-astwalker',
-        'remix-debug',
-        'remix-lib',
-        'remix-simulator',
-        'remix-solidity',
-        'remix-tests',
-        'remix-url-resolver',
-        'remix-ws-templates',
+        'forge-analyzer',
+        'forge-astwalker',
+        'forge-debug',
+        'forge-lib',
+        'forge-simulator',
+        'forge-solidity',
+        'forge-tests',
+        'forge-url-resolver',
+        'forge-ws-templates',
         'ghaction-helper'
     ]
 
@@ -80,8 +80,8 @@ task('syncLibVersions', async function () {
  * @dev Task to sync remixd version from 'dist' folder after publishing
  */
 task('syncRemixdVersion', async function () {
-    const distPackageJSON = require(__dirname + '/dist/libs/remixd/package.json')
-    fs.writeFileSync(__dirname + '/libs/remixd/package.json', JSON.stringify(distPackageJSON, null, 2), 'utf8')
+    const distPackageJSON = require(__dirname + '/dist/libs/forged/package.json')
+    fs.writeFileSync(__dirname + '/libs/forged/package.json', JSON.stringify(distPackageJSON, null, 2), 'utf8')
     await Promise.resolve();
 })
 
@@ -89,8 +89,8 @@ task('syncRemixdVersion', async function () {
  * @dev Task to sync forged package metadata from 'dist' folder after publishing
  */
 task('syncForgedVersion', async function () {
-    const distPackageJSON = require(__dirname + '/dist/libs/remixd/package.json')
-    fs.writeFileSync(__dirname + '/libs/remixd/package.json', JSON.stringify(distPackageJSON, null, 2), 'utf8')
+    const distPackageJSON = require(__dirname + '/dist/libs/forged/package.json')
+    fs.writeFileSync(__dirname + '/libs/forged/package.json', JSON.stringify(distPackageJSON, null, 2), 'utf8')
     await Promise.resolve();
 })
 
@@ -114,7 +114,7 @@ async function setBranchHead(branchName, head) {
 * @dev Task to set remix_beta branch up to date with master
 */
 task('updateBetaToMaster', async function () {
-   const masterBranchDetails = await axios.get('https://api.github.com/repos/ethereum/remix-project/branches/master')
+   const masterBranchDetails = await axios.get('https://api.github.com/repos/openibank/forge/branches/master')
    const masterBranchHead = masterBranchDetails.data.commit.sha
    await setBranchHead('remix_beta', masterBranchHead)
    await Promise.resolve();
@@ -124,7 +124,7 @@ task('updateBetaToMaster', async function () {
 * @dev Task to set remix_live branch up to date with remix_beta
 */
 task('updateLiveToBeta', async function () {
-    const betaBranchDetails = await axios.get('https://api.github.com/repos/ethereum/remix-project/branches/remix_beta')
+    const betaBranchDetails = await axios.get('https://api.github.com/repos/openibank/forge/branches/remix_beta')
     const betaBranchHead = betaBranchDetails.data.commit.sha
     await setBranchHead('remix_live', betaBranchHead)
     await Promise.resolve();

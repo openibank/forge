@@ -1,4 +1,4 @@
-import { CompilerAbstract } from '@remix-project/remix-solidity'
+import { CompilerAbstract } from '@creditchain/forge-solidity'
 import { AbstractVerifier } from './AbstractVerifier'
 import type { LookupResponse, SourceFile, SubmittedContract, VerificationResponse, VerificationStatus } from '../types'
 import { getAddress } from 'ethers'

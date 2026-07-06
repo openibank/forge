@@ -2,8 +2,8 @@ import * as snarkjs from 'snarkjs'
 import type { CircomPluginClient } from "../services/circomPluginClient"
 import { ActionPayloadTypes, AppState, ICircuitAppContext } from "../types"
 import { GROTH16_VERIFIER, PLONK_VERIFIER } from './constant'
-import { extractNameFromKey, extractParentFromKey } from '@remix-ui/helper'
-import { trackMatomoEvent } from '@remix-api'
+import { extractNameFromKey, extractParentFromKey } from '@creditchain/forge-ui/helper'
+import { trackMatomoEvent } from '@creditchain/forge-api'
 import isElectron from 'is-electron'
 
 export const compileCircuit = async (plugin: CircomPluginClient, appState: AppState) => {

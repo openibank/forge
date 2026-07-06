@@ -1,6 +1,6 @@
 import React from 'react'
 import type { ThemeType, Chain, SubmittedContracts, ContractVerificationSettings } from './types'
-import { CompilerAbstract } from '@remix-project/remix-solidity'
+import { CompilerAbstract } from '@creditchain/forge-solidity'
 import { ContractVerificationPluginClient } from './ContractVerificationPluginClient'
 import { ContractDropdownSelection } from './components/ContractDropdown'
 

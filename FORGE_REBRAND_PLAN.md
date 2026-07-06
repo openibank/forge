@@ -6,19 +6,19 @@ Forge is the CreditChain-native smart contract development cloud, forked from Et
 
 User-facing names:
 
-- Remix IDE -> Forge
-- Remix Project -> Forge Project
+- Forge IDE -> Forge
+- Forge Project -> Forge Project
 - Ethereum Remix -> Forge by CreditChain
-- remix.ethereum.org -> forge.creditchain.org
+- forge.creditchain.org -> forge.creditchain.org
 
 Internal names to keep during phase 1:
 
-- `@remix-project/*`
+- `@forge-project/*`
 - `@remixproject/*`
-- `remix-ide`
-- `remix-lib`
+- `forge-ide`
+- `forge-lib`
 - `remix-plugin`
-- `remix-solidity`
+- `forge-solidity`
 - `RemixUi*` component and package symbols
 
 Keeping these internals stable lets Forge continue to pull upstream Remix changes without breaking the monorepo.

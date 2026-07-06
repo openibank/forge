@@ -1,8 +1,8 @@
-import { RenderIf, RenderIfNot } from "@remix-ui/helper";
+import { RenderIf, RenderIfNot } from "@creditchain/forge-ui/helper";
 import { FormattedMessage } from "react-intl";
 import { computeWitness } from "../actions";
 import { useContext, useState } from "react";
-import * as remixLib from '@remix-project/remix-lib'
+import * as remixLib from '@creditchain/forge-lib'
 import { CircuitAppContext } from "../contexts";
 
 export function WitnessSection () {

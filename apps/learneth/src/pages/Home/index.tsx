@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useMemo } from 'react'
-import { CustomTooltip } from "@remix-ui/helper"
+import { CustomTooltip } from "@creditchain/forge-ui/helper"
 import { Link } from 'react-router-dom'
 import { useAppSelector } from '../../redux/hooks'
 import RepoImporter from '../../components/RepoImporter'
 import FiltersPanel from './FiltersPanel'
-import { trackMatomoEvent } from '@remix-api'
+import { trackMatomoEvent } from '@creditchain/forge-api'
 import remixClient from '../../remix-client'
 import './index.css'
 

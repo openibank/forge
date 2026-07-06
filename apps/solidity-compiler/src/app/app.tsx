@@ -1,7 +1,7 @@
 /* eslint-disable no-use-before-define */
 import React from 'react'
 
-import {SolidityCompiler} from '@remix-ui/solidity-compiler' // eslint-disable-line
+import {SolidityCompiler} from '@creditchain/forge-ui/solidity-compiler' // eslint-disable-line
 
 import {CompilerClientApi} from './compiler'
 

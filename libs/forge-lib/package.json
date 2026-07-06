@@ -1,0 +1,69 @@
+{
+  "name": "@creditchain/forge-lib",
+  "version": "0.5.100",
+  "description": "Library to various Remix tools",
+  "contributors": [
+    {
+      "name": "Yann Levreau",
+      "email": "yann@ethdev.com"
+    },
+    {
+      "name": "Liana Husikyan",
+      "email": "liana@ethdev.com"
+    }
+  ],
+  "main": "src/index.js",
+  "scripts": {
+    "test": "./../../node_modules/.bin/ts-node --require tsconfig-paths/register ./../../node_modules/.bin/tape ./test/tests.ts"
+  },
+  "dependencies": {
+    "@ethereumjs/blockchain": "^10.1.1",
+    "@ethereumjs/common": "^10.1.1",
+    "@ethereumjs/mpt": "^10.1.1",
+    "@ethereumjs/statemanager": "^10.1.1",
+    "@ethereumjs/tx": "^10.1.1",
+    "@ethereumjs/util": "^10.1.1",
+    "@remixproject/engine": "0.3.44",
+    "async": "^2.1.2",
+    "bn.js": "^5.1.2",
+    "create-hash": "^1.2.0",
+    "ethereum-cryptography": "^2.0.0",
+    "ethers": "^6.14.0",
+    "ethjs-util": "^0.1.6",
+    "events": "^3.0.0",
+    "from-exponential": "1.1.1",
+    "permissionless": "0.2.25",
+    "rlp": "^3.0.0",
+    "solc": "0.8.26",
+    "string-similarity": "^4.0.4",
+    "viem": "2.22.3",
+    "xstate": "^5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/plugin-transform-object-assign": "^7.2.0",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-es2015": "latest",
+    "@babel/preset-es2017": "latest",
+    "@babel/preset-stage-0": "^7.0.0",
+    "babel-eslint": "^7.1.1",
+    "babelify": "^10.0.0",
+    "tape": "^4.6.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/openibank/forge.git"
+  },
+  "author": "OpeniBank / CreditChain",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/openibank/forge/issues"
+  },
+  "homepage": "https://github.com/openibank/forge/tree/main/libs/forge-lib#readme",
+  "typings": "src/index.d.ts",
+  "gitHead": "7ab0c02208f4cc457506acfb22544c35011425a6",
+  "types": "./src/index.d.ts"
+}

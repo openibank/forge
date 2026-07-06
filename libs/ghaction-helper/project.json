@@ -4,7 +4,7 @@
     "sourceRoot": "libs/ghaction-helper/src",
     "projectType": "library",
     "implicitDependencies": [
-      "remix-solidity"
+      "forge-solidity"
     ],
     "targets": {
       "build": {

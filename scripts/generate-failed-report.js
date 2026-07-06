@@ -12,7 +12,7 @@
       --slug gh/openibank/forge \
       --workflow web \
       --branch feat/nx-cloud/setup \
-      --jobs remix-ide-browser \
+      --jobs forge-ide-browser \
       --out reports/ci-latest-failed
 
   Options:
@@ -21,7 +21,7 @@
     --workflow-id  Explicit workflow ID (UUID). If set, branch/workflow name search is skipped.
     --branch       Branch to filter pipelines (default: current git branch or env CIRCLE_BRANCH)
     --limit        Pipelines to scan back (default: 15)
-    --jobs         Comma-separated job names to include (default: remix-ide-browser)
+    --jobs         Comma-separated job names to include (default: forge-ide-browser)
     --out          Output directory (default: reports/ci-latest-failed)
 */
 
@@ -41,7 +41,7 @@ const WORKFLOW = args.workflow || 'web';
 const WORKFLOW_ID = args['workflow-id'] || args.workflowId || extractWorkflowId(WORKFLOW) || '';
 const LIMIT = Number(args.limit || 15);
 const OUTDIR = args.out || path.join('reports', 'ci-latest-failed');
-const JOBS = String(args.jobs || 'remix-ide-browser')
+const JOBS = String(args.jobs || 'forge-ide-browser')
   .split(',').map(s => s.trim()).filter(Boolean);
 const BRANCH = args.branch || inferBranch();
 
@@ -431,7 +431,7 @@ function jobNameMatches(name, patterns) {
   for (const p of patterns) {
     const pat = String(p || '');
     if (!pat) continue;
-    // Exact or prefix match (covers CircleCI matrix children like "remix-ide-browser (0)")
+    // Exact or prefix match (covers CircleCI matrix children like "forge-ide-browser (0)")
     if (n === pat || n.startsWith(pat)) return true;
   }
   return false;

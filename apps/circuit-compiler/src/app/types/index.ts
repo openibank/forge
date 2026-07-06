@@ -1,7 +1,7 @@
 import { compiler_list } from 'circom_wasm'
 import { Dispatch } from 'react'
 import type { CircomPluginClient } from '../services/circomPluginClient'
-import { CompilerReport } from '@remix-ui/helper'
+import { CompilerReport } from '@creditchain/forge-ui/helper'
 
 export type CompilerStatus = "compiling" | "computing" | "idle" | "errored" | "warning" | "exporting" | "proving"
 

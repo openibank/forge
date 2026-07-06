@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./apps/remix-ide/src/assets/img/forge-logo.svg" alt="Forge Logo" width="160"/>
+  <img src="./apps/forge-ide/src/assets/img/forge-logo.svg" alt="Forge Logo" width="160"/>
 </p>
 <h3 align="center">Forge</h3>
 <p align="center">AI-native smart contract studio for CreditChain.</p>
@@ -23,7 +23,7 @@ Primary product identity:
 - Domain: [https://forge.creditchain.org](https://forge.creditchain.org)
 - Repository: [https://github.com/openibank/forge](https://github.com/openibank/forge)
 - Deployment repository: [https://github.com/openibank/openibank.github.io](https://github.com/openibank/openibank.github.io)
-- Upstream baseline: [Ethereum Remix Project](https://github.com/remix-project-org/remix-project)
+- Upstream baseline: Ethereum Remix
 - Positioning: AI-native smart contract studio for CreditChain
 
 ## CreditChain MVP
@@ -35,19 +35,19 @@ The first Forge milestone is a safe product-facing rebrand plus CreditChain foun
 - The home screen exposes CreditChain quick actions.
 - The template picker includes CreditChain-native starting points.
 - The local filesystem daemon is packaged as `@creditchain/forged` with the `forged` command.
-- Internal Remix package names stay intact for upstream compatibility.
+- Local packages use CreditChain-scoped Forge names such as `@creditchain/forge-solidity`, `@creditchain/forge-api`, and `@creditchain/forged`.
 
 
-## Remix Upstream Compatibility
+## Forge Package Identity
 
-Forge intentionally keeps internal package names such as `@remix-project/*`, `@remixproject/*`, `remix-ide`, and `RemixUi*` during phase 1. Do not run recursive renames until the product-facing rebrand, CreditChain network integration, and production build are stable.
+Forge is now branded and packaged as a CreditChain project. Local apps and libraries use `forge-*` folders, Nx project names, and `@creditchain/*` import aliases. The only remaining `@remixproject/*` packages are upstream plugin engine dependencies used by the runtime protocol.
 
-## Remix Libraries
-Remix libraries remain essential for Forge's native plugins. Read more about libraries [here](libs/README.md)
+## Forge Libraries
+Forge libraries power the native plugins. Read more about libraries [here](libs/README.md)
 
 ## Offline Usage
 
-The `gh-pages` branch of [remix-live](https://github.com/remix-project-org/remix-live) is still useful as an upstream Remix reference. Forge production builds will be published for `forge.creditchain.org`.
+Forge production builds are published for `forge.creditchain.org`. To use Forge offline, build this repository locally and serve `dist/apps/forge-ide`.
 
 Note: It contains the latest supported version of Solidity available at the time of the packaging. Other compiler versions can be used online only.
 
@@ -75,7 +75,7 @@ git clone https://github.com/openibank/forge.git
 
 1. Move to project directory: `cd forge`
 2. Install dependencies: `yarn install` or simply run `yarn`
-3. Build Remix libraries: `yarn run build:libs`
+3. Build Forge libraries: `yarn run build:libs`
 4. Build Forge project: `yarn build`
 5. Build and run project server: `yarn serve`. Optionally, run `yarn serve:hot` to enable hot module to reload for frontend updates.
 
@@ -88,7 +88,7 @@ To generate React production builds for Forge.
 ```bash
 yarn run build:production
 ```
-Build can be found in `forge/dist/apps/remix-ide` directory.
+Build can be found in `forge/dist/apps/forge-ide` directory.
 
 Deploy the production artifact to GitHub Pages:
 
@@ -107,7 +107,7 @@ This repo uses Nx Cloud to speed up builds and keep CI deterministic via remote 
 
 - Configuration: `nx.json` uses the Nx Cloud runner and reads the token from the `NX_CLOUD_ACCESS_TOKEN` environment variable.
 - CI: CircleCI jobs automatically use `--cloud` when the token is present; for forked PRs (no secrets), they fall back to local-only caching. Build logs are stored under `logs/nx-build.log`.
-- Verifying locally: run the same target twice; the second run should print “Nx read the output from the cache”. Example: `nx run remix-ide:build` and run it again.
+- Verifying locally: run the same target twice; the second run should print “Nx read the output from the cache”. Example: `nx run forge-ide:build` and run it again.
 - Insights: View cache analytics and run details at https://nx.app (links appear in Nx output when the token is configured).
 
 ## Docker:
@@ -118,18 +118,14 @@ Prerequisites:
 
 ### Run with docker
 
-If you want to run the latest changes that are merged into the master branch then run:
+Build the local Forge image from this repository:
 
 ```
-docker pull remixproject/remix-ide:latest
-docker run -p 8080:80 remixproject/remix-ide:latest
+docker build -t creditchain/forge-ide .
+docker run -p 8080:80 creditchain/forge-ide
 ```
 
-If you want to run the latest remix-live release run.
-```
-docker pull remixproject/remix-ide:remix_live
-docker run -p 8080:80 remixproject/remix-ide:remix_live
-```
+Official Forge container publishing will use the `creditchain/forge-ide` image name.
 
 ### Run with docker-compose:
 
@@ -140,11 +136,11 @@ docker-compose pull
 docker-compose up -d
 ```
 
-Then go to http://localhost:8080 and you can use your Remix instance.
+Then go to http://localhost:8080 and you can use your Forge instance.
 
 To fetch the docker-compose file without cloning this repo run:
 ```
-curl https://raw.githubusercontent.com/remix-project-org/remix-project/master/docker-compose.yaml > docker-compose.yaml
+curl https://raw.githubusercontent.com/openibank/forge/master/docker-compose.yaml > docker-compose.yaml
 ```
 
 ### Troubleshooting
@@ -165,7 +161,7 @@ In Debian-based OS such as Ubuntu 14.04LTS, you may need to run `apt-get install
 
 Run the unit tests using library name like: `nx test <project-name>`
 
-For example, to run unit tests of `remix-analyzer`, use `nx test remix-analyzer`
+For example, to run unit tests of `forge-analyzer`, use `nx test forge-analyzer`
 
 ## Browser Testing
 
@@ -235,7 +231,7 @@ module.exports = {
 - change package JSON to locally run all group tests (point to appropriate config file depending on environment):
 
 ```
-    "nightwatch_local_debugger": "yarn run build:e2e && nightwatch --config dist/apps/remix-ide-e2e/nightwatch-chrome.js dist/apps/remix-ide-e2e/src/tests/debugger_*.spec.js --env=chrome",
+    "nightwatch_local_debugger": "yarn run build:e2e && nightwatch --config dist/apps/forge-ide-e2e/nightwatch-chrome.js dist/apps/forge-ide-e2e/src/tests/debugger_*.spec.js --env=chrome",
 ```
 
 - run the build script to build the test files if you want to run the locally
@@ -286,10 +282,11 @@ parameters:
 
 ## Important Links
 
-- Official website: https://remix.live
-- Official documentation: https://remix-ide.readthedocs.io/en/latest/
-- Curated list of Remix resources: https://github.com/remix-project-org/awesome-remix
-- Substack: https://ethereumremix.substack.com
-- Linkedin: https://www.linkedin.com/company/ethereum-remix
-- X: https://x.com/ethereumremix
-- Join our Discord: https://discord.gg/MzhfCGstNA
+- Official website: https://forge.creditchain.org
+- CreditChain: https://creditchain.org
+- Official documentation: https://forge.creditchain.org/docs
+- Forge repository: https://github.com/openibank/forge
+- Forge deployment repository: https://github.com/openibank/openibank.github.io
+- CreditChain updates: https://creditchain.org/blog
+- X: https://x.com/CreditChain
+- Community: https://forge.creditchain.org/community

@@ -79,8 +79,8 @@ The test account pool provides **exclusive, pre-provisioned user accounts** for 
 
    ```bash
    yarn nightwatch \
-     --config dist/apps/remix-ide-e2e/nightwatch-chrome.js \
-     dist/apps/remix-ide-e2e/src/tests/testPoolLogin_group1.test.js \
+     --config dist/apps/forge-ide-e2e/nightwatch-chrome.js \
+     dist/apps/forge-ide-e2e/src/tests/testPoolLogin_group1.test.js \
      --env=chromeDesktop
    ```
 
@@ -181,20 +181,20 @@ The `pool.ts` helper doubles as a CLI tool:
 
 ```bash
 # Checkout an account
-node dist/apps/remix-ide-e2e/src/helpers/pool.js checkout beta
+node dist/apps/forge-ide-e2e/src/helpers/pool.js checkout beta
 # → prints JSON: { sessionId, accountId, accessToken, ... }
 
 # Checkout with multiple feature groups
-node dist/apps/remix-ide-e2e/src/helpers/pool.js checkout beta,storage
+node dist/apps/forge-ide-e2e/src/helpers/pool.js checkout beta,storage
 
 # Release a session
-node dist/apps/remix-ide-e2e/src/helpers/pool.js release <sessionId>
+node dist/apps/forge-ide-e2e/src/helpers/pool.js release <sessionId>
 
 # Check pool status
-node dist/apps/remix-ide-e2e/src/helpers/pool.js status
+node dist/apps/forge-ide-e2e/src/helpers/pool.js status
 
 # Emergency: release ALL accounts
-node dist/apps/remix-ide-e2e/src/helpers/pool.js release-all
+node dist/apps/forge-ide-e2e/src/helpers/pool.js release-all
 ```
 
 ## API Endpoints
@@ -258,13 +258,13 @@ All endpoints require `Authorization: Bearer rmx_...` header.
 
 | File | Purpose |
 |---|---|
-| [apps/remix-ide-e2e/src/helpers/pool.ts](../apps/remix-ide-e2e/src/helpers/pool.ts) | Node.js helper + CLI for checkout/release/status |
-| [apps/remix-ide-e2e/src/helpers/init.ts](../apps/remix-ide-e2e/src/helpers/init.ts) | Injects pool tokens into browser localStorage |
-| [apps/remix-ide-e2e/src/tests/testPoolLogin.test.ts](../apps/remix-ide-e2e/src/tests/testPoolLogin.test.ts) | Reference E2E test using real UI login flow |
-| [apps/remix-ide/ci/browser_test.sh](../apps/remix-ide/ci/browser_test.sh) | CI script with pool checkout/release lifecycle |
-| [apps/remix-ide/src/app/plugins/auth-plugin.tsx](../apps/remix-ide/src/app/plugins/auth-plugin.tsx) | AuthPlugin with pool methods (`poolCheckout`, `poolRelease`, `loginWithPool`) |
-| [libs/remix-api/src/lib/plugins/api-services.ts](../libs/remix-api/src/lib/plugins/api-services.ts) | `TestPoolApiService` — typed HTTP client for pool endpoints |
-| [libs/remix-api/src/lib/plugins/api-types.ts](../libs/remix-api/src/lib/plugins/api-types.ts) | TypeScript types: `PoolCheckoutResponse`, `PoolReleaseResponse`, etc. |
+| [apps/forge-ide-e2e/src/helpers/pool.ts](../apps/forge-ide-e2e/src/helpers/pool.ts) | Node.js helper + CLI for checkout/release/status |
+| [apps/forge-ide-e2e/src/helpers/init.ts](../apps/forge-ide-e2e/src/helpers/init.ts) | Injects pool tokens into browser localStorage |
+| [apps/forge-ide-e2e/src/tests/testPoolLogin.test.ts](../apps/forge-ide-e2e/src/tests/testPoolLogin.test.ts) | Reference E2E test using real UI login flow |
+| [apps/forge-ide/ci/browser_test.sh](../apps/forge-ide/ci/browser_test.sh) | CI script with pool checkout/release lifecycle |
+| [apps/forge-ide/src/app/plugins/auth-plugin.tsx](../apps/forge-ide/src/app/plugins/auth-plugin.tsx) | AuthPlugin with pool methods (`poolCheckout`, `poolRelease`, `loginWithPool`) |
+| [libs/forge-api/src/lib/plugins/api-services.ts](../libs/forge-api/src/lib/plugins/api-services.ts) | `TestPoolApiService` — typed HTTP client for pool endpoints |
+| [libs/forge-api/src/lib/plugins/api-types.ts](../libs/forge-api/src/lib/plugins/api-types.ts) | TypeScript types: `PoolCheckoutResponse`, `PoolReleaseResponse`, etc. |
 
 ## URL Parameters
 
@@ -290,12 +290,12 @@ All 20 accounts are locked. This usually means:
 
 **Fix:** Run the emergency release:
 ```bash
-E2E_POOL_API_KEY=rmx_... node dist/apps/remix-ide-e2e/src/helpers/pool.js release-all
+E2E_POOL_API_KEY=rmx_... node dist/apps/forge-ide-e2e/src/helpers/pool.js release-all
 ```
 
 Or check what's locked:
 ```bash
-E2E_POOL_API_KEY=rmx_... node dist/apps/remix-ide-e2e/src/helpers/pool.js status
+E2E_POOL_API_KEY=rmx_... node dist/apps/forge-ide-e2e/src/helpers/pool.js status
 ```
 
 ### "E2E Test Pool" button not showing in modal

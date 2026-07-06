@@ -30,7 +30,7 @@ fs.writeFileSync('./change-log.txt', data)
 /*
 
 {
-  search(type: REPOSITORY, query: "remix-project", first: 1) {
+  search(type: REPOSITORY, query: "forge-project", first: 1) {
     edges {
       node {
         __typename

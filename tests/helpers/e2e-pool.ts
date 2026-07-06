@@ -1,5 +1,5 @@
 import { expect, type Page, test as base } from '@playwright/test'
-import { releaseAccount } from '../../apps/remix-ide-e2e/src/helpers/pool'
+import { releaseAccount } from '../../apps/forge-ide-e2e/src/helpers/pool'
 
 interface BrowserPoolSession {
   sessionId?: string

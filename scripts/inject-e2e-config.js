@@ -9,7 +9,7 @@
  *   node scripts/inject-e2e-config.js <dist-path> <bin-url> <wasm-url> <npm-url>
  * 
  * Example:
- *   node scripts/inject-e2e-config.js dist/apps/remix-ide \
+ *   node scripts/inject-e2e-config.js dist/apps/forge-ide \
  *     "http://127.0.0.1:8080/assets/js/soljson" \
  *     "http://127.0.0.1:8080/assets/js/soljson" \
  *     "http://127.0.0.1:9090/"

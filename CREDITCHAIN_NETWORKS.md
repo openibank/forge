@@ -3,7 +3,7 @@
 CreditChain network metadata lives in:
 
 - `libs/forge/creditchain-config/src/lib/networks.ts`
-- `apps/remix-ide/.env.example`
+- `apps/forge-ide/.env.example`
 
 The current values are placeholders and must be confirmed before public launch.
 

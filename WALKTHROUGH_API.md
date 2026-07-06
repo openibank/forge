@@ -2,7 +2,7 @@
 
 ## Overview
 
-The walkthrough system provides guided tours within Remix IDE. Walkthroughs are managed by admins, targeted to users via **audience rules** (same system as notifications & feedback), and tracked per-user with completion status so the frontend can distinguish seen vs unseen.
+The walkthrough system provides guided tours within Forge IDE. Walkthroughs are managed by admins, targeted to users via **audience rules** (same system as notifications & feedback), and tracked per-user with completion status so the frontend can distinguish seen vs unseen.
 
 All walkthrough endpoints live on the **notification** service (port 3013).
 
@@ -106,9 +106,9 @@ Base path: `/walkthroughs/admin` (requires auth + admin)
 | File | Purpose |
 |------|---------|
 | `libs/endpoints-helper/src/index.ts` | Added `walkthroughs` endpoint URL |
-| `libs/remix-api/src/lib/plugins/walkthrough-api.ts` | Added `ApiWalkthrough`, `ApiWalkthroughStep`, `ApiWalkthroughsResponse` types, `completed`/`apiId`/`priority` fields on `WalkthroughDefinition`, and `markCompleted` method |
-| `apps/remix-ide/src/walkthroughService.tsx` | API client integration, auth listener, fetch-on-login, snake_case→camelCase mapping, completion tracking |
-| `libs/remix-ui/walkthrough/src/lib/remix-ui-walkthrough.tsx` | Seen/unseen badges, sorted list (new first), replay button for completed |
+| `libs/forge-api/src/lib/plugins/walkthrough-api.ts` | Added `ApiWalkthrough`, `ApiWalkthroughStep`, `ApiWalkthroughsResponse` types, `completed`/`apiId`/`priority` fields on `WalkthroughDefinition`, and `markCompleted` method |
+| `apps/forge-ide/src/walkthroughService.tsx` | API client integration, auth listener, fetch-on-login, snake_case→camelCase mapping, completion tracking |
+| `libs/forge-ui/walkthrough/src/lib/remix-ui-walkthrough.tsx` | Seen/unseen badges, sorted list (new first), replay button for completed |
 
 ### Data Flow
 
@@ -140,7 +140,7 @@ App startup / user login
       "id": 1,
       "slug": "remix-intro",
       "name": "Getting Started with Remix",
-      "description": "A quick tour of the Remix IDE interface.",
+      "description": "A quick tour of the Forge IDE interface.",
       "source_plugin": "walkthrough",
       "priority": 10,
       "completed": false,

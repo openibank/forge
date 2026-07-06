@@ -8,14 +8,14 @@ Env requirements:
   - CIRCLECI_TOKEN
   - CIRCLE_WORKFLOW_ID
 Optional:
-  - E2E_JOB_PREFIX (default: remix-ide-browser)
+  - E2E_JOB_PREFIX (default: forge-ide-browser)
   - WAIT_TIMEOUT_SEC (default: 3600)
   - WAIT_POLL_SEC (default: 10)
 */
 
 const TOKEN = process.env.CIRCLECI_TOKEN || '';
 const WORKFLOW_ID = process.env.CIRCLE_WORKFLOW_ID || '';
-const PREFIX = process.env.E2E_JOB_PREFIX || 'remix-ide-browser';
+const PREFIX = process.env.E2E_JOB_PREFIX || 'forge-ide-browser';
 const PREFIXES = PREFIX.split(',').map(p => p.trim());
 const TIMEOUT = Number(process.env.WAIT_TIMEOUT_SEC || 3600);
 const POLL = Number(process.env.WAIT_POLL_SEC || 10);

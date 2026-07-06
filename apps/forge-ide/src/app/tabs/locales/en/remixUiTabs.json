@@ -1,0 +1,14 @@
+{
+  "forgeUiTabs.tooltipText1": "Run script (CTRL + SHIFT + S)",
+  "forgeUiTabs.tooltipText2": "Compile CTRL + S",
+  "forgeUiTabs.tooltipText3": "Select .sol or .yul file to compile OR a .ts or .js file to run",
+  "forgeUiTabs.tooltipText4": "To explain a contract, choose a supported file",
+  "forgeUiTabs.tooltipText5": "Explain the contract(s) in current file [BETA]",
+  "forgeUiTabs.tooltipText6": "Enable Forge Copilot [BETA]",
+  "forgeUiTabs.tooltipText7": "Disable Forge Copilot [BETA]",
+  "forgeUiTabs.tooltipText8": "Forge Copilot Tools Documentation",
+  "forgeUiTabs.tooltipText9": "Configure scripting dependencies",
+  "forgeUiTabs.tooltipTextDisabledCopilot": "To use Forge Copilot, choose a supported file",
+  "forgeUiTabs.zoomOut": "Zoom out",
+  "forgeUiTabs.zoomIn": "Zoom in"
+}

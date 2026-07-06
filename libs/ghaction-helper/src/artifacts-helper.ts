@@ -1,4 +1,4 @@
-import { CompilationResult } from '@remix-project/remix-solidity'
+import { CompilationResult } from '@creditchain/forge-solidity'
 //@ts-ignore
 import * as fs from 'fs/promises'
 import * as path from 'path'

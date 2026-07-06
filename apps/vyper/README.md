@@ -1,5 +1,5 @@
 # vyper-remix
-Vyper Plugin for Remix IDE.
+Vyper Plugin for Forge IDE.
 
 
 ## How to get started
@@ -10,9 +10,9 @@ To use it, open the plugin manager in Remix and click the `Activate` button in f
 ### Local plugin
 You can host this plugin in your local environment.
 
-```git clone https://github.com/ethereum/remix-project```
+```git clone https://github.com/openibank/forge```
 
-```cd remix-project```
+```cd forge-project```
 
 ```yarn install```
 

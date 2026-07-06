@@ -1,0 +1,7 @@
+{
+  "forgeUiTabs.tooltipText1": "Запуск скрипта (CTRL + SHIFT + S)",
+  "forgeUiTabs.tooltipText2": "Компилировать CTRL + S",
+  "forgeUiTabs.tooltipText3": "Выберите файл c расширением .sol или .yul для компиляции или файл .ts или .js для запуска",
+  "forgeUiTabs.zoomOut": "Уменьшить",
+  "forgeUiTabs.zoomIn": "Увеличить"
+}

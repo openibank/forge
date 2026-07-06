@@ -1,0 +1,31 @@
+{
+    "name": "forge-lib",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "libs/forge-lib/src",
+    "projectType": "library",
+    "targets": {
+      "build": {
+        "executor": "@nrwl/js:tsc",
+        "outputs": ["{options.outputPath}"],
+        "options": {
+          "outputPath": "dist/libs/forge-lib",
+          "main": "libs/forge-lib/src/index.ts",
+          "tsConfig": "libs/forge-lib/tsconfig.lib.json",
+          "updateBuildableProjectDepsInPackageJson": false,
+          "assets": [
+            "libs/forge-lib/*.md"
+          ]
+        }
+      },
+      "lint": {
+        "executor": "@nrwl/linter:eslint",
+        "outputs": ["{options.outputFile}"],
+        "options": {
+          "lintFilePatterns": ["libs/forge-lib/**/*.ts"],
+          "eslintConfig": "libs/forge-lib/.eslintrc"
+        }
+      }
+    },
+    "tags": []
+  }
+  

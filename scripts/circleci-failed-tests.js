@@ -3,7 +3,7 @@
   CircleCI Failed Tests Fetcher
 
   Usage:
-    CIRCLECI_TOKEN=... node scripts/circleci-failed-tests.js --slug gh/org/repo --workflow web --branch feat/x --jobs "remix-ide-browser" --limit 1
+    CIRCLECI_TOKEN=... node scripts/circleci-failed-tests.js --slug gh/org/repo --workflow web --branch feat/x --jobs "forge-ide-browser" --limit 1
 
   Prints failing E2E test basenames (no .js) from the most recent workflow run on the given branch.
 */
@@ -149,7 +149,7 @@ async function main() {
     .option('--slug <projectSlug>', 'CircleCI project slug, e.g., gh/org/repo')
     .option('--workflow <name>', 'Workflow name, e.g., web. Can be comma-separated list to check multiple workflows.')
     .option('--branch <name>', 'Branch to filter by (optional)')
-    .option('--jobs <substr>', 'Include only jobs whose name contains this substring', 'remix-ide-browser')
+    .option('--jobs <substr>', 'Include only jobs whose name contains this substring', 'forge-ide-browser')
     .option('--limit <n>', 'Number of workflow runs to check (default 1)', (v) => parseInt(v, 10), 1)
     .option('--mode <m>', "Selection mode: 'most-recent' (latest run only), 'first-failed' (first run with failures), or 'union' (across runs)", 'most-recent')
     .option('--verbose', 'Verbose logging', false)

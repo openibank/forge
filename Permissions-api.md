@@ -5,7 +5,7 @@ Introduces a new `PermissionsApiService` to query user feature permissions from 
 
 ## Changes
 
-### New API Service (`libs/remix-api/src/lib/plugins/api-services.ts`)
+### New API Service (`libs/forge-api/src/lib/plugins/api-services.ts`)
 - Added `PermissionsApiService` class with methods:
   - `getPermissions()` - Get all user permissions
   - `checkFeature(feature)` - Check single feature access
@@ -14,10 +14,10 @@ Introduces a new `PermissionsApiService` to query user feature permissions from 
   - `hasFeature(feature)` - Simple boolean helper
   - `getFeatureLimit(feature)` - Get limit value/unit for a feature
 
-### New Types (`libs/remix-api/src/lib/plugins/api-types.ts`)
+### New Types (`libs/forge-api/src/lib/plugins/api-types.ts`)
 - Added `Permission`, `PermissionsResponse`, `FeatureCheckResponse`, `MultiFeatureCheckResponse`, `CategoryFeaturesResponse`
 
-### AuthPlugin Integration (`apps/remix-ide/src/app/plugins/auth-plugin.tsx`)
+### AuthPlugin Integration (`apps/forge-ide/src/app/plugins/auth-plugin.tsx`)
 - Exposed permission methods to other plugins:
   - `checkPermission(feature)` - Check feature with limits
   - `hasPermission(feature)` - Simple boolean check
@@ -28,7 +28,7 @@ Introduces a new `PermissionsApiService` to query user feature permissions from 
 
 ### Refactoring
 - Added `setToken()` method to all API service classes for proper encapsulation (removes `as any` casts)
-- Added permissions endpoint URL to `@remix-endpoints-helper`
+- Added permissions endpoint URL to `@creditchain/forge-endpoints-helper`
 
 ## Usage Examples
 

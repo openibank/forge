@@ -84,7 +84,7 @@
       }
     ]
   },
-  "defaultProject": "remix-ide",
+  "defaultProject": "forge-ide",
   "generators": {
     "@nrwl/react": {
       "application": {

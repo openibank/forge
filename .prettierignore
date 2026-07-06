@@ -4,7 +4,7 @@
 ./node_modules
 
 # Ignore e2e files
-./apps/remix-ide-e2e/*
+./apps/forge-ide-e2e/*
 
 # Ignore build artefacts
 ./dist

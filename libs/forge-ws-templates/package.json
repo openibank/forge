@@ -1,0 +1,28 @@
+{
+  "name": "@creditchain/forge-ws-templates",
+  "version": "1.0.87",
+  "description": "Create a Forge IDE workspace using different templates",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/openibank/forge.git"
+  },
+  "author": "OpeniBank / CreditChain",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/openibank/forge/issues"
+  },
+  "homepage": "https://github.com/openibank/forge/tree/main/libs/forge-ws-templates#readme",
+  "typings": "./src/index.d.ts",
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.0.0",
+    "@openzeppelin/wizard": "^0.10.5",
+    "ethers": "^6.14.0",
+    "snarkjs": "^0.7.0"
+  },
+  "gitHead": "7ab0c02208f4cc457506acfb22544c35011425a6"
+}

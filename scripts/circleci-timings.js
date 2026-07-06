@@ -4,7 +4,7 @@
 
   What it does
   - Queries CircleCI API v2 for recent workflow runs
-  - Finds jobs within each workflow (e.g., remix-ide-browser)
+  - Finds jobs within each workflow (e.g., forge-ide-browser)
   - Pulls per-test results for those jobs
   - Aggregates run_time by "file" and prints a summary + JSON
 
@@ -13,8 +13,8 @@
   - project slug in the form: gh/<org>/<repo> (works for GitHub; use bb/ or gh/ etc. per CircleCI docs)
 
   Quick examples
-    node scripts/circleci-timings.js --slug gh/openibank/forge --workflow web --branch master --jobs "remix-ide-browser" --limit 10
-    CIRCLECI_TOKEN=... yarn ci:timings --slug gh/openibank/forge --workflow run_pr_tests --branch feat/my-branch --jobs "remix-ide-browser" --limit 5 --json timings.json
+    node scripts/circleci-timings.js --slug gh/openibank/forge --workflow web --branch master --jobs "forge-ide-browser" --limit 10
+    CIRCLECI_TOKEN=... yarn ci:timings --slug gh/openibank/forge --workflow run_pr_tests --branch feat/my-branch --jobs "forge-ide-browser" --limit 5 --json timings.json
       # Note: use 'gh/' for GitHub (not 'github/')
 
   Notes
@@ -245,7 +245,7 @@ async function main() {
     .option('--slug <projectSlug>', 'CircleCI project slug, e.g., gh/org/repo (optional with --guess-slugs)')
     .option('--workflow <name>', 'Workflow name, e.g., web or run_pr_tests')
     .option('--branch <name>', 'Branch to filter by (optional)')
-    .option('--jobs <name>', 'Only include job names matching this substring (default: remix-ide-browser)', 'remix-ide-browser')
+    .option('--jobs <name>', 'Only include job names matching this substring (default: forge-ide-browser)', 'forge-ide-browser')
     .option('--limit <n>', 'Max workflow runs to scan (default: 10)', (v) => parseInt(v, 10), 10)
     .option('--top <n>', 'How many rows to print (default: 25)', (v) => parseInt(v, 10), 25)
     .option('--shards <n>', 'Print a shard proposal for N shards', (v) => parseInt(v, 10), 0)

@@ -1,4 +1,4 @@
-import { CompilerAbstract } from '@remix-project/remix-solidity'
+import { CompilerAbstract } from '@creditchain/forge-solidity'
 import type { LookupResponse, SubmittedContract, VerificationResponse } from '../types'
 
 // Optional function definitions

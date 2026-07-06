@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {isCompilationError} from '../utils'
-import {CopyToClipboard} from '@remix-ui/clipboard'
+import {CopyToClipboard} from '@creditchain/forge-ui/clipboard'
 
 interface VyperResultProps {
   output?: any

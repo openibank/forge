@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { IntlProvider } from 'react-intl'
-import { Renderer } from '@remix-ui/renderer'
+import { Renderer } from '@creditchain/forge-ui/renderer'
 import { remixClient, extractRelativePath } from './utils'
 import { CompilationResult } from '@remixproject/plugin-api'
 
@@ -12,11 +12,11 @@ import Button from 'react-bootstrap/Button'
 import Accordion from 'react-bootstrap/Accordion'
 
 import './app.css'
-import { CustomTooltip } from '@remix-ui/helper'
+import { CustomTooltip } from '@creditchain/forge-ui/helper'
 import { Form } from 'react-bootstrap'
 import CustomAccordionToggle from './components/CustomAccordionToggle'
 import { VyperCompilationResultWrapper, VyperCompilationErrorsWrapper, VyperCompilationError } from './utils/types'
-import { endpointUrls } from '@remix-endpoints-helper'
+import { endpointUrls } from '@creditchain/forge-endpoints-helper'
 
 interface AppState {
   status: 'idle' | 'inProgress'

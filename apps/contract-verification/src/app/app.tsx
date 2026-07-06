@@ -9,7 +9,7 @@ import type { ContractVerificationSettings, ThemeType, Chain, SubmittedContracts
 import { mergeChainSettingsWithDefaults } from './utils'
 
 import './App.css'
-import { CompilerAbstract } from '@remix-project/remix-solidity'
+import { CompilerAbstract } from '@creditchain/forge-solidity'
 import { useLocalStorage } from './hooks/useLocalStorage'
 import { getVerifier } from './Verifiers'
 import { ContractDropdownSelection } from './components/ContractDropdown'

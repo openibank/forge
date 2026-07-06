@@ -1,0 +1,44 @@
+{
+    "name": "forge-debug",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "libs/forge-debug/src",
+    "projectType": "library",
+    "implicitDependencies": [
+      "forge-lib",
+      "forge-astwalker"
+    ],
+    "targets": {
+      "build": {
+        "executor": "@nrwl/js:tsc",
+        "outputs": ["{options.outputPath}"],
+        "options": {
+          "outputPath": "dist/libs/forge-debug",
+          "main": "libs/forge-debug/src/index.ts",
+          "tsConfig": "libs/forge-debug/tsconfig.lib.json",
+          "updateBuildableProjectDepsInPackageJson": false,
+          "assets": [
+            {
+              "glob": "rdb",
+              "input": "libs/forge-debug/bin/",
+              "output": "bin/"
+            },
+            {
+              "glob": "*.md",
+              "input": "libs/forge-debug/",
+              "output": "/"
+            }
+          ]
+        }
+      },
+      "lint": {
+        "executor": "@nrwl/linter:eslint",
+        "outputs": ["{options.outputFile}"],
+        "options": {
+          "lintFilePatterns": ["libs/forge-debug/**/*.ts"],
+          "eslintConfig": "libs/forge-debug/.eslintrc"
+        }
+      }
+    },
+    "tags": []
+  }
+  

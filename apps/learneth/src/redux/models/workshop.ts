@@ -4,8 +4,8 @@ import groupBy from 'lodash/groupBy'
 import pick from 'lodash/pick'
 import { type ModelType } from '../store'
 import { router } from '../../App'
-import { trackMatomoEvent } from '@remix-api'
-import { endpointUrls } from '@remix-endpoints-helper'
+import { trackMatomoEvent } from '@creditchain/forge-api'
+import { endpointUrls } from '@creditchain/forge-endpoints-helper'
 import remixClient from '../../remix-client'
 
 // const apiUrl = 'http://localhost:3001';
@@ -27,9 +27,7 @@ export const repoMap = {
 }
 
 const defaultWorkshopRepos = new Set([
-  'openibank/forge-workshops',
-  'ethereum/remix-workshops',
-  'remix-project-org/remix-workshops'
+  'openibank/forge-workshops'
 ])
 
 const Model: ModelType = {

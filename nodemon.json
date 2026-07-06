@@ -1,5 +1,5 @@
 {
-    "watch": ["./apps/remix-ide-e2e/src"],
+    "watch": ["./apps/forge-ide-e2e/src"],
     "ext": "ts",
-    "exec": "tsc -p apps/remix-ide-e2e/tsconfig.e2e.json"
+    "exec": "tsc -p apps/forge-ide-e2e/tsconfig.e2e.json"
 }

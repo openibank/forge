@@ -1,0 +1,33 @@
+{
+    "name": "forge-url-resolver",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "libs/forge-url-resolver/src",
+    "projectType": "library",
+    "implicitDependencies": [
+    ],
+    "targets": {
+      "build": {
+        "executor": "@nrwl/js:tsc",
+        "outputs": ["{options.outputPath}"],
+        "options": {
+          "outputPath": "dist/libs/forge-url-resolver",
+          "main": "libs/forge-url-resolver/src/index.ts",
+          "tsConfig": "libs/forge-url-resolver/tsconfig.lib.json",
+          "updateBuildableProjectDepsInPackageJson": false,
+          "assets": [
+            "libs/forge-url-resolver/*.md"
+          ]
+        }
+      },
+      "lint": {
+        "executor": "@nrwl/linter:eslint",
+        "outputs": ["{options.outputFile}"],
+        "options": {
+          "lintFilePatterns": ["libs/forge-url-resolver/**/*.ts"],
+          "eslintConfig": "libs/forge-url-resolver/.eslintrc"
+        }
+      }
+    },
+    "tags": []
+  }
+  

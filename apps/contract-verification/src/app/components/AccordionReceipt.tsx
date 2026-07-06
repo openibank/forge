@@ -1,10 +1,10 @@
 import React, { useMemo } from 'react'
 import { SubmittedContract, VerificationReceipt, VerificationStatus } from '../types'
-import { shortenAddress, CustomTooltip } from '@remix-ui/helper'
+import { shortenAddress, CustomTooltip } from '@creditchain/forge-ui/helper'
 import { AppContext } from '../AppContext'
-import { CopyToClipboard } from '@remix-ui/clipboard'
+import { CopyToClipboard } from '@creditchain/forge-ui/clipboard'
 import { getVerifier } from '../Verifiers'
-import { CompilerAbstract } from '@remix-project/remix-solidity'
+import { CompilerAbstract } from '@creditchain/forge-solidity'
 import { mergeChainSettingsWithDefaults } from '../utils'
 
 interface AccordionReceiptProps {

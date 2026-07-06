@@ -1,5 +1,5 @@
 import React, {useEffect, useReducer, useState} from 'react'
-import {RenderIf} from '@remix-ui/helper'
+import {RenderIf} from '@creditchain/forge-ui/helper'
 import {IntlProvider} from 'react-intl'
 
 import { Container } from './components/container'

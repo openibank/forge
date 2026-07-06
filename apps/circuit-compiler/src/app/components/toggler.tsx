@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { FormattedMessage } from "react-intl"
-import { CustomTooltip, RenderIf, RenderIfNot } from "@remix-ui/helper"
+import { CustomTooltip, RenderIf, RenderIfNot } from "@creditchain/forge-ui/helper"
 
 export function Toggler ({ children, title, dataId, show = false, icon, iconTooltip }: { children: JSX.Element, title: string, dataId: string, show?: boolean, icon?: string, iconTooltip?: string }) {
   const [toggleExpander, setToggleExpander] = useState<boolean>(show)

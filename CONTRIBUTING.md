@@ -3,7 +3,7 @@
 Everyone is welcome to contribute to Remix's codebase. You can reach us on [Discord](https://discord.gg/MzhfCGstNA) with any questions.
 
 ## Development
-Remix libraries work closely with [Remix IDE](https://remix.ethereum.org). Each library has a README to explain its application.
+Remix libraries work closely with [Forge IDE](https://forge.creditchain.org). Each library has a README to explain its application.
 
 When you add code to a library, please add related unit tests.
 
@@ -22,16 +22,16 @@ Remix uses CrowdIn to manage translations.  Please DO NOT make a PR on GitHub wi
 
 Remix has four projects on CrowdIn
 1. [RemixUI](https://crowdin.com/project/remix-ui/) - for translating Remix's User Interface
-2. [Remix Docs](https://crowdin.com/project/remix-translation)  - for translating Remix's [Documentation](https://remix-ide.readthedocs.io)
-3. [LearnEth](https://crowdin.com/project/remix-learneth) - for translating the tutorials in Remix's tutorial plugin called [Learneth](https://remix.ethereum.org/?#activate=solidity,solidityUnitTesting,LearnEth)
-4. [Remix Project Website](https://crowdin.com/project/361d7e8c3b07220fa22e9d5a901b0021) - for translating the info site about [Remix](https://remix.live/)
+2. [Remix Docs](https://crowdin.com/project/remix-translation)  - for translating Remix's [Documentation](https://forge-ide.readthedocs.io)
+3. [LearnEth](https://crowdin.com/project/remix-learneth) - for translating the tutorials in Remix's tutorial plugin called [Learneth](https://forge.creditchain.org/?#activate=solidity,solidityUnitTesting,LearnEth)
+4. [Forge Project Website](https://crowdin.com/project/361d7e8c3b07220fa22e9d5a901b0021) - for translating the info site about [Remix](https://remix.live/)
 
 There are many languages, for each project.  But if you do not see your desired language, send us a note on CrowdIn or in the Remix Discord.
 
 In addition to writing translations, you can also review other's work. 
 
 ### How to make your plugin support string internationalization?
-First, put the string in the locale file located under `apps/remix-ide/src/app/tabs/locales/en`.
+First, put the string in the locale file located under `apps/forge-ide/src/app/tabs/locales/en`.
 Each json file corresponds to a module. If the module does not exist, then create a new json and import it in the `index.js`.
 Then you can replace the string with an intl component. The `id` prop will be the key of this string.
 ```jsx
@@ -77,7 +77,7 @@ export default Object.assign({}, enJson, {
   ...panelJson,
 })
 ```
-Then, import `index.js` in `apps/remix-ide/src/app/tabs/locale-module.js`
+Then, import `index.js` in `apps/forge-ide/src/app/tabs/locale-module.js`
 ```js
 import enJson from './locales/en'
 import zhJson from './locales/zh'

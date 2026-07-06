@@ -63,22 +63,22 @@ testem.log
 .vscode/settings.json
 .vscode/launch.json
 
-apps/remixdesktop/.webpack
-apps/remixdesktop/out
-apps/remixdesktop/release/
-apps/remixdesktop/build*/
-apps/remix-ide/src/assets/list.json
-apps/remix-ide/src/assets/esbuild.wasm
-apps/remixdesktop/build*
-apps/remixdesktop/reports
-apps/remixdesktop/logs/
-apps/remixdesktop/bin/
-apps/remixdesktop/circom-download
-apps/remixdesktop/log_input_signals.txt
-apps/remixdesktop/log_input_signals_new.txt
+apps/forge-desktop/.webpack
+apps/forge-desktop/out
+apps/forge-desktop/release/
+apps/forge-desktop/build*/
+apps/forge-ide/src/assets/list.json
+apps/forge-ide/src/assets/esbuild.wasm
+apps/forge-desktop/build*
+apps/forge-desktop/reports
+apps/forge-desktop/logs/
+apps/forge-desktop/bin/
+apps/forge-desktop/circom-download
+apps/forge-desktop/log_input_signals.txt
+apps/forge-desktop/log_input_signals_new.txt
 logs
-apps/remix-ide-e2e/src/extensions/chrome/metamask
-apps/remix-ide-e2e/tmp/
+apps/forge-ide-e2e/src/extensions/chrome/metamask
+apps/forge-ide-e2e/tmp/
 
 # Generated import resolution cache and fetched artifacts
 .deps/
@@ -87,7 +87,7 @@ apps/remix-ide-e2e/tmp/
 # IDE - Cursor
 .cursor/
 PR_MESSAGE.md
-apps/remix-ide-e2e/tmp/
+apps/forge-ide-e2e/tmp/
 .playwright-mcp/
 
 # Playwright

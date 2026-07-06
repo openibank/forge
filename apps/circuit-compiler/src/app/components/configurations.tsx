@@ -1,4 +1,4 @@
-import { CustomTooltip, RenderIf } from "@remix-ui/helper"
+import { CustomTooltip, RenderIf } from "@creditchain/forge-ui/helper"
 import { FormattedMessage, useIntl } from "react-intl"
 import { ConfigurationsProps, PrimeValue } from "../types"
 

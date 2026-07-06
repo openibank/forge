@@ -1,6 +1,6 @@
 import { useEffect, useReducer, useState } from "react"
 import { NoirPluginClient } from "./services/noirPluginClient"
-import { RenderIf } from '@remix-ui/helper'
+import { RenderIf } from '@creditchain/forge-ui/helper'
 import { IntlProvider } from 'react-intl'
 import { Container } from "./components/container"
 import { NoirAppContext } from "./contexts"

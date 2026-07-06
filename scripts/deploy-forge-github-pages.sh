@@ -3,7 +3,7 @@ set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 PAGES_REPO_DIR="${FORGE_PAGES_REPO_DIR:-${FORGE_GITHUB_PAGES_REPO_DIR:-$ROOT_DIR/../openibank.github.io}}"
-DIST_DIR="${FORGE_DIST_DIR:-$ROOT_DIR/dist/apps/remix-ide}"
+DIST_DIR="${FORGE_DIST_DIR:-$ROOT_DIR/dist/apps/forge-ide}"
 HOSTNAME="${FORGE_PAGES_HOSTNAME:-forge.creditchain.org}"
 BUILD="${FORGE_BUILD:-0}"
 

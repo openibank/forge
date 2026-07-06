@@ -2,7 +2,7 @@ import { toast } from 'react-toastify'
 import { type ModelType } from '../store'
 import remixClient from '../../remix-client'
 import { router } from '../../App'
-import { trackMatomoEvent } from '@remix-api'
+import { trackMatomoEvent } from '@creditchain/forge-api'
 
 export const ensureLearnethWorkspace = async (remixClient, workshopName) => {
   try {

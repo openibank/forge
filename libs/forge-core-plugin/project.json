@@ -1,0 +1,29 @@
+{
+    "name": "forge-core-plugin",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "libs/forge-core-plugin/src",
+    "projectType": "library",
+    "targets": {
+      "build": {
+        "executor": "@nrwl/js:tsc",
+        "outputs": ["{options.outputPath}"],
+        "options": {
+          "outputPath": "dist/libs/forge-core-plugin",
+          "main": "libs/forge-core-plugin/src/index.ts",
+          "tsConfig": "libs/forge-core-plugin/tsconfig.lib.json",
+          "assets": [],
+          "updateBuildableProjectDepsInPackageJson": false
+        }
+      },
+      "lint": {
+        "executor": "@nrwl/linter:eslint",
+        "outputs": ["{options.outputFile}"],
+        "options": {
+          "lintFilePatterns": ["libs/forge-core-plugin/**/*.ts"],
+          "eslintConfig": "libs/forge-core-plugin/.eslintrc"
+        }
+      }
+    },
+    "tags": []
+  }
+  

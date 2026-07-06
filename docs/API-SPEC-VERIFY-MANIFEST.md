@@ -211,7 +211,7 @@ Same as other `/storage/api/workspaces/:uuid/*` endpoints: verify the JWT user o
 
 ## TypeScript Types (already in codebase)
 
-These are defined in `libs/remix-ui/workspace/src/lib/cloud/types.ts`:
+These are defined in `libs/forge-ui/workspace/src/lib/cloud/types.ts`:
 
 ```typescript
 interface ManifestVerifyRequest {
@@ -242,7 +242,7 @@ interface ManifestVerifyResponse {
 
 - **API client**: `verifyManifest(uuid, manifest)` in `cloud-workspace-api.ts`
 - **Engine getters**: `cloudSyncEngine.getManifest()` and `cloudSyncEngine.getWorkspaceUuid()`
-- **E2E helper**: `assertCloudSyncIntegrity(browser)` in `apps/remix-ide-e2e/src/helpers/cloud-sync-verify.ts`
+- **E2E helper**: `assertCloudSyncIntegrity(browser)` in `apps/forge-ide-e2e/src/helpers/cloud-sync-verify.ts`
 - **Window access**: `window.cloudSyncEngine` exposed for browser-side reads
 
 The frontend is ready — just needs the backend endpoint deployed.

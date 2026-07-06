@@ -1,0 +1,34 @@
+{
+  "name": "forged",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/forged/src",
+  "projectType": "library",
+  "implicitDependencies": [
+    "forge-solidity"
+  ],
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/forged",
+        "main": "libs/forged/src/index.ts",
+        "tsConfig": "libs/forged/tsconfig.lib.json",
+        "updateBuildableProjectDepsInPackageJson": false,
+        "assets": [
+          "libs/forged/*.md",
+          "libs/forged/origins.json"
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/forged/**/*.ts"],
+        "eslintConfig": "libs/forged/.eslintrc"
+      }
+    }
+  },
+  "tags": []
+}

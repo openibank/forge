@@ -15,7 +15,7 @@ You are a specialist at designing and maintaining the XState v5 state machine th
 Every snapshot derives from these inputs — don't invent new sources:
 
 - **Auth** (from `auth` plugin): `isAuthenticated`, `user`, JWT presence.
-- **Permissions** (`/permissions/` response, typed as `PermissionsResponse` in [api-types.ts](libs/remix-api/src/lib/plugins/api-types.ts)):
+- **Permissions** (`/permissions/` response, typed as `PermissionsResponse` in [api-types.ts](libs/forge-api/src/lib/plugins/api-types.ts)):
   - `email_verified: boolean`, `email_verified_date: string | null`, `has_email: boolean`
   - `features: Permission[] | Record<string, any>` — keyed by `feature_name`
   - `feature_groups[]` — the user's tier(s); name `"free"` is the free tier
@@ -23,7 +23,7 @@ Every snapshot derives from these inputs — don't invent new sources:
   - `ai:solcoder` — when **absent or `is_enabled: false`**, the assistant is fully disabled. UI must hide AI surfaces (Ask AI button, completions, explain-contract).
   - `ai:verified_accounts` — when **present**, the user MUST have `email_verified === true`. Backend will return `EMAIL_NOT_VERIFIED` if they don't, but the UI should pre-empt that wherever permissions are known up-front.
 - **Provider/model selection**: feature names like `ai:Mistral`, `ai:completion`. The free tier today exposes Mistral Medium. Premium tiers add other providers — keep the model picker driven by the `ai:*` feature keys, not a hard-coded list.
-- **AI error envelope** (from every AI endpoint, including the SSE `{ type: "error" }` frame on streams). Source of truth: [ERROR_CODES.md](https://raw.githubusercontent.com/remix-project-org/remix-api/master/services/ai/docs/ERROR_CODES.md).
+- **AI error envelope** (from every AI endpoint, including the SSE `{ type: "error" }` frame on streams). Source of truth: [ERROR_CODES.md](https://raw.githubusercontent.com/forge-project-org/remix-api/master/services/ai/docs/ERROR_CODES.md).
   ```ts
   type AIError = { code: string; message: string; status: number;
     retryAfter?: number; resetAt?: string | null; details?: any }
@@ -86,13 +86,13 @@ The assistant machine **owns the policy**, the plan-manager **owns the UI**:
 
 ## Approach when asked to add or change behavior
 
-1. **Read first.** Always open [plan-manager-machine.ts](libs/remix-ui/modal-help/src/lib/plan-manager-machine.ts) for the established XState v5 + parallel-regions pattern. Mirror its `setup({ types, guards, actions, actors }).createMachine(...)` shape and selector style.
+1. **Read first.** Always open [plan-manager-machine.ts](libs/forge-ui/modal-help/src/lib/plan-manager-machine.ts) for the established XState v5 + parallel-regions pattern. Mirror its `setup({ types, guards, actions, actors }).createMachine(...)` shape and selector style.
 2. **Locate inputs.** Confirm the new behavior is driven by data already in `PermissionsResponse` / the AI error envelope. If it isn't, push back — don't invent fields.
 3. **Map to the table above.** New error codes go into the error→UX table; unknown codes fall through to the generic handler.
 4. **Express as state, not booleans.** If you find yourself adding a `flag` to context, ask whether it should be a sibling state in a parallel region instead.
 5. **Keep selectors pure.** `selectCanAskAI`, `selectGateReason`, `selectAllowedProviders`, `selectCooldownRemaining`. Components read these; nothing else.
 6. **Verify the hand-off contract.** Any state that wants to summon the plan-manager calls it through the plugin boundary with one of the four `reason` strings above. Add a new reason only when the existing four genuinely don't fit.
-7. **Surface it in the error reference.** When a backend code is added, link to [ERROR_CODES.md](https://raw.githubusercontent.com/remix-project-org/remix-api/master/services/ai/docs/ERROR_CODES.md) and add a row to the table in this file.
+7. **Surface it in the error reference.** When a backend code is added, link to [ERROR_CODES.md](https://raw.githubusercontent.com/forge-project-org/remix-api/master/services/ai/docs/ERROR_CODES.md) and add a row to the table in this file.
 
 ## Output Format
 

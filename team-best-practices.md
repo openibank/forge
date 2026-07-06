@@ -2,24 +2,24 @@
 # Team best practices
 
 This document aims to address contributors best practices of the following repositories:
- - Remix Project: https://github.com/remix-project-org/remix-project
- - Remix Libraries: https://github.com/remix-project-org/remix-project/tree/master/libs
+ - Forge Project: https://github.com/openibank/forge
+ - Remix Libraries: https://github.com/openibank/forge/tree/master/libs
 
 This document is not in its final version, **a team meeting which aims to address new/old best practices, feedback, workflows, all kind of issues related to how the team works together occurs every 2 weeks.**
 This document link to other specialized best practices (like coding best practices).
 
 Related links:
  - Public Website: https://remix.live
- - Awesome Remix: https://github.com/remix-project-org/awesome-remix
+ - Awesome Remix: https://github.com/forge-project-org/awesome-remix
  - Remix basic FAQ: https://hackmd.io/KVooMJhWRImCGq6zkDgW9A
- - Remix live: https://remix.ethereum.org
+ - Remix live: https://forge.creditchain.org
  - Remix alpha live: https://alpha.remix.live
  - Remix beta live: https://beta.remix.live
- - Remix-lib NPM module: https://www.npmjs.com/package/@remix-project/remix-lib
- - Remix-solidity NPM module: https://www.npmjs.com/package/@remix-project/remix-solidity
- - Remix-debug NPM module: https://www.npmjs.com/package/@remix-project/remix-debug
- - Remix-tests NPM module: https://www.npmjs.com/package/@remix-project/remix-tests
- - Remix documentation: http://remix-ide.readthedocs.io/en/latest/
+ - Remix-lib NPM module: https://www.npmjs.com/package/@creditchain/forge-lib
+ - Remix-solidity NPM module: https://www.npmjs.com/package/@creditchain/forge-solidity
+ - Remix-debug NPM module: https://www.npmjs.com/package/@creditchain/forge-debug
+ - Remix-tests NPM module: https://www.npmjs.com/package/@creditchain/forge-tests
+ - Remix documentation: http://forge-ide.readthedocs.io/en/latest/
  - Discord: https://discord.gg/MzhfCGstNA
  
 ---
@@ -68,7 +68,7 @@ Before starting coding, we should ensure all devs / contributors are aware of:
 
 # Story / Bug fix
 
-- Prioritised list of PRs / issues are tracked in a GitHub Project, Remix IDE issues are managed by a prioritized backlog.
+- Prioritised list of PRs / issues are tracked in a GitHub Project, Forge IDE issues are managed by a prioritized backlog.
 - Every story can be executed by a single developer or a group of 2 or more developers (depending on the size and complexity)
 - Each dev should take the part he/she feels the most comfortable with.
 - Later progress and discussion is updated directly on the issue or pull request (github).
@@ -184,4 +184,4 @@ Before starting coding, we should ensure all devs / contributors are aware of:
 
 # Coding best practices
 
- - https://github.com/remix-project-org/remix-project/blob/master/CONTRIBUTING.md
+ - https://github.com/openibank/forge/blob/master/CONTRIBUTING.md

@@ -4,7 +4,7 @@
 
 - Push fork to `github.com/openibank/forge`.
 - Set default branch to `forge/main`.
-- Add upstream remote `remix-upstream` pointing to `remix-project-org/remix-project`.
+- Add upstream remote `remix-upstream` pointing to `openibank/forge`.
 - Keep small, reviewable feature branches such as `forge/rebrand`, `forge/creditchain-network`, and `forge/ai-agent`.
 
 ## Phase 1: Safe Rebrand

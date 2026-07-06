@@ -1,0 +1,7 @@
+{
+  "forgeUiTabs.tooltipText1": "Ejecutar script (CTRL + SHIFT + S)",
+  "forgeUiTabs.tooltipText2": "Compilar CTRL + S",
+  "forgeUiTabs.tooltipText3": "Seleccione el archivo .sol o .yul para compilar o un archivo .ts o .js y ejecútelo",
+  "forgeUiTabs.zoomOut": "Alejar",
+  "forgeUiTabs.zoomIn": "Acercar"
+}

@@ -1,6 +1,6 @@
 // @ts-ignore
 import { BrowserProvider, Contract, InterfaceAbi } from "ethers"
-import { Provider } from '@remix-project/remix-simulator'
+import { Provider } from '@creditchain/forge-simulator'
 import { getArtifactsByContractName } from './artifacts-helper'
 
 const providerConfig = {

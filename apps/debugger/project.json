@@ -4,7 +4,7 @@
   "sourceRoot": "apps/debugger/src",
   "projectType": "application",
   "implicitDependencies": [
-    "remix-debug"
+    "forge-debug"
   ],
   "targets": {
     "build": {

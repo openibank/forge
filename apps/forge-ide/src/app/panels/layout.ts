@@ -1,0 +1,231 @@
+import { Plugin } from '@remixproject/engine'
+import { Profile } from '@remixproject/plugin-utils'
+import { EventEmitter } from 'events'
+import { QueryParams } from '@creditchain/forge-lib'
+
+const profile: Profile = {
+  name: 'layout',
+  description: 'layout',
+  methods: ['minimize', 'minimizeSidePanel', 'maximiseSidePanel', 'resetSidePanel', 'maximizeTerminal', 'maximiseRightSidePanel', 'resetRightSidePanel']
+}
+
+interface panelState {
+  active: boolean
+  plugin: Plugin
+  minimized?: boolean
+}
+interface panels {
+  tabs: panelState
+  editor: panelState
+  main: panelState
+  bottomBar: panelState
+  terminal: panelState
+}
+
+export type PanelConfiguration = {
+  minimizeterminal: boolean,
+  minimizesidepanel: boolean,
+  embed: boolean
+}
+
+export class Layout extends Plugin {
+  event: any
+  // @ts-ignore
+  panels: panels
+  enhanced: { [key: string]: boolean | { coeff?: number } }
+  maximized: { [key: string]: {
+    maximized: boolean
+    coeff?: number
+  } }
+  constructor () {
+    super(profile)
+    this.maximized = {
+      'remixaiassistant': {
+        maximized: true,
+        coeff: undefined
+      },
+      'LearnEth': {
+        maximized: true,
+        coeff: undefined
+      },
+    }
+    this.enhanced = {
+      'dgit': true,
+      'remixaiassistant': true,
+      'quick-dapp-v2': true,
+      'udapp': true
+    }
+    this.event = new EventEmitter()
+  }
+
+  private isEnhancedPanel(name: string) {
+    return Boolean(this.enhanced[name])
+  }
+
+  private getEnhancedCoeff(name: string, defaultCoeff = 0.25) {
+    const config = this.enhanced[name]
+    if (!config) return undefined
+    if (typeof config === 'object' && typeof config.coeff === 'number') return config.coeff
+    return defaultCoeff
+  }
+
+  async onActivation (): Promise<void> {
+    this.on('fileManager', 'currentFileChanged', () => {
+      this.panels.editor.active = true
+      this.panels.main.active = false
+      this.event.emit('change', null)
+    })
+    this.on('fileManager', 'openDiff', () => {
+      this.panels.editor.active = true
+      this.panels.main.active = false
+      this.event.emit('change', null)
+    })
+    this.on('tabs', 'openFile', () => {
+      this.panels.editor.active = true
+      this.panels.main.active = false
+      this.event.emit('change', null)
+    })
+    this.on('tabs', 'switchApp', (name: string) => {
+      this.call('mainPanel', 'showContent', name)
+      this.panels.editor.active = false
+      this.panels.main.active = true
+      this.event.emit('change', null)
+    })
+    this.on('tabs', 'closeApp', (name: string) => {
+      this.panels.editor.active = true
+      this.panels.main.active = false
+      this.event.emit('change', null)
+    })
+    this.on('tabs', 'openDiff', () => {
+      this.panels.editor.active = true
+      this.panels.main.active = false
+      this.event.emit('change', null)
+    })
+    this.on('manager', 'activate', (profile: Profile) => {
+      switch (profile.name) {
+      case 'filePanel':
+        this.call('menuicons', 'select', 'filePanel')
+        break
+      }
+    })
+    this.on('sidePanel', 'focusChanged', async (name: any) => {
+      const current = await this.call('sidePanel', 'currentFocus')
+      const isMaxed = await this.call('rightSidePanel', 'isRightSidePanelMaximized')
+      if (isMaxed) {
+        this.enhanced[current] = false
+      } else {
+        if (this.isEnhancedPanel(current)) {
+          this.event.emit('enhancesidepanel', this.getEnhancedCoeff(current))
+        }
+      }
+
+      if (this.maximized[current] && this.maximized[current].maximized) {
+        this.event.emit('maximisesidepanel', this.maximized[current].coeff)
+      }
+
+      if (!this.enhanced[current] && (!this.maximized[current] || !this.maximized[current].maximized)) {
+        this.event.emit('resetsidepanel')
+      }
+    })
+
+    this.on('rightSidePanel', 'pinnedPlugin', async (name: any) => {
+      const current = await this.call('rightSidePanel', 'currentFocus')
+      if (this.isEnhancedPanel(current)) {
+        this.event.emit('enhanceRightSidePanel', this.getEnhancedCoeff(current))
+      }
+
+      if (this.maximized[current] && this.maximized[current].maximized) {
+        this.event.emit('maximiseRightSidePanel', this.maximized[current].coeff)
+      }
+
+      if (!this.enhanced[current] && (!this.maximized[current] || !this.maximized[current].maximized)) {
+        this.event.emit('resetRightSidePanel')
+      }
+    })
+
+    this.on('rightSidePanel', 'rightSidePanelShown', async () => {
+      const current = await this.call('rightSidePanel', 'currentFocus')
+      if (this.isEnhancedPanel(current)) {
+        this.event.emit('enhanceRightSidePanel', this.getEnhancedCoeff(current))
+      }
+
+      if (this.maximized[current] && this.maximized[current].maximized) {
+        this.event.emit('maximiseRightSidePanel', this.maximized[current].coeff)
+      }
+
+      if (!this.enhanced[current] && (!this.maximized[current] || !this.maximized[current].maximized)) {
+        this.event.emit('resetRightSidePanel')
+      }
+    })
+
+    document.addEventListener('keypress', e => {
+      if (e.shiftKey && e.ctrlKey) {
+        if (e.code === 'KeyF') {
+          // Ctrl+Shift+F
+          this.call('menuicons', 'select', 'filePanel')
+        } else if (e.code === 'KeyA') {
+          // Ctrl+Shift+A
+          this.call('menuicons', 'select', 'pluginManager')
+        }
+        e.preventDefault()
+      }
+    })
+    const queryParams = new QueryParams()
+    const params = queryParams.get() as PanelConfiguration
+    if (params.minimizeterminal || params.embed) {
+      this.panels.terminal.minimized = true
+      this.event.emit('change', this.panels)
+      this.emit('change', this.panels)
+    }
+    if (params.minimizesidepanel || params.embed) {
+      this.event.emit('minimizesidepanel')
+    }
+  }
+
+  minimize (name: string, minimized:boolean): void {
+    // @ts-ignore
+    this.panels[name].minimized = minimized
+    this.event.emit('change', this.panels)
+    this.emit('change', this.panels)
+  }
+
+  async minimizeSidePanel () {
+    this.event.emit('minimizesidepanel')
+  }
+
+  async maximiseSidePanel (coeff?: number) {
+    const current = await this.call('sidePanel', 'currentFocus')
+    this.maximized[current] = {
+      maximized: true,
+      coeff
+    }
+    this.event.emit('maximisesidepanel', coeff)
+  }
+
+  async maximiseRightSidePanel (coeff?: number) {
+    const current = await this.call('rightSidePanel', 'currentFocus')
+    this.maximized[current] = {
+      maximized: true,
+      coeff
+    }
+    this.event.emit('maximiseRightSidePanel', coeff)
+  }
+
+  async maximizeTerminal() {
+    this.panels.terminal.minimized = false
+    this.event.emit('change', this.panels)
+    this.emit('change', this.panels)
+  }
+
+  async resetSidePanel () {
+    const current = await this.call('sidePanel', 'currentFocus')
+    this.enhanced[current] = false
+    this.event.emit('resetsidepanel')
+  }
+
+  async resetRightSidePanel () {
+    const current = await this.call('rightSidePanel', 'currentFocus')
+    this.enhanced[current] = false
+    this.event.emit('resetRightSidePanel')
+  }
+}

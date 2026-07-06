@@ -2,9 +2,9 @@
 /* eslint-disable no-unused-vars */
 import { PluginClient } from '@remixproject/plugin'
 import { createClient } from '@remixproject/plugin-webview'
-import { CompilerApiMixin } from '@remix-ui/solidity-compiler'
-import { ICompilerApi } from '@remix-project/remix-lib'
-import { CompileTabLogic } from '@remix-ui/solidity-compiler'
+import { CompilerApiMixin } from '@creditchain/forge-ui/solidity-compiler'
+import { ICompilerApi } from '@creditchain/forge-lib'
+import { CompileTabLogic } from '@creditchain/forge-ui/solidity-compiler'
 
 const defaultCompilerParameters = {
   runs: '200',

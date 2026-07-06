@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { CustomTooltip } from '@remix-ui/helper'
+import { CustomTooltip } from '@creditchain/forge-ui/helper'
 import { FormattedMessage, useIntl } from 'react-intl'
 
 interface ConfigInputProps {

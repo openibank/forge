@@ -1,0 +1,27 @@
+{
+  "name": "@creditchain/forge-import-resolver",
+  "version": "0.1.0",
+  "description": "Standalone Node adapter for Remix Solidity import resolving and flattening",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/openibank/forge.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "OpeniBank / CreditChain",
+  "bugs": {
+    "url": "https://github.com/openibank/forge/issues"
+  },
+  "homepage": "https://github.com/openibank/forge/tree/main/libs/forge-import-resolver#readme",
+  "bin": {
+    "remix-flatten": "dist/libs/forge-import-resolver/src/cli.js"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "^5.4.0"
+  }
+}

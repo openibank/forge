@@ -10,11 +10,11 @@ test.use({ viewport: { width: 1440, height: 900 } })
  * Specialist subagent.
  *
  * Ground truth lives in:
- *   libs/remix-ai-core/src/inferencers/deepagent/SubagentConfig.ts
+ *   libs/forge-ai-core/src/inferencers/deepagent/SubagentConfig.ts
  *     name:        'QuickDapp Specialist'
  *     description: 'Specializes in generating and updating React-based DApp
  *                   frontends using file_write tools.'
- *   libs/remix-ai-core/src/inferencers/deepagent/prompts/system/lightPrompts.ts
+ *   libs/forge-ai-core/src/inferencers/deepagent/prompts/system/lightPrompts.ts
  *     QUICKDAPP_SPECIALIST_SUBAGENT_PROMPT mentions the tool names:
  *     list_dapps, generate_dapp, update_dapp, file_write, finalize_dapp_generation
  *

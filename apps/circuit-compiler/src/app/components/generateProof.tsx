@@ -1,4 +1,4 @@
-import { RenderIf } from "@remix-ui/helper"
+import { RenderIf } from "@creditchain/forge-ui/helper"
 import { FormattedMessage } from "react-intl"
 import { generateProof } from "../actions"
 import { CircuitAppContext } from "../contexts"

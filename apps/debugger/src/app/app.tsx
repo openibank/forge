@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 
-import {DebuggerUI} from '@remix-ui/debugger-ui' // eslint-disable-line
+import {DebuggerUI} from '@creditchain/forge-ui/debugger-ui' // eslint-disable-line
 
 import {DebuggerClientApi} from './debugger'
 

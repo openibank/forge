@@ -1,0 +1,319 @@
+import { ContractData, FuncABI, NetworkDeploymentFile, SolcBuildFile, OverSizeLimit, getContractData } from "@creditchain/forge-core-plugin"
+import { trackMatomoEvent } from '@creditchain/forge-api'
+import { RunTab } from "../types/run-tab"
+import { CompilerAbstract as CompilerAbstractType } from '@creditchain/forge-solidity'
+import * as remixLib from '@creditchain/forge-lib'
+import { SolcInput, SolcOutput } from "@openzeppelin/upgrades-core"
+// Used direct path to UpgradeableContract class to fix cyclic dependency error from @openzeppelin/upgrades-core library
+import { UpgradeableContract } from '../../../../../../node_modules/@openzeppelin/upgrades-core/dist/standalone'
+import { DeployMode, MainnetPrompt } from "../types"
+import { displayNotification, fetchProxyDeploymentsSuccess, setDecodedResponse, updateInstancesBalance } from "./payload"
+import { addInstance } from "./actions"
+import { addressToString, logBuilder } from "@creditchain/forge-ui/helper"
+import { isAddress } from "ethers"
+
+const txHelper = remixLib.execution.txHelper
+const txFormat = remixLib.execution.txFormat
+
+const loadContractFromAddress = (plugin: RunTab, address, confirmCb, cb) => {
+  if (/\.(abi)$/.exec(plugin.config.get('currentFile'))) {
+    confirmCb(() => {
+      let abi
+      try {
+        abi = JSON.parse(plugin.editor.currentContent())
+        if (!Array.isArray(abi)) return cb('ABI should be an array object.')
+      } catch (e) {
+        return cb('Failed to parse the current file as JSON ABI.')
+      }
+      trackMatomoEvent(plugin, { category: 'udapp', action: 'useAtAddress', name: 'AtAddressLoadWithABI', isClick: true })
+      cb(null, 'abi', abi)
+    })
+  } else {
+    trackMatomoEvent(plugin, { category: 'udapp', action: 'useAtAddress', name: 'AtAddressLoadWithArtifacts', isClick: true })
+    cb(null, 'instance')
+  }
+}
+
+const getCompilerContracts = (plugin: RunTab) => {
+  return plugin.compilersArtefacts.__last.getData().contracts
+}
+
+export const terminalLogger = (plugin: RunTab, view: JSX.Element) => {
+  plugin.call('terminal', 'logHtml', view)
+}
+
+export const confirmationHandler = (plugin: RunTab, dispatch: React.Dispatch<any>, confirmDialogContent: MainnetPrompt, network, tx, gasEstimation, continueTxExecution, cancelCb) => {
+  if (network.name !== 'Main') {
+    return continueTxExecution(null)
+  }
+  const amount = plugin.blockchain.fromWei(tx.value, true, 'ether')
+  const content = confirmDialogContent(tx, network, amount, gasEstimation, plugin.blockchain.determineGasFees(tx), plugin.blockchain.determineGasPrice.bind(plugin.blockchain))
+
+  dispatch(displayNotification('Confirm transaction', content, 'Confirm', 'Cancel', () => {
+    plugin.blockchain.config.setUnpersistedProperty('doNotShowTransactionConfirmationAgain', plugin.REACT_API.confirmSettings)
+    // TODO: check if this is check is still valid given the refactor
+    if (!plugin.REACT_API.gasPriceStatus) {
+      cancelCb('Given transaction fee is not correct')
+    } else {
+      continueTxExecution({ maxFee: plugin.REACT_API.maxFee, maxPriorityFee: plugin.REACT_API.maxPriorityFee, baseFeePerGas: plugin.REACT_API.baseFeePerGas, gasPrice: plugin.REACT_API.gasPrice })
+    }
+  }, () => {
+    return cancelCb('Transaction canceled by user.')
+  }))
+}
+
+const getConfirmationCb = (plugin: RunTab, dispatch: React.Dispatch<any>, confirmDialogContent: MainnetPrompt) => {
+  // this code is the same as in recorder.js. TODO need to be refactored out
+  return (network, tx, gasEstimation, continueTxExecution, cancelCb) => {
+    confirmationHandler(plugin, dispatch, confirmDialogContent, network, tx, gasEstimation, continueTxExecution, cancelCb)
+  }
+}
+
+export const continueHandler = (dispatch: React.Dispatch<any>, gasEstimationPrompt: (msg: string) => JSX.Element, error, continueTxExecution, cancelCb) => {
+  if (error) {
+    let msg = ''
+    if (typeof error === 'string') {
+      msg = error
+    }
+    if (error && error.innerError) {
+      msg += '\n' + error.innerError
+    }
+    if (error && error.message) {
+      msg += '\n' + error.message
+    }
+    if (error && error.error) {
+      msg += '\n' + error.error
+    }
+
+    if (msg.includes('invalid opcode')) msg += '\nThe EVM version used by the selected environment is not compatible with the compiler EVM version.'
+
+    dispatch(displayNotification('Gas estimation failed', gasEstimationPrompt(msg), 'Send Transaction', 'Cancel Transaction', () => {
+      continueTxExecution()
+    }, () => {
+      cancelCb(error)
+    }))
+  } else {
+    continueTxExecution()
+  }
+}
+
+export const promptHandler = (dispatch: React.Dispatch<any>, passphrasePrompt, okCb, cancelCb) => {
+  dispatch(displayNotification('Passphrase requested', passphrasePrompt('Personal mode is enabled. Please provide passphrase of account'), 'OK', 'Cancel', okCb, cancelCb))
+}
+
+export const createInstance = async (
+  plugin: RunTab,
+  dispatch: React.Dispatch<any>,
+  selectedContract: ContractData,
+  gasEstimationPrompt: (msg: string) => JSX.Element,
+  passphrasePrompt: (msg: string) => JSX.Element,
+  publishToStorage: (storage: 'ipfs' | 'swarm',
+    contract: ContractData) => void,
+  mainnetPrompt: MainnetPrompt,
+  isOverSizePrompt: (values: OverSizeLimit) => JSX.Element,
+  args,
+  deployMode: DeployMode[],
+  isVerifyChecked: boolean) => {
+  const isProxyDeployment = (deployMode || []).find(mode => mode === 'Deploy with Proxy')
+  const isContractUpgrade = (deployMode || []).find(mode => mode === 'Upgrade with Proxy')
+  const statusCb = (msg: string) => {
+    const log = logBuilder(msg)
+
+    return terminalLogger(plugin, log)
+  }
+
+  const finalCb = async (error, contractObject, address) => {
+    if (error) {
+      const log = logBuilder(error)
+      return terminalLogger(plugin, log)
+    }
+
+    addInstance(dispatch, { contractData: contractObject, address, name: contractObject.name })
+    const data = await plugin.compilersArtefacts.getCompilerAbstract(contractObject.contract.file)
+    plugin.compilersArtefacts.addResolvedContract(addressToString(address), data)
+
+    if (isVerifyChecked) {
+      trackMatomoEvent(plugin, { category: 'udapp', action: 'DeployAndPublish', name: plugin.REACT_API.networkName, isClick: true })
+
+      try {
+        const status = plugin.blockchain.getCurrentNetworkStatus()
+        const currentChainId = status?.network?.id
+
+        if (currentChainId) {
+
+          setTimeout(() => {
+            plugin.call('contract-verification', 'verifyOnDeploy', {
+              contractName: selectedContract.name,
+              filePath: selectedContract.contract.file,
+              address: addressToString(address),
+              chainId: currentChainId,
+              args: args
+            }).catch(e => console.error("Verification trigger failed:", e))
+          }, 1000)
+
+        } else {
+          console.error("Network ID not found, skipping verification.")
+        }
+
+      } catch (e) {
+        console.error("Error triggering verification:", e)
+      }
+
+    } else {
+      trackMatomoEvent(plugin, { category: 'udapp', action: 'DeployOnly', name: plugin.REACT_API.networkName, isClick: true })
+    }
+
+    if (isProxyDeployment) {
+      const initABI = contractObject.abi.find(abi => abi.name === 'initialize')
+      plugin.call('openzeppelin-proxy', 'executeUUPSProxy', addressToString(address), args, initABI, contractObject)
+    } else if (isContractUpgrade) {
+      plugin.call('openzeppelin-proxy', 'executeUUPSContractUpgrade', args, addressToString(address), contractObject)
+    }
+  }
+
+  let contractMetadata
+  try {
+    contractMetadata = await plugin.call('compilerMetadata', 'deployMetadataOf', selectedContract.name, selectedContract.contract.file)
+  } catch (error) {
+    return statusCb(`creation of ${selectedContract.name} errored: ${error.message ? error.message : error}`)
+  }
+
+  const compilerContracts = getCompilerContracts(plugin)
+  const confirmationCb = getConfirmationCb(plugin, dispatch, mainnetPrompt)
+
+  const currentParams = !isProxyDeployment && !isContractUpgrade ? args : ''
+  let overSize
+  try {
+    overSize = await selectedContract.isOverSizeLimit(currentParams)
+  } catch (error) {
+    return statusCb(`creation of ${selectedContract.name} errored: ${error.message ? error.message : error}`)
+  }
+  if (overSize && (overSize.overSizeEip170 || overSize.overSizeEip3860)) {
+    return dispatch(displayNotification('Contract code size over limit', isOverSizePrompt(overSize), 'Force Send', 'Cancel', () => {
+      deployContract(plugin, selectedContract, currentParams, contractMetadata, compilerContracts, {
+        continueCb: (error, continueTxExecution, cancelCb) => {
+          continueHandler(dispatch, gasEstimationPrompt, error, continueTxExecution, cancelCb)
+        },
+        promptCb: (okCb, cancelCb) => {
+          promptHandler(dispatch, passphrasePrompt, okCb, cancelCb)
+        },
+        statusCb,
+        finalCb
+      }, confirmationCb)
+    }, () => {
+      const log = logBuilder(`creation of ${selectedContract.name} canceled by user.`)
+
+      return terminalLogger(plugin, log)
+    }))
+  }
+  deployContract(plugin, selectedContract, currentParams, contractMetadata, compilerContracts, {
+    continueCb: (error, continueTxExecution, cancelCb) => {
+      continueHandler(dispatch, gasEstimationPrompt, error, continueTxExecution, cancelCb)
+    },
+    promptCb: (okCb, cancelCb) => {
+      promptHandler(dispatch, passphrasePrompt, okCb, cancelCb)
+    },
+    statusCb,
+    finalCb
+  }, confirmationCb)
+}
+
+const deployContract = (plugin: RunTab, selectedContract, args, contractMetadata, compilerContracts, callbacks, confirmationCb) => {
+  trackMatomoEvent(plugin, { category: 'udapp', action: 'DeployContractTo', name: plugin.REACT_API.networkName, isClick: true })
+  const { statusCb } = callbacks
+
+  if (!contractMetadata || (contractMetadata && contractMetadata.autoDeployLib)) {
+    return plugin.blockchain.deployContractAndLibraries(selectedContract, args, contractMetadata, compilerContracts, callbacks, confirmationCb)
+  }
+  if (Object.keys(selectedContract.bytecodeLinkReferences).length) statusCb(`linking ${JSON.stringify(selectedContract.bytecodeLinkReferences, null, '\t')} using ${JSON.stringify(contractMetadata.linkReferences, null, '\t')}`)
+  plugin.blockchain.deployContractWithLibrary(selectedContract, args, contractMetadata, compilerContracts, callbacks, confirmationCb)
+}
+
+export const loadAddress = (plugin: RunTab, dispatch: React.Dispatch<any>, contract: ContractData, address: string) => {
+  loadContractFromAddress(plugin, address,
+    (cb) => {
+      dispatch(displayNotification('At Address', `Do you really want to interact with ${address} using the current ABI definition?`, 'OK', 'Cancel', cb, null))
+    },
+    (error, loadType, abi) => {
+      if (error) {
+        return dispatch(displayNotification('Alert', error, 'OK', null))
+      }
+      if (loadType === 'abi') {
+        const contractData = { name: '<at address>', abi, contract: { file: plugin.REACT_API.contracts.currentFile } } as ContractData
+        return addInstance(dispatch, { contractData, address, name: '<at address>' })
+      } else if (loadType === 'instance') {
+        if (!contract) return plugin.call('notification', 'toast', 'No compiled contracts found.')
+        const currentFile = plugin.REACT_API.contracts.currentFile
+        const compiler = plugin.REACT_API.contracts.contractList[currentFile].find(item => item.alias === contract.name)
+        const contractData = getContractData(contract.name, compiler.compiler)
+        return addInstance(dispatch, { contractData, address, name: contract.name })
+      }
+    }
+  )
+}
+
+export const getContext = (plugin: RunTab) => {
+  return plugin.blockchain.context()
+}
+
+export const syncContractsInternal = async (plugin: RunTab) => {
+  if (await plugin.call('manager', 'isActive', 'truffle')) {
+    plugin.call('truffle', 'sync')
+  }
+  if (await plugin.call('manager', 'isActive', 'hardhat')) {
+    plugin.call('hardhat', 'sync')
+  }
+  if (await plugin.call('manager', 'isActive', 'foundry')) {
+    plugin.call('foundry', 'sync')
+  }
+}
+
+export const runTransactions = async (
+  plugin: RunTab,
+  dispatch: React.Dispatch<any>,
+  instanceIndex: number,
+  lookupOnly: boolean,
+  funcABI: FuncABI,
+  inputsValues: string,
+  contractName: string,
+  contractABI, contract,
+  address,
+  funcIndex?: number) => {
+  let callinfo = ''
+  let eventAction
+  if (lookupOnly) {
+    callinfo = 'call'
+    eventAction = 'call'
+  } else if (funcABI.type === 'fallback' || funcABI.type === 'receive') {
+    callinfo = 'lowLevelinteractions'
+    eventAction = 'lowLevelinteractions'
+  } else {
+    callinfo = 'transact'
+    eventAction = 'transact'
+  }
+  trackMatomoEvent(plugin, { category: 'udapp', action: eventAction, name: plugin.REACT_API.networkName, isClick: true })
+
+  const params = funcABI.type !== 'fallback' ? inputsValues : ''
+  const result = await plugin.call('blockchain', 'runOrCallContractMethod', contractName, contractABI, funcABI, contract, inputsValues, address, params, lookupOnly)
+
+  if (lookupOnly) {
+    const response = txFormat.decodeResponse(result.returnValue, funcABI)
+
+    dispatch(setDecodedResponse(instanceIndex, response, funcIndex))
+  }
+}
+
+export const getFuncABIInputs = (plugin: RunTab, funcABI: FuncABI) => {
+  return plugin.blockchain.getInputs(funcABI)
+}
+
+export const updateInstanceBalance = async (plugin: RunTab, dispatch: React.Dispatch<any>) => {
+  if (plugin.REACT_API?.instances?.instanceList?.length) {
+    const instances = plugin.REACT_API?.instances?.instanceList?.length ? plugin.REACT_API?.instances?.instanceList : []
+    for (const instance of instances) {
+      const balInEth = await plugin.blockchain.getBalanceInEther(instance.address)
+      instance.balance = balInEth
+    }
+    dispatch(updateInstanceBalance(instances, dispatch))
+  }
+}

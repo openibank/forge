@@ -4,7 +4,7 @@ import EventManager from 'events'
 import { VERIFIERS, type ChainSettings, Chain, type ContractVerificationSettings, type LookupResponse, type VerifierIdentifier, SubmittedContract, SubmittedContracts, VerificationReceipt } from './types'
 import { mergeChainSettingsWithDefaults, validConfiguration } from './utils'
 import { getVerifier } from './Verifiers'
-import { CompilerAbstract } from '@remix-project/remix-solidity'
+import { CompilerAbstract } from '@creditchain/forge-solidity'
 import { AbiCoder } from 'ethers'
 
 export class ContractVerificationPluginClient extends PluginClient {

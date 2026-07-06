@@ -15,7 +15,7 @@ async function createPR (prNumber, baseBranch) {
     })
 
     const owner = 'ethereum'
-    const repo = 'remix-project'
+    const repo = 'forge-project'
     
     const prData = await octokit.request('GET /repos/{owner}/{repo}/pulls/{pull_number}', {
         owner: owner,

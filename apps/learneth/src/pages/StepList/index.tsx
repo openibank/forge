@@ -1,5 +1,5 @@
 import React, { useMemo, useState, useEffect } from 'react'
-import { CustomTooltip } from "@remix-ui/helper"
+import { CustomTooltip } from "@creditchain/forge-ui/helper"
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
@@ -9,7 +9,7 @@ import copy from 'copy-to-clipboard'
 import BackButton from '../../components/BackButton'
 import SlideIn from '../../components/SlideIn'
 import { useAppSelector } from '../../redux/hooks'
-import { trackMatomoEvent } from '@remix-api'
+import { trackMatomoEvent } from '@creditchain/forge-api'
 import remixClient from '../../remix-client'
 import './index.scss'
 

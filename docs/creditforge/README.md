@@ -15,11 +15,11 @@ The standalone `/Users/wenyan/ClaudeProjects/creditforge` prototype contributed:
 
 ## Monorepo Locations
 
-- Forge IDE: `apps/remix-ide`
+- Forge IDE: `apps/forge-ide`
 - CreditChain config and SDK helpers: `libs/forge/creditchain-config`
 - Forge local daemon package: Nx project `forged`, published as `@creditchain/forged`
-- Workspace templates: `libs/remix-ws-templates/src/templates`
-- Template selector UI: `apps/remix-ide/src/app/plugins/templates-selection`
+- Workspace templates: `libs/forge-ws-templates/src/templates`
+- Template selector UI: `apps/forge-ide/src/app/plugins/templates-selection`
 - Lifecycle example: `examples/creditchain-lifecycle`
 - GitHub Pages deploy script: `scripts/deploy-forge-github-pages.sh`
 - Maple deploy script: `scripts/deploy-forge-maple.sh`
@@ -33,7 +33,7 @@ The standalone `/Users/wenyan/ClaudeProjects/creditforge` prototype contributed:
 cd /Users/wenyan/ClaudeProjects/forge
 source ~/.nvm/nvm.sh
 nvm use 20.19.0
-NX_NO_CLOUD=true NX_DAEMON=false yarn -s nx build remix-ide --configuration=development
+NX_NO_CLOUD=true NX_DAEMON=false yarn -s nx build forge-ide --configuration=development
 ```
 
 Production build:
@@ -67,7 +67,7 @@ GitHub Pages deployment:
 yarn deploy:forge:pages
 ```
 
-The Pages deploy publishes `dist/apps/remix-ide` into
+The Pages deploy publishes `dist/apps/forge-ide` into
 `/Users/wenyan/ClaudeProjects/openibank.github.io`, commits it, and pushes the
 `main` branch for `forge.creditchain.org`.
 
@@ -98,7 +98,7 @@ Maple/nginx helper, run on the deployment host:
 FORGE_BUILD=1 ./scripts/deploy-forge-maple.sh
 ```
 
-The deploy helper builds `dist/apps/remix-ide`, installs a versioned static
+The deploy helper builds `dist/apps/forge-ide`, installs a versioned static
 release under `/var/www/forge-creditchain`, writes a `CNAME`, renders nginx from
 `infra/forge/nginx/forge.creditchain.org.conf`, and reloads nginx.
 

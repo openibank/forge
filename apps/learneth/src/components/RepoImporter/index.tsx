@@ -2,8 +2,8 @@
 import React, { useState, useEffect, forwardRef, ReactNode } from 'react'
 import { Button, Dropdown, Form } from 'react-bootstrap'
 import { useAppDispatch, useAppSelector } from '../../redux/hooks'
-import { CustomTooltip } from "@remix-ui/helper"
-import { trackMatomoEvent } from '@remix-api'
+import { CustomTooltip } from "@creditchain/forge-ui/helper"
+import { trackMatomoEvent } from '@creditchain/forge-api'
 import remixClient from '../../remix-client'
 import './index.css'
 

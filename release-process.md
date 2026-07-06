@@ -15,13 +15,13 @@ or individually:
  - `git push -f origin remix_beta`
  
 ## Testing
-Testing is performed after the Feature Freeze on `beta.remix.live`. `build-qa-doc.js` script can be used to generate the list of QA tasks. Instructions to use the file are given in the file itself: https://github.com/remix-project-org/remix-project/blob/master/build-qa-doc.js#L18 
+Testing is performed after the Feature Freeze on `beta.remix.live`. `build-qa-doc.js` script can be used to generate the list of QA tasks. Instructions to use the file are given in the file itself: https://github.com/openibank/forge/blob/master/build-qa-doc.js#L18 
 
 Once ready to run, it can be run using the Node.js: `node build-qa-doc.js`
 
 Ensure release highlights and release blog is updated in `remix-dynamics` repo's `beta` branch.
 
-## Remix Project NPM packages publishing
+## Forge Project NPM packages publishing
 
 Once testing is completed, release will start by publishing Remix NPM packages.
 
@@ -45,7 +45,7 @@ Once these commands run successfully, the version for each remix library will be
 
  - Create and merge bump PR to master
  
-## Remix IDE Release
+## Forge IDE Release
 
 ### Part 1. Bump the version and update Beta
 
@@ -86,7 +86,7 @@ Publish a new release on GitHub using created tag and generate automated changel
 
 ### Part 2. Update the Remix Live
 
-Updating the `remix_live` branch latest to the `remix_beta` runs the CircleCI build which updates live version of Remix IDE.
+Updating the `remix_live` branch latest to the `remix_beta` runs the CircleCI build which updates live version of Forge IDE.
 
 Use this unified command:
 
@@ -99,7 +99,7 @@ or individually:
  - `git reset --hard <remix_beta-commit-hash>` or `<master-commit-hash>` sometimes
  - `git push -f origin remix_live`
 
- CircleCI will update `https://github.com/remix-project-org/remix-live` and through `gh-pages`, remix live will be deployed on `remix.ethereum.org`
+ CircleCI will update `https://github.com/forge-project-org/remix-live` and through `gh-pages`, remix live will be deployed on `forge.creditchain.org`
 
 :point_right: Ensure release highlights, version and blog link are properly updated in `remix-dynamics` repo's `live` branch.
  
@@ -112,6 +112,6 @@ or individually:
  - Update new feature freeze date under `freeze-date` in `.github/workflows/pr-reminder.yml` file
  - Create and merge PR to `master`
  
-## Remix IDE Alpha Release
+## Forge IDE Alpha Release
 
 `alpha.remix.live` is automatically updated every time a commit is pushed to `master` branch

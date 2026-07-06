@@ -59,8 +59,8 @@ else
   echo "Skipping build. Set FORGE_BUILD=1 to build before deployment."
 fi
 
-if [ ! -f "$ROOT_DIR/dist/apps/remix-ide/index.html" ]; then
-  echo "Missing dist/apps/remix-ide/index.html. Build Forge before deployment." >&2
+if [ ! -f "$ROOT_DIR/dist/apps/forge-ide/index.html" ]; then
+  echo "Missing dist/apps/forge-ide/index.html. Build Forge before deployment." >&2
   exit 2
 fi
 
@@ -72,7 +72,7 @@ echo "== 2/6 install release $SHA =="
 "${SUDO[@]}" install -d -m 0755 "$DEPLOY_ROOT/releases" "$ACME_ROOT"
 "${SUDO[@]}" rm -rf "$RELEASE_DIR"
 "${SUDO[@]}" install -d -m 0755 "$RELEASE_DIR"
-"${SUDO[@]}" rsync -a --delete "$ROOT_DIR/dist/apps/remix-ide/" "$RELEASE_DIR/"
+"${SUDO[@]}" rsync -a --delete "$ROOT_DIR/dist/apps/forge-ide/" "$RELEASE_DIR/"
 printf 'forge.creditchain.org\n' | "${SUDO[@]}" tee "$RELEASE_DIR/CNAME" >/dev/null
 "${SUDO[@]}" ln -sfn "$RELEASE_DIR" "$CURRENT_DIR"
 

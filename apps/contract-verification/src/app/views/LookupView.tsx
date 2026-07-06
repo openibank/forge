@@ -1,15 +1,15 @@
 import { useContext, useEffect, useMemo, useState } from 'react'
-import { trackMatomoEvent } from '@remix-api'
+import { trackMatomoEvent } from '@creditchain/forge-api'
 import { SearchableChainDropdown, ContractAddressInput } from '../components'
 import { mergeChainSettingsWithDefaults, validConfiguration } from '../utils'
 import type { LookupResponse, VerifierIdentifier } from '../types'
 import { VERIFIERS } from '../types'
 import { AppContext } from '../AppContext'
-import { CustomTooltip } from '@remix-ui/helper'
+import { CustomTooltip } from '@creditchain/forge-ui/helper'
 import { useNavigate } from 'react-router-dom'
 import { VerifyFormContext } from '../VerifyFormContext'
 import { useSourcifySupported } from '../hooks/useSourcifySupported'
-import { CopyToClipboard } from '@remix-ui/clipboard'
+import { CopyToClipboard } from '@creditchain/forge-ui/clipboard'
 import { FormattedMessage, useIntl } from 'react-intl'
 
 export const LookupView = () => {

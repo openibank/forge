@@ -1,0 +1,32 @@
+{
+  "name": "forge-ai-core",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/forge-ai-core/src",
+  "projectType": "library",
+  "implicitDependencies": [
+  ],
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/forge-ai-core",
+        "main": "libs/forge-ai-core/src/index.ts",
+        "tsConfig": "libs/forge-ai-core/tsconfig.lib.json",
+        "updateBuildableProjectDepsInPackageJson": false,
+        "assets": [
+          "libs/forge-ai-core/*.md"
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/forge-ai-core/**/*.ts"],
+        "eslintConfig": "libs/forge-ai-core/.eslintrc"
+      }
+    }
+  },
+  "tags": []
+}

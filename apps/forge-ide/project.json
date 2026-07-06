@@ -1,0 +1,108 @@
+{
+  "name": "forge-ide",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/forge-ide/src",
+  "projectType": "application",
+  "implicitDependencies": [
+    "doc-gen", 
+    "doc-viewer", 
+    "contract-verification", 
+    "vyper", 
+    "solhint", 
+    "circuit-compiler", 
+    "learneth", 
+    "noir-compiler"
+  ],
+  "targets": {
+    "build": {
+      "executor": "@nrwl/webpack:webpack",
+      "dependsOn": ["^build"],
+      "outputs": ["{options.outputPath}"],
+      "inputs": [
+        "default",
+        "^default",
+        "!{projectRoot}/src/assets/version.json"
+      ],
+      "defaultConfiguration": "development",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/forge-ide",
+        "index": "apps/forge-ide/src/index.html",
+        "baseHref": "/",
+        "main": "apps/forge-ide/src/index.tsx",
+        "polyfills": "apps/forge-ide/src/polyfills.ts",
+        "tsConfig": "apps/forge-ide/tsconfig.app.json",
+        "assets": [
+          "apps/forge-ide/src/assets",
+          "apps/forge-ide/src/index.html",
+          "apps/forge-ide/src/404.html",
+          "apps/forge-ide/src/favicon.ico",
+          "apps/forge-ide/src/robots.txt",
+          "apps/forge-ide/src/sitemap.xml"
+        ],
+        "styles": [],
+        "scripts": [],
+        "webpackConfig": "apps/forge-ide/webpack.config.js"
+      },
+      "configurations": {
+        "development": {
+          "optimization": false,
+          "generateIndexHtml": true,
+          "extractCss": false
+
+        },
+        "production": {
+          "optimization": true,
+          "generateIndexHtml": true,
+          "extractCss": false,
+          "sourceMap": false,
+          "vendorChunk": false,
+          "verbose": true
+        },
+        "desktop": {
+          "optimization": false,
+          "generateIndexHtml": true,
+          "extractCss": false,
+          "vendorChunk": false,
+          "baseHref": "./"
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/webpack:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "forge-ide:build"
+
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "forge-ide:build:development",
+          "host": "0.0.0.0",
+          "port": 8080,
+          "hmr": false,
+          "buildLibsFromSource": true
+        },
+        "hot":{
+          "buildTarget": "forge-ide:build:development",
+          "port": 8080,
+          "hmr": true,
+          "buildLibsFromSource": true
+        },
+        "production": {
+          "buildTarget": "forge-ide:build:production",
+          "port": 8080
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/forge-ide/**/*.{ts,tsx,js,jsx}"],
+        "eslintConfig": "apps/forge-ide/.eslintrc"
+      }
+    }
+  },
+  "tags": []
+}

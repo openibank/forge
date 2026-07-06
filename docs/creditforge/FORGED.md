@@ -4,7 +4,7 @@ Forge's local workspace bridge is published as `@creditchain/forged` and exposes
 the `forged` command.
 
 The package is prepared as the Nx project `forged` and currently lives under
-`libs/remixd` while it inherits the stable Remix daemon websocket
+`libs/forged` while it inherits the stable Remix daemon websocket
 implementation. Its public package identity, command, npm metadata, supported
 origins, GUI copy, build output, and documentation are Forge-native.
 
