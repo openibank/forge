@@ -1,6 +1,9 @@
 {
     "compilerOptions": {
         "paths": {
+            "@forge/creditchain-config": [
+              "libs/forge/creditchain-config/src/index.ts"
+            ],
             "@remix-project/core-plugin": [
               "libs/remix-core-plugin/src/index.ts"
             ],
@@ -38,6 +41,9 @@
               "libs/remix-ws-templates/src/index.ts"
             ],
             "@remix-project/remixd": [
+              "libs/remixd/index.ts"
+            ],
+            "@creditchain/forged": [
               "libs/remixd/index.ts"
             ],
             "@remix-ui/app": [

@@ -10,7 +10,7 @@ interface AmpSqlDropdownProps {
 
 const AmpSqlDropdown: React.FC<AmpSqlDropdownProps> = ({ plugin, disabled, onNotify }) => {
   const items: MenuItem[] = [
-    { label: 'Run Query and ask RemixAI', icon: <ArrowRightBig />, onClick: async () => {
+    { label: 'Run Query and ask Forge Copilot', icon: <ArrowRightBig />, onClick: async () => {
       const path = await plugin.call('fileManager', 'getCurrentFile')
       const content = await plugin.call('fileManager', 'readFile', path)
       const authToken: string | undefined = await plugin.call('config', 'getEnv', 'AMP_QUERY_TOKEN');
@@ -82,7 +82,7 @@ const AmpSqlDropdown: React.FC<AmpSqlDropdownProps> = ({ plugin, disabled, onNot
 
       plugin.call('remixaiassistant', 'chatPipe', message, false, { source: 'amp-sql', presetId: 'visualization' })
     }, dataId: 'run-with-default-menu-item' },
-    { label: 'Ask RemixAI about the current dataset manifest', icon: <ArrowRightBig />, onClick: async () => {
+    { label: 'Ask Forge Copilot about the current dataset manifest', icon: <ArrowRightBig />, onClick: async () => {
       onNotify?.('Getting the manifest')
       const path = await plugin.call('fileManager', 'getCurrentFile')
       const content = await plugin.call('fileManager', 'readFile', path)

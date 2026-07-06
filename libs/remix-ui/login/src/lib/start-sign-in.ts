@@ -2,8 +2,8 @@
  * Centralized helper for starting a sign-in flow.
  *
  * On desktop (Electron), this calls `desktopAuthHandler.login` so the user is
- * sent to the system browser to authenticate on remix.ethereum.org. The
- * resulting tokens come back via the `remix://` custom protocol and are
+ * sent to the system browser to authenticate on forge.creditchain.org. The
+ * resulting tokens come back via the `forge://` custom protocol and are
  * applied by the auth-plugin's persistent listener.
  *
  * On web, it invokes the provided `openLocalModal` callback so the in-app

@@ -1,7 +1,7 @@
 import { remixAILogger } from '../../helpers/logger'
 /**
- * DeepAgent Inferencer for Remix IDE
- * Integrates LangChain DeepAgent with Remix's AI system
+ * DeepAgent Inferencer for Forge
+ * Integrates LangChain DeepAgent with Forge's AI system
  */
 
 import { createDeepAgent, CreateDeepAgentParams } from 'deepagents'
@@ -792,11 +792,11 @@ export class DeepAgentInferencer implements ICompletions, IGeneration {
 
     try {
       const connectedServers = this.mcpInferencer.getConnectedServers()
-      if (!connectedServers || !connectedServers.includes('Remix IDE Server')) {
+      if (!connectedServers || !connectedServers.includes('Forge IDE Server')) {
         return ''
       }
 
-      const mcpClient = (this.mcpInferencer as any).mcpClients?.get('Remix IDE Server')
+      const mcpClient = (this.mcpInferencer as any).mcpClients?.get('Forge IDE Server')
       if (!mcpClient || !mcpClient.isConnected()) {
         return ''
       }
@@ -826,11 +826,11 @@ export class DeepAgentInferencer implements ICompletions, IGeneration {
 
     try {
       const connectedServers = this.mcpInferencer.getConnectedServers()
-      if (!connectedServers || !connectedServers.includes('Remix IDE Server')) {
+      if (!connectedServers || !connectedServers.includes('Forge IDE Server')) {
         return ''
       }
 
-      const mcpClient = (this.mcpInferencer as any).mcpClients?.get('Remix IDE Server')
+      const mcpClient = (this.mcpInferencer as any).mcpClients?.get('Forge IDE Server')
       if (!mcpClient || !mcpClient.isConnected()) {
         return ''
       }

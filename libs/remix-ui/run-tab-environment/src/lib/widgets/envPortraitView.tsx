@@ -90,7 +90,7 @@ function EnvironmentPortraitView() {
           { label: 'Private Key', value: result.privateKey, labelColor: 'var(--warning)' }
         ]
       })
-      plugin.call('notification', 'toast', 'Private key generated successfully in Remix terminal.')
+      plugin.call('notification', 'toast', 'Private key generated successfully in Forge terminal.')
     } catch (error) {
       plugin.call('terminal', 'log', { type: 'error', value: `Error generating private key: ${error.message}` })
     }
@@ -434,7 +434,7 @@ function EnvironmentPortraitView() {
           <div className="d-flex p-3 pt-0">
             <Dropdown className="w-100" show={isEnvironmentDropdownOpen} onToggle={(isOpen) => {
               if (isOpen) {
-                trackMatomoEvent({ category: 'udapp', action: 'environmentDropdownOpen', name: selectedProvider?.category || selectedProvider?.displayName || 'Remix VM' })
+                trackMatomoEvent({ category: 'udapp', action: 'environmentDropdownOpen', name: selectedProvider?.category || selectedProvider?.displayName || 'Forge VM' })
               }
               if (isOpen && isSubCategoryDropdownOpen) setIsSubCategoryDropdownOpen(false)
               if (isOpen && isAccountDropdownOpen) setIsAccountDropdownOpen(false)
@@ -457,7 +457,7 @@ function EnvironmentPortraitView() {
               >
                 <div className="env-toggle-content">
                   <div className="text-truncate text-secondary">
-                    <span data-id={`selected-provider-${widgetState.providers.selectedProvider}`}> { selectedProvider?.category || selectedProvider?.displayName || 'Remix VM' }</span>
+                    <span data-id={`selected-provider-${widgetState.providers.selectedProvider}`}> { selectedProvider?.category || selectedProvider?.displayName || 'Forge VM' }</span>
                     <span className="pe-1">
                       <i className="fas fa-caret-down text-secondary ms-2"></i>
                     </span>

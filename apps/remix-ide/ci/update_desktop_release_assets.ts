@@ -4,8 +4,8 @@ import * as path from 'path'
 import YAML from 'yaml'
 import crypto from 'crypto'
 
-const owner = 'remix-project-org'
-let repo = 'remix-desktop'
+const owner = 'openibank'
+let repo = 'forge'
 const headers = {
   'X-GitHub-Api-Version': '2022-11-28',
 }
@@ -23,7 +23,7 @@ if (version.includes('insiders')) {
   channel = 'insiders'
 }
 
-if (channel !== 'latest') repo = `remix-desktop-${channel}`
+if (channel !== 'latest') repo = `forge-desktop-${channel}`
 
 const octokit = new Octokit({
   auth: process.env.GH_TOKEN_DESKTOP_PUBLISH,
@@ -239,4 +239,3 @@ async function main() {
 }
 
 main()
-

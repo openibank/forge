@@ -4,20 +4,20 @@
   "main": "build/main.js",
   "license": "MIT",
   "type": "commonjs",
-  "description": "Remix IDE Desktop",
+  "description": "Forge Desktop",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/remix-project-org/remix-desktop.git"
+    "url": "git+https://github.com/openibank/forge.git"
   },
   "author": {
-    "name": "Remix Team",
-    "email": "remix@ethereum.org"
+    "name": "CreditChain",
+    "email": "support@creditchain.org"
   },
   "bugs": {
-    "url": "https://github.com/remix-project-org/remix-project/issues"
+    "url": "https://github.com/openibank/forge/issues"
   },
-  "homepage": "https://github.com/remix-project-org/remix-project#readme",
-  "appId": "org.ethereum.remixdesktop",
+  "homepage": "https://github.com/openibank/forge#readme",
+  "appId": "org.creditchain.forgedesktop",
   "mac": {
     "category": "public.app-category.productivity"
   },

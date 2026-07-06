@@ -465,14 +465,14 @@ export function AccountUI(props: AccountProps) {
         </span>
         { enableDelegationAuthorization ? (<span className="mx-1 mt-1">
           <CustomTooltip placement={'top'} tooltipClasses="text-wrap" tooltipId="remixDelegationAuthTooltip" tooltipText={intl.formatMessage({ id: 'udapp.eip7702InfoTooltip' })}>
-            <a href={"https://remix-ide.readthedocs.io/en/latest/account-abstraction-7702.html#using-eip-7702-in-remix"} className="titleInfo p-0 mb-2" target="_blank" rel="noreferrer">
+            <a href={"https://forge.creditchain.org/docs/account-abstraction-7702.html#using-eip-7702-in-remix"} className="titleInfo p-0 mb-2" target="_blank" rel="noreferrer">
               <i aria-hidden="true" className="ms-0 fas fa-info align-self-center"></i>
             </a>
           </CustomTooltip>
         </span>) : null }
         { smartAccountSelected ? (<span className="mx-1 mt-1">
           <CustomTooltip placement={'top'} tooltipClasses="text-wrap" tooltipId="remixDelegationAuthTooltip" tooltipText={intl.formatMessage({ id: 'udapp.safeSmartAccountInfoTooltip' })}>
-            <a href={"https://remix-ide.readthedocs.io/en/latest/account-abstraction-7702.html#gnosis-safe-smart-accounts-in-remix"} className="titleInfo p-0 mb-2" target="_blank" rel="noreferrer">
+            <a href={"https://forge.creditchain.org/docs/account-abstraction-7702.html#gnosis-safe-smart-accounts-in-remix"} className="titleInfo p-0 mb-2" target="_blank" rel="noreferrer">
               <i aria-hidden="true" className="ms-0 fas fa-info align-self-center"></i>
             </a>
           </CustomTooltip>

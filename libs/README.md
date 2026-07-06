@@ -1,17 +1,17 @@
-# Remix Libraries
+# Forge Libraries
 
 [![Discord](https://img.shields.io/badge/join-discord-brightgreen.svg?style=flat&logo=discord)](https://discord.gg/MzhfCGstNA)
 [![CircleCI](https://circleci.com/gh/remix-project-org/remix-project/tree/master.svg?style=svg)](https://circleci.com/gh/remix-project-org/remix-project/tree/master)
 [![Documentation Status](https://readthedocs.org/projects/docs/badge/?version=latest)](https://remix-ide.readthedocs.io/en/latest/index.html)
 
 
-**Remix libraries** are part of the Remix Project and provide tools that help smart contract development, compilation, testing & deployment. These tools also work as a core of native plugins of **Remix IDE**.
+**Forge libraries** are the CreditChain smart-contract development packages that power Forge's compiler, debugger, testing, workspace, local daemon, and plugin layers.
 
-**Remix IDE** is an open source web and desktop application. It fosters a fast development cycle and has a rich set of plugins with intuitive GUIs. Remix is used for the entire journey of contract development as well as being a playground for learning and teaching Ethereum.
+**Forge** is the CreditChain-native smart contract studio at https://forge.creditchain.org. It inherits battle-tested EVM development libraries from Remix and reorients them toward CreditChain, AI-assisted engineering, verified source workflows, and infrastructure-aware deployments.
 
-The Remix IDE repository is specifically available **[here](https://github.com/remix-project-org/remix-project/tree/master/apps/remix-ide)**, and an online version is available at https://remix.ethereum.org.
+The Forge repository is available at https://github.com/openibank/forge.
 
-To start with Remix IDE, check out [official documentation](https://remix-ide.readthedocs.io/en/latest/index.html).
+To start with Forge, open https://forge.creditchain.org.
 
 Here is the brief description of Remix libraries.
 
@@ -23,15 +23,14 @@ Here is the brief description of Remix libraries.
 + [`remix-lib`](remix-lib/README.md): Common place for libraries being used across multiple modules
 + [`remix-tests`](remix-tests/README.md): Unit test Solidity smart contracts. It works as a plugin & as CLI both
 + [`remix-url-resolver`](remix-url-resolver/README.md): Provide helpers for resolving the content from external URL ( including github, swarm, ipfs etc.).
-+ [`remix-ws-templates`](remix-ws-templates/README.md): To create a workspace using different templates on Remix IDE
-+ [`remixd`](remixd/README.md): Allow accessing local filesystem from Remix IDE by running a daemon
++ [`remix-ws-templates`](remix-ws-templates/README.md): Create workspaces from Forge and CreditChain templates
++ [`forged`](remixd/README.md): Connect Forge to a local filesystem by running the `@creditchain/forged` daemon
 
-Each library is an NPM package and has basic documentation about its usage in its own `README`.
+Each library is an NPM package or internal workspace package and has usage documentation in its own `README`.
 
 ## Contributing
 
-Everyone is very welcome to contribute on Remix Project. Suggestions, issues, queries and feedback are our pleasure. Please reach us on [Discord](https://discord.gg/MzhfCGstNA) in case of any query.
+Everyone is welcome to contribute to Forge. Suggestions, issues, queries, and feedback can be filed at https://github.com/openibank/forge/issues.
 
-For more information on the contributing to the code, see our [contribution guidelines](https://github.com/remix-project-org/remix-project/blob/master/CONTRIBUTING.md).
-
+For more information on contributing to the code, see the repository guidelines.
 

@@ -33,7 +33,7 @@ function HomeTabLearn({ plugin }: HomeTabLearnProps) {
   const startLearnEthTutorial = async (tutorial: 'basics' | 'soliditybeginner' | 'deploylibraries') => {
     await plugin.appManager.activatePlugin(['solidity', 'LearnEth', 'solidityUnitTesting'])
     plugin.verticalIcons.select('LearnEth')
-    plugin.call('LearnEth', 'startTutorial', 'remix-project-org/remix-workshops', 'master', tutorial)
+    plugin.call('LearnEth', 'startTutorial', 'openibank/forge-workshops', 'master', tutorial)
     trackMatomoEvent({
       category: 'hometab',
       action: 'startLearnEthTutorial',

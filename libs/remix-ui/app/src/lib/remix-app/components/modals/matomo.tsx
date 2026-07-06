@@ -24,7 +24,7 @@ const MatomoDialog = (props: MatomoDialogProps) => {
             id="remixApp.matomoText1Old"
             values={{
               a: (chunks) => (
-                <a href="https://remix-ide.readthedocs.io/en/latest/ai.html" target="_blank" rel="noreferrer">
+                <a href="https://forge.creditchain.org/docs/ai" target="_blank" rel="noreferrer">
                   {chunks}
                 </a>
               ),
@@ -64,7 +64,7 @@ const MatomoDialog = (props: MatomoDialogProps) => {
   const handleAcceptAllClick = async () => {
     // Consent is managed by cookie consent system in settings
     settings.updateMatomoPerfAnalyticsChoice(true) // Enable Matomo Performance analytics
-    settings.updateCopilotChoice(true) // Enable RemixAI copilot
+    settings.updateCopilotChoice(true) // Enable Forge Copilot
     trackMatomoEvent?.({ category: 'landingPage', action: 'MatomoAIModal', name: 'AcceptClicked' })
     setVisible(false)
   }

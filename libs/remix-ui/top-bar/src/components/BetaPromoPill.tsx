@@ -38,7 +38,7 @@ export function BetaPromoPill({ plugin }: BetaPromoPillProps) {
         data-id="beta-promo-pill"
       >
         <i className="fas fa-flask me-1"></i>
-        <span>Join Remix Beta</span>
+        <span>Join Forge Beta</span>
       </span>
     </CustomTooltip>
   )

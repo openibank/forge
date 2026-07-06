@@ -9,9 +9,9 @@ export class SepoliaForkVMProvider extends BasicVMProvider {
     super(
       {
         name: 'vm-sepolia-fork',
-        displayName: 'Sepolia fork - Remix VM (Osaka)',
+        displayName: 'Sepolia fork - Forge VM (Osaka)',
         kind: 'provider',
-        description: 'Remix VM (Osaka)',
+        description: 'Forge VM (Osaka)',
         methods: ['sendAsync', 'init'],
         version: packageJson.version
       },

@@ -14,7 +14,7 @@ function trackMatomoEvent(category: string, action: string, name?: string) {
 
 /**
  * Core function to perform Solidity scan and return the scan report
- * @param api - Remix API instance
+ * @param api - Forge API instance
  * @param compiledFileName - Name of the file to scan
  * @returns Promise with the scan report or throws error
  */
@@ -113,7 +113,7 @@ export type ScanReportRenderer = (scanReport: ScanReport, fileName: string) => a
 
 /**
  * Handler for Solidity scan with notifications and terminal output
- * @param api - Remix API instance
+ * @param api - Forge API instance
  * @param compiledFileName - Name of the file to scan
  * @param modalMessage - Error modal title message
  * @param renderResults - Callback function to render the scan results (e.g., as JSX)
@@ -132,7 +132,7 @@ export const handleSolidityScan = async (
     const workspace = await api.call('filePanel', 'getCurrentWorkspace')
     const fileName = `${workspace.name}/${compiledFileName}`
 
-    id = await api.call('notification', 'toast', 'Loading scan result in Remix terminal...', 15000)
+    id = await api.call('notification', 'toast', 'Loading scan result in Forge terminal...', 15000)
 
     const scanReport = await performSolidityScan(api, compiledFileName)
 

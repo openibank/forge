@@ -9,8 +9,8 @@ const profile = {
   displayName: 'Home',
   methods: [],
   events: [],
-  description: 'Remix Home',
-  icon: 'assets/img/remix-logo-blue.png',
+  description: 'Forge Home',
+  icon: 'assets/img/creditchain-logo.svg',
   location: 'mainPanel',
   version: packageJson.version
 }

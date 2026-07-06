@@ -40,7 +40,7 @@ const profile = {
   icon: '',
   location: 'none',
   version: packageJson.version,
-  maintainedBy: 'Remix'
+  maintainedBy: 'CreditChain'
 }
 
 /* ─── State shape ─── */
@@ -330,7 +330,7 @@ function BetaCornerWidgetUI({ state, onRegister, onDismiss, onDismissPermanent }
           </div>
         </div>
 
-        <h6 className="beta-corner-widget-title">Remix AI beta testing</h6>
+        <h6 className="beta-corner-widget-title">Forge Copilot beta testing</h6>
         <p className="beta-corner-widget-desc">
           Help shape the future of AI-powered Solidity development. Get early access to premium models, cloud storage &amp; more.
         </p>

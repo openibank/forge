@@ -11,7 +11,7 @@ const DEFAULT_OLLAMA_HOST = 'http://localhost:11434';
 let discoveredOllamaHost: string | null = null;
 
 export interface OllamaModelCapabilities {
-  /** Model can call tools / functions (required by the Remix agent). */
+  /** Model can call tools / functions (required by the Forge Copilot agent). */
   tools: boolean;
   /** Model emits a reasoning/thinking stream. */
   thinking: boolean;
@@ -215,7 +215,7 @@ export async function getModelCapabilities(modelName: string): Promise<OllamaMod
   return fallback;
 }
 
-/** True when the model can call tools — a hard requirement for the Remix agent. */
+/** True when the model can call tools — a hard requirement for the Forge Copilot agent. */
 export async function modelSupportsTools(modelName: string): Promise<boolean> {
   return (await getModelCapabilities(modelName)).tools;
 }

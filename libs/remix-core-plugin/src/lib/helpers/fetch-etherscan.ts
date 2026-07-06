@@ -70,7 +70,7 @@ export const fetchContractFromEtherscan = async (plugin, endpoint: string | Netw
     } catch (e) {
       throw new Error('unable to retrieve contract data: ' + JSON.stringify(e.message))
     }
-  } else throw new Error('unable to try fetching the source code from etherscan: etherscan access token not found. please go to the Remix settings page and provide an access token.')
+  } else throw new Error('unable to try fetching the source code from etherscan: etherscan access token not found. please go to the Forge settings page and provide an access token.')
 
   if (!data || !data.result) {
     return null

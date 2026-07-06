@@ -145,11 +145,11 @@ export class ContractVerificationPluginClient extends PluginClient {
 
           if (hasApiUrl && !etherscanApiKeySource) {
             await this.call('terminal', 'log', { type: 'warn', value: 'Etherscan verification skipped: API key not provided.' })
-            await this.call('terminal', 'log', { type: 'warn', value: `Please input the API key in Remix Settings - Connected Services OR Contract Verification Plugin Settings.` })
+            await this.call('terminal', 'log', { type: 'warn', value: `Please input the API key in Forge Settings - Connected Services OR Contract Verification Plugin Settings.` })
             continue
           }
           if (hasApiUrl && etherscanApiKeySource === 'global') {
-            await this.call('terminal', 'log', { type: 'log', value: '[Etherscan] Using API key from Remix global settings.' })
+            await this.call('terminal', 'log', { type: 'log', value: '[Etherscan] Using API key from Forge global settings.' })
           }
         }
 

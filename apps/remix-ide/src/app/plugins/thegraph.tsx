@@ -1,4 +1,4 @@
-// The Graph Subgraph Plugin for Remix IDE
+// The Graph Subgraph Plugin for Forge
 // A simple plugin to execute GraphQL queries from .subgraph files
 
 import { Plugin } from '@remixproject/engine'
@@ -80,7 +80,7 @@ const profile = {
   displayName: 'The Graph',
   description: 'Execute GraphQL queries against The Graph subgraphs',
   version: packageJson.version,
-  maintainedBy: 'Remix',
+  maintainedBy: 'CreditChain',
   permission: true,
   events: ['queryExecuted'],
   methods: ['runSubgraphFile', 'getSubgraphFileContext', 'createDappFromSubgraphFile', 'executeQuery', 'getSettings', 'saveSettings', 'getDefaultEndpoint', 'setDefaultEndpoint']
@@ -205,7 +205,7 @@ export class TheGraphPlugin extends Plugin {
   }
 
   /**
-   * Open RemixAI with a QuickDapp handoff prompt for the selected .subgraph file.
+   * Open Forge Copilot with a QuickDapp handoff prompt for the selected .subgraph file.
    * Incomplete subgraph files are routed to a repair prompt instead of generation.
    */
   async createDappFromSubgraphFile(pathOrCmd: string | { path: string[] }): Promise<void> {
@@ -236,7 +236,7 @@ export class TheGraphPlugin extends Plugin {
       }
 
       try {
-        await this.call('notification' as any, 'toast', 'Error opening RemixAI for this subgraph file.')
+        await this.call('notification' as any, 'toast', 'Error opening Forge Copilot for this subgraph file.')
       } catch {
         // Best effort only.
       }

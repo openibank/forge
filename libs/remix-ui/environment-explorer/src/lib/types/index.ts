@@ -1,7 +1,7 @@
 import { Plugin } from '@remixproject/engine'
 import { Profile } from '@remixproject/plugin-utils'
 
-export type ProvidersSection = `Injected` | 'Remix VMs' | 'Externals' | 'Forked States'
+export type ProvidersSection = `Injected` | 'Forge VMs' | 'Externals' | 'Forked States'
 
 export type environmentExplorerUIProps = {
   state: {

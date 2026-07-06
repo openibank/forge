@@ -70,7 +70,7 @@ export class Blockchain extends Plugin<any, any> {
   getBalanceInEther(address: any): Promise<string>;
   pendingTransactionsCount(): number;
   /**
-     * This function send a tx only to Remix VM or testnet, will return an error for the mainnet
+     * This function send a tx only to Forge VM or testnet, will return an error for the mainnet
      * SHOULD BE TAKEN CAREFULLY!
      *
      * @param {Object} tx    - transaction.

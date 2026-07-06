@@ -672,7 +672,7 @@ export class AuthPlugin extends Plugin {
         .replace(/\//g, '_')
         .replace(/=+$/, '')
 
-      const callbackUrl = `remix://auth/sso-callback?state=${encodeURIComponent(state)}&access_token=${encodeURIComponent(accessToken)}&refresh_token=${encodeURIComponent(refreshToken)}&user=${encodeURIComponent(userBase64)}`
+      const callbackUrl = `forge://auth/sso-callback?state=${encodeURIComponent(state)}&access_token=${encodeURIComponent(accessToken)}&refresh_token=${encodeURIComponent(refreshToken)}&user=${encodeURIComponent(userBase64)}`
       window.location.href = callbackUrl
     } catch (error) {
       console.error('[AuthPlugin] Failed to complete desktop auth callback:', error)
@@ -681,7 +681,7 @@ export class AuthPlugin extends Plugin {
 
   /**
    * Desktop login flow: opens the web IDE in the user's browser, user authenticates there,
-   * and tokens are sent back to desktop via the remix:// custom protocol.
+   * and tokens are sent back to desktop via the forge:// custom protocol.
    */
   private async loginViaDesktopBridge(): Promise<void> {
     this.log('[AuthPlugin] Initiating desktop login via web bridge')
@@ -1651,7 +1651,7 @@ export class AuthPlugin extends Plugin {
       const siweMessage = new SiweMessage({
         domain: window.location.host,
         address: address,
-        statement: 'Link this Ethereum account to your Remix account',
+        statement: 'Link this CreditChain/EVM account to your Forge account',
         uri: window.location.origin,
         version: '1',
         chainId: chainIdNumber,
@@ -1732,7 +1732,7 @@ export class AuthPlugin extends Plugin {
 
       // Initialize the SDK
       const sdk = createBaseAccountSDK({
-        appName: 'Remix IDE',
+        appName: 'Forge',
       })
       const provider = sdk.getProvider()
 
@@ -1776,7 +1776,7 @@ export class AuthPlugin extends Plugin {
               uri: window.location.origin,
               nonce,
               chainId: BASE_MAINNET_CHAIN_ID,
-              statement: 'Link this Base account to your Remix account',
+              statement: 'Link this Base account to your Forge account',
               issuedAt: new Date().toISOString(),
             },
           },
@@ -1862,7 +1862,7 @@ export class AuthPlugin extends Plugin {
       const siweMessage = new SiweMessage({
         domain: window.location.host,
         address: address,
-        statement: 'Sign in to Remix IDE with your Ethereum account',
+        statement: 'Sign in to Forge with your CreditChain/EVM account',
         uri: window.location.origin,
         version: '1',
         chainId: chainIdNumber,
@@ -1969,7 +1969,7 @@ export class AuthPlugin extends Plugin {
 
       // Initialize the SDK
       const sdk = createBaseAccountSDK({
-        appName: 'Remix IDE',
+        appName: 'Forge',
       })
       const provider = sdk.getProvider()
 
@@ -2014,7 +2014,7 @@ export class AuthPlugin extends Plugin {
               uri: window.location.origin,
               nonce,
               chainId: BASE_MAINNET_CHAIN_ID,
-              statement: 'Sign in to Remix IDE with your Base account',
+              statement: 'Sign in to Forge with your Base account',
               issuedAt: new Date().toISOString(),
             },
           },

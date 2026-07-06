@@ -67,7 +67,7 @@ const ManagePreferencesSwitcher = (prop: {
             id="remixApp.mpOp3Link"
             values={{
               a: (chunks) => (
-                <a className="text-primary" href="https://remix-ide.readthedocs.io/en/latest/ai.html" target="_blank" rel="noreferrer">
+                <a className="text-primary" href="https://forge.creditchain.org/docs/ai" target="_blank" rel="noreferrer">
                   {chunks}
                 </a>
               ),
@@ -113,7 +113,7 @@ const ManagePreferencesDialog = (props) => {
   const savePreferences = async () => {
     // Consent is managed by cookie consent system in settings
     settings.updateMatomoPerfAnalyticsChoice(switcherState.current.matPerfSwitch) // Enable/Disable Matomo Performance analytics
-    settings.updateCopilotChoice(switcherState.current.remixAISwitch) // Enable/Disable RemixAI copilot
+    settings.updateCopilotChoice(switcherState.current.remixAISwitch) // Enable/Disable Forge Copilot
     trackMatomoEvent?.({ category: 'landingPage', action: 'MatomoAIModal', name: `MatomoPerfStatus: ${switcherState.current.matPerfSwitch}` })
     trackMatomoEvent?.({ category: 'landingPage', action: 'MatomoAIModal', name: `AICopilotStatus: ${switcherState.current.remixAISwitch}` })
     setVisible(false)

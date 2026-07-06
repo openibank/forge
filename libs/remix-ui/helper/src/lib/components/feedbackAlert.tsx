@@ -24,12 +24,12 @@ export function FeedbackAlert ({ message, askGPT }: FeedbackAlertProps) {
           </span>
           <button
             className="btn btn-ai"
-            data-id="ask-remix-ai-button"
+            data-id="ask-forge-copilot-button"
             onClick={(event) => {
               event.stopPropagation()
               askGPT() }}
           >
-            <img src="assets/img/remixAI_small.svg" alt="Remix AI" className="explain-icon" />
+            <img src="assets/img/creditchain-logo.svg" alt="Forge Copilot" className="explain-icon" />
             <span><FormattedMessage id="helper.askRemixAI" /></span>
           </button>
         </div>

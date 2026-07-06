@@ -75,7 +75,7 @@ export const LookupView = () => {
       await clientInstance.saveToRemix(lookupResponse)
       await sendToMatomo('openInRemix On: ' + selectedChain)
     } catch (err) {
-      console.error(`Error while trying to open in Remix: ${err.message}`)
+      console.error(`Error while trying to open in Forge: ${err.message}`)
     }
   }
 

@@ -150,7 +150,7 @@ export const CompileDropdown: React.FC<CompileDropdownProps> = ({ tabPath, plugi
       }
       await plugin.call('menuicons', 'select', 'solidityStaticAnalysis')
       setTimeout(() => plugin.call('solidityStaticAnalysis', 'analyze'), 500)
-    }, 'Run Remix Analysis')
+    }, 'Run Forge Analysis')
   }
 
   const handleScanContinue = async () => {
@@ -223,7 +223,7 @@ export const CompileDropdown: React.FC<CompileDropdownProps> = ({ tabPath, plugi
       icon: <ArrowRightBig />,
       dataId: 'compile-run-analysis-menu-item',
       submenu: [
-        { label: 'Run Remix Analysis', icon: <SettingsLogo />, onClick: runRemixAnalysis, dataId: 'run-remix-analysis-submenu-item' },
+        { label: 'Run Forge Analysis', icon: <SettingsLogo />, onClick: runRemixAnalysis, dataId: 'run-remix-analysis-submenu-item' },
         { label: 'Run Solidity Scan', icon: <SolidityScanLogo />, onClick: runSolidityScan, dataId: 'run-solidity-scan-submenu-item' }
       ]
     },

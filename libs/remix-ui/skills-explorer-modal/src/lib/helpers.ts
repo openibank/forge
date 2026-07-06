@@ -44,7 +44,7 @@ export function getSkillsBaseUrl(): string {
     }
   } catch (_) { /* ignore */ }
   // Fallback: direct ethskills server (production manifest path)
-  return 'https://api.remix.live/mcp/ethskills'
+  return 'https://api.forge.creditchain.org/mcp/ethskills'
 }
 
 export const fetchSkillData = async (url: string): Promise<SkillData> => {

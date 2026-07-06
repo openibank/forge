@@ -394,7 +394,7 @@ const BetaWelcomeModal: React.FC<BetaWelcomeModalProps> = ({
                   </svg>
                 </div>
                 <div style={{ display: "flex", flexDirection: "column" }}>
-                  <div style={{ fontSize: 16, fontWeight: 500, color: c.tx }}>Remix Beta Program</div>
+                  <div style={{ fontSize: 16, fontWeight: 500, color: c.tx }}>Forge Beta Program</div>
                   <div
                     style={{
                       fontSize: 11,
@@ -607,7 +607,7 @@ export type { BetaWelcomeModalProps, FeatureKey, LinkKey };
 //    onLink={(link) => {
 //      switch (link) {
 //        case 'discord': window.open('https://discord.gg/remix'); break
-//        case 'docs':    window.open('https://remix-ide.readthedocs.io'); break
+//        case 'docs':    window.open('https://forge.creditchain.org/docs'); break
 //        case 'blog':    window.open('https://medium.com/remix-ide'); break
 //      }
 //    }}

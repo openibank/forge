@@ -1,14 +1,14 @@
-# REMIX DESKTOP
+# FORGE DESKTOP
 
 ## Development
 
 ### Running the app locally
 
-In the main repo run yarn, then run yarn serve  
+In the main repo run yarn, then run yarn serve
 In this directory apps/remixdesktop, yarn, then run: yarn start:dev to boot the electron app
 
-Then, the app will be started in live reload mode, and anything you do in Remix IDE will be reloaded.
-It will not however reload electron code. You need to rerun yarn start:dev every time. 
+Then, the app will be started in live reload mode, and anything you do in Forge will be reloaded.
+It will not however reload electron code. You need to rerun yarn start:dev every time.
 
 If you run into issues with yarn when native node modules are being rebuilt, you need
 - Windows: install Visual Studio Tools with Desktop Development C++ enabled in the Workloads
@@ -18,11 +18,11 @@ If you run into issues with yarn when native node modules are being rebuilt, you
 
 ### Electron Plugin
 
-Electron has its own Plugin Engine, which holds plugins, these plugins have plugin clients attached to them. Each of those clients is created when an instance of Remix Desktop connects
+Electron has its own Plugin Engine, which holds plugins, these plugins have plugin clients attached to them. Each of those clients is created when an instance of Forge Desktop connects
 and activates a plugin. Follow all these steps to make that work.
 
 1. create a plugin file in apps/remixdesktop/src/plugins
-2. add imports: 
+2. add imports:
 ```
 import { Profile } from '@remixproject/plugin-utils'
 import { ElectronBasePlugin, ElectronBasePluginClient } from '@remixproject/plugin-electron'
@@ -42,7 +42,7 @@ const clientProfile: Profile = {
 }
 ```
 
-As you can see in the clientProfile you define the methods which are exposed to the Remix plugin system.
+As you can see in the clientProfile you define the methods which are exposed to the Forge plugin system.
 
 4. add a base plugin and a plugin client
 ```
@@ -92,7 +92,7 @@ class IsoGitPluginClient extends ElectronBasePluginClient {
 
   ```
 
-6. If you need to call methods on the BASE which holds all the clients you can add methods there, for example this iterates over clients 
+6. If you need to call methods on the BASE which holds all the clients you can add methods there, for example this iterates over clients
 and finds the one with the webContentsId. This ID passed on ie by menu items. Look at menu.ts to see how that works.
 
 ```
@@ -116,7 +116,7 @@ const compilerLoaderPlugin = new CompilerLoaderPlugin()
 engine.register(compilerLoaderPlugin)
 ```
 
-9. activation of plugins is done when the clients connect to the engine. No need to activate it. 
+9. activation of plugins is done when the clients connect to the engine. No need to activate it.
 
 10. Add the plugin to the preload.ts. Add it to this list:
 
@@ -126,8 +126,8 @@ const exposedPLugins = ['fs', 'git', 'xterm', 'isogit', 'electronconfig', 'elect
 
 If you don't do this, it won't work.
 
-11. In Remix IDE create a plugin in src/app/plugins/electron. If everything works correctly the methods will be loaded from the electron side, no need to specify them here.
-This plugin is only a passthrough. 
+11. In Forge create a plugin in src/app/plugins/electron. If everything works correctly the methods will be loaded from the electron side, no need to specify them here.
+This plugin is only a passthrough.
 
 ```
 const profile = {
@@ -143,7 +143,7 @@ export class compilerLoaderPluginDesktop extends ElectronPlugin {
   }
 
   async onActivation(): Promise<void> {
-  
+
    // something to do
 
   }

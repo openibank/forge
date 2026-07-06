@@ -825,7 +825,7 @@ export const SolidityUnitTesting = (props: Record<string, any>) => {
             tooltipText={<FormattedMessage id="solidityUnitTesting.generateTestsLinkTooltip" />}
             placement={'top'}
           >
-            <a className="btn border text-decoration-none pe-0 d-flex w-50 ms-2" target="__blank" href="https://remix-ide.readthedocs.io/en/latest/unittesting.html#test-directory">
+            <a className="btn border text-decoration-none pe-0 d-flex w-50 ms-2" target="__blank" href="https://forge.creditchain.org/docs/unittesting.html#test-directory">
               <label className="btn p-1 m-0">
                 <FormattedMessage id="solidityUnitTesting.howToUse" />
               </label>

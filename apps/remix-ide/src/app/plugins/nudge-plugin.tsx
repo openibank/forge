@@ -50,7 +50,7 @@ const profile = {
   icon: '',
   location: 'none',
   version: packageJson.version,
-  maintainedBy: 'Remix'
+  maintainedBy: 'CreditChain'
 }
 
 /* ─── State shape ─── */
@@ -81,8 +81,8 @@ export class NudgePlugin extends Plugin {
   // Epoch ms until which the "Running low on credits" nudge is suppressed
   // (set right after an upgrade so a freshly-paid user isn't warned).
   private _suppressLowCreditsUntil = 0
-  // Plan label shown in the post-upgrade celebration nudge (e.g. "Remix Pro").
-  private _upgradedPlanLabel = 'Remix Pro'
+  // Plan label shown in the post-upgrade celebration nudge (e.g. "Forge Pro").
+  private _upgradedPlanLabel = 'Forge Pro'
   // After a successful upgrade, the help guide to open once the plan-manager
   // panel closes (so it doesn't fight the still-open checkout panel).
   private _pendingPlanGuide: string | null = null
@@ -480,7 +480,7 @@ export class NudgePlugin extends Plugin {
       this.log('[NudgePlugin] _checkFreePlanNudge: no active subscription, proceeding', subData)
 
       // 2. Fetch plan catalog to derive discount copy.
-      let title = 'Upgrade to Remix AI Pro'
+      let title = 'Upgrade to Forge Copilot Pro'
       let message = 'Upgrade to a paid plan to unlock premium AI models, MCP tools, higher credit quotas, and more.'
 
       try {
@@ -751,8 +751,8 @@ export class NudgePlugin extends Plugin {
       condition: all('user:logged_in_beta', 'editor:solidity_active'),
       action: {
         type: 'widget',
-        title: 'RemixAI Knows Solidity',
-        message: 'Ask RemixAI to explain, audit, or optimize your contract. It understands your project context through MCP.',
+        title: 'Forge Copilot Knows Solidity',
+        message: 'Ask Forge Copilot to explain, audit, or optimize your contract. It understands your project context through MCP.',
         actionLabel: 'Learn More',
         actionTarget: 'helpPlugin::showModal::mcp',
         icon: 'fas fa-robot',
@@ -849,7 +849,7 @@ export class NudgePlugin extends Plugin {
       action: {
         type: 'widget',
         title: 'Quick Tip: Explain Code',
-        message: 'Right-click any code and select "Explain this" — RemixAI will break it down for you instantly.',
+        message: 'Right-click any code and select "Explain this" — Forge Copilot will break it down for you instantly.',
         actionLabel: 'Got It',
         actionTarget: '',
         icon: 'fas fa-lightbulb',

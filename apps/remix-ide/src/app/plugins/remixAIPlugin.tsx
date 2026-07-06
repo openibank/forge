@@ -15,7 +15,7 @@ import { DeepAgentEventBridge, MCPServerManager, PermissionChecker, ModelManager
 
 const profile = {
   name: 'remixAI',
-  displayName: 'RemixAI',
+  displayName: 'Forge Copilot',
   methods: ['code_generation', 'code_completion', 'setContextFiles', 'basic_prompt',
     "answer", "code_explaining", "generateWorkspace", "fixWorspaceErrors",
     "code_insertion", "error_explaining", "vulnerability_check", 'generate',
@@ -49,13 +49,13 @@ const profile = {
     'onTodoError', 'onAgentError', 'onApiError',
     'onToolApprovalRequired', 'ollamaModelDiscovered'
   ],
-  icon: 'assets/img/remix-logo-blue.png',
-  description: 'RemixAI provides AI services to Remix IDE.',
+  icon: 'assets/img/creditchain-logo.svg',
+  description: 'Forge Copilot provides AI services for CreditChain and EVM development.',
   kind: '',
   location: 'none',
-  documentation: 'https://remix-ide.readthedocs.io/en/latest/ai.html',
+  documentation: 'https://forge.creditchain.org/docs/ai',
   version: packageJson.version,
-  maintainedBy: 'Remix'
+  maintainedBy: 'CreditChain'
 }
 
 // add Plugin<any, CustomRemixApi>

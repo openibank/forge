@@ -30,7 +30,7 @@ export interface PlanGuideDemo {
 export interface PlanGuideModalProps {
   open: boolean
   onClose: () => void
-  /** Plan display name, e.g. "Remix Starter" / "Remix Pro". */
+  /** Plan display name, e.g. "Forge Starter" / "Forge Pro". */
   planName: string
   /** Accent colour for the plan badge/header. */
   accent: string
@@ -176,7 +176,7 @@ const PlanGuideModal: React.FC<PlanGuideModalProps> = ({ open, onClose, planName
             <div ref={chatRef} style={{ margin: '0 24px 20px', borderRadius: 12, background: c.s1, border: '0.5px solid rgba(255,255,255,0.06)', overflow: 'hidden' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '10px 14px', borderBottom: '0.5px solid rgba(255,255,255,0.04)', fontSize: 12, fontWeight: 500, color: c.tm }}>
                 <span style={{ width: 6, height: 6, borderRadius: '50%', background: c.gn, animation: 'plgDot 2s ease-in-out infinite' }} />
-                RemixAI Assistant
+                Forge Copilot Assistant
               </div>
               <div style={{ padding: 14, minHeight: 120, display: 'flex', flexDirection: 'column', gap: 10 }}>
                 {messages.length === 0 && !isTyping ? (

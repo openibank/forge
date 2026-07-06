@@ -19,10 +19,14 @@ import {
   inkSepolia,
   zkSync,
   zora,
+  creditchain,
+  creditchainTestnet,
 } from './chains'
 
 export const constants = {
   chains: [
+    creditchain,
+    creditchainTestnet,
     arbitrum,
     arbitrumGoerli,
     mainnet,
@@ -47,9 +51,9 @@ export const constants = {
   // @ts-ignore
   PROJECT_ID: WALLET_CONNECT_PROJECT_ID,
   METADATA: {
-    name: 'Remix IDE',
-    description: 'The Native IDE for Web3 Development.',
-    url: 'https://remix.ethereum.org/',
-    icons: ['https://remix.ethereum.org/favicon.ico'],
+    name: 'Forge',
+    description: 'CreditChain-native smart contract studio for EVM development.',
+    url: 'https://forge.creditchain.org/',
+    icons: ['https://forge.creditchain.org/assets/img/creditchain-logo.png'],
   }
 }

@@ -7,6 +7,7 @@ import { HomeTabEvent, MatomoEvent, Features } from '@remix-api'
 import { TrackingContext } from '@remix-ide/tracking'
 import { FormattedMessage } from 'react-intl'
 import { uploadFolderExcludingRootFolder } from '@remix-ui/workspace'
+import { CREDITCHAIN_NETWORKS, CREDITFORGE_LINKS, toWalletAddEthereumChainParams } from '@forge/creditchain-config'
 
 export interface RemixUiHomeTabProps {
   plugin: any
@@ -17,7 +18,6 @@ export const RemixUiHomeTab = (props: RemixUiHomeTabProps) => {
   const { trackMatomoEvent: baseTrackEvent } = useContext(TrackingContext)
   const { plugin } = props
   const uploadFileRef = useRef<HTMLInputElement>(null)
-  const remiAudioRef = useRef<HTMLAudioElement>(null)
 
   const trackMatomoEvent = <T extends MatomoEvent = HomeTabEvent>(event: T) => {
     baseTrackEvent?.<T>(event)
@@ -74,6 +74,46 @@ contract HelloWorld {
       await plugin.call('fileManager', 'open', '/contracts/HelloWorld.sol')
     }
     trackMatomoEvent({ category: 'hometab', action: 'filesSection', name: 'startCoding', isClick: true })
+  }
+
+  const createCreditScoreRegistry = async () => {
+    plugin.verticalIcons.select('filePanel')
+    const templateName = 'creditScoreRegistry'
+    const workspaceName = await plugin.call('filePanel', 'getAvailableWorkspaceName', 'CreditChain Credit Score Registry')
+    await plugin.call('filePanel', 'createWorkspace', workspaceName, templateName)
+    await plugin.call('filePanel', 'setWorkspace', workspaceName)
+    await plugin.call('fileManager', 'open', 'contracts/CreditScoreRegistry.sol')
+    trackMatomoEvent({ category: 'hometab', action: 'filesSection', name: 'createCreditScoreRegistry', isClick: true })
+  }
+
+  const addCreditChainTestnet = async () => {
+    const provider = (window as any).ethereum
+    const testnet = CREDITCHAIN_NETWORKS.find(network => network.name === 'CreditChain Testnet') || CREDITCHAIN_NETWORKS[0]
+
+    if (!provider?.request) {
+      plugin.call('notification', 'toast', 'Connect an injected wallet to add CreditChain Testnet.')
+      return
+    }
+
+    try {
+      await provider.request({
+        method: 'wallet_addEthereumChain',
+        params: [toWalletAddEthereumChainParams(testnet)]
+      })
+      trackMatomoEvent({ category: 'hometab', action: 'filesSection', name: 'addCreditChainTestnet', isClick: true })
+    } catch (error: any) {
+      plugin.call('notification', 'toast', `Unable to add CreditChain Testnet: ${error?.message || 'wallet rejected the request'}`)
+    }
+  }
+
+  const openContractSearch = async () => {
+    try {
+      await plugin.call('manager', 'activatePlugin', 'cookbookdev')
+      await plugin.call('sidePanel', 'focus', 'cookbookdev')
+      trackMatomoEvent({ category: 'hometab', action: 'filesSection', name: 'openContractSearch', isClick: true })
+    } catch (error: any) {
+      plugin.call('notification', 'toast', 'Contract search will be connected to Forge API in the next CreditChain phase.')
+    }
   }
 
   // ─── Open ───
@@ -145,21 +185,47 @@ contract HelloWorld {
         <div className="ht-layout">
           <div className="ht-panel">
             <div className="ht-header" >
-              <a className="ht-logo-container" href="https://remix.live" target="_blank" rel="noreferrer">
-                <audio id="remiAudio" muted={false} src="assets/audio/remiGuitar-single-power-chord-A-minor.mp3" ref={remiAudioRef}></audio>
-                <div className="ht-logo" onClick={() => remiAudioRef.current?.play()} style={{ cursor: 'pointer' }}>
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 105 100" style={{ height: '22px' }}>
-                    <path fill="currentColor" d="M91.84,35a.09.09,0,0,1-.1-.07,41,41,0,0,0-79.48,0,.09.09,0,0,1-.1.07C9.45,35,1,35.35,1,42.53c0,8.56,1,16,6,20.32,2.16,1.85,5.81,2.3,9.27,2.22a44.4,44.4,0,0,0,6.45-.68.09.09,0,0,0,.06-.15A34.81,34.81,0,0,1,17,45c0-.1,0-.21,0-.31a35,35,0,0,1,70,0c0,.1,0,.21,0,.31a34.81,34.81,0,0,1-5.78,19.24.09.09,0,0,0,.06.15,44.4,44.4,0,0,0,6.45.68c3.46.08,7.11-.37,9.27-2.22,5-4.27,6-11.76,6-20.32C103,35.35,94.55,35,91.84,35Z" />
-                    <path fill="currentColor" d="M52,74,25.4,65.13a.1.1,0,0,0-.1.17L51.93,91.93a.1.1,0,0,0,.14,0L78.7,65.3a.1.1,0,0,0-.1-.17L52,74A.06.06,0,0,1,52,74Z" />
-                    <path fill="currentColor" d="M75.68,46.9,82,45a.09.09,0,0,0,.08-.09,29.91,29.91,0,0,0-.87-6.94.11.11,0,0,0-.09-.08l-6.43-.58a.1.1,0,0,1-.06-.18l4.78-4.18a.13.13,0,0,0,0-.12,30.19,30.19,0,0,0-3.65-6.07.09.09,0,0,0-.11,0l-5.91,2a.1.1,0,0,1-.12-.14L72.19,23a.11.11,0,0,0,0-.12,29.86,29.86,0,0,0-5.84-4.13.09.09,0,0,0-.11,0l-4.47,4.13a.1.1,0,0,1-.17-.07l.09-6a.1.1,0,0,0-.07-.1,30.54,30.54,0,0,0-7-1.47.1.1,0,0,0-.1.07l-2.38,5.54a.1.1,0,0,1-.18,0l-2.37-5.54a.11.11,0,0,0-.11-.06,30,30,0,0,0-7,1.48.12.12,0,0,0-.07.1l.08,6.05a.09.09,0,0,1-.16.07L37.8,18.76a.11.11,0,0,0-.12,0,29.75,29.75,0,0,0-5.83,4.13.11.11,0,0,0,0,.12l2.59,5.6a.11.11,0,0,1-.13.14l-5.9-2a.11.11,0,0,0-.12,0,30.23,30.23,0,0,0-3.62,6.08.11.11,0,0,0,0,.12l4.79,4.19a.1.1,0,0,1-.06.17L23,37.91a.1.1,0,0,0-.09.07A29.9,29.9,0,0,0,22,44.92a.1.1,0,0,0,.07.1L28.4,47a.1.1,0,0,1,0,.18l-5.84,3.26a.16.16,0,0,0,0,.11,30.17,30.17,0,0,0,2.1,6.76c.32.71.67,1.4,1,2.08a.1.1,0,0,0,.06,0L52,68.16H52l26.34-8.78a.1.1,0,0,0,.06-.05,30.48,30.48,0,0,0,3.11-8.88.1.1,0,0,0-.05-.11l-5.83-3.26A.1.1,0,0,1,75.68,46.9Z" />
-                  </svg>
-                  <span className="ht-logo-wordmark">Remix</span>
+              <a className="ht-logo-container" href={CREDITFORGE_LINKS.home} target="_blank" rel="noreferrer">
+                <div className="ht-logo">
+                  <img className="ht-logo-mark" src="assets/img/forge-logo.svg" alt="" />
+                  <span className="ht-logo-wordmark">Forge</span>
                 </div>
                 <span className="ht-tagline">
-                  <FormattedMessage id="home.projectTemplates" />{' '}
-                  <span style={{ color: 'var(--ht-accent)' }}><FormattedMessage id="home.projectTemplates2" /></span>
+                  AI-native smart contract studio for{' '}
+                  <span style={{ color: 'var(--ht-accent)' }}>CreditChain</span>
                 </span>
               </a>
+            </div>
+
+            {/* CreditChain */}
+            <div className="ht-section">
+              <div className="ht-section-header">
+                <span className="ht-section-title">CreditChain</span>
+              </div>
+              <button className="ht-row ht-row-cta" data-id="homeTabSearchContracts" onClick={openContractSearch}>
+                <span className="ht-row-icon ht-row-icon-cta"><i className="fa-solid fa-magnifying-glass"></i></span>
+                <span className="ht-row-text">
+                  <strong>Search verified contracts</strong>
+                  <small>Import source, ABI, compiler settings, and proxy context</small>
+                </span>
+              </button>
+              <button className="ht-cta-secondary" data-id="homeTabCreateCreditScoreRegistry" onClick={createCreditScoreRegistry}>
+                <span className="ht-cta-secondary-icon"><i className="fa-solid fa-id-card"></i></span>
+                <span className="ht-cta-secondary-text">
+                  <strong>Create Credit Score Registry</strong>
+                  <span>Start from a CreditChain-native Solidity template</span>
+                </span>
+              </button>
+              <div className="ht-action-grid">
+                <button className="ht-action-btn" data-id="homeTabAddCreditChain" onClick={addCreditChainTestnet}>
+                  <i className="fa-solid fa-wallet"></i>
+                  Add Testnet
+                </button>
+                <a className="ht-action-btn" href={CREDITFORGE_LINKS.creditChainDocs} target="_blank" rel="noreferrer">
+                  <i className="fa-solid fa-book-open"></i>
+                  Docs
+                </a>
+              </div>
             </div>
 
             {/* Start */}
@@ -171,21 +237,21 @@ contract HelloWorld {
                 <span className="ht-row-icon ht-row-icon-cta"><i className="fa-solid fa-plus"></i></span>
                 <span className="ht-row-text">
                   <strong><FormattedMessage id="home.createNewWorkspace" /></strong>
-                  <small>Start from a template</small>
+                  <small>Start from a Forge or EVM template</small>
                 </span>
               </button>
               <button className="ht-cta-secondary" data-id="homeTabStartCoding" onClick={startCoding}>
                 <span className="ht-cta-secondary-icon"><i className="fa-solid fa-play"></i></span>
                 <span className="ht-cta-secondary-text">
                   <strong><FormattedMessage id="home.startCoding" defaultMessage="Start coding" /></strong>
-                  <span>Open a blank Playground workspace</span>
+                  <span>Open a Solidity playground workspace</span>
                 </span>
               </button>
               <button className="ht-cta-secondary" onClick={startLearnEth}>
                 <span className="ht-cta-secondary-icon"><i className="fa-solid fa-book"></i></span>
                 <span className="ht-cta-secondary-text">
                   <strong><FormattedMessage id="home.startLearning" /></strong>
-                  <span>Interactive Solidity tutorial</span>
+                  <span>Interactive Solidity and EVM tutorials</span>
                 </span>
               </button>
             </div>
@@ -229,11 +295,11 @@ contract HelloWorld {
               <div className="ht-section-header">
                 <span className="ht-section-title"><FormattedMessage id="home.desktop" defaultMessage="Desktop App" /></span>
               </div>
-              <a className="ht-cta-secondary" href="https://remix.live/desktop" target="_blank" rel="noreferrer">
+              <a className="ht-cta-secondary" href={CREDITFORGE_LINKS.home} target="_blank" rel="noreferrer">
                 <span className="ht-cta-secondary-icon"><i className="fa-solid fa-desktop"></i></span>
                 <span className="ht-cta-secondary-text">
-                  <strong><FormattedMessage id="home.downloadDesktop" defaultMessage="Download Remix Desktop" /></strong>
-                  <span>Available for Windows, macOS and Linux</span>
+                  <strong><FormattedMessage id="home.downloadDesktop" defaultMessage="Forge Cloud" /></strong>
+                  <span>CreditChain developer cloud at forge.creditchain.org</span>
                 </span>
               </a>
             </div>
@@ -247,21 +313,21 @@ contract HelloWorld {
                 <span className="ht-row-icon" style={{ color: 'var(--custom-ai-color)' }}><i className="fa-solid fa-cube"></i></span>
                 <span className="ht-row-text">
                   <strong><FormattedMessage id="home.loadSkills" /></strong>
-                  <small>AI skill modules</small>
+                  <small>Forge Copilot skill modules</small>
                 </span>
               </button>
               <button className="ht-row" style={{ border: '1px solid var(--bs-border-color)' }} data-id="landingPageLoadAudits" onClick={openAuditsSelection}>
                 <span className="ht-row-icon" style={{ color: 'var(--custom-ai-color)' }}><i className="fa-solid fa-shield-halved"></i></span>
                 <span className="ht-row-text">
                   <strong><FormattedMessage id="home.loadAudits" /></strong>
-                  <small>Security audit checklists</small>
+                  <small>Forge Sentinel audit checklists</small>
                 </span>
               </button>
               <button className="ht-row" style={{ border: '1px solid var(--bs-border-color)' }} data-id="landingPageGasOptimization" onClick={startGasOptimization}>
                 <span className="ht-row-icon" style={{ color: 'var(--custom-ai-color)' }}><i className="fa-solid fa-gauge-high"></i></span>
                 <span className="ht-row-text">
                   <strong><FormattedMessage id="home.startGasOptimizationBtn" /></strong>
-                  <small>Optimize gas usage</small>
+                  <small>Optimize gas for CreditChain and EVM networks</small>
                 </span>
               </button>
             </div>

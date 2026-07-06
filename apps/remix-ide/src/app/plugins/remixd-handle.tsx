@@ -4,7 +4,7 @@ import { FormattedMessage } from 'react-intl'
 import { WebsocketPlugin } from '@remixproject/engine-web'
 import * as packageJson from '../../../../../package.json'
 // eslint-disable-next-line @nrwl/nx/enforce-module-boundaries
-import { version as remixdVersion } from '../../../../../libs/remixd/package.json'
+import { version as forgedVersion } from '../../../../../libs/remixd/package.json'
 import { PluginManager } from '@remixproject/engine'
 import { AppModal, AlertModal, appPlatformTypes } from '@remix-ui/app'
 import { Registry } from '@remix-project/remix-lib'
@@ -13,16 +13,16 @@ const LOCALHOST = ' - connect to localhost - '
 
 const profile = {
   name: 'remixd',
-  displayName: 'RemixD',
+  displayName: 'ForgeD',
   url: 'ws://127.0.0.1:65520',
   methods: ['folderIsReadOnly', 'resolveDirectory', 'get', 'exists', 'isFile', 'set', 'rename', 'remove', 'isDirectory', 'list', 'createDir'],
   events: [],
-  description: 'Using Remixd daemon, allow to access file system',
+  description: 'Use the Forge daemon to access a local file system',
   kind: 'other',
   version: packageJson.version,
-  repo: 'https://github.com/ethereum/remix-project/tree/master/libs/remixd',
-  maintainedBy: 'Remix',
-  documentation: 'https://remix-ide.readthedocs.io/en/latest/remixd.html',
+  repo: 'https://github.com/openibank/forge/tree/master/libs/remixd',
+  maintainedBy: 'CreditChain',
+  documentation: 'https://forge.creditchain.org/assets/docs/forged.html',
   authorContact: ''
 }
 
@@ -45,7 +45,7 @@ export class RemixdHandle extends WebsocketPlugin {
     }
     //@ts-ignore
     if (super.socket) super.deactivate()
-    // this.appManager.deactivatePlugin('git') // plugin call doesn't work.. see issue https://github.com/ethereum/remix-plugin/issues/342
+    // this.appManager.deactivatePlugin('git') // plugin call doesn't work.. see issue https://github.com/openibank/forge/issues/342
     this.localhostProvider.close((error) => {
       if (error) console.log(error)
     })
@@ -155,8 +155,8 @@ export class RemixdHandle extends WebsocketPlugin {
 }
 
 function remixdDialog() {
-  const commandText = 'remixd'
-  const fullCommandText = 'remixd -s <path-to-the-shared-folder> -u <remix-ide-instance-URL>'
+  const commandText = 'forged'
+  const fullCommandText = 'forged -s <path-to-the-shared-folder> -u <forge-instance-URL>'
   return (
     <>
       <div className="">
@@ -165,7 +165,7 @@ function remixdDialog() {
             id="remixd.text1"
             values={{
               a: (chunks) => (
-                <a target="_blank" href="https://www.npmjs.com/package/@remix-project/remixd">
+                <a target="_blank" href="https://www.npmjs.com/package/@creditchain/forged">
                   {chunks}
                 </a>
               ),
@@ -177,7 +177,7 @@ function remixdDialog() {
             id="remixd.text2"
             values={{
               a: (chunks) => (
-                <a target="_blank" href="https://remix-ide.readthedocs.io/en/latest/remixd.html">
+                <a target="_blank" href="https://forge.creditchain.org/assets/docs/forged.html">
                   {chunks}
                 </a>
               ),
@@ -201,7 +201,7 @@ function remixdDialog() {
             id="remixd.text6"
             values={{
               a: (chunks) => (
-                <a target="_blank" href="https://remix-ide.readthedocs.io/en/latest/remixd.html#ports-usage">
+                <a target="_blank" href="https://forge.creditchain.org/assets/docs/forged.html#ports-usage">
                   {chunks}
                 </a>
               ),
@@ -213,9 +213,9 @@ function remixdDialog() {
         </div>
         <div className="mb-2 text-break">
           <h6 className="text-danger">
-            <FormattedMessage id="remixd.text8" /> <b>v{remixdVersion}</b>
+            <FormattedMessage id="remixd.text8" /> <b>v{forgedVersion}</b>
             <br></br>
-            <a target="_blank" href="https://remix-ide.readthedocs.io/en/latest/remixd.html#update-to-the-latest-remixd">
+            <a target="_blank" href="https://forge.creditchain.org/assets/docs/forged.html#update-to-the-latest-forged">
               <FormattedMessage id="remixd.text9" />
             </a>
           </h6>

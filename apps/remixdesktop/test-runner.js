@@ -204,7 +204,7 @@ class DesktopTestRunner {
   }
 
   async run() {
-    this.log('🧪 Remix Desktop Test Runner', 'bright');
+    this.log('🧪 Forge Desktop Test Runner', 'bright');
     this.log('Welcome to the interactive test runner!', 'cyan');
 
     while (true) {

@@ -1,6 +1,6 @@
 {
-    "productName": "Remix-Desktop-Beta",
-    "appId": "org.ethereum.remix-ide",
+    "productName": "Forge-Desktop-Beta",
+    "appId": "org.creditchain.forge",
     "asar": true,
     "generateUpdatesFilesForAllChannels": false,
     "icon": "assets",
@@ -12,8 +12,8 @@
     "publish": [
         {
             "provider": "github",
-            "owner": "remix-project-org",
-            "repo": "remix-desktop-beta",
+            "owner": "openibank",
+            "repo": "forge-desktop-beta",
             "releaseType": "draft",
             "publishAutoUpdate": true
         }
@@ -35,14 +35,14 @@
         "createDesktopShortcut": "always",
         "allowToChangeInstallationDirectory": true,
         "oneClick": false,
-        "shortcutName": "Remix Desktop Beta",
+        "shortcutName": "Forge Desktop Beta",
         "differentialPackage": false
     },
     "win": {
         "target": [
             "nsis"
         ],
-        "artifactName": "Remix-Desktop-Setup-${version}.${ext}",
+        "artifactName": "Forge-Desktop-Setup-${version}.${ext}",
         "icon": "assets/icon.png"
     },
     "deb": {},

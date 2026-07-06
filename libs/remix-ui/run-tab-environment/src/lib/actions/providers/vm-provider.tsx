@@ -47,9 +47,9 @@ export class MergeVMProvider extends BasicVMProvider {
     super(
       {
         name: 'vm-paris',
-        displayName: 'Remix VM (Paris)',
+        displayName: 'Forge VM (Paris)',
         kind: 'provider',
-        description: 'Remix VM (Paris)',
+        description: 'Forge VM (Paris)',
         methods: ['sendAsync', 'init'],
         version: packageJson.version
       },
@@ -65,9 +65,9 @@ export class LondonVMProvider extends BasicVMProvider {
     super(
       {
         name: 'vm-london',
-        displayName: 'Remix VM (London)',
+        displayName: 'Forge VM (London)',
         kind: 'provider',
-        description: 'Remix VM (London)',
+        description: 'Forge VM (London)',
         methods: ['sendAsync', 'init'],
         version: packageJson.version
       },
@@ -83,9 +83,9 @@ export class BerlinVMProvider extends BasicVMProvider {
     super(
       {
         name: 'vm-berlin',
-        displayName: 'Remix VM (Berlin)',
+        displayName: 'Forge VM (Berlin)',
         kind: 'provider',
-        description: 'Remix VM (Berlin)',
+        description: 'Forge VM (Berlin)',
         methods: ['sendAsync', 'init'],
         version: packageJson.version
       },
@@ -101,9 +101,9 @@ export class ShanghaiVMProvider extends BasicVMProvider {
     super(
       {
         name: 'vm-shanghai',
-        displayName: 'Remix VM (Shanghai)',
+        displayName: 'Forge VM (Shanghai)',
         kind: 'provider',
-        description: 'Remix VM (Shanghai)',
+        description: 'Forge VM (Shanghai)',
         methods: ['sendAsync', 'init'],
         version: packageJson.version
       },
@@ -119,9 +119,9 @@ export class CancunVMProvider extends BasicVMProvider {
     super(
       {
         name: 'vm-cancun',
-        displayName: 'Remix VM (Cancun)',
+        displayName: 'Forge VM (Cancun)',
         kind: 'provider',
-        description: 'Remix VM (Cancun)',
+        description: 'Forge VM (Cancun)',
         methods: ['sendAsync', 'init'],
         version: packageJson.version
       },
@@ -137,9 +137,9 @@ export class PectraVMProvider extends BasicVMProvider {
     super(
       {
         name: 'vm-prague',
-        displayName: 'Remix VM (Pectra)',
+        displayName: 'Forge VM (Pectra)',
         kind: 'provider',
-        description: 'Remix VM (Pectra)',
+        description: 'Forge VM (Pectra)',
         methods: ['sendAsync', 'init'],
         version: packageJson.version
       },
@@ -155,9 +155,9 @@ export class FusakaVMProvider extends BasicVMProvider {
     super(
       {
         name: 'vm-osaka',
-        displayName: 'Remix VM (Fusaka)',
+        displayName: 'Forge VM (Fusaka)',
         kind: 'provider',
-        description: 'Remix VM (Fusaka)',
+        description: 'Forge VM (Fusaka)',
         methods: ['sendAsync', 'init'],
         version: packageJson.version
       },

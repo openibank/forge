@@ -1,13 +1,13 @@
 /**
- * Remix IDE Endpoint URLs
+ * Forge Endpoint URLs
  *
  * Resolution order:
  * 1. NX_ENDPOINTS_URL set → build all URLs as `${baseUrl}/${path}`
  * 2. No env var → use legacy hardcoded defaultUrls (backward compat)
  *
  * Runtime discovery (optional):
- *   import { fetchRemixConfig, updateEndpoints } from '@remix-endpoints/endpoints-helper'
- *   const config = await fetchRemixConfig('https://api.remix.live')
+ *   import { fetchForgeConfig, updateEndpoints } from '@remix-endpoints/endpoints-helper'
+ *   const config = await fetchForgeConfig('https://api.forge.creditchain.org')
  *   updateEndpoints(config)
  */
 
@@ -56,8 +56,8 @@ export type EndpointUrls = {
 
 /**
  * Service key → path segment mapping (no leading slash).
- * Paths reflect the production /.well-known/remix-config manifest hosted at
- * https://api.remix.live where services are grouped under /endpoints, /ai, etc.
+ * Paths reflect the production /.well-known/forge-config manifest hosted at
+ * https://api.forge.creditchain.org where services are grouped under /endpoints, /ai, etc.
  */
 const servicePathMap: Record<keyof Omit<EndpointUrls, 'solidityScanWebSocket' | 'membershipRequests'>, string> = {
   corsProxy: 'endpoints/corsproxy',
@@ -124,9 +124,9 @@ function buildUrls(baseUrl: string): EndpointUrls {
 
 /**
  * Default endpoint URLs — used when NX_ENDPOINTS_URL is not set.
- * Mirrors the production /.well-known/remix-config manifest at https://api.remix.live.
+ * Mirrors the production /.well-known/forge-config manifest at https://api.forge.creditchain.org.
  */
-const defaultUrls: EndpointUrls = buildUrls('https://api.remix.live');
+const defaultUrls: EndpointUrls = buildUrls('https://api.forge.creditchain.org');
 
 // --- Resolution ---
 const prefix = ''
@@ -139,34 +139,38 @@ export const endpointUrls = resolvedUrls;
 
 // --- Runtime Discovery (Optional) ---
 
-export interface RemixConfig {
+export interface ForgeConfig {
   version: number;
   baseUrl: string;
   services: Record<string, string>;
   websockets?: Record<string, string>;
 }
 
+export type RemixConfig = ForgeConfig
+
 /**
- * Fetch the service discovery document from a Remix API base URL.
+ * Fetch the service discovery document from a Forge API base URL.
  * Call once at app startup, then pass result to updateEndpoints().
  *
  * @example
- *   const config = await fetchRemixConfig('https://api.remix.live')
+ *   const config = await fetchForgeConfig('https://api.forge.creditchain.org')
  *   updateEndpoints(config)
  */
-export async function fetchRemixConfig(baseUrl: string): Promise<RemixConfig> {
-  const url = `${baseUrl.replace(/\/$/, '')}/.well-known/remix-config?v=${Date.now()}`;
+export async function fetchForgeConfig(baseUrl: string): Promise<ForgeConfig> {
+  const url = `${baseUrl.replace(/\/$/, '')}/.well-known/forge-config?v=${Date.now()}`;
   const res = await fetch(url, { cache: 'no-store' });
-  if (!res.ok) throw new Error(`Failed to fetch remix-config: ${res.status}`);
+  if (!res.ok) throw new Error(`Failed to fetch forge-config: ${res.status}`);
   return res.json();
 }
+
+export const fetchRemixConfig = fetchForgeConfig
 
 /**
  * Update the live endpoint URLs from a discovery config.
  * Mutates the exported endpointUrls object in-place so all
  * consumers see the updated values immediately.
  */
-export function updateEndpoints(config: RemixConfig): void {
+export function updateEndpoints(config: ForgeConfig): void {
   const base = config.baseUrl.replace(/\/$/, '');
 
   // Map discovery keys back to EndpointUrls keys
@@ -191,24 +195,24 @@ export function updateEndpoints(config: RemixConfig): void {
   // Handle mcpCorsProxy alias
   if (config.services.mcp) {
     endpointUrls.mcpCorsProxy = `${base}${config.services.mcp}`;
-  } // SSO must always point to auth.api.remix.live (separate auth domain)
-  //endpointUrls.sso = 'https://auth.api.remix.live/sso';
+  } // SSO must always point to auth.api.forge.creditchain.org (separate auth domain)
+  //endpointUrls.sso = 'https://auth.api.forge.creditchain.org/sso';
 }
 
 /**
  * Initialize endpoints from service discovery.
- * Uses NX_ENDPOINTS_URL as discovery base if set, otherwise 'https://api.remix.live'.
+ * Uses NX_ENDPOINTS_URL as discovery base if set, otherwise 'https://api.forge.creditchain.org'.
  * Falls back to current values silently on failure.
  */
 export async function initEndpoints(baseUrl?: string): Promise<void> {
-  const base = baseUrl || ('https://api.remix.live').replace(/\/$/, '');
+  const base = baseUrl || ('https://api.forge.creditchain.org').replace(/\/$/, '');
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 3000);
   try {
-    const url = `${base}/.well-known/remix-config?v=${Date.now()}`;
+    const url = `${base}/.well-known/forge-config?v=${Date.now()}`;
     const res = await fetch(url, { signal: controller.signal, cache: 'no-store' });
     if (!res.ok) throw new Error(`Discovery HTTP ${res.status}`);
-    const config: RemixConfig = await res.json();
+    const config: ForgeConfig = await res.json();
     updateEndpoints(config);
   } catch {
     // Discovery failed — continue with defaults

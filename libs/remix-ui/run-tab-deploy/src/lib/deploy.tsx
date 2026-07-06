@@ -99,7 +99,7 @@ function DeployWidget({ plugin }: DeployWidgetProps) {
       const vmName = networkProvider?.startsWith('vm-fs-')
         ? networkProvider.replace('vm-fs-', '')
         : networkProvider?.replace('vm-', '')
-      const netUI = !isVM ? `${network.name} (${network.id || '-'}) network` : `Remix VM ${vmName}`
+      const netUI = !isVM ? `${network.name} (${network.id || '-'}) network` : `Forge VM ${vmName}`
 
       dispatch({ type: 'SET_DETECTED_NETWORK', payload: netUI })
     })

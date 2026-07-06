@@ -13,8 +13,8 @@
   - project slug in the form: gh/<org>/<repo> (works for GitHub; use bb/ or gh/ etc. per CircleCI docs)
 
   Quick examples
-    node scripts/circleci-timings.js --slug gh/remix-project-org/remix-project --workflow web --branch master --jobs "remix-ide-browser" --limit 10
-    CIRCLECI_TOKEN=... yarn ci:timings --slug gh/remix-project-org/remix-project --workflow run_pr_tests --branch feat/my-branch --jobs "remix-ide-browser" --limit 5 --json timings.json
+    node scripts/circleci-timings.js --slug gh/openibank/forge --workflow web --branch master --jobs "remix-ide-browser" --limit 10
+    CIRCLECI_TOKEN=... yarn ci:timings --slug gh/openibank/forge --workflow run_pr_tests --branch feat/my-branch --jobs "remix-ide-browser" --limit 5 --json timings.json
       # Note: use 'gh/' for GitHub (not 'github/')
 
   Notes

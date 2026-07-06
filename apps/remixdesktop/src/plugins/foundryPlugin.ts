@@ -203,7 +203,7 @@ class FoundryPluginClient extends ElectronBasePluginRemixdClient {
     }
 
     async sync() {
-        console.log('syncing Foundry with Remix...')
+        console.log('syncing Foundry with Forge...')
         const currentFile = await this.call('fileManager', 'getCurrentFile')
         const cache = JSON.parse(await fs.promises.readFile(join(this.cachePath, 'solidity-files-cache.json'), { encoding: 'utf-8' }))
         this.emitContract(basename(currentFile), cache)

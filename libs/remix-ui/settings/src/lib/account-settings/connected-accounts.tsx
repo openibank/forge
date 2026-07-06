@@ -220,9 +220,9 @@ export const ConnectedAccounts: React.FC<ConnectedAccountsProps> = ({ plugin }) 
               onClick={handleLinkSIWE}
             >
               <span className="me-2 fs-medium">
-                <i className="fab fa-ethereum"></i>
+                <i className="fas fa-wallet"></i>
               </span>
-              <span className="fs-medium">Connect Ethereum Wallet (SIWE)</span>
+              <span className="fs-medium">Connect CreditChain Wallet (SIWE)</span>
             </button>
           )}
         </div>

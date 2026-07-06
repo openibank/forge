@@ -15,7 +15,7 @@ const profile = {
   icon: '',
   location: 'none',
   version: packageJson.version,
-  maintainedBy: 'Remix'
+  maintainedBy: 'CreditChain'
 }
 
 export class InvitationManagerPlugin extends Plugin {

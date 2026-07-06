@@ -11,9 +11,9 @@ const profile = {
   description: 'Find and replace in file explorer',
   kind: '',
   location: 'sidePanel',
-  documentation: 'https://remix-ide.readthedocs.io/en/latest/search_in_fe.html',
+  documentation: 'https://forge.creditchain.org/docs/search_in_fe.html',
   version: packageJson.version,
-  maintainedBy: 'Remix'
+  maintainedBy: 'CreditChain'
 }
 
 export class SearchPlugin extends ViewPlugin {

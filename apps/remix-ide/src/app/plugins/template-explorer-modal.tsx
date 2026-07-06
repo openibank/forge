@@ -14,7 +14,7 @@ const pluginProfile = {
   description: 'Template Explorer Modal',
   methods: ['addArtefactsToWorkspace', 'updateTemplateExplorerInFileMode', 'importFromExternal', 'resetIpfsMode', 'resetFileMode', 'importFromHttps', 'resetHttpsMode'],
   events: [],
-  maintainedBy: 'Remix',
+  maintainedBy: 'CreditChain',
   kind: 'templateexplorermodal',
   location: 'none',
   version: packageJson.version,

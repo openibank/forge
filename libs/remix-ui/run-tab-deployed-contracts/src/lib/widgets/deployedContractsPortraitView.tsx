@@ -324,7 +324,7 @@ export default function DeployedContractsPortraitView() {
                 id="udapp.orLearnMoreDeploying"
                 defaultMessage="Learn how to deploy "
               /></span>
-            <a href="https://remix-ide.readthedocs.io/en/latest/run.html" target='_blank'>
+            <a href="https://forge.creditchain.org/docs/run.html" target='_blank'>
               <FormattedMessage
                 id="udapp.learnEth"
                 defaultMessage='"your first contract".'

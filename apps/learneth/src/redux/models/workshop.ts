@@ -13,18 +13,24 @@ const apiUrl = endpointUrls.learneth
 
 export const repoMap = {
   en: {
-    name: 'remix-project-org/remix-workshops',
+    name: 'openibank/forge-workshops',
     branch: 'master',
   },
   zh: {
-    name: 'remix-project-org/remix-workshops',
+    name: 'openibank/forge-workshops',
     branch: 'zh',
   },
   es: {
-    name: 'remix-project-org/remix-workshops',
+    name: 'openibank/forge-workshops',
     branch: 'es',
   },
 }
+
+const defaultWorkshopRepos = new Set([
+  'openibank/forge-workshops',
+  'ethereum/remix-workshops',
+  'remix-project-org/remix-workshops'
+])
 
 const Model: ModelType = {
   namespace: 'workshop',
@@ -188,7 +194,7 @@ const Model: ModelType = {
         }
       }
       // we don't need to track the default repos
-      if (payload.name !== 'ethereum/remix-workshops' && payload.name !== 'remix-project-org/remix-workshops') {
+      if (!defaultWorkshopRepos.has(payload.name)) {
         trackMatomoEvent(remixClient, { category: 'learneth', action: 'load_repo', name: payload.name, isClick: false })
       }
     },

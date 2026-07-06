@@ -89,8 +89,8 @@ const DesktopClientUI = (props: DesktopClientState & { openDesktopApp: () => voi
       <div className="d-flex p-4 bg-light flex-column">
         <h3>{title}</h3>
         <p>
-          1. Connect to your favorite Ethereum wallet provider
-          <br></br>2. Go back to the Remix Desktop application
+          1. Connect to your CreditChain or EVM wallet provider
+          <br></br>2. Go back to the Forge Desktop application
           <br></br>3. Deploy using 'Browser Wallet'
           {hasBrave && <div className='text-warning'>
             Note: Brave Wallet is not supported.

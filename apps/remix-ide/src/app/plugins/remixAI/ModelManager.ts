@@ -152,7 +152,7 @@ export class ModelManager {
 
     // Block models without tool support — the agent depends on tool calling.
     if (!(await modelSupportsTools(ollamaModelName))) {
-      throw new Error(`Ollama model "${ollamaModelName}" does not support tool calling and can't be used with the Remix agent. Pick a tool-capable model (e.g. qwen2.5-coder, llama3.1).`)
+      throw new Error(`Ollama model "${ollamaModelName}" does not support tool calling and can't be used with the Forge Copilot agent. Pick a tool-capable model (e.g. qwen2.5-coder, llama3.1).`)
     }
 
     (plugin as any).discoveredOllamaModel = ollamaModelName

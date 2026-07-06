@@ -24,7 +24,7 @@ export class BaseProvider extends Plugin implements IProvider {
 
   async init() {
     const sdk = createBaseAccountSDK({
-      appName: 'Remix IDE',
+      appName: 'Forge',
       appChainIds: [this.id]
     })
 

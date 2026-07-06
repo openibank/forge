@@ -1,8 +1,8 @@
 // Re-export types from core storage layer to maintain backward compatibility
 export type { ChatMessage, ConversationMetadata } from '@remix/remix-ai-core'
 
-export const assistantAvatar = 'assets/img/remixai-logoDefault.webp'//'assets/img/aiLogo.svg'
-export const assitantAvatarLight = 'assets/img/remixai-logoDefaultlightTheme.webp'
+export const assistantAvatar = 'assets/img/creditchain-logo.svg'//'assets/img/aiLogo.svg'
+export const assitantAvatarLight = 'assets/img/creditchain-logo.svg'
 
 export type ActivityType =
   | 'typing'

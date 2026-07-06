@@ -33,7 +33,7 @@ export function PromptDefault(props: PromptDefaultProps) {
       }}
     >
       {props.showSignIn && !props.isStreaming ? (
-        <CustomTooltip placement="top" tooltipText="Sign in to chat with RemixAI" tooltipId="signInPromptTooltip">
+        <CustomTooltip placement="top" tooltipText="Sign in to chat with Forge Copilot" tooltipId="signInPromptTooltip">
           <button
             type="button"
             className="btn btn-sm small font-weight-light rounded-3 text-nowrap d-inline-flex align-items-center"

@@ -19,13 +19,13 @@ const profile = {
   description: 'Configure the dependencies for running scripts.',
   kind: '',
   version: packageJson.version,
-  maintainedBy: 'Remix',
+  maintainedBy: 'CreditChain',
 }
 
 const oldConfigFileName = '.remix/script.config.json'
 const configFileName = 'remix.config.json'
 
-let baseUrl = 'https://remix-project-org.github.io/script-runner-generator'
+let baseUrl = 'https://openibank.github.io/forge-script-runner-generator'
 const customBuildUrl = 'http://localhost:4000/build' // this will be used when the server is ready
 
 /**

@@ -19,7 +19,7 @@ This demo will show an example of a batched transaction. Before batching with EI
 Assign a piece of code to an EOA:
 
 - Compile `MyToken.sol`, `Example7702.sol`, and `Spender.sol` using Solidity version 0.8.28.
-- In Deploy & Run's **CONTRACT** select box, choose **Simple7702Account** and deploy it to the Remix VM (Prague) or Remix VM (Osaka) network.
+- In Deploy & Run's **CONTRACT** select box, choose **Simple7702Account** and deploy it to the Forge VM (Prague) or Forge VM (Osaka) network.
 - Copy the deployed contract's address.
 - Click the **Authorize Delegation** button and paste the contract's address into the modal.
 - In Deploy and Run, check the new deployed contract. It has the same address as the EOA that was assigned to SIMPLE7702ACCOUNT.
@@ -28,7 +28,7 @@ Setting up the data for the batch:
 
 - Run the script `run-eip7702.ts`.
 
-The script `run-eip7702.ts` will deploy two contracts, MyToken and Spender. It will then mint 1000000 tokens to the first address of the Remix VM. Then it will encode the approval for the Spender address to spend and encode the call to the send function of 10000 tokens to the second account of the Remix VM. The encodings will be logged to the terminal.
+The script `run-eip7702.ts` will deploy two contracts, MyToken and Spender. It will then mint 1000000 tokens to the first address of the Forge VM. Then it will encode the approval for the Spender address to spend and encode the call to the send function of 10000 tokens to the second account of the Forge VM. The encodings will be logged to the terminal.
 
 - In the terminal, copy the logged data from `console.log(executeBatch)`.
 - Back in Deploy & Run, find the DELEGATED SIMPLE7702ACCOUNT and open it up to see its functions.

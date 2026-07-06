@@ -505,8 +505,8 @@ Use empty array if no relevant trusted docs.`
             // API is taking too long, likely processing another request
             setFromCache(false)
             setData({
-              title: 'RemixAI Assistant Busy',
-              body: 'The RemixAI assistant is currently processing another request. Please try again once it becomes available.',
+              title: 'Forge Copilot Assistant Busy',
+              body: 'The Forge Copilot assistant is currently processing another request. Please try again once it becomes available.',
               risk: 'low' as const,
               riskLabel: 'Busy'
             })
@@ -564,7 +564,7 @@ Use empty array if no relevant trusted docs.`
         const errorMessage = error?.message || 'Unknown error'
         setData({
           title: 'Analysis Error',
-          body: `Failed to get AI analysis: ${errorMessage}. The RemixAI service might be unavailable or experiencing issues.`,
+          body: `Failed to get AI analysis: ${errorMessage}. The Forge Copilot service might be unavailable or experiencing issues.`,
           risk: 'info' as const,
           riskLabel: 'Service Error'
         })
@@ -778,20 +778,20 @@ ${codeToAnalyze}
 
                       // Small delay to ensure panel is open
                       setTimeout(async () => {
-                        // Call RemixAI with editor code analysis flag
+                        // Call Forge Copilot with editor code analysis flag
                         await plugin.call('remixaiassistant', 'chatPipe', deeperPrompt, true, { source: 'editor', presetId: 'keyword-analysis' })
                       }, 500)
 
                       // Close the tooltip
                       onClose()
                     } catch (error) {
-                      console.error('Failed to open RemixAI:', error)
+                      console.error('Failed to open Forge Copilot:', error)
                     }
                   }
                 }}
               >
                 <i className="fas fa-external-link-alt me-1" style={{ fontSize: "0.65rem" }}></i>
-                  Open in RemixAI Assistant
+                  Open in Forge Copilot Assistant
               </button>
               <button
                 className="btn btn-link p-0 text-start"
@@ -863,7 +863,7 @@ ${fileContent}
 
                       // Small delay to ensure panel is open
                       setTimeout(async () => {
-                        // Call RemixAI with editor code analysis flag
+                        // Call Forge Copilot with editor code analysis flag
                         await plugin.call('remixaiassistant', 'chatPipe', wholeFilePrompt, true, { source: 'editor', presetId: 'analyze-file' })
                       }, 500)
 

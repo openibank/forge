@@ -22,7 +22,7 @@ import { MatomoConfig } from './MatomoManager';
  *
  * IMPORTANT:
  * - CircleCI tests automatically disable this through environment isolation
- * - Production domains (remix.ethereum.org, etc.) are unaffected by this setting
+ * - Production domains (forge.creditchain.org, etc.) are unaffected by this setting
  * - Only affects localhost and 127.0.0.1 domains
  */
 export const ENABLE_MATOMO_LOCALHOST = false;
@@ -36,7 +36,7 @@ export interface DomainCustomDimensions {
 }
 
 // Type for domain keys (single source of truth)
-export type MatomotDomain = 'alpha.remix.live' | 'beta.remix.live' | 'remix.ethereum.org' | 'localhost' | '127.0.0.1' | 'electron';
+export type MatomotDomain = 'alpha.forge.creditchain.org' | 'beta.forge.creditchain.org' | 'forge.creditchain.org' | 'localhost' | '127.0.0.1' | 'electron';
 
 // Type for site ID configuration
 export type SiteIdConfig = Record<MatomotDomain, number>;
@@ -52,20 +52,20 @@ export type BotCustomDimensionsConfig = Record<MatomotDomain, DomainCustomDimens
 
 // Single source of truth for Matomo site ids (matches loader.js.txt)
 export const MATOMO_DOMAINS: SiteIdConfig = {
-  'alpha.remix.live': 1,
-  'beta.remix.live': 2,
-  'remix.ethereum.org': 3,
+  'alpha.forge.creditchain.org': 1,
+  'beta.forge.creditchain.org': 2,
+  'forge.creditchain.org': 3,
   'localhost': 5,
   '127.0.0.1': 5,
-  'electron': 4 // Remix Desktop (Electron) app
+  'electron': 4 // Forge Desktop (Electron) app
 };
 
 // Bot tracking site IDs (separate databases to avoid polluting human analytics)
 // Set to null to use same site ID for bots (they'll be filtered via isBot dimension)
 export const MATOMO_BOT_SITE_IDS: BotSiteIdConfig = {
-  'alpha.remix.live': null, // TODO: Create bot tracking site in Matomo (e.g., site ID 10)
-  'beta.remix.live': null, // TODO: Create bot tracking site in Matomo (e.g., site ID 11)
-  'remix.ethereum.org': 8, // TODO: Create bot tracking site in Matomo (e.g., site ID 12)
+  'alpha.forge.creditchain.org': null, // TODO: Create bot tracking site in Matomo (e.g., site ID 10)
+  'beta.forge.creditchain.org': null, // TODO: Create bot tracking site in Matomo (e.g., site ID 11)
+  'forge.creditchain.org': 8, // TODO: Create bot tracking site in Matomo (e.g., site ID 12)
   'localhost': 7, // Keep bots in same localhost site for testing (E2E tests need cookies)
   '127.0.0.1': 7, // Keep bots in same localhost site for testing (E2E tests need cookies)
   'electron': null // Electron app uses same site ID for bots (filtered via isBot dimension)
@@ -75,19 +75,19 @@ export const MATOMO_BOT_SITE_IDS: BotSiteIdConfig = {
 // These IDs must match what's configured in each Matomo site
 export const MATOMO_CUSTOM_DIMENSIONS: CustomDimensionsConfig = {
   // Production domains
-  'alpha.remix.live': {
+  'alpha.forge.creditchain.org': {
     trackingMode: 1, // Dimension for 'anon'/'cookie' tracking mode
     clickAction: 2, // Dimension for 'true'/'false' click tracking
     isBot: 3, // Dimension for 'human'/'bot'/'automation' detection
     featureGroups: 4 // Dimension for user feature groups (e.g., 'beta,ai-unlimited')
   },
-  'beta.remix.live': {
+  'beta.forge.creditchain.org': {
     trackingMode: 1, // Dimension for 'anon'/'cookie' tracking mode
     clickAction: 2, // Dimension for 'true'/'false' click tracking
     isBot: 3, // Dimension for 'human'/'bot'/'automation' detection
     featureGroups: 4 // Dimension for user feature groups (e.g., 'beta,ai-unlimited')
   },
-  'remix.ethereum.org': {
+  'forge.creditchain.org': {
     trackingMode: 1, // Dimension for 'anon'/'cookie' tracking mode
     clickAction: 2, // Dimension for 'true'/'false' click tracking
     isBot: 3, // Dimension for 'human'/'bot'/'automation' detection
@@ -119,9 +119,9 @@ export const MATOMO_CUSTOM_DIMENSIONS: CustomDimensionsConfig = {
 // These IDs must match what's configured in the bot tracking sites
 // Set to null to use the same dimension IDs as human sites
 export const MATOMO_BOT_CUSTOM_DIMENSIONS: BotCustomDimensionsConfig = {
-  'alpha.remix.live': null, // TODO: Configure if bot site has different dimension IDs
-  'beta.remix.live': null, // TODO: Configure if bot site has different dimension IDs
-  'remix.ethereum.org': {
+  'alpha.forge.creditchain.org': null, // TODO: Configure if bot site has different dimension IDs
+  'beta.forge.creditchain.org': null, // TODO: Configure if bot site has different dimension IDs
+  'forge.creditchain.org': {
     trackingMode: 1,
     clickAction: 3,
     isBot: 2,
@@ -196,7 +196,7 @@ export function getDomainCustomDimensions(isBot: boolean = false): DomainCustomD
  */
 export function createMatomoConfig(): MatomoConfig {
   return {
-    trackerUrl: 'https://matomo.remix.live/matomo/matomo.php',
+    trackerUrl: 'https://matomo.forge.creditchain.org/matomo/matomo.php',
     // siteId will be auto-derived from matomoDomains based on current hostname
     debug: false,
     matomoDomains: MATOMO_DOMAINS,

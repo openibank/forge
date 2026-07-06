@@ -40,7 +40,7 @@ export function trackEvent(
     ua: ua,
     action_name: `${category}:${action}`,
     res: res,
-    url: 'https://github.com/remix-project-org/remix-desktop',
+    url: 'https://github.com/openibank/forge',
     rand: Math.random().toString()
   });
 
@@ -54,7 +54,7 @@ export function trackEvent(
     params.set(`dimension${CLICK_DIMENSION_ID}`, isClick ? 'true' : 'false');
   }
 
-  fetch(`https://matomo.remix.live/matomo/matomo.php?${params.toString()}`)
+  fetch(`https://matomo.forge.creditchain.org/matomo/matomo.php?${params.toString()}`)
     .then(res => {
       if (!res.ok) {
         console.error('[Matomo] Failed to track event:', res.status);

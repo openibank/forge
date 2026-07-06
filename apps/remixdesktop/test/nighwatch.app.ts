@@ -2,7 +2,7 @@ import os from 'os';
 import fs from 'fs';
 
 /*
- * Nightwatch configuration for Remix Desktop E2E tests
+ * Nightwatch configuration for Forge Desktop E2E tests
  * 
  * Key fixes for CI environments (GitHub Actions):
  * 1. Detect CI environment using GITHUB_ACTIONS or CIRCLECI env vars
@@ -131,7 +131,7 @@ module.exports = {
               GITHUB_ACTIONS: process.env.GITHUB_ACTIONS,
               DISPLAY: process.env.DISPLAY
             });
-            console.log('[CI DEBUG] Launching Remix Desktop with the following parameters:');
+            console.log('[CI DEBUG] Launching Forge Desktop with the following parameters:');
             console.log('Binary Path:', binaryPath);
             console.log('Arguments:', args);
             

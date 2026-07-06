@@ -305,12 +305,12 @@ export async function createModelInstance(
       : await getBestAvailableModel()
     console.log('Chosen Ollama model:', chosenModel)
     if (!chosenModel) {
-      throw new Error('[ModelFactory] No tool-capable Ollama model is installed. The Remix agent requires a model that supports tool calling — install one (e.g. `ollama pull qwen2.5-coder`) and try again.')
+      throw new Error('[ModelFactory] No tool-capable Ollama model is installed. The Forge Copilot agent requires a model that supports tool calling — install one (e.g. `ollama pull qwen2.5-coder`) and try again.')
     }
 
     const caps = await getModelCapabilities(chosenModel)
     if (!caps.tools) {
-      throw new Error(`[ModelFactory] Ollama model "${chosenModel}" does not support tool calling, which the Remix agent requires. Choose a tool-capable model (e.g. qwen2.5-coder, llama3.1, mistral-nemo).`)
+      throw new Error(`[ModelFactory] Ollama model "${chosenModel}" does not support tool calling, which the Forge Copilot agent requires. Choose a tool-capable model (e.g. qwen2.5-coder, llama3.1, mistral-nemo).`)
     }
     remixAILogger.log(`[ModelFactory] Creating Ollama model: ${chosenModel} @ ${host} (thinking: ${caps.thinking})`)
     return wrapModelForDebug(new ChatOllama({

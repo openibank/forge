@@ -13,13 +13,13 @@ const profile = {
   methods: ['get', 'updateCopilotChoice', 'getCopilotSetting', 'set', 'updateMatomoPerfAnalyticsChoice', 'showSection'],
   events: ['openSection'],
   icon: 'assets/img/settings.webp',
-  description: 'Remix-IDE settings',
+  description: 'Forge settings',
   kind: 'settings',
   location: 'mainPanel',
-  documentation: 'https://remix-ide.readthedocs.io/en/latest/settings.html',
+  documentation: 'https://forge.creditchain.org/docs/settings',
   version: packageJson.version,
   permission: true,
-  maintainedBy: 'Remix',
+  maintainedBy: 'CreditChain',
   show: false
 }
 

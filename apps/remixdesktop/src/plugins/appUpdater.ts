@@ -119,10 +119,10 @@ class AppUpdaterPluginClient extends ElectronBasePluginClient {
     else if (platform === 'linux') osName = 'Linux'
     
     // Send welcome message
-    const welcomeMessage = `Welcome to Remix Desktop ${autoUpdater.currentVersion} on ${osName}
+    const welcomeMessage = `Welcome to Forge Desktop ${autoUpdater.currentVersion} on ${osName}
 
 This desktop version includes:
-• Native Git integration - Access your system's Git directly from Remix
+• Native Git integration - Access your system's Git directly from Forge
 • Native Terminals - Full-featured terminal emulator with native shell access
   Click "New Terminal" in the Terminal menu to open native ${osName} terminals
 
@@ -138,7 +138,7 @@ You can use this output terminal to:
       value: welcomeMessage,
     })
     
-    trackEvent('App', 'CheckForUpdate', 'Remix Desktop version: ' + autoUpdater.currentVersion, 1);
+    trackEvent('App', 'CheckForUpdate', 'Forge Desktop version: ' + autoUpdater.currentVersion, 1);
     autoUpdater.checkForUpdates()
   }
 }

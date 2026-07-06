@@ -4,7 +4,7 @@ Vyper Plugin for Remix IDE.
 
 ## How to get started
 ### Remote plugin
-This plugin is hosted at https://remix-ide.readthedocs.io/en/latest/vyper.html .
+This plugin is hosted at https://forge.creditchain.org/docs/vyper .
 To use it, open the plugin manager in Remix and click the `Activate` button in front of the `Vyper` button in the plugin section.
 
 ### Local plugin

@@ -271,7 +271,7 @@ export class RemixInLineCompletionProvider implements monacoTypes.languages.Inli
 
     this.props.plugin.call('terminal', 'log', {
       type: 'aitypewriterwarning',
-      value: 'RemixAI - generating code for following comment: ' + ask.replace('///', '')
+      value: 'Forge Copilot - generating code for following comment: ' + ask.replace('///', '')
     })
 
     const data = await this.props.plugin.call('remixAI', 'code_insertion', word, word_after)

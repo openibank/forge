@@ -39,7 +39,7 @@ const formatContractCandidatesForPrompt = (candidates: QuickDappContractPromptCa
   )
 
 const getLocationLine = (isDesktop: boolean, graphOnly: boolean): string => {
-  if (isDesktop) return '- Location: Inline in /frontend only (Remix Desktop requirement - only option)'
+  if (isDesktop) return '- Location: Inline in /frontend only (Forge Desktop requirement - only option)'
   if (graphOnly) return '- Location: Workspace (default, new dedicated workspace) or Inline (in /frontend folder of current workspace)'
   return '- Location: Workspace (default, new dedicated workspace) or Inline (in /frontend folder of current workspace)'
 }

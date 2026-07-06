@@ -22,7 +22,7 @@ export function CompileErrorCard(props: { output: VyperCompilationError, plugin:
       <div className="d-flex flex-column pt-3 align-items-end mb-2">
         <div>
           <span className="border border-ai text-ai btn-sm" onClick={async () => await props.plugin.askGpt(props.output.message)}>
-            Ask RemixAI
+            Ask Forge Copilot
           </span>
           <span className="ms-3 pt-1 py-1">
             <CopyToClipboard content={props.output.message} className={`p-0 m-0 far fa-copy alert alert-danger border-0`} direction={'top'} />

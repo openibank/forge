@@ -15,12 +15,12 @@ export const FirstTimeUserCard: React.FC<FirstTimeUserCardProps> = ({ plugin }) 
   }
 
   const handleExplainEthereum = async () => {
-    trackMatomoEvent({ category: 'hometab', action: 'explainEthereum', name: 'Explain Ethereum importance', isClick: true })
+    trackMatomoEvent({ category: 'hometab', action: 'header', name: 'Explain CreditChain importance', isClick: true })
     await plugin.call('manager', 'activatePlugin', 'remixaiassistant')
     await plugin.call('menuicons', 'select', 'remixaiassistant')
     await plugin.call('remixaiassistant', 'newConversation')
     setTimeout(() => {
-      plugin.call('remixaiassistant', 'chatPipe', `Why Ethereum and decentralized applications are important for the future of technology and society. Give me a concise and clear explanation. Provide use cases. Propose some areas of discussion, then stop and let me ask you more questions about it.`, false, { source: 'home-tab', presetId: 'learn-ethereum' })
+      plugin.call('remixaiassistant', 'chatPipe', `Explain CreditChain as an EVM-compatible smart contract network for credit, payments, merchant settlement, and trust infrastructure. Give me a concise and clear explanation. Provide practical smart contract use cases. Propose some areas of discussion, then stop and let me ask more questions.`, false, { source: 'home-tab', presetId: 'learn-creditchain' })
     }, 200)
   }
 
@@ -42,7 +42,7 @@ export const FirstTimeUserCard: React.FC<FirstTimeUserCardProps> = ({ plugin }) 
       plugin.call('notification', 'toast', 'Creating a new workspace and start building...')
       await new Promise((res) => setTimeout(() => res({}), 500))
       await plugin.call('fileManager', 'open', 'contracts/MyToken.sol')
-      plugin.call('remixaiassistant', 'chatPipe', `an ERC20 token workspace has been created. Compile and Deploy MyToken. Then give precise details for interacting with that contract in Remix. Propose some next steps for me to learn more about it and experiment with it. Then stop and let me ask you more questions.`, false, { source: 'home-tab', presetId: 'erc20-intro' })
+      plugin.call('remixaiassistant', 'chatPipe', `An ERC20 token workspace has been created for a CreditChain-compatible deployment. Compile and deploy MyToken. Then give precise details for interacting with that contract in Forge. Include CreditChain testnet deployment and verification next steps, then stop and let me ask more questions.`, false, { source: 'home-tab', presetId: 'erc20-intro' })
     }, 200)
   }
 
@@ -50,7 +50,7 @@ export const FirstTimeUserCard: React.FC<FirstTimeUserCardProps> = ({ plugin }) 
     <>
       <div className="ht-section-header">
         <span className="ht-section-title">
-          <FormattedMessage id="homeTab.newToRemix" defaultMessage="New to Remix" />
+          <FormattedMessage id="homeTab.newToRemix" defaultMessage="New to Forge" />
         </span>
       </div>
 

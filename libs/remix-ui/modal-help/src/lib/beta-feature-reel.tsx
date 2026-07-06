@@ -93,7 +93,7 @@ const FEATURES: Feature[] = [
     tagColor: "#5865F2",
     vizBg: "linear-gradient(135deg, #1a1a3a, #1e1640)",
     headline: "",
-    desc: "Join our Discord channel to share feedback, report issues, and shape the future of Remix — directly with the team.",
+    desc: "Join our Discord channel to share feedback, report issues, and shape the future of Forge — directly with the team.",
     btn: "Join the Discord Feedback Channel",
     visual: "community",
   },

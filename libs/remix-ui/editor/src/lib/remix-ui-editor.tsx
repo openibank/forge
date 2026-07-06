@@ -208,11 +208,11 @@ export const EditorUI = (props: EditorUIProps) => {
   const [diffSessions, setDiffSessions] = useState<DiffSession[]>([])
   const [activeDiffId, setActiveDiffId] = useState<string | null>(null)
   const defaultEditorValue = `
-  \t\t\t\t\t\t\t ____    _____   __  __   ___  __  __   ___   ____    _____
-  \t\t\t\t\t\t\t|  _ \\  | ____| |  \\/  | |_ _| \\ \\/ /  |_ _| |  _ \\  | ____|
-  \t\t\t\t\t\t\t| |_) | |  _|   | |\\/| |  | |   \\  /    | |  | | | | |  _|
-  \t\t\t\t\t\t\t|  _ <  | |___  | |  | |  | |   /  \\    | |  | |_| | | |___
-  \t\t\t\t\t\t\t|_| \\_\\ |_____| |_|  |_| |___| /_/\\_\\  |___| |____/  |_____|\n\n
+  \t\t\t\t\t\t\t _____    ___    ____     ____   _____
+  \t\t\t\t\t\t\t|  ___|  / _ \\  |  _ \\   / ___| | ____|
+  \t\t\t\t\t\t\t| |_    | | | | | |_) | | |  _  |  _|
+  \t\t\t\t\t\t\t|  _|   | |_| | |  _ <  | |_| | | |___
+  \t\t\t\t\t\t\t|_|      \\___/  |_| \\_\\  \\____| |_____|\n\n
   \t\t\t\t\t\t\t${intl.formatMessage({ id: 'editor.keyboardShortcuts' })}:\n
   \t\t\t\t\t\t\t\tCTRL + S: ${intl.formatMessage({ id: 'editor.keyboardShortcuts.text1' })}\n
   \t\t\t\t\t\t\t\tCTRL + Shift + F : ${intl.formatMessage({ id: 'editor.keyboardShortcuts.text2' })}\n
@@ -223,7 +223,7 @@ export const EditorUI = (props: EditorUIProps) => {
   \t\t\t\t\t\t\t${intl.formatMessage({ id: 'editor.importantLinks' })}:\n
   \t\t\t\t\t\t\t\t${intl.formatMessage({ id: 'editor.importantLinks.text1' })}: ${REMIX_WEBSITE_URL}/\n
   \t\t\t\t\t\t\t\t${intl.formatMessage({ id: 'editor.importantLinks.text2' })}: ${REMIX_DOCS_URL}/en/latest/\n
-  \t\t\t\t\t\t\t\tGithub: https://github.com/ethereum/remix-project\n
+  \t\t\t\t\t\t\t\tGithub: https://github.com/openibank/forge\n
   \t\t\t\t\t\t\t\tDiscord: ${DISCORD_URL}\n
   \t\t\t\t\t\t\t\tSubstack: https://ethereumremix.substack.com\n
   \t\t\t\t\t\t\t\tX: https://x.com/ethereumremix\n
@@ -1114,7 +1114,7 @@ export const EditorUI = (props: EditorUIProps) => {
         const modalContent: AppModal = {
           id: 'newCodePasted',
           title: "New code pasted",
-          okLabel: 'Ask RemixAI',
+          okLabel: 'Ask Forge Copilot',
           cancelLabel: 'Close',
           cancelFn: () => handleClose(false), // Pass false for askAI
           okFn: () => handleClose(true), // Pass true for askAI
@@ -1139,7 +1139,7 @@ export const EditorUI = (props: EditorUIProps) => {
                     id="editor.title1.message6"
                     values={{
                       a: (chunks) => (
-                        <a target="_blank" href="https://remix-ide.readthedocs.io/en/latest/security.html">
+                        <a target="_blank" href="https://forge.creditchain.org/docs/security">
                           {chunks}
                         </a>
                       ),

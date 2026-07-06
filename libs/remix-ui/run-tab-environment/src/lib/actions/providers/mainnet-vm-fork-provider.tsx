@@ -9,9 +9,9 @@ export class MainnetForkVMProvider extends BasicVMProvider {
     super(
       {
         name: 'vm-mainnet-fork',
-        displayName: 'Mainnet fork - Remix VM (Osaka)',
+        displayName: 'Mainnet fork - Forge VM (Osaka)',
         kind: 'provider',
-        description: 'Remix VM (Osaka)',
+        description: 'Forge VM (Osaka)',
         methods: ['sendAsync', 'init'],
         version: packageJson.version
       },

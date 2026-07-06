@@ -1,6 +1,6 @@
 export const allPrograms = [
   { ethers: 'The ethers.js library is a compact and complete JavaScript library for Ethereum.' },
-  { remix: 'Ethereum IDE and tools for the web.' }
+  { remix: 'CreditChain-native EVM IDE and tools for the web.' }
   // { swarmgw: 'This library can be used to upload/download files to Swarm via https://swarm-gateways.net/.' }
 ]
 

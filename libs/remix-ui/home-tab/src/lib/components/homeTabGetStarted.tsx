@@ -29,7 +29,7 @@ const workspaceTemplates: WorkspaceTemplate[] = [
     gsID: 'sUTLogo',
     workspaceTitle: 'home.templateStartCodingTitle',
     description: 'home.templateStartCodingDesc',
-    projectLogo: 'assets/img/remixverticaltextLogo.png',
+    projectLogo: 'assets/img/creditchain-logo.svg',
     templateName: 'remixDefault',
   },
   {

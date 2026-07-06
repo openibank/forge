@@ -12,9 +12,9 @@ const profile = {
   icon: 'assets/img/EnvironmentExplorerLogo.webp',
   description: 'Customize the Environments list in Deploy & Run',
   location: 'mainPanel',
-  documentation: 'https://remix-ide.readthedocs.io/en/latest/run.html',
+  documentation: 'https://forge.creditchain.org/docs/run.html',
   version: packageJson.version,
-  maintainedBy: 'Remix',
+  maintainedBy: 'CreditChain',
   permission: true,
   events: [],
   methods: []

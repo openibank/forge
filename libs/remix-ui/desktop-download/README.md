@@ -1,6 +1,6 @@
 # Desktop Download Component
 
-A React component for downloading the latest Remix Desktop application from GitHub releases.
+A React component for downloading the latest Forge Desktop application from GitHub releases.
 
 ## Features
 
@@ -33,7 +33,7 @@ function MyComponent() {
 ```
 
 ### Compact Layout (Default)
-Perfect for navigation bars, toolbars, or anywhere space is limited. Shows a button with "Download Remix Desktop {OS} {version}" and a small muted link to other releases below.
+Perfect for navigation bars, toolbars, or anywhere space is limited. Shows a button with "Download Forge Desktop {OS} {version}" and a small muted link to other releases below.
 
 ```tsx
 <DesktopDownload />
@@ -101,7 +101,7 @@ The component automatically detects and provides downloads for:
 ## API
 
 The component fetches release data from:
-`https://api.github.com/repos/remix-project-org/remix-desktop/releases/latest`
+`https://api.github.com/repos/openibank/forge/releases/latest`
 
 ## Caching
 
@@ -127,12 +127,12 @@ The component is fully internationalized using react-intl. Translation strings a
 |-----|-----------------|-------------|
 | `desktopDownload.loading` | "Loading desktop app info..." | Loading state message |
 | `desktopDownload.error` | "Unable to load desktop app. Check the {link} for downloads." | Error fallback message |
-| `desktopDownload.title` | "Remix Desktop" | Main title in full layout |
+| `desktopDownload.title` | "Forge Desktop" | Main title in full layout |
 | `desktopDownload.releaseDate` | "Released {date}" | Release date display |
-| `desktopDownload.downloadSpan` | "Download Remix Desktop {platform} {version}" | Span variant with platform |
-| `desktopDownload.downloadSpanGeneric` | "Download Remix Desktop {version}" | Span variant without platform |
-| `desktopDownload.downloadCompactFull` | "Download Remix Desktop {platform} {version}" | Compact button with platform |
-| `desktopDownload.downloadCompactGeneric` | "Download Remix Desktop {version}" | Compact button without platform |
+| `desktopDownload.downloadSpan` | "Download Forge Desktop {platform} {version}" | Span variant with platform |
+| `desktopDownload.downloadSpanGeneric` | "Download Forge Desktop {version}" | Span variant without platform |
+| `desktopDownload.downloadCompactFull` | "Download Forge Desktop {platform} {version}" | Compact button with platform |
+| `desktopDownload.downloadCompactGeneric` | "Download Forge Desktop {version}" | Compact button without platform |
 | `desktopDownload.downloadButton` | "Download for {platform}" | Full layout button text |
 | `desktopDownload.viewReleases` | "View Downloads" | Fallback button text |
 | `desktopDownload.otherVersions` | "Other versions and platforms" | Link to releases page |

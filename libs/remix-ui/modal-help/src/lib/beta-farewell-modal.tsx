@@ -168,7 +168,7 @@ const SectionLabel: React.FC<{ children: React.ReactNode }> = ({ children }) => 
  * Farewell modal shown to beta testers as their access window closes.
  *
  * Surfaces the thank-you message, a survey CTA (which unlocks an exclusive
- * Remix Pro discount code), and reassures the user they'll transition to Free plan
+ * Forge Pro discount code), and reassures the user they'll transition to Free plan
  * automatically. Dismissal options ("Remind me later" / "Don't show again")
  * are handled by the parent via {@link onDismiss}.
  */
@@ -261,7 +261,7 @@ const BetaFarewellModal: React.FC<BetaFarewellModalProps> = ({
                   </svg>
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
-                  <div style={{ fontSize: 16, fontWeight: 600, color: c.tx }}>Remix v2 Beta</div>
+                  <div style={{ fontSize: 16, fontWeight: 600, color: c.tx }}>Forge Beta</div>
                   <div style={{
                     fontSize: 11, color: c.pk,
                     fontFamily: "'JetBrains Mono', monospace", letterSpacing: 0.5
@@ -302,7 +302,7 @@ const BetaFarewellModal: React.FC<BetaFarewellModalProps> = ({
           {/* ── Thank-you body ── */}
           <div style={{ padding: '4px 24px 16px' }}>
             <div style={{ fontSize: 13, color: c.tm, lineHeight: 1.55 }}>
-              Thank you for being a vital part of the <strong style={{ color: c.tx, fontWeight: 600 }}>Remix v2 Beta Program</strong>. Your insights and participation have been essential in refining the next generation of smart contract development tools.
+              Thank you for being a vital part of the <strong style={{ color: c.tx, fontWeight: 600 }}>Forge Beta Program</strong>. Your insights and participation have been essential in refining the next generation of smart contract development tools.
             </div>
           </div>
 
@@ -386,7 +386,7 @@ const BetaFarewellModal: React.FC<BetaFarewellModalProps> = ({
               <svg width="14" height="14" viewBox="0 0 16 16" fill={c.pk} stroke="none">
                 <path d="M8 14s-5.5-3.5-5.5-7A3 3 0 018 5a3 3 0 015.5 2c0 3.5-5.5 7-5.5 7z" />
               </svg>
-              With gratitude — the Remix team
+              With gratitude — the CreditChain team
             </div>
           </div>
         </div>

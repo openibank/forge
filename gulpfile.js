@@ -85,6 +85,15 @@ task('syncRemixdVersion', async function () {
     await Promise.resolve();
 })
 
+/**
+ * @dev Task to sync forged package metadata from 'dist' folder after publishing
+ */
+task('syncForgedVersion', async function () {
+    const distPackageJSON = require(__dirname + '/dist/libs/remixd/package.json')
+    fs.writeFileSync(__dirname + '/libs/remixd/package.json', JSON.stringify(distPackageJSON, null, 2), 'utf8')
+    await Promise.resolve();
+})
+
 async function setBranchHead(branchName, head) {
     try {
         console.log(`Setting ${branchName} branch head to ${head}`)

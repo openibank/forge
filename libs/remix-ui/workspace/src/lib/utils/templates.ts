@@ -3,13 +3,49 @@ export const templates = (intl: any, plugin: any): TemplateGroup[] => {
 
   return [
     {
+      name: "CreditChain",
+      tooltip: "CreditChain-native smart contract templates and deployment starting points.",
+      items: [
+        {
+          value: "creditScoreRegistry",
+          displayName: "Credit Score Registry",
+          tagList: ["CreditChain", "Registry", "Solidity"],
+          description: "Publish credit score attestations with evidence hashes and off-chain evidence URIs."
+        },
+        {
+          value: "creditERC20",
+          displayName: "CreditChain ERC20",
+          tagList: ["CreditChain", "ERC20", "Solidity"],
+          description: "Start a fungible token for merchant rewards, settlement points, or stable-value wrappers."
+        },
+        {
+          value: "creditPayment",
+          displayName: "Credit Payment",
+          tagList: ["CreditChain", "Payments", "Solidity"],
+          description: "Create a merchant settlement contract with auditable payment receipts."
+        },
+        {
+          value: "creditForgeLifecycle",
+          displayName: "CreditForge Lifecycle",
+          tagList: ["CreditChain", "Foundry", "Solidity"],
+          description: "Generate a build, test, deploy, verify, and monitor lifecycle starter."
+        },
+        {
+          value: "gnosisSafeMultisig",
+          displayName: "CreditChain MultiSig Treasury",
+          tagList: ["CreditChain", "Treasury", "Solidity"],
+          description: "Create a treasury-controlled multisig workspace for CreditChain infrastructure."
+        }
+      ]
+    },
+    {
       name: "Generic",
       items: [
         { value: "remixDefault", tagList: ["Solidity"], displayName: intl.formatMessage({ id: 'filePanel.basic' }), description: 'The default project' },
         { value: "blank", displayName: intl.formatMessage({ id: 'filePanel.blank' }), IsArtefact: true, description: 'A blank project' },
         { value: "simpleEip7702", displayName: 'Simple EIP 7702', IsArtefact: true, description: 'Pectra upgrade allowing externally owned accounts (EOAs) to run contract code.' },
         { value: "accountAbstraction", displayName: 'Account Abstraction', IsArtefact: true, description: 'A repo about ERC-4337 and EIP-7702' },
-        { value: 'remixAiTemplate', tagList: ['AI'], displayName: 'RemixAI Template Generation', IsArtefact: true, description: 'AI generated workspace. Workspace gets generated with a user prompt.' },
+        { value: 'remixAiTemplate', tagList: ['AI'], displayName: 'Forge Copilot Template Generation', IsArtefact: true, description: 'AI generated workspace. Workspace gets generated with a user prompt.' },
         { value: "introToEIP7702", displayName: 'Intro to EIP-7702', IsArtefact: true, description: 'A contract for demoing EIP-7702' },
       ]
     },

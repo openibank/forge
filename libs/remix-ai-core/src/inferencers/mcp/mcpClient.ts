@@ -129,7 +129,7 @@ export class MCPClient {
           sampling: {}
         },
         clientInfo: {
-          name: 'Remix IDE',
+          name: 'Forge IDE',
           version: '1.0.0'
         }
       }
@@ -219,7 +219,7 @@ export class MCPClient {
                 sampling: {}
               },
               clientInfo: {
-                name: 'Remix IDE',
+                name: 'Forge IDE',
                 version: '1.0.0'
               }
             }
@@ -335,7 +335,7 @@ export class MCPClient {
             sampling: {}
           },
           clientInfo: {
-            name: 'Remix IDE',
+            name: 'Forge IDE',
             version: '1.0.0'
           }
         }

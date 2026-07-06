@@ -329,7 +329,7 @@ export const TabsUI = (props: TabsUIProps) => {
         const boilerplateContent = `// This script can be used to deploy and interact with your contracts.
 //
 // See the Remix documentation for more examples:
-// https://remix-ide.readthedocs.io/en/latest/running_js_scripts.html
+// https://forge.creditchain.org/docs/running-js-scripts
 
 (async () => {
     try {
@@ -1003,7 +1003,7 @@ export const TabsUI = (props: TabsUIProps) => {
         await props.plugin.call('remixaiassistant', 'chatPipe', message, false, { source: 'editor-tabs', presetId: 'debug-with-ai' })
       }, 500)
     } catch (err) {
-      console.error('Failed to open RemixAI:', err)
+      console.error('Failed to open Forge Copilot:', err)
     }
   }
 
@@ -1025,7 +1025,7 @@ export const TabsUI = (props: TabsUIProps) => {
                 <CustomTooltip
                   placement="bottom"
                   tooltipId="overlay-tooltip-ask-remixai"
-                  tooltipText={<span>Ask RemixAI about debugging</span>}
+                  tooltipText={<span>Ask Forge Copilot about debugging</span>}
                 >
                   <button
                     className="btn btn-ai d-flex align-items-center justify-content-center border-0 px-3 py-1"
@@ -1040,9 +1040,9 @@ export const TabsUI = (props: TabsUIProps) => {
                     }}
                     onClick={handleDebugWithRemixAI}
                   >
-                    <img src="assets/img/remixAI_small.svg" alt="Remix AI" style={{ width: "16px", height: "16px" }} />
+                    <img src="assets/img/creditchain-logo.svg" alt="Forge Copilot" style={{ width: "16px", height: "16px" }} />
                     <span style={{ lineHeight: "12px", position: "relative", top: "1px" }}>
-                      Debug with RemixAI
+                      Debug with Forge Copilot
                     </span>
                   </button>
                 </CustomTooltip>

@@ -849,7 +849,7 @@ export const RemixUiStaticAnalyser = (props: RemixUiStaticAnalyserProps) => {
             <RemixUiCheckbox
               id="checkAllEntries"
               inputType="checkbox"
-              title="Remix analysis runs a basic analysis."
+              title="Forge analysis runs a basic analysis."
               checked={
                 basicEnabled &&
                 Object.values(groupedModules)
@@ -861,7 +861,7 @@ export const RemixUiStaticAnalyser = (props: RemixUiStaticAnalyserProps) => {
                   .flat()
                   .every((el) => categoryIndex.includes(el))
               }
-              label="Remix"
+              label="Forge"
               onClick={() => {
                 handleBasicEnabled()
                 handleCheckAllModules(groupedModules)
@@ -893,7 +893,7 @@ export const RemixUiStaticAnalyser = (props: RemixUiStaticAnalyserProps) => {
               label="Slither"
               onChange={() => {}}
               optionalClassName="me-3"
-              title={slitherEnabled ? 'Slither runs Slither static analysis' : 'To run Slither analysis, Remix IDE must be connected to your local filesystem with Remixd'}
+              title={slitherEnabled ? 'Slither runs Slither static analysis' : 'To run Slither analysis, Forge must be connected to your local filesystem with Remixd'}
             />
           </div>
           {state.data && state.file.length > 0 && state.source ? (

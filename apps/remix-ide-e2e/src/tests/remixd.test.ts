@@ -430,7 +430,7 @@ function testImportFromRemixd(browser: NightwatchBrowser, callback: VoidFunction
 
 async function installRemixd(): Promise<void> {
   console.log('installRemixd')
-  const remixd = spawn('yarn install', [], { cwd: process.cwd() + '/dist/libs/remixd', shell: true, detached: true })
+  const remixd = spawn('yarn install', [], { cwd: process.cwd() + '/dist/libs/forged', shell: true, detached: true })
   return new Promise((resolve, reject) => {
     remixd.stdout.on('data', function (data) {
       console.log(data.toString())
@@ -452,7 +452,7 @@ async function installRemixd(): Promise<void> {
 async function spawnRemixd(path: string): Promise<ChildProcess> {
   console.log('spawnRemixd', path)
   await installRemixd()
-  const remixd = spawn('chmod +x dist/libs/remixd/src/bin/remixd.js && dist/libs/remixd/src/bin/remixd.js --remix-ide http://127.0.0.1:8080', [`-s ${path}`], { cwd: process.cwd(), shell: true, detached: true })
+  const remixd = spawn('chmod +x dist/libs/forged/src/bin/forged.js && dist/libs/forged/src/bin/forged.js --forge-ide http://127.0.0.1:8080', [`-s ${path}`], { cwd: process.cwd(), shell: true, detached: true })
   return new Promise((resolve, reject) => {
     remixd.stdout.on('data', function (data) {
       if (
@@ -473,9 +473,9 @@ async function spawnRemixd(path: string): Promise<ChildProcess> {
 function killRemixdProcesses(): void {
   try {
     // Try to kill by script path or process name; ignore errors if not found
-    execSync('pkill -f "dist/libs/remixd/src/bin/remixd.js" || true', { stdio: 'ignore' })
+    execSync('pkill -f "dist/libs/forged/src/bin/forged.js" || true', { stdio: 'ignore' })
     execSync('pkill -f "remixd.js" || true', { stdio: 'ignore' })
-    execSync('pkill -f "remixd --remix-ide" || true', { stdio: 'ignore' })
+    execSync('pkill -f "forged --forge-ide" || true', { stdio: 'ignore' })
   } catch (_) {
     // noop
   }
@@ -642,7 +642,7 @@ async function buildFoundryProject(): Promise<void> {
 async function installSlither(): Promise<void> {
   console.log('installSlither', process.cwd())
   try {
-    const server = spawn('node', ['./dist/libs/remixd/src/scripts/installSlither.js'], { cwd: process.cwd(), shell: true, detached: true })
+    const server = spawn('node', ['./dist/libs/forged/src/scripts/installSlither.js'], { cwd: process.cwd(), shell: true, detached: true })
     return new Promise((resolve, reject) => {
       server.stdout.on('data', function (data) {
         console.log(data.toString())

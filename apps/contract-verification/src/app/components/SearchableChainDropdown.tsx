@@ -87,19 +87,19 @@ export const CustomToggle = React.forwardRef(
 
 export const SearchableChainDropdown: React.FC<DropdownProps> = ({ label, id, setSelectedChain, selectedChain }) => {
   const { chains } = React.useContext(AppContext)
-  const ethereumChainIds = [1, 11155111, 17000]
+  const priorityChainIds = [777777, 777778, 31337, 1, 11155111, 17000]
   const intl = useIntl()
 
-  // Add Ethereum chains to the head of the chains list. Sort the rest alphabetically
+  // Add CreditChain and core EVM chains to the head of the chains list. Sort the rest alphabetically.
   const dropdownChains = useMemo(
     () =>
       chains.sort((a, b) => {
-        const isAInEthereum = ethereumChainIds.includes(a.chainId)
-        const isBInEthereum = ethereumChainIds.includes(b.chainId)
+        const isAInPriorityList = priorityChainIds.includes(a.chainId)
+        const isBInPriorityList = priorityChainIds.includes(b.chainId)
 
-        if (isAInEthereum && !isBInEthereum) return -1
-        if (!isAInEthereum && isBInEthereum) return 1
-        if (isAInEthereum && isBInEthereum) return ethereumChainIds.indexOf(a.chainId) - ethereumChainIds.indexOf(b.chainId)
+        if (isAInPriorityList && !isBInPriorityList) return -1
+        if (!isAInPriorityList && isBInPriorityList) return 1
+        if (isAInPriorityList && isBInPriorityList) return priorityChainIds.indexOf(a.chainId) - priorityChainIds.indexOf(b.chainId)
 
         return (a.title || a.name).localeCompare(b.title || b.name)
       }),

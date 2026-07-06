@@ -28,7 +28,7 @@ export const getProviderIcon = (provider: string) => {
   case 'discord':
     return <i className="fab fa-discord"></i>
   case 'siwe':
-    return <i className="fab fa-ethereum"></i>
+    return <i className="fas fa-wallet"></i>
   default:
     return <i className="fas fa-sign-in-alt"></i>
   }

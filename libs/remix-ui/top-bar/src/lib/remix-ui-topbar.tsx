@@ -29,6 +29,7 @@ import { appActionTypes } from 'libs/remix-ui/app/src/lib/remix-app/actions/app'
 import { NotificationBell } from '../components/NotificationBell'
 import { FeedbackPanel } from '../components/FeedbackPanel'
 import { BetaPromoPill } from '../components/BetaPromoPill'
+import { CREDITFORGE_LINKS } from '@forge/creditchain-config'
 
 export function RemixUiTopbar() {
   const intl = useIntl()
@@ -763,7 +764,7 @@ export function RemixUiTopbar() {
                 trackMatomoEvent({ category: 'topbar', action: 'header', name: 'Home', isClick: true })
               }}
             >
-              Remix
+              Forge
             </div>
           </div>
           <span
@@ -897,7 +898,7 @@ export function RemixUiTopbar() {
                 className="btn btn-sm d-flex align-items-center gap-1 ms-3"
                 style={{ cursor: 'pointer', padding: '0.25rem 0.6rem', color: 'var(--text)' }}
                 onClick={() => {
-                  window.open(`https://support.remix.live/login?token=${encodeURIComponent(token)}`, '_blank')
+                  window.open(`${CREDITFORGE_LINKS.home}/support?token=${encodeURIComponent(token)}`, '_blank')
                   trackMatomoEvent({ category: 'topbar', action: 'support', name: 'SupportOpened', isClick: true })
                 }}
                 data-id="topbar-supportBtn"
@@ -961,8 +962,8 @@ export function RemixUiTopbar() {
             data-id="remixai-assistant-icon"
           >
             <img
-              src="assets/img/remixai-logoAI.webp"
-              alt="remixaiassistant"
+              src="assets/img/creditchain-logo.svg"
+              alt="Forge Copilot"
               style={{ width: '20px', height: '20px' }}
             />
           </span>

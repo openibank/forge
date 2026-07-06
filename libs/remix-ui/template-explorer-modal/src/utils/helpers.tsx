@@ -2,6 +2,35 @@
 
 export const templatesRepository = [
   {
+    name: "CreditChain",
+    items: [
+      {
+        value: "creditScoreRegistry",
+        displayName: "Credit Score Registry",
+        tagList: ["CreditChain", "Registry", "Solidity"],
+        description: "Publish credit score attestations with evidence hashes and off-chain evidence URIs.",
+      },
+      {
+        value: "creditERC20",
+        displayName: "CreditChain ERC20",
+        tagList: ["CreditChain", "ERC20", "Solidity"],
+        description: "Start a fungible token for merchant rewards, settlement points, or stable-value wrappers.",
+      },
+      {
+        value: "creditPayment",
+        displayName: "Credit Payment",
+        tagList: ["CreditChain", "Payments", "Solidity"],
+        description: "Create a merchant settlement contract with auditable payment receipts.",
+      },
+      {
+        value: "creditForgeLifecycle",
+        displayName: "CreditForge Lifecycle",
+        tagList: ["CreditChain", "Foundry", "Solidity"],
+        description: "Generate a build, test, deploy, verify, and monitor lifecycle starter.",
+      },
+    ]
+  },
+  {
     name: "Generic",
     items: [
       { value: "remixDefault", tagList: ["Solidity"],
@@ -16,7 +45,7 @@ export const templatesRepository = [
       },
       { value: "accountAbstraction", displayName: 'Account Abstraction', IsArtefact: true, description: 'A repo about ERC-4337 and EIP-7702',
       },
-      { value: 'remixAiTemplate', tagList: ['AI'], displayName: 'RemixAI Template Generation', IsArtefact: true, description: 'AI generated workspace.',
+      { value: 'remixAiTemplate', tagList: ['AI'], displayName: 'Forge Copilot Template Generation', IsArtefact: true, description: 'AI generated workspace.',
       },
       { value: "introToEIP7702", displayName: 'Intro to EIP-7702', IsArtefact: true, description: 'A contract for demoing EIP-7702',
       },
@@ -565,4 +594,3 @@ export const metadata = {
     desktopCompatible: false
   }
 }
-

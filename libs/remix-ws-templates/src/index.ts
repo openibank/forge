@@ -16,6 +16,10 @@ export { default as multNr } from './templates/multiplierNoir'
 export { default as stealthDropNr } from './templates/stealthdropNoir'
 export { default as creAIPredictionMarket } from './templates/creAIPredictionMarket'
 export { default as creWorldCupPredictionMarket } from './templates/creWorldCupPredictionMarket'
+export { default as creditScoreRegistry } from './templates/creditScoreRegistry'
+export { default as creditERC20 } from './templates/creditERC20'
+export { default as creditPayment } from './templates/creditPayment'
+export { default as creditForgeLifecycle } from './templates/creditForgeLifecycle'
 
 export { contractDeployerScripts } from './script-templates/contract-deployer'
 export { etherscanScripts } from './script-templates/etherscan'
@@ -24,4 +28,3 @@ export { contractCreate2Factory } from './script-templates/create2-solidity-fact
 export { runSolidityUnittestingAction } from './script-templates/solidity-test-action'
 export { runSlitherAction } from './script-templates/slither-action'
 export { runJsTestAction } from './script-templates/run-js-test-action'
-

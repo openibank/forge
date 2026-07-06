@@ -517,7 +517,7 @@ export function RemixUiQuickDappV2({ plugin }: RemixUiQuickDappV2Props): JSX.Ele
           <h4 className="mb-2">Access Required</h4>
           {isAuthenticated ? (
             <p className="text-muted" style={{ maxWidth: '400px' }}>
-              QuickDapp V2 is currently available to beta testers only. Please contact the Remix team to request access.
+              QuickDapp V2 is currently available to beta testers only. Please contact the CreditChain team to request access.
             </p>
           ) : (
             <>

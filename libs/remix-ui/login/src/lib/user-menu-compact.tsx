@@ -39,7 +39,7 @@ const getProviderIcon = (provider: AuthProvider | string) => {
   case 'google': return 'fab fa-google'
   case 'github': return 'fab fa-github'
   case 'discord': return 'fab fa-discord'
-  case 'siwe': return 'fab fa-ethereum'
+  case 'siwe': return 'fas fa-wallet'
   case 'base': return 'base-icon' // Custom handling for Base icon
   default: return 'fas fa-sign-in-alt'
   }
@@ -269,7 +269,7 @@ export const UserMenuCompact: React.FC<UserMenuCompactProps> = ({
               <button
                 className="dropdown-item user-menu-item"
                 onClick={() => {
-                  window.open('https://github.com/ethereum/remix-project/issues/new?template=bug_report.md', '_blank')
+                  window.open('https://github.com/openibank/forge/issues/new?template=bug_report.md', '_blank')
                   trackEvent('reportBug')
                   setShowDropdown(false)
                 }}
@@ -282,7 +282,7 @@ export const UserMenuCompact: React.FC<UserMenuCompactProps> = ({
               <button
                 className="dropdown-item user-menu-item"
                 onClick={() => {
-                  window.open('https://github.com/ethereum/remix-project/issues/new?template=feature_request.md', '_blank')
+                  window.open('https://github.com/openibank/forge/issues/new?template=feature_request.md', '_blank')
                   trackEvent('requestFeature')
                   setShowDropdown(false)
                 }}
@@ -295,7 +295,7 @@ export const UserMenuCompact: React.FC<UserMenuCompactProps> = ({
               <button
                 className="dropdown-item user-menu-item"
                 onClick={() => {
-                  window.open('https://remix-ide.readthedocs.io/', '_blank')
+                  window.open('https://forge.creditchain.org/docs', '_blank')
                   trackEvent('documentation')
                   setShowDropdown(false)
                 }}

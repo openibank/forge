@@ -13,8 +13,8 @@
   "icon": "https://raw.githubusercontent.com/protofire/solhint/master/solhint-icon.png",  
   "location": "hiddenPanel",
   "url": "",
-  "documentation": "https://remix-ide.readthedocs.io/en/latest/static_analysis.html",
-  "repo": "https://github.com/remix-project-org/remix-project",
+  "documentation": "https://forge.creditchain.org/docs/static-analysis",
+  "repo": "https://github.com/openibank/forge",
   "maintainedBy": "Remix",
-  "authorContact": "remix@ethereum.org"
+  "authorContact": "support@creditchain.org"
 }

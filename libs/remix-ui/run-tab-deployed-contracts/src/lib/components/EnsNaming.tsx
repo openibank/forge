@@ -390,8 +390,8 @@ export function EnsNaming({ contract, onClose }: EnsNamingProps) {
       if (reverseStatus === 'wrong_chain' || reverseStatus === 'unavailable') return `${fullName} already points to this contract. ${reverseCheckMessage}`
       return `${fullName} already points to this contract.`
     case 'taken': return `${fullName} is already taken${preflight?.currentAddress ? ` by ${preflight.currentAddress.slice(0, 10)}...` : ''}.`
-    case 'name_not_controlled': return 'This name exists but is not controlled by the Remix server.'
-    case 'project_not_controlled': return 'This project exists but is not controlled by the Remix server.'
+    case 'name_not_controlled': return 'This name exists but is not controlled by the Forge server.'
+    case 'project_not_controlled': return 'This project exists but is not controlled by the Forge server.'
     case 'parent_not_owned': return 'The ENS naming service is not available (parent not owned).'
     case 'validation_only': return 'ENS registration is unavailable until the server wallet is configured.'
     case 'unsupported_chain': return preflightError
@@ -657,7 +657,7 @@ export function EnsNaming({ contract, onClose }: EnsNamingProps) {
                 <span style={{ color: textColor }}>{jobResult.totalGasUsed}</span>
               </div>
               <div className="d-flex justify-content-between" style={{ color: subtextColor }}>
-                <span>Total cost (paid by Remix)</span>
+                <span>Total cost (paid by Forge)</span>
                 <span style={{ color: textColor }}>{formatEth(jobResult.totalCostWei)} ETH</span>
               </div>
             </div>

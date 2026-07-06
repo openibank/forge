@@ -22,6 +22,10 @@ export const TEMPLATE_NAMES = {
   'introToEIP7702': 'Intro to EIP-7702',
   'creAIPredictionMarket': 'CRE AI Prediction Market',
   'creWorldCupPredictionMarket': 'CRE World Cup Prediction Market',
+  'creditScoreRegistry': 'CreditChain Credit Score Registry',
+  'creditERC20': 'CreditChain ERC20',
+  'creditPayment': 'CreditChain Payment',
+  'creditForgeLifecycle': 'CreditChain Lifecycle',
 }
 
 export const TEMPLATE_METADATA: Record<string, TemplateType> = {
@@ -187,4 +191,3 @@ export type TemplateGroup = {
   IsArtefact?: boolean
   hasOptions?: boolean
 }
-

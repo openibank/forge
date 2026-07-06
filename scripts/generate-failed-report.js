@@ -9,14 +9,14 @@
 
   Usage examples:
     node scripts/generate-failed-report.js \
-      --slug gh/remix-project-org/remix-project \
+      --slug gh/openibank/forge \
       --workflow web \
       --branch feat/nx-cloud/setup \
       --jobs remix-ide-browser \
       --out reports/ci-latest-failed
 
   Options:
-    --slug         CircleCI project slug (default: gh/remix-project-org/remix-project)
+    --slug         CircleCI project slug (default: gh/openibank/forge)
   --workflow     Workflow name to search (default: web). You can also pass a full workflow URL or a raw workflow UUID and it will be detected automatically.
     --workflow-id  Explicit workflow ID (UUID). If set, branch/workflow name search is skipped.
     --branch       Branch to filter pipelines (default: current git branch or env CIRCLE_BRANCH)
@@ -36,7 +36,7 @@ if (!TOKEN) {
 }
 
 const args = parseArgs(process.argv.slice(2));
-const SLUG = args.slug || inferSlug() || 'gh/remix-project-org/remix-project';
+const SLUG = args.slug || inferSlug() || 'gh/openibank/forge';
 const WORKFLOW = args.workflow || 'web';
 const WORKFLOW_ID = args['workflow-id'] || args.workflowId || extractWorkflowId(WORKFLOW) || '';
 const LIMIT = Number(args.limit || 15);

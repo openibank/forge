@@ -17,9 +17,9 @@ const profile = {
   description: 'Execute, save and replay transactions',
   kind: 'udapp',
   location: 'sidePanel',
-  documentation: 'https://remix-ide.readthedocs.io/en/latest/run.html',
+  documentation: 'https://forge.creditchain.org/docs/run.html',
   version: packageJson.version,
-  maintainedBy: 'Remix',
+  maintainedBy: 'CreditChain',
   permission: true,
   events: ['newTransaction'],
   methods: ['showPluginDetails']

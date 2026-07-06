@@ -4,11 +4,11 @@
   "remixUiTabs.tooltipText3": "Seleziona un file .sol o .yul da compilare O un file .ts o .js da eseguire",
   "remixUiTabs.tooltipText4": "Per spiegare un contratto, scegli un file .sol, .vy o .circom",
   "remixUiTabs.tooltipText5": "Spiega il/i contratto/i nel file attuale [BETA]",
-  "remixUiTabs.tooltipText6": "Abilita RemixAI Copilot [BETA]",
-  "remixUiTabs.tooltipText7": "Disabilita RemixAI Copilot [BETA]",
-  "remixUiTabs.tooltipText8": "Documentazione sugli strumenti di RemixAI",
+  "remixUiTabs.tooltipText6": "Abilita Forge Copilot [BETA]",
+  "remixUiTabs.tooltipText7": "Disabilita Forge Copilot [BETA]",
+  "remixUiTabs.tooltipText8": "Documentazione sugli strumenti di Forge Copilot",
   "remixUiTabs.tooltipText9": "Configura le dipendenze dello scripting",
-  "remixUiTabs.tooltipTextDisabledCopilot": "Per utilizzare RemixAI Copilot, scegli un file .sol",
+  "remixUiTabs.tooltipTextDisabledCopilot": "Per utilizzare Forge Copilot, scegli un file .sol",
   "remixUiTabs.zoomOut": "Riduci",
   "remixUiTabs.zoomIn": "Ingrandisci"
 }

@@ -33,7 +33,7 @@ const CreateInstance: React.FC<CreateInstanceProps> = ({ isAiLoading }) => {
       <div className="d-flex flex-column align-items-center justify-content-center py-5" data-id="ai-loading-spinner">
         <div className="spinner-border qd-progress-spinner qd-progress-spinner--lg mb-3" role="status"></div>
         <h5 className="text-body fw-bold">{statusText}</h5>
-        <p className="text-muted">RemixAI is generating your DApp.</p>
+        <p className="text-muted">Forge Copilot is generating your DApp.</p>
 
         {generatedFiles.length > 0 && (
           <div className="mt-2 qd-progress-log qd-progress-log--lg" style={{ maxWidth: 400, width: '100%' }}>

@@ -1,31 +1,34 @@
 {
-  "name": "@remix-project/remixd",
-  "version": "0.6.64",
-  "description": "remix server: allow accessing file system from remix.ethereum.org and start a dev environment (see help section)",
+  "name": "@creditchain/forged",
+  "version": "1.0.0",
+  "description": "Forge daemon: securely share a local EVM smart-contract workspace with forge.creditchain.org",
   "main": "index.js",
   "types": "./index.d.ts",
   "bin": {
-    "remixd": "./src/bin/remixd.js"
+    "forged": "src/bin/forged.js",
+    "remixd": "src/bin/remixd.js"
   },
   "publishConfig": {
     "access": "public"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/remix-project-org/remix-project.git"
+    "url": "git+https://github.com/openibank/forge.git"
   },
   "keywords": [
-    "remix",
+    "forge",
+    "creditchain",
+    "creditforge",
     "ide",
-    "ethereum",
+    "evm",
     "solidity"
   ],
-  "author": "Remix Team",
+  "author": "OpeniBank / CreditChain",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/remix-project-org/remix-project/issues"
+    "url": "https://github.com/openibank/forge/issues"
   },
-  "homepage": "https://github.com/remix-project-org/remix-project#readme",
+  "homepage": "https://forge.creditchain.org/assets/docs/forged.html",
   "dependencies": {
     "@remix-project/remix-solidity": "^0.5.36",
     "@remixproject/plugin": "0.3.33",

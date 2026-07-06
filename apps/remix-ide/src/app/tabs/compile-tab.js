@@ -21,9 +21,9 @@ const profile = {
   kind: 'compiler',
   permission: true,
   location: 'sidePanel',
-  documentation: 'https://remix-ide.readthedocs.io/en/latest/compile.html',
+  documentation: 'https://forge.creditchain.org/docs/compile.html',
   version: packageJson.version,
-  maintainedBy: 'Remix',
+  maintainedBy: 'CreditChain',
   methods: ['getCompilationResult', 'compile', 'compileWithParameters', 'setCompilerConfig', 'compileFile', 'getCompilerState', 'getCompilerQueryParameters', 'getCompiler', 'getCurrentCompilerConfig', 'compile']
 }
 

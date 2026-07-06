@@ -121,7 +121,7 @@ const EnsRegistrationModal: React.FC<EnsRegistrationModalProps> = ({
               A different wallet address <strong>cannot</strong> overwrite your registration.
             </li>
             <li>
-              Gas is <strong>sponsored by Remix</strong> — no cost to you.
+              Gas is <strong>sponsored by Forge</strong> — no cost to you.
             </li>
           </ul>
         </div>

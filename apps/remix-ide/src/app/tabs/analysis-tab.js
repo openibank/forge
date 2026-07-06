@@ -14,12 +14,12 @@ const profile = {
   methods: ['analyze'],
   events: [],
   icon: 'assets/img/staticAnalysis.webp',
-  description: 'Analyze your code using Remix, Solhint and Slither.',
+  description: 'Analyze your code using Forge, Solhint and Slither.',
   kind: 'analysis',
   location: 'sidePanel',
-  documentation: 'https://remix-ide.readthedocs.io/en/latest/static_analysis.html',
+  documentation: 'https://forge.creditchain.org/docs/static_analysis.html',
   version: packageJson.version,
-  maintainedBy: 'Remix'
+  maintainedBy: 'CreditChain'
 }
 
 export default class AnalysisTab extends ViewPlugin {

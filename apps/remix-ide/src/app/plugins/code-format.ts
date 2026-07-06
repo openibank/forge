@@ -8,7 +8,7 @@ import { filePathFilter, AnyFilter } from '@jsdevtools/file-path-filter'
 
 const profile = {
   name: 'codeFormatter',
-  description: 'prettier plugin for Remix',
+  description: 'prettier plugin for Forge',
   methods: ['format', 'preloadPrettier'],
   events: [''],
   version: '0.0.1'

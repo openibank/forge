@@ -151,8 +151,8 @@ export const listenOnProviderEvents = (provider) => (reducerDispatch: React.Disp
       if (showAlert){
         dispatch(displayNotification(
           path + ' changed',
-          'This file has been changed outside of Remix IDE.',
-          'Replace by the new content', 'Keep the content displayed in Remix',
+          'This file has been changed outside of Forge.',
+          'Replace by the new content', 'Keep the content displayed in Forge',
           () => {
             editor.setText(path, content)
           }

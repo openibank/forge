@@ -255,7 +255,7 @@ const StepDeploy: React.FC = () => (
       iconColor={c.cy} iconBg="rgba(47,191,177,0.1)"
       icon={<CheckSmall color={c.cy} />}
       name="Compile and deploy to any environment"
-      desc="Remix VM, testnet, or mainnet. QuickDApp reads the ABI from the deployed contract."
+      desc="Forge VM, testnet, or mainnet. QuickDApp reads the ABI from the deployed contract."
     />
     <Separator />
     <DetailRow
@@ -269,7 +269,7 @@ const StepDeploy: React.FC = () => (
       iconColor={c.am} iconBg="rgba(240,160,48,0.1)"
       icon={<WarnSmall color={c.am} />}
       name="Not deployed yet?"
-      desc="No problem — Remix will compile your contract and take you to the Deploy & Run tab first."
+      desc="No problem — Forge will compile your contract and take you to the Deploy & Run tab first."
     />
   </div>
 );
@@ -403,7 +403,7 @@ const StepPreview: React.FC = () => (
       iconColor={c.gn} iconBg="rgba(107,219,138,0.1)"
       icon={<BoxSmall color={c.gn} />}
       name="Live preview with wallet connection"
-      desc="Interact with your dApp right inside Remix. Connect a wallet and test transactions."
+      desc="Interact with your dApp right inside Forge. Connect a wallet and test transactions."
     />
     <Separator />
     <DetailRow
@@ -632,7 +632,7 @@ const QuickDAppHelpModal: React.FC<QuickDAppHelpModalProps> = ({
 
           {/* ── Subtitle ── */}
           <div style={{ padding: "10px 24px 0", fontSize: 13, color: c.tm, lineHeight: 1.6 }}>
-            Turn any deployed contract into a full dApp UI. RemixAI generates the front-end — you just describe what you want.
+            Turn any deployed contract into a full dApp UI. Forge Copilot generates the front-end — you just describe what you want.
           </div>
 
           {/* ── Pipeline ── */}
@@ -701,8 +701,8 @@ const QuickDAppHelpModal: React.FC<QuickDAppHelpModalProps> = ({
               <path d="M7 4.5v3M7 9.5h.01" />
             </svg>
             <span>
-              <strong style={{ color: c.gn, fontWeight: 500 }}>Remix VM works great for testing.</strong>{" "}
-              Deploy to Remix VM first to try QuickDApp without spending gas. When you&apos;re happy,
+              <strong style={{ color: c.gn, fontWeight: 500 }}>Forge VM works great for testing.</strong>{" "}
+              Deploy to Forge VM first to try QuickDApp without spending gas. When you&apos;re happy,
               redeploy to a testnet or mainnet and generate again.
             </span>
           </div>

@@ -41,7 +41,7 @@ export class TutorialsHandler extends BaseToolHandler {
 
   async execute(args: { tutorialId: string }, plugin: Plugin): Promise<IMCPToolResult> {
     try {
-      await plugin.call('LearnEth', 'startTutorial', "remix-project-org/remix-workshops", "master", args.tutorialId)
+      await plugin.call('LearnEth', 'startTutorial', "openibank/forge-workshops", "master", args.tutorialId)
       if (await plugin.call('sidePanel', 'isPanelHidden')) {
         await plugin.call('sidePanel', 'togglePanel')
       }
@@ -106,7 +106,7 @@ export class TutorialsListHandler extends BaseToolHandler {
         return JSON.parse(cachedData);
       }
 
-      const response = await axios('https://raw.githubusercontent.com/remix-project-org/remix-workshops/refs/heads/master/config-properties.json');
+      const response = await axios('https://raw.githubusercontent.com/openibank/forge-workshops/refs/heads/master/config-properties.json');
       this.setCachedConfig(JSON.stringify(response.data));
       return response.data
     } catch (error) {

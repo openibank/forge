@@ -1,7 +1,7 @@
 import { WalkthroughDefinition } from '@remix-api'
 
 /**
- * Built-in walkthrough definitions for Remix IDE.
+ * Built-in walkthrough definitions for Forge.
  * These are registered automatically when the walkthrough plugin activates.
  * Additional walkthroughs can be registered by any plugin via the API.
  */
@@ -9,13 +9,13 @@ import { WalkthroughDefinition } from '@remix-api'
 export const builtinWalkthroughs: WalkthroughDefinition[] = [
   {
     id: 'remix-intro-basics',
-    name: 'Getting Started with Remix',
-    description: 'A quick tour of the Remix IDE interface and basic features.',
+    name: 'Getting Started with Forge',
+    description: 'A quick tour of the Forge interface and basic features.',
     sourcePlugin: 'walkthrough',
     steps: [
       {
         targetSelector: '[data-id="verticalIconsHomeIcon"]',
-        title: 'Welcome to Remix IDE',
+        title: 'Welcome to Forge',
         content: 'This is your home button. Click it anytime to return to the landing page with quick links and resources.',
         placement: 'right',
       },
@@ -44,7 +44,7 @@ export const builtinWalkthroughs: WalkthroughDefinition[] = [
       {
         targetSelector: '[plugin="udapp"]',
         title: 'Deploy & Run',
-        content: 'Deploy your compiled contracts and interact with them. Choose between Remix VM, injected providers (MetaMask), or external providers.',
+        content: 'Deploy your compiled contracts and interact with them. Choose between Forge VM, injected providers (MetaMask), or external providers.',
         placement: 'right',
         preAction: {
           plugin: 'menuicons',
@@ -55,7 +55,7 @@ export const builtinWalkthroughs: WalkthroughDefinition[] = [
       {
         targetSelector: '[plugin="remixaiassistant"]',
         title: 'AI Assistant',
-        content: 'Remix has a built-in <b>AI assistant</b> that can explain code, find bugs, suggest fixes, and even generate contracts from a prompt. Open it anytime to chat with AI about your Solidity code.',
+        content: 'Forge has a built-in <b>AI assistant</b> that can explain code, find bugs, suggest fixes, and even generate contracts from a prompt. Open it anytime to chat with AI about your Solidity code.',
         placement: 'right',
         preAction: {
           plugin: 'menuicons',
@@ -77,7 +77,7 @@ export const builtinWalkthroughs: WalkthroughDefinition[] = [
       {
         targetSelector: '[data-id="github-dropdown-toggle-login"]',
         title: 'GitHub Login',
-        content: 'Click here to <b>sign in with GitHub</b>. Once connected you can clone private repos, push changes, and publish Gists directly from Remix.',
+        content: 'Click here to <b>sign in with GitHub</b>. Once connected you can clone private repos, push changes, and publish Gists directly from Forge.',
         placement: 'bottom',
       }
     ],
@@ -91,7 +91,7 @@ export const builtinWalkthroughs: WalkthroughDefinition[] = [
       {
         targetSelector: '[plugin="filePanel"]',
         title: 'Step 1: Create a Workspace',
-        content: 'We\'ll create a fresh workspace with a sample contract for you. A new <b>"LearnDeploy"</b> workspace is being set up with the default Remix template.',
+        content: 'We\'ll create a fresh workspace with a sample contract for you. A new <b>"LearnDeploy"</b> workspace is being set up with the default Forge template.',
         placement: 'right',
         preAction: [
           { plugin: 'filePanel', method: 'createWorkspace', args: ['LearnDeploy', 'remixDefault', false]},
@@ -146,7 +146,7 @@ export const builtinWalkthroughs: WalkthroughDefinition[] = [
       {
         targetSelector: '[data-id="Deploy - transact (not payable)"]',
         title: 'Step 6: Deploy!',
-        content: 'We\'re deploying the Storage contract to the <b>Remix VM</b> for you — a simulated blockchain running in your browser. No real funds needed!',
+        content: 'We\'re deploying the Storage contract to the <b>Forge VM</b> for you — a simulated blockchain running in your browser. No real funds needed!',
         placement: 'bottom',
         clickSelector: '[data-id="deployAndRunClearInstances"]',
         clickDelay: 500,
@@ -171,8 +171,8 @@ export const builtinWalkthroughs: WalkthroughDefinition[] = [
   },
   {
     id: 'remix-beta-tour',
-    name: 'Remix Beta Program Tour',
-    description: 'A quick tour of the beta features and key UI elements in Remix IDE.',
+    name: 'Forge Beta Program Tour',
+    description: 'A quick tour of the beta features and key UI elements in Forge.',
     sourcePlugin: 'walkthrough',
     steps: [
       {
@@ -216,7 +216,7 @@ export const builtinWalkthroughs: WalkthroughDefinition[] = [
       {
         targetSelector: '[data-id="topbar-settingsIcon"]',
         title: 'Settings',
-        content: 'Open <b>Settings</b> to customize your Remix experience — theme, editor preferences, plugin management, and more.',
+        content: 'Open <b>Settings</b> to customize your Forge experience — theme, editor preferences, plugin management, and more.',
         placement: 'bottom',
       },
       {
@@ -233,7 +233,7 @@ export const builtinWalkthroughs: WalkthroughDefinition[] = [
       {
         targetSelector: '[plugin="remixaiassistant"]',
         title: 'AI Assistant — Powered by Sophisticated Models',
-        content: 'The <b>RemixAI Assistant</b> now comes with access to sophisticated language models. Ask it to explain contracts, audit for vulnerabilities, generate code, or answer Solidity questions. In this beta you can try out the latest models — your feedback helps us fine-tune the experience!',
+        content: 'The <b>Forge Copilot</b> now comes with access to sophisticated language models. Ask it to explain contracts, audit for vulnerabilities, generate code, or answer Solidity questions. In this beta you can try out the latest models — your feedback helps us fine-tune the CreditChain developer experience!',
         placement: 'right',
         preAction: {
           plugin: 'menuicons',

@@ -22,7 +22,7 @@ const profile = {
   location: 'mainPanel',
   methods: ['aiWorkspaceGenerate'],
   events: ['onTemplateSelectionResult'],
-  maintainedBy: 'Remix',
+  maintainedBy: 'CreditChain',
 }
 
 export class TemplatesSelectionPlugin extends ViewPlugin {
@@ -86,7 +86,7 @@ export class TemplatesSelectionPlugin extends ViewPlugin {
       const alertModal: AlertModal = {
         id: 'TemplatesSelectionAiAlert',
         message: <div className='d-flex flex-row align-items-center'>
-          <span><img src="../../../assets/img/remixai-logoDefault.webp" style={{ width: '50px', height: '50px' }} alt="Ai alert" /></span>
+          <span><img src="../../../assets/img/creditchain-logo.svg" style={{ width: '50px', height: '50px' }} alt="Ai alert" /></span>
           <p className='ms-2' style={{ fontSize: '1.1rem' }}>Your request is being processed. Please wait while I generate the workspace for you. It won't be long.</p>
         </div>,
         title: 'Generating Workspace'

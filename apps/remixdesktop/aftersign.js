@@ -5,7 +5,7 @@ const path = require('path');
 // Windows signing function
 function signWindowsBinaries(appOutDir) {
   const filesToSign = [
-    path.join(appOutDir, 'Remix-Desktop.exe'),
+    path.join(appOutDir, 'Forge-Desktop.exe'),
     path.join(appOutDir, 'resources', 'app.asar.unpacked', 'node_modules', 'node-pty', 'build', 'Release', 'winpty-agent.exe'),
     path.join(appOutDir, 'resources', 'app.asar.unpacked', 'node_modules', '@vscode', 'ripgrep', 'bin', 'rg.exe'),
   ];
@@ -77,7 +77,7 @@ async function notarizeMac(context) {
   async function runNotarize() {
     console.log('Notarizing app...');
     await notarize({
-      appBundleId: 'org.ethereum.remix-ide',
+      appBundleId: 'org.creditchain.forge',
       appPath,
       appleId: process.env.APPLE_ID,
       appleIdPassword: process.env.APPLE_ID_PASSWORD,

@@ -4,7 +4,7 @@ import { useAuth } from '../../../app/src/lib/remix-app/context/auth-context'
 
 /**
  * Full-screen overlay shown in the browser tab that was launched by the
- * Remix Desktop SSO bridge. Once the user is authenticated, it informs them
+ * Forge Desktop SSO bridge. Once the user is authenticated, it informs them
  * that the session has been handed back to the desktop app and they can
  * safely close this tab.
  */
@@ -23,7 +23,7 @@ export const DesktopRedirectOverlay: React.FC = () => {
     <div
       role="dialog"
       aria-modal="true"
-      aria-label="Returning to Remix Desktop"
+      aria-label="Returning to Forge Desktop"
       style={{
         position: 'fixed',
         inset: 0,
@@ -80,7 +80,7 @@ export const DesktopRedirectOverlay: React.FC = () => {
         )}
 
         <p style={{ fontSize: 15, lineHeight: 1.6, color: '#c4cdd9', margin: '0 0 24px' }}>
-          Your Remix Desktop app is now authenticated. You can return to the
+          Your Forge Desktop app is now authenticated. You can return to the
           desktop app to continue.
         </p>
 

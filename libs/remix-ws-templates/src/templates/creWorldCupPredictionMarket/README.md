@@ -158,9 +158,9 @@ updateTestMode(true)   // onlyOwner — re-enable testing
 
 ## Deployment
 
-### 1. Deploy the contract (Remix Desktop)
+### 1. Deploy the contract (Forge Desktop)
 
-1. Open **Remix Desktop** and create a new workspace
+1. Open **Forge Desktop** and create a new workspace
 2. Copy `contracts/interfaces/ReceiverTemplate.sol` into the workspace, creating the folder `interfaces`
 3. Copy `contracts/WorldCupPredictionMarket.sol` into the workspace
 4. In the **Solidity Compiler** tab, enable **auto compile** or select compiler version `0.8.34` and compile

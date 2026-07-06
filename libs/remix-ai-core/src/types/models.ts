@@ -60,7 +60,7 @@ export const ANONYMOUS_PLACEHOLDER_MODEL: AIModel = {
   id: '__signin__',
   provider: 'mistralai',
   displayName: 'Sign in to use AI models',
-  description: 'Sign in to your Remix account to access AI features.',
+  description: 'Sign in to your Forge account to access AI features.',
   category: 'general',
   capabilities: [],
   isDefault: true,

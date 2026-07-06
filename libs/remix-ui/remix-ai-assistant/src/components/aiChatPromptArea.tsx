@@ -211,7 +211,7 @@ export default function AiChatPromptArea(props: AiChatPromptAreaProps) {
         onUpgradeRequired={props.onUpgradeRequired}
         getRequiredPlanName={props.getRequiredPlanName}
       />
-      <span className="mb-2 mx-4 small w-100 text-dark">RemixAI can make mistakes. Always check important info.</span>
+      <span className="mb-2 mx-4 small w-100 text-dark">Forge Copilot can make mistakes. Always check important info.</span>
     </section>
   )
 }

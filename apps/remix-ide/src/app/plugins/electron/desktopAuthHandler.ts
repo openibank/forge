@@ -5,7 +5,7 @@ export class DesktopAuthHandler extends ElectronPlugin {
     super({
       displayName: 'desktopAuthHandler',
       name: 'desktopAuthHandler',
-      description: 'Handles SSO authentication for Remix Desktop via web bridge',
+      description: 'Handles SSO authentication for Forge Desktop via web bridge',
     })
     this.methods = []
   }

@@ -15,7 +15,7 @@ const profile: ViewProfile = {
   kind: '',
   location: 'mainPanel',
   version: packageJson.version,
-  maintainedBy: 'Remix',
+  maintainedBy: 'CreditChain',
 }
 
 export class ScriptRunnerUIPlugin extends ViewPlugin {

@@ -17,7 +17,7 @@ export class appUpdaterPlugin extends ElectronPlugin {
       const upgradeModal = {
         id: 'confirmUpdate',
         title: 'An update is available',
-        message: `A new version of Remix Desktop is available. Do you want to update?`,
+        message: `A new version of Forge Desktop is available. Do you want to update?`,
         modalType: 'modal',
         okLabel: 'Yes',
         cancelLabel: 'No',
@@ -36,7 +36,7 @@ export class appUpdaterPlugin extends ElectronPlugin {
       const upgradeModal = {
         id: 'confirmInstall',
         title: 'An update is ready to install',
-        message: `A new version of Remix Desktop is ready to install. Do you want to install it now? This will close Remix Desktop.`,
+        message: `A new version of Forge Desktop is ready to install. Do you want to install it now? This will close Forge Desktop.`,
         modalType: 'modal',
         okLabel: 'Yes',
         cancelLabel: 'No',

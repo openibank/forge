@@ -74,10 +74,10 @@ export default function HomeTabBetaPromo({ plugin }: HomeTabBetaPromoProps) {
         </div>
         <div className="flex-grow-1">
           <div className={`fw-bold mb-0 ${isDark ? 'text-white' : 'text-dark'}`} style={{ fontSize: '0.85rem' }}>
-            Try Remix Beta
+            Try Forge Beta
           </div>
           <div style={{ fontSize: '0.75rem', opacity: 0.75 }}>
-            Get early access to new features before they go live.
+            Get early access to CreditChain developer features before they go live.
           </div>
         </div>
         <div className="d-flex align-items-center ms-2">

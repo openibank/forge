@@ -54,7 +54,7 @@ export function RemixUIStatusBar({ statusBarPlugin }: RemixUIStatusBarProps) {
     const abortController = new AbortController()
     const signal = abortController.signal
     async function getScamAlerts() {
-      const response = await axios.get('https://raw.githubusercontent.com/remix-project-org/remix-dynamics/main/ide/scam-alerts.json', { signal })
+      const response = await axios.get('https://raw.githubusercontent.com/openibank/forge-dynamics/main/ide/scam-alerts.json', { signal })
       if (signal.aborted) return
       setScamAlerts(response.data.alerts)
     }

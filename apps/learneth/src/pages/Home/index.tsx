@@ -10,6 +10,11 @@ import './index.css'
 
 type LevelKey = '1' | '2' | '3'
 const LEVEL_LABEL: Record<LevelKey, string> = { '1': 'Beginner', '2': 'Intermediate', '3': 'Advanced' }
+const BRAND_TAG_ALIASES: Record<string, string> = {
+  Remix: 'Forge',
+  'Remix-IDE': 'Forge'
+}
+const normalizeBrandTag = (tag: string) => BRAND_TAG_ALIASES[tag] || tag
 
 function Antenna({ level }: { level: number }) {
   const active = Math.min(Math.max(level, 0), 3)
@@ -75,7 +80,7 @@ function HomePage(): JSX.Element {
     Object.values(selectedRepo.entities).forEach((entity: any) => {
       const tags: string[] = entity?.metadata?.data?.tags || []
       tags.forEach(t => {
-        tagSet.add(t === 'Remix-IDE' ? 'Remix' : t)
+        tagSet.add(normalizeBrandTag(t))
       })
     })
     return Array.from(tagSet).sort((a, b) => a.localeCompare(b))
@@ -126,7 +131,8 @@ function HomePage(): JSX.Element {
     }
     if (selectedTags.length) {
       const filterTags = new Set(selectedTags)
-      if (filterTags.has('Remix')) {
+      if (filterTags.has('Forge')) {
+        filterTags.add('Remix')
         filterTags.add('Remix-IDE')
       }
       list = list.filter(r => r.tags.some(t => filterTags.has(t)))

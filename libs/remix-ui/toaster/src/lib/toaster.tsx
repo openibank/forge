@@ -44,7 +44,7 @@ export const ToastTrigger = (props: ToasterProps) => {
                     <span className="visually-hidden">Loading...</span>
                   </span>
                 )}
-                <strong className="me-auto">Remix</strong>
+                <strong className="me-auto">Forge</strong>
                 {showCloseButton && (
                   <button type="button" className="btn-close" onClick={() => toast.dismiss(toastId)} aria-label="Close"></button>
                 )}
@@ -82,7 +82,7 @@ export const ToastTrigger = (props: ToasterProps) => {
                     <span className="visually-hidden">Loading...</span>
                   </span>
                 )}
-                <strong className="me-auto">Remix</strong>
+                <strong className="me-auto">Forge</strong>
                 {showCloseButton && (
                   <button type="button" className="btn-close" onClick={() => toast.dismiss(toastId)} aria-label="Close"></button>
                 )}
@@ -165,7 +165,7 @@ export const Toaster = (props: ToasterProps) => {
                     <span className="visually-hidden">Loading...</span>
                   </span>
                 )}
-                <strong className="me-auto">Remix</strong>
+                <strong className="me-auto">Forge</strong>
                 {showCloseButton && (
                   <button type="button" className="btn-close" onClick={() => toast.dismiss(toastId)} aria-label="Close"></button>
                 )}
@@ -199,7 +199,7 @@ export const Toaster = (props: ToasterProps) => {
                     <span className="visually-hidden">Loading...</span>
                   </span>
                 )}
-                <strong className="me-auto">Remix</strong>
+                <strong className="me-auto">Forge</strong>
                 {showCloseButton && (
                   <button type="button" className="btn-close" onClick={() => toast.dismiss(toastId)} aria-label="Close"></button>
                 )}

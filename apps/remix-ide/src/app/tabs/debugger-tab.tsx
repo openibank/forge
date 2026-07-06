@@ -37,9 +37,9 @@ const profile = {
   description: 'Debug transactions',
   kind: 'debugging',
   location: 'sidePanel',
-  documentation: 'https://remix-ide.readthedocs.io/en/latest/debugger.html',
+  documentation: 'https://forge.creditchain.org/docs/debugger.html',
   version: packageJson.version,
-  maintainedBy: 'Remix'
+  maintainedBy: 'CreditChain'
 }
 
 export default class DebuggerTab extends DebuggerApiMixin(ViewPlugin) {

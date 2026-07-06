@@ -41,8 +41,8 @@
   "pluginManager.toCall": "to call",
   "pluginManager.ok": "OK",
   "pluginManager.cancel": "Cancel",
-  "pluginManager.maintainedByRemix": "Maintained by Remix",
-  "pluginManager.maintainedExternally": "Not maintained by Remix",
+  "pluginManager.maintainedByRemix": "Maintained by Forge",
+  "pluginManager.maintainedExternally": "Not maintained by Forge",
   "pluginManager.linkToDoc": "Link to documentation",
   "pluginManager.versionAlpha": "Version Alpha",
   "pluginManager.versionBeta": "Version Beta",
@@ -54,6 +54,6 @@
   "pluginManager.connectExternal": "Connect to an external plugin",
   "pluginManager.openDocumentation": "Open documentation",
   "pluginManager.filters": "Filters",
-  "pluginManager.onlyMaintainedByRemix": "Only maintained by Remix",
+  "pluginManager.onlyMaintainedByRemix": "Only maintained by Forge",
   "pluginManager.communityMaintained": "Community"
 }

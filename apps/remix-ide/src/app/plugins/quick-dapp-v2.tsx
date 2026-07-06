@@ -15,7 +15,7 @@ const profile = {
   location: 'mainPanel',
   documentation: '',
   version: packageJson.version,
-  maintainedBy: 'Remix',
+  maintainedBy: 'CreditChain',
   permission: true,
   events: [],
   methods: ['edit', 'clearInstance', 'startAiLoading', 'createDapp', 'createDappWorkspace', 'openDapp', 'consumePendingCreateDapp', 'listDapps']

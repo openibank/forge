@@ -265,7 +265,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({ onClose, plugin }) => {
           { id: 'google', label: 'Google', icon: <i className="fab fa-google"></i>, description: 'Sign in with your Google account', enabled: data.providers?.includes('google') ?? false },
           { id: 'github', label: 'GitHub', icon: <i className="fab fa-github"></i>, description: 'Sign in with your GitHub account', enabled: true },
           { id: 'discord', label: 'Discord', icon: <i className="fab fa-discord"></i>, description: 'Sign in with your Discord account', enabled: data.providers?.includes('discord') ?? false },
-          { id: 'siwe', label: 'Connect Ethereum Wallet', icon: <i className="fab fa-ethereum"></i>, description: 'Sign in with MetaMask, Coinbase Wallet, or any Ethereum wallet', enabled: data.providers?.includes('siwe') ?? false },
+          { id: 'siwe', label: 'Connect CreditChain Wallet', icon: <i className="fas fa-wallet"></i>, description: 'Sign in with MetaMask, Coinbase Wallet, or any CreditChain/EVM wallet', enabled: data.providers?.includes('siwe') ?? false },
           { id: 'email', label: 'Email', icon: <i className="fas fa-envelope"></i>, description: 'Sign in with your email address', enabled: data.providers?.includes('email') ?? false },
           { id: 'apple', label: 'Apple', icon: <i className="fab fa-apple"></i>, description: 'Sign in with your Apple ID', enabled: data.providers?.includes('apple') ?? false },
           { id: 'coinbase', label: 'Coinbase', icon: <i className="fas fa-coins"></i>, description: 'Sign in with your Coinbase account', enabled: data.providers?.includes('coinbase') ?? false },
@@ -280,7 +280,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({ onClose, plugin }) => {
           { id: 'google', label: 'Google', icon: <i className="fab fa-google"></i>, description: 'Sign in with your Google account', enabled: true },
           { id: 'github', label: 'GitHub', icon: <i className="fab fa-github"></i>, description: 'Sign in with your GitHub account', enabled: true },
           { id: 'discord', label: 'Discord', icon: <i className="fab fa-discord"></i>, description: 'Sign in with your Discord account', enabled: true },
-          { id: 'siwe', label: 'Ethereum Wallet', icon: <i className="fab fa-ethereum"></i>, description: 'Sign in with MetaMask, Coinbase Wallet, or any Ethereum wallet', enabled: true },
+          { id: 'siwe', label: 'CreditChain Wallet', icon: <i className="fas fa-wallet"></i>, description: 'Sign in with MetaMask, Coinbase Wallet, or any CreditChain/EVM wallet', enabled: true },
           { id: 'base', label: 'Base', icon: <svg width="18" height="18" viewBox="0 0 111 111" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M54.921 110.034C85.359 110.034 110.034 85.402 110.034 55.017C110.034 24.6319 85.359 0 54.921 0C26.0432 0 2.35281 22.1714 0 50.3923H72.8467V59.6416H0C2.35281 87.8625 26.0432 110.034 54.921 110.034Z" fill="currentColor"/></svg>, description: 'Sign in with Base smart wallet', enabled: true },
           { id: 'email', label: 'Email', icon: <i className="fas fa-envelope"></i>, description: 'Sign in with your email address', enabled: true },
         ])
@@ -621,7 +621,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({ onClose, plugin }) => {
                 <ul className="list-unstyled p-0 m-0">
                   <li className="mb-4 d-flex align-items-center">
                     <i className="fas fa-check-circle me-3 flex-shrink-0 login-modal-list-icon"></i>
-                    <span className="login-modal-list-text text-wrap">Full agentic RemixAI and new connected APIs</span>
+                    <span className="login-modal-list-text text-wrap">Full agentic Forge Copilot and new connected APIs</span>
                   </li>
                   <li className="mb-4 d-flex align-items-center">
                     <i className="fas fa-check-circle me-3 flex-shrink-0 login-modal-list-icon"></i>
@@ -649,7 +649,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({ onClose, plugin }) => {
                     <i className="fas fa-arrow-left"></i>
                   </button>
                 ) : null}
-                <h5 className="modal-title mb-0">Remix IDE</h5>
+                <h5 className="modal-title mb-0">Forge</h5>
                 <div className="close ms-auto login-modal-close-btn fs-5" data-id="loginModal" onClick={() => { trackEvent('closeLoginModal'); onClose() }}>
                   <i className="fas fa-times text-dark"></i>
                 </div>
@@ -887,7 +887,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({ onClose, plugin }) => {
                     </button>
                   )}
 
-                  {/* Ethereum Wallet — Primary CTA */}
+                  {/* CreditChain/EVM Wallet - Primary CTA */}
                   {siweProvider && (
                     <button
                       className="btn btn-primary w-100 d-flex align-items-center justify-content-center py-2 mb-3"
@@ -1043,7 +1043,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({ onClose, plugin }) => {
             <div className="login-modal-terms-bar">
               <p className="text-muted mb-0 fs-small">
                 By continuing, you agree to our{' '}
-                <a href="https://remix.live/termsandconditions" target="_blank" rel="noopener noreferrer">
+                <a href="https://forge.creditchain.org/terms" target="_blank" rel="noopener noreferrer">
                   Terms and Conditions
                 </a>
               </p>

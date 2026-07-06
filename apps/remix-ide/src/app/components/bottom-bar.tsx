@@ -310,7 +310,7 @@ export const BottomBar = ({ plugin }: BottomBarProps) => {
         disabled={explaining || !currentFilePath}
         data-id="bottomBarExplainBtn"
       >
-        <img src="assets/img/remixAI_small.svg" alt="Remix AI" className="explain-icon" />
+        <img src="assets/img/creditchain-logo.svg" alt="Forge Copilot" className="explain-icon" />
         <span>{getExplainLabel()}</span>
       </button>
       <div className="copilot-toggle">

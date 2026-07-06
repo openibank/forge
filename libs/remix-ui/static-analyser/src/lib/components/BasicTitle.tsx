@@ -39,13 +39,13 @@ export function BasicTitle(props: BasicTitleProps) {
   }, [props, props.ssaWarnings.filter((x) => !x.options.isLibrary && x.hasWarning).length])
 
   return (
-    <span id="ssaRemixtab">
-      Remix
+    <span id="ssaForgetab">
+      Forge
       {props.ssaWarnings.length > 0 ? (
         !props.hideWarnings ? (
           !props.showLibsWarnings ? (
             <span
-              data-id="RemixStaticAnalysisErrorCount"
+              data-id="ForgeStaticAnalysisErrorCount"
               className={`badge ${
                 props.ssaWarnings.filter((x) => x.hasWarning).length > 0
                   ? 'bg-warning'
@@ -58,7 +58,7 @@ export function BasicTitle(props: BasicTitleProps) {
             </span>
           ) : (
             <span
-              data-id="RemixStaticAnalysisErrorCount"
+              data-id="ForgeStaticAnalysisErrorCount"
               className={`badge ${
                 props.ssaWarnings.filter((x) => x.options.type !== 'warning' && x.options.type !== 'error').length > 0
                   ? 'bg-info'

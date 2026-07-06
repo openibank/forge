@@ -55,7 +55,7 @@ function HomeTabScamAlert() {
                 isClick: true
               })}
               target="__blank"
-              href="https://remix-ide.readthedocs.io/en/latest/security.html"
+              href="https://forge.creditchain.org/docs/security.html"
             >
               <FormattedMessage id="home.here" />
             </a>

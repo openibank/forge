@@ -133,7 +133,7 @@ app.on('activate', () => {
 
 if (!isE2E) {
 
-  app.setAsDefaultProtocolClient('remix')
+  app.setAsDefaultProtocolClient('forge')
   // windows only
   const gotTheLock = app.requestSingleInstanceLock();
 
@@ -143,25 +143,25 @@ if (!isE2E) {
     app.on('second-instance', (event, argv, workingDirectory) => {
       // On Windows, protocol URLs are passed here
       console.log('Second instance detected:', argv, workingDirectory);
-      const urlArg = argv.find(arg => arg.startsWith('remix://'));
+      const urlArg = argv.find(arg => arg.startsWith('forge://'));
       if (urlArg) {
-        handleRemixUrl(urlArg);
+        handleForgeUrl(urlArg);
       }
     });
 
     app.whenReady().then(() => {
       // On app launch via protocol link (Windows only)
-      console.log('App is ready, checking for remix:// URL');
-      const urlArg = process.argv.find(arg => arg.startsWith('remix://'));
+      console.log('App is ready, checking for forge:// URL');
+      const urlArg = process.argv.find(arg => arg.startsWith('forge://'));
       if (urlArg) {
-        handleRemixUrl(urlArg);
+        handleForgeUrl(urlArg);
       }
     });
   }
 
 }
 
-function handleRemixUrl(url: string) {
+function handleForgeUrl(url: string) {
   try {
     console.log('Got custom URL:', url);
     const parsedUrl = new URL(url);
@@ -200,35 +200,35 @@ function handleRemixUrl(url: string) {
     }
 
     default:
-      console.warn('Unknown remix:// URL path:', fullPath);
+      console.warn('Unknown forge:// URL path:', fullPath);
       break;
     }
   } catch (err) {
-    console.error('Failed to handle remix:// URL:', err);
+    console.error('Failed to handle forge:// URL:', err);
   }
 }
 
 // linux only
 function registerLinuxProtocolHandler() {
-  console.log('Registering remix:// protocol handler');
+  console.log('Registering forge:// protocol handler');
   if (process.platform !== 'linux') return;
 
   const execPath = app.getPath('exe');
   const applicationsDir = path.join(os.homedir(), '.local', 'share', 'applications');
-  const desktopFilePath = path.join(applicationsDir, 'remix.desktop');
+  const desktopFilePath = path.join(applicationsDir, 'forge.desktop');
 
   console.log('Executable path:', execPath);
 
   const desktopEntry = `[Desktop Entry]
-Name=Remix IDE
+Name=Forge
 Exec=${execPath} %u
 Type=Application
 Terminal=false
 Categories=Development;
-MimeType=x-scheme-handler/remix;
+MimeType=x-scheme-handler/forge;
 `;
 
-  console.log('Registering remix:// protocol handler:', desktopFilePath);
+  console.log('Registering forge:// protocol handler:', desktopFilePath);
 
   try {
     if (!fs.existsSync(applicationsDir)) {
@@ -237,15 +237,15 @@ MimeType=x-scheme-handler/remix;
 
     fs.writeFileSync(desktopFilePath, desktopEntry);
 
-    exec(`xdg-mime default remix.desktop x-scheme-handler/remix`, (err, stdout, stderr) => {
+    exec(`xdg-mime default forge.desktop x-scheme-handler/forge`, (err, stdout, stderr) => {
       if (err) {
-        console.error('Failed to register remix:// protocol handler:', err);
+        console.error('Failed to register forge:// protocol handler:', err);
       } else {
-        console.log('remix:// protocol handler registered successfully.', desktopFilePath);
+        console.log('forge:// protocol handler registered successfully.', desktopFilePath);
       }
     });
   } catch (e) {
-    console.error('Error setting up remix:// protocol handler:', e);
+    console.error('Error setting up forge:// protocol handler:', e);
   }
 }
 if (!isE2E) {
@@ -253,15 +253,15 @@ if (!isE2E) {
   app.on('open-url', async (event, url) => {
     console.log('open-url', url);
     event.preventDefault();
-    handleRemixUrl(url);
+    handleForgeUrl(url);
   });
 }
 
 const showAbout = () => {
   void dialog.showMessageBox({
-    title: `About Remix`,
-    message: `The Native IDE for Web3 Development.`,
-    detail: `Remix Desktop version ${app.getVersion()}`,
+    title: `About Forge`,
+    message: `CreditChain-native EVM development studio.`,
+    detail: `Forge Desktop version ${app.getVersion()}`,
     buttons: [],
   });
 };

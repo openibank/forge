@@ -9,7 +9,7 @@ const profile = {
   description: 'Using Remixd daemon, run slither static analysis',
   kind: 'other',
   version: packageJson.version,
-  documentation: 'https://remix-ide.readthedocs.io/en/latest/slither.html'
+  documentation: 'https://forge.creditchain.org/docs/slither.html'
 }
 
 export class SlitherHandle extends WebsocketPlugin {

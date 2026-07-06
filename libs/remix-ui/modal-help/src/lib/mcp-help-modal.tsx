@@ -108,7 +108,7 @@ const SERVICES: ServiceConfig[] = [
       "Lesson 1: Your first NFT contract\n\n" +
       'I\'ve created <span class="hlc">MyNFT.sol</span> in your workspace with a basic ERC-721 template. Let\'s start by:\n\n' +
       "  1. Understanding the mint function\n" +
-      "  2. Deploying to the Remix VM\n" +
+      "  2. Deploying to the Forge VM\n" +
       "  3. Minting your first token\n\n" +
       "Ready? Open the file and hit Compile.",
   },
@@ -570,7 +570,7 @@ const McpHelpModal: React.FC<McpHelpModalProps> = ({
 
           {/* ── Subtitle ── */}
           <div style={{ padding: "8px 24px 0", fontSize: 13, color: c.tm, lineHeight: 1.6 }}>
-            The RemixAI Assistant can now query on-chain data, verify contracts, and search subgraphs in real time. Click any service below to try it.
+            The Forge Copilot Assistant can now query on-chain data, verify contracts, and search subgraphs in real time. Click any service below to try it.
           </div>
 
           {/* ── Flow diagram ── */}
@@ -588,7 +588,7 @@ const McpHelpModal: React.FC<McpHelpModalProps> = ({
               />
               <FlowConnector delay="0s" />
               <FlowNode
-                label="RemixAI"
+                label="Forge Copilot"
                 iconColor={c.cy}
                 icon={
                   <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke={c.cy} strokeWidth="1.5">
@@ -657,7 +657,7 @@ const McpHelpModal: React.FC<McpHelpModalProps> = ({
                     animation: "mcpDotPulse 2s ease-in-out infinite",
                   }}
                 />
-                RemixAI Assistant
+                Forge Copilot Assistant
               </div>
 
               {/* Chat body */}

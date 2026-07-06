@@ -259,7 +259,7 @@ export const friendlyEnsError = (raw: string): string => {
   if (raw.includes('User rejected') || raw.includes('user rejected') || raw.includes('denied')) {
     return 'Transaction was rejected in your wallet.'
   }
-  if (raw.includes('name_not_controlled')) return 'This name exists but is not controlled by the Remix server.'
+  if (raw.includes('name_not_controlled')) return 'This name exists but is not controlled by the Forge server.'
   if (raw.includes('taken')) return 'This name is already taken by a different address.'
   if (raw.includes('parent_not_owned')) return 'The ENS naming service is not available (parent not owned).'
   if (raw.includes('owner() function')) return 'Reverse naming requires an owner() function on the contract.'

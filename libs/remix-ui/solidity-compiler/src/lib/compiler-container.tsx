@@ -917,7 +917,7 @@ export const CompilerContainer = (props: CompilerContainerProps) => {
               <label className="form-check-label" htmlFor="enableFoundry">
                 <FormattedMessage id="solidity.enableFoundry" />
               </label>
-              <a className="mt-1 text-nowrap" href="https://remix-ide.readthedocs.io/en/latest/foundry.html#enable-foundry-compilation" target={'_blank'}>
+              <a className="mt-1 text-nowrap" href="https://forge.creditchain.org/docs/foundry.html#enable-foundry-compilation" target={'_blank'}>
                 <CustomTooltip
                   placement={'right'}
                   tooltipClasses="text-nowrap"
@@ -945,7 +945,7 @@ export const CompilerContainer = (props: CompilerContainerProps) => {
               <label className="form-check-label" htmlFor="enableHardhat">
                 <FormattedMessage id="solidity.enableHardhat" />
               </label>
-              <a className="mt-1 text-nowrap" href="https://remix-ide.readthedocs.io/en/latest/hardhat.html#enable-hardhat-compilation" target={'_blank'}>
+              <a className="mt-1 text-nowrap" href="https://forge.creditchain.org/docs/hardhat.html#enable-hardhat-compilation" target={'_blank'}>
                 <CustomTooltip
                   placement={'right'}
                   tooltipClasses="text-nowrap"
@@ -973,7 +973,7 @@ export const CompilerContainer = (props: CompilerContainerProps) => {
               <label className="form-check-label" htmlFor="enableTruffle">
                 <FormattedMessage id="solidity.enableTruffle" />
               </label>
-              <a className="mt-1 text-nowrap" href="https://remix-ide.readthedocs.io/en/latest/truffle.html#enable-truffle-compilation" target={'_blank'}>
+              <a className="mt-1 text-nowrap" href="https://forge.creditchain.org/docs/truffle.html#enable-truffle-compilation" target={'_blank'}>
                 <CustomTooltip
                   placement={'right'}
                   tooltipClasses="text-nowrap"
@@ -1250,7 +1250,7 @@ export const CompilerContainer = (props: CompilerContainerProps) => {
                 </div>
               }
             >
-              <a href="https://remix-ide.readthedocs.io/en/latest/running_js_scripts.html#compile-a-contract-and-run-a-script-on-the-fly" target="_blank">
+              <a href="https://forge.creditchain.org/docs/running_js_scripts.html#compile-a-contract-and-run-a-script-on-the-fly" target="_blank">
                 <i className="ps-2 ms-2 fas fa-info text-dark"></i>
               </a>
             </CustomTooltip>

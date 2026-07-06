@@ -117,7 +117,7 @@ export const MembershipRequestOverlay: React.FC<MembershipRequestOverlayProps> =
               </div>
               <div className="invite-modal-right-body">
                 <p className="invite-modal-success-message">
-                  Thanks for your interest in the <strong>Remix v2 Private Beta Testing Program</strong>! We're rolling out access in phases
+                  Thanks for your interest in the <strong>Forge v2 Private Beta Testing Program</strong>! We're rolling out access in phases
                   to ensure the best experience for everyone.
                 </p>
                 <p className="invite-modal-success-message">
@@ -270,7 +270,7 @@ const RequestFormModal: React.FC<{
               <div className="invite-modal-hero-icon">
                 <i className="fas fa-flask"></i>
               </div>
-              <h3 className="invite-modal-hero-title">Remix v2</h3>
+              <h3 className="invite-modal-hero-title">Forge v2</h3>
               <p className="invite-modal-hero-subtitle">
                 Private Beta Testing Program
               </p>
@@ -281,11 +281,11 @@ const RequestFormModal: React.FC<{
           <div className="invite-modal-right">
             <div className="invite-modal-right-header">
               <div>
-                <h5>Remix v2 Private Beta Testing Program Enrollment</h5>
+                <h5>Forge v2 Private Beta Testing Program Enrollment</h5>
                 <p className="invite-modal-muted mb-0">
-                  Get early access to new premium RemixAI features, big updates to Deploy &amp; Run, and the new AI-assisted Debugger.
-                  Your participation as a Beta Tester will directly influence and help shape the future of Remix.
-                  After this program ends, some features in this release will become part of Remix's paid subscription levels.
+                  Get early access to new premium Forge Copilot features, big updates to Deploy &amp; Run, and the new AI-assisted Debugger.
+                  Your participation as a Beta Tester will directly influence and help shape the future of Forge.
+                  After this program ends, some features in this release will become part of Forge's paid subscription levels.
                 </p>
               </div>
               <button className="invite-modal-close-btn" onClick={onClose}>
@@ -295,10 +295,10 @@ const RequestFormModal: React.FC<{
 
             <div className="invite-modal-right-body">
               <form onSubmit={handleSubmit}>
-                {/* Q1: Have you used RemixAI features? */}
+                {/* Q1: Have you used Forge Copilot features? */}
                 <div className="invite-modal-section">
                   <h6 className="invite-modal-section-label">
-                    Have you used the AI features in Remix? <span className="text-danger">*</span>
+                    Have you used the AI features in Forge? <span className="text-danger">*</span>
                   </h6>
                   <div className="survey-chip-grid">
                     <button
@@ -396,7 +396,7 @@ const RequestFormModal: React.FC<{
                       className="survey-consent-checkbox"
                     />
                     <span>
-                      I agree to receive email updates about the Remix v2 Private Beta Testing Program,
+                      I agree to receive email updates about the Forge v2 Private Beta Testing Program,
                       including access invitations and product announcements. I can unsubscribe at any time. <span className="text-danger">*</span>
                     </span>
                   </label>

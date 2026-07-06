@@ -42,7 +42,7 @@ const profile = {
   icon: HELP_ICON,
   location: 'sidePanel',
   version: packageJson.version,
-  maintainedBy: 'Remix'
+  maintainedBy: 'CreditChain'
 }
 
 export class HelpPlugin extends ViewPlugin {
@@ -194,7 +194,7 @@ const TOPICS: TopicDef[] = [
   {
     id: 'beta-info',
     title: 'About the Beta Program',
-    description: 'Learn what the beta program includes, how to give feedback, and how you\'re shaping the future of Remix.',
+    description: 'Learn what the beta program includes, how to give feedback, and how you\'re shaping the future of Forge.',
     icon: 'fas fa-flask',
     color: '#f0a030',
   },
@@ -210,11 +210,11 @@ const TOPICS: TopicDef[] = [
     tag: 'Reward'
   },
   {
-    // The RemixAI assistant is the free baseline, so this shows for everyone
+    // The Forge Copilot assistant is the free baseline, so this shows for everyone
     // signed in with the assistant.
     id: 'free-guide',
     title: 'What you get for free',
-    description: 'RemixAI Assistant, QuickDApp generation, basic AI skills, usage-based models, and bring-your-own API key.',
+    description: 'Forge Copilot Assistant, QuickDApp generation, basic AI skills, usage-based models, and bring-your-own API key.',
     icon: 'fas fa-gift',
     color: '#6bdb8a',
     tag: 'Free',
@@ -248,7 +248,7 @@ import type { PlanGuideDemo } from './plan-guide-modal'
 
 const FREE_DEMOS: PlanGuideDemo[] = [
   {
-    key: 'assistant', name: 'RemixAI Assistant', color: '#5b9cf5',
+    key: 'assistant', name: 'Forge Copilot Assistant', color: '#5b9cf5',
     desc: 'Ask anything — generate contracts, explain code, and fix errors right in the editor.',
     prompt: 'Write an ERC-20 token with a capped supply and an owner-only mint function.',
     mockReply: 'Drafting <span class="plg-hl">CappedToken.sol</span>…\n\n' +
@@ -260,7 +260,7 @@ const FREE_DEMOS: PlanGuideDemo[] = [
     desc: 'Generate a frontend wired to your contract from a prompt (hosting is a paid add-on).',
     prompt: 'Generate a frontend dapp for my deployed contract with connect-wallet and the main calls.',
     mockReply: `<video width="500" height="300" controls autoPlay muted style="border:none;outline:none; margin-left:-33px;margin-top:5px" }}>
-  <source src="https://github.com/remix-project-org/remix-dynamics/raw/refs/heads/main/gifs/create-dapp.mp4" type="video/mp4">
+  <source src="https://github.com/openibank/forge-dynamics/raw/refs/heads/main/gifs/create-dapp.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>`
   },
@@ -269,7 +269,7 @@ const FREE_DEMOS: PlanGuideDemo[] = [
     desc: 'Load curated basic skills so the assistant follows proven workflows.',
     prompt: 'Load the available basic skills and apply one that fits writing a secure ERC-721.',
     mockReply: `<video width="500" height="300" controls autoPlay muted style="border:none;outline:none; margin-left:-33px;margin-top:5px" }}>
-  <source src="https://github.com/remix-project-org/remix-dynamics/raw/refs/heads/main/gifs/load-skills.mp4" type="video/mp4">
+  <source src="https://github.com/openibank/forge-dynamics/raw/refs/heads/main/gifs/load-skills.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>`
   },
@@ -281,7 +281,7 @@ const FREE_DEMOS: PlanGuideDemo[] = [
   {
     key: 'apikey', name: 'Bring Your Own API Keys', color: '#f0a030',
     desc: 'Plug in your own provider API key to use the assistant with your own account.',
-    mockReply: 'You now have access to <span class="plg-hl">bring-your-own API keys</span>. Open <span class="plg-hl">Settings → RemixAI Assistant</span>, scroll to the far bottom, and activate it — paste your provider key there and the assistant will route requests through your account.'
+    mockReply: 'You now have access to <span class="plg-hl">bring-your-own API keys</span>. Open <span class="plg-hl">Settings → Forge Copilot Assistant</span>, scroll to the far bottom, and activate it — paste your provider key there and the assistant will route requests through your account.'
   }
 ]
 
@@ -290,17 +290,17 @@ const STARTER_DEMOS: PlanGuideDemo[] = [
     key: 'skills', name: 'Full AI Skills', color: '#6bdb8a',
     desc: 'Starter unlocks the full skills library — load and import any advanced skill.',
     mockReply: `You now have access to the <span class="plg-hl">full AI skills library</span>. Load and import any advanced skill into <span class="plg-hl">skills/</span>, and the assistant will follow its expert workflow. <video width="500" height="300" controls autoPlay muted style="border:none;outline:none; margin-left:-33px;margin-top:5px" }}>
-  <source src="https://github.com/remix-project-org/remix-dynamics/raw/refs/heads/main/gifs/load-skills.mp4" type="video/mp4">
+  <source src="https://github.com/openibank/forge-dynamics/raw/refs/heads/main/gifs/load-skills.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>`
   },
   {
-    key: 'codehelper', name: 'RemixAI Code Helper', color: '#5b9cf5',
+    key: 'codehelper', name: 'Forge Copilot Code Helper', color: '#5b9cf5',
     desc: 'A focused coding helper that writes, refactors, and fixes Solidity alongside you.',
     prompt: 'How do I use the code helper to analyze my code?',
     mockReply: 'Select a function or snippet in the editor, then a `Code Analysis` block will appear with suggestions.\n\n' +
       `<video width="500" height="300" controls autoPlay muted style="border:none;outline:none; margin-left:-33px;margin-top:5px" }}>
-  <source src="https://github.com/remix-project-org/remix-dynamics/raw/refs/heads/main/gifs/code-helper.mp4" type="video/mp4">
+  <source src="https://github.com/openibank/forge-dynamics/raw/refs/heads/main/gifs/code-helper.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>`
   },
@@ -321,7 +321,7 @@ const STARTER_DEMOS: PlanGuideDemo[] = [
     desc: 'Give your deployed contracts a human-readable ENS / Enscribe name.',
     mockReply: `You now have access to <span class="plg-hl">ENS / Enscribe</span> naming. Give your deployed contracts a human-readable name like <span class="plg-hl">mytoken.eth</span> so they're reachable by name instead of a raw address.
     <video width="500" height="300" controls autoPlay muted style="border:none;outline:none; margin-left:-33px;margin-top:5px" }}>
-  <source src="https://github.com/remix-project-org/remix-dynamics/raw/refs/heads/main/gifs/ens-registration.mp4" type="video/mp4">
+  <source src="https://github.com/openibank/forge-dynamics/raw/refs/heads/main/gifs/ens-registration.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>`
   },
@@ -329,7 +329,7 @@ const STARTER_DEMOS: PlanGuideDemo[] = [
     key: 'cloud', name: 'Cloud Workspaces', color: '#5b9cf5',
     desc: 'Sync your projects to the cloud and open any workspace from any device.',
     mockReply: `You now have access to <span class="plg-hl">cloud workspaces</span>. Sync your projects to your cloud account and open any workspace from any device — sign in anywhere and it'll be waiting for you.<video width="500" height="300" controls autoPlay muted style="border:none;outline:none; margin-left:-33px;margin-top:5px" }}>
-  <source src="https://github.com/remix-project-org/remix-dynamics/raw/refs/heads/main/gifs/cloud-workspace.mp4" type="video/mp4">
+  <source src="https://github.com/openibank/forge-dynamics/raw/refs/heads/main/gifs/cloud-workspace.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>`
   }
@@ -338,10 +338,10 @@ const STARTER_DEMOS: PlanGuideDemo[] = [
 export const PRO_DEMOS: PlanGuideDemo[] = [
   {
     key: 'auditor', name: 'Auditor Agent', color: '#f0a030',
-    desc: 'The RemixAI auditor agent reviews your contract against curated security checklists.',
+    desc: 'The Forge Copilot auditor agent reviews your contract against curated security checklists.',
     prompt: '<span class="plg-hl">/audit</span>  a contract — audit the open file against the security checklists in audits/.',
     mockReply: `<video width="500" height="300" controls autoPlay muted style="border:none;outline:none; margin-left:-33px;margin-top:5px" }}>
-  <source src="https://github.com/remix-project-org/remix-dynamics/raw/refs/heads/main/gifs/audit-contract.mp4" type="video/mp4">
+  <source src="https://github.com/openibank/forge-dynamics/raw/refs/heads/main/gifs/audit-contract.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>`
   },
@@ -350,7 +350,7 @@ export const PRO_DEMOS: PlanGuideDemo[] = [
     desc: 'Profile your contract and get concrete gas savings with before/after numbers.',
     prompt: 'Run a gas-consumption check on the active contract and suggest concrete savings with estimates.',
     mockReply: `<video width="500" height="300" controls autoPlay muted style="border:none;outline:none; margin-left:-33px;margin-top:5px" }}>
-  <source src="https://github.com/remix-project-org/remix-dynamics/raw/refs/heads/main/gifs/gas-optimization.mp4" type="video/mp4">
+  <source src="https://github.com/openibank/forge-dynamics/raw/refs/heads/main/gifs/gas-optimization.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>`
   },
@@ -588,9 +588,9 @@ const HelpModalOverlay: React.FC<{
           open
           onClose={onClose}
           onShowReel={showReel}
-          planName="Remix Free"
+          planName="Forge Free"
           accent="#6bdb8a"
-          intro="Welcome to Remix! On the free plan you get the RemixAI assistant, QuickDApp frontend generation, basic AI skills, usage-based models, and the option to bring your own API key. Click any feature to see it in action."
+          intro="Welcome to Forge! On the free plan you get the Forge Copilot assistant, QuickDApp frontend generation, basic AI skills, usage-based models, and the option to bring your own API key. Click any feature to see it in action."
           demos={FREE_DEMOS}
         />
       )
@@ -600,7 +600,7 @@ const HelpModalOverlay: React.FC<{
           open
           onClose={onClose}
           onShowReel={showReel}
-          planName="Remix Starter"
+          planName="Forge Starter"
           accent="#5b9cf5"
           intro="Your Starter plan adds full AI skills, the Code Helper, Web Search & OpenZeppelin connectors, local LLMs via Ollama, ENS/Enscribe naming, cloud workspaces, and a 40,000-credit ($4) gift. Try a demo of each below."
           demos={STARTER_DEMOS}
@@ -612,9 +612,9 @@ const HelpModalOverlay: React.FC<{
           open
           onClose={onClose}
           onShowReel={showReel}
-          planName="Remix Pro"
+          planName="Forge Pro"
           accent="#f0a030"
-          intro="You're on Pro — everything in Starter, plus the RemixAI auditor agent, gas-consumption checks, The Graph / Etherscan / Alchemy connectors, unlimited dapp hosting, and a 120,000-credit ($12) gift. Try a demo of each below."
+          intro="You're on Pro — everything in Starter, plus the Forge Copilot auditor agent, gas-consumption checks, The Graph / Etherscan / Alchemy connectors, unlimited dapp hosting, and a 120,000-credit ($12) gift. Try a demo of each below."
           demos={PRO_DEMOS}
         />
       )

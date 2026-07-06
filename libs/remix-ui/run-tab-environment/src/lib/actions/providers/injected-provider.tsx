@@ -69,7 +69,7 @@ export abstract class InjectedProvider extends Plugin implements IProvider {
       try {
         await this.askPermission(true)
       } catch (error) {
-        this.call('notification', 'toast', 'Please make sure your Injected Provider is connected to Remix.')
+        this.call('notification', 'toast', 'Please make sure your injected provider is connected to Forge.')
         throw new Error(this.notFound())
       }
     }

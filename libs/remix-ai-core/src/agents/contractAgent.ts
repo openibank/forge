@@ -5,7 +5,7 @@ import { workspaceAgent } from "./workspaceAgent";
 import { CompilationResult } from "../types/types";
 import { compilecontracts, compilationParams } from "../helpers/compile";
 import { OllamaInferencer } from "../inferencers/local/ollamaInferencer"
-const COMPILATION_WARNING_MESSAGE = '⚠️**Warning**: The compilation failed. Please check the compilation errors in the Solidity compiler plugin. Enter `/continue` or `/c` if you want RemixAI to try again until a compilable solution is generated?'
+const COMPILATION_WARNING_MESSAGE = '⚠️**Warning**: The compilation failed. Please check the compilation errors in the Solidity compiler plugin. Enter `/continue` or `/c` if you want Forge Copilot to try again until a compilable solution is generated?'
 
 export class ContractAgent {
   plugin: any;
@@ -52,7 +52,7 @@ export class ContractAgent {
         }, {})
         await statusCallback?.('Opening in new window...')
         await this.plugin.call('electronTemplates', 'loadTemplateInNewWindow', files)
-        //return "Feature not only available in the browser version of Remix IDE. Please use the browser version to generate secure code."
+        //return "Feature not only available in the browser version of Forge. Please use the browser version to generate secure code."
         return "## New workspace created!  \nNavigate to the new window!"
       }
 

@@ -10,13 +10,13 @@ export const OriginWarning = () => {
     if (window.location.hostname === 'yann300.github.io') {
       setMessageId('remixApp.originWarningUnstable')
     } else if (
-      window.location.hostname === 'alpha.remix.live' ||
+      window.location.hostname === 'alpha.forge.creditchain.org' ||
       (window.location.hostname === 'ethereum.github.io' && window.location.pathname.indexOf('/remix-live-alpha') === 0)
     ) {
       setMessageId('remixApp.originWarningAlpha')
     } else if (
       window.location.protocol.indexOf('http') === 0 &&
-      window.location.hostname !== 'remix.ethereum.org' &&
+      window.location.hostname !== 'forge.creditchain.org' &&
       window.location.hostname !== 'localhost' &&
       window.location.hostname !== '127.0.0.1'
     ) {

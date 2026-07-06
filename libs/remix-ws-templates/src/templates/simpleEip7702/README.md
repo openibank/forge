@@ -19,7 +19,7 @@ For more information please see [this page](https://eip7702.io).
 This section explains how to run this project. We are going to assign a piece of code to an EOA:
 
 - Open and compile the file `Example7702.sol`.
-- From the `Deploy & Run` module switch to the `Remix VM (pectra)` provider.
+- From the `Deploy & Run` module switch to the `Forge VM (pectra)` provider.
 - Deploy the contract above (this will be deployed to the in-browser blockchain).
 - Copy the address of the contract to the clipboard.
 - Click on `Delegation Authorization`.

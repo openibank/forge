@@ -32,7 +32,7 @@ const profile = {
   icon: '',
   location: 'none',
   version: packageJson.version,
-  maintainedBy: 'Remix'
+  maintainedBy: 'CreditChain'
 }
 
 export class MembershipRequestPlugin extends Plugin {

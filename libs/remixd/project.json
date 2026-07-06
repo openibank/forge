@@ -1,5 +1,5 @@
 {
-  "name": "remixd",
+  "name": "forged",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/remixd/src",
   "projectType": "library",
@@ -11,7 +11,7 @@
       "executor": "@nrwl/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/libs/remixd",
+        "outputPath": "dist/libs/forged",
         "main": "libs/remixd/src/index.ts",
         "tsConfig": "libs/remixd/tsconfig.lib.json",
         "updateBuildableProjectDepsInPackageJson": false,

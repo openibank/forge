@@ -948,7 +948,7 @@ window.addEventListener('unhandledrejection', function(e) {
                     <div className={`alert py-2 px-3 mb-2 small shadow-sm d-flex align-items-start fade-in ${vmContractStatus === 'not-found' ? 'alert-danger border-danger' : 'alert-warning border-warning'}`} data-id="vm-warning-banner">
                       <i className={`fas ${vmContractStatus === 'not-found' ? 'fa-times-circle text-danger' : 'fa-exclamation-triangle text-warning'} me-2 mt-1`}></i>
                       <div>
-                        <div className="fw-bold mb-1">Remix VM — Local Only</div>
+                        <div className="fw-bold mb-1">Forge VM — Local Only</div>
                         {vmContractStatus === 'not-found' && (
                           <div className="text-danger mb-1">
                             <i className="fas fa-exclamation-circle me-1"></i>
@@ -963,7 +963,7 @@ window.addEventListener('unhandledrejection', function(e) {
                         )}
                         <div className="mt-1 text-danger">
                           <i className="fas fa-exclamation-triangle me-1"></i>
-                          You can deploy to IPFS, but the deployed DApp will not function — Remix VM only runs locally in this browser and is not accessible externally.
+                          You can deploy to IPFS, but the deployed DApp will not function — Forge VM only runs locally in this browser and is not accessible externally.
                         </div>
                         <div className="mt-1 text-warning">
                           <i className="fas fa-info-circle me-1"></i>

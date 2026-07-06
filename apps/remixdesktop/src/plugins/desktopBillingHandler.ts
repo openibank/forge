@@ -4,13 +4,13 @@ import { ElectronBasePlugin, ElectronBasePluginClient } from "@remixproject/plug
 const profile: Profile = {
   name: 'desktopBillingHandler',
   displayName: 'Desktop Billing Handler',
-  description: 'Bridges web checkout completion back to Remix Desktop',
+  description: 'Bridges web checkout completion back to Forge Desktop',
 }
 
 const clientProfile: Profile = {
   name: 'desktopBillingHandler',
   displayName: 'Desktop Billing Handler',
-  description: 'Bridges web checkout completion back to Remix Desktop',
+  description: 'Bridges web checkout completion back to Forge Desktop',
   methods: [],
   events: ['onBillingComplete'],
 }
@@ -24,8 +24,8 @@ export class DesktopBillingHandler extends ElectronBasePlugin {
   }
 
   /**
-   * Handle the checkout-complete callback from the web IDE via the remix://
-   * protocol. Called from main.ts when remix://billing/complete is intercepted
+   * Handle the checkout-complete callback from the web IDE via the forge://
+   * protocol. Called from main.ts when forge://billing/complete is intercepted
    * (the protocol handler already brings the desktop window to the foreground).
    * Unlike the SSO bridge there are no tokens to transfer — the purchase was
    * made server-side against the already-authenticated account, so we simply

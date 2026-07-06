@@ -32,7 +32,7 @@ export class ExternalHttpProvider extends AbstractProvider {
               )
             }}
           />
-          <div className="border p-1 mt-2 mb-3">geth --http --http.corsdomain https://remix.ethereum.org</div>
+          <div className="border p-1 mt-2 mb-3">geth --http --http.corsdomain https://forge.creditchain.org</div>
           <FormattedMessage
             id="udapp.externalHttpProviderText2"
             values={{
@@ -53,7 +53,7 @@ export class ExternalHttpProvider extends AbstractProvider {
             id="udapp.externalHttpProviderText4"
             values={{
               a: (chunks) => (
-                <a href="https://remix-ide.readthedocs.io/en/latest/run.html#more-about-web3-provider" target="_blank" rel="noreferrer">
+                <a href="https://forge.creditchain.org/docs/run.html#more-about-web3-provider" target="_blank" rel="noreferrer">
                   {chunks}
                 </a>
               )

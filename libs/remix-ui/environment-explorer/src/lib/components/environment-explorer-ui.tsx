@@ -12,9 +12,9 @@ const defaultSections: environmentExplorerUIGridSections = {
     providers: [],
     filterFn: (provider) => provider.config.isInjected
   },
-  'Remix VMs': {
+  'Forge VMs': {
     title: 'environmentExplorer.remixVmsSectionTitle',
-    keywords: ['Remix VMs'],
+    keywords: ['Forge VMs'],
     providers: [],
     filterFn: (provider) => provider.config.isVM && !provider.config.isVMStateForked && !provider.config.isRpcForkedState
   },

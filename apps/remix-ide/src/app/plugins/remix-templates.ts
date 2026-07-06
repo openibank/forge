@@ -6,7 +6,7 @@ import { cloneInputType } from '@remix-api'
 const profile = {
   name: 'remix-templates',
   displayName: 'remix-templates',
-  description: 'Remix Templates plugin',
+  description: 'Forge Templates plugin',
   methods: ['getTemplate', 'loadTemplateInNewWindow', 'addToCurrentElectronFolder', 'loadFilesInNewWindow', 'getTemplateReadMeFile'],
 }
 

@@ -239,7 +239,7 @@ export function TopCards() {
             }}
           >
             <span className="d-flex flex-shrink-0">
-              <img src={'assets/img/remixai-logoDefault.webp'} className="img-fluid" style={{ width: '20px', height: '20px' }} />
+              <img src={'assets/img/creditchain-logo.svg'} className="img-fluid" style={{ width: '20px', height: '20px' }} alt="Forge Copilot" />
             </span>
             <span className="d-flex flex-column flex-grow-1 ms-2 ms-md-3">
               <p className="mb-0 fw-semibold">Create with AI</p>

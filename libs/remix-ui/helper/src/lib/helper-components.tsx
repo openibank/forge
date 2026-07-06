@@ -218,7 +218,7 @@ export const CompileBtn = ({ plugin, appState, id, compileAction }: { plugin: an
   </CustomTooltip>
 )
 
-export const gitAccessTokenLink = 'https://github.com/settings/tokens/new?scopes=gist,repo&description=Remix%20IDE%20Token'
+export const gitAccessTokenLink = 'https://github.com/settings/tokens/new?scopes=gist,repo&description=Forge%20Token'
 export const etherscanTokenLink = 'https://etherscan.io/myapikey'
 export const sindriAccessTokenLink = 'https://sindri.app'
 export const thegraphApiKeyLink = 'https://thegraph.com/studio/apikeys/'

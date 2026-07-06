@@ -167,7 +167,7 @@ export function Container () {
                 <div className="d-flex flex-wrap justify-content-between">
                   <button className="btn btn-sm btn-outline-info mb-1 flex-grow-1 text-start" onClick={(e) => handleViewFile(e, `${contractsPath}/Verifier.sol`)}>
                     <div className="d-flex align-items-center">
-                      <i className="fab fa-ethereum me-2"></i>
+                      <i className="fas fa-file-contract me-2"></i>
                       <span><FormattedMessage id="noir.viewVerifierSol" /></span>
                     </div>
                   </button>

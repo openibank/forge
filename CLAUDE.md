@@ -1,16 +1,26 @@
-# Claude Code Context for Remix Project
+# Claude Code Context for Forge
 
-> **Purpose**: This document provides context for Claude Code (AI assistant) when working on the Remix Project. Read this at the start of conversations to understand the codebase structure, conventions, and common patterns.
+> **Purpose**: This document provides context for Claude Code (AI assistant) when working on Forge. Forge is a CreditChain-native fork of Ethereum Remix, so preserve upstream Remix internals while making product-facing CreditChain changes.
 
 ## Project Identity
 
-**Remix Project** is a comprehensive smart contract development toolset for Ethereum, including Remix IDE (web and desktop), plugins, and libraries for Solidity development, testing, debugging, and deployment.
+**Forge** is the AI-native smart contract studio for CreditChain, forked from Ethereum Remix. It keeps Remix's browser IDE, plugin engine, Solidity tooling, testing, debugging, and deployment foundation while adding CreditChain network configuration, contract search/import, AI-assisted audits, deployment verification, and future Contract Passport workflows.
 
-- **Repository**: https://github.com/remix-project-org/remix-project
+- **Repository**: https://github.com/openibank/forge
+- **Primary Domain**: https://forge.creditchain.org
+- **Upstream Baseline**: https://github.com/remix-project-org/remix-project
 - **Architecture**: Nx monorepo with Yarn workspaces
-- **Main Branch**: `master`
+- **Main Branch**: `forge/main` once GitHub default branch is switched
 - **Default Project**: `remix-ide`
 - **Tech Stack**: React 18, TypeScript, Nx 15.7.1, Webpack 5, Node 20+
+
+### Rebrand Rules
+
+- User-facing product name is Forge; CreditForge is acceptable when referring to the broader product vision.
+- Keep internal `@remix-project/*`, `@remixproject/*`, `remix-*`, and `RemixUi*` symbols during the safe rebrand phase.
+- Do not run destructive global text replacements. Patch visible surfaces file by file.
+- Keep original license notices and upstream-compatible project structure.
+- CreditChain chain IDs, RPC URLs, explorers, faucet URLs, and verification endpoints are placeholders until confirmed by CreditChain infrastructure.
 
 ## Critical Context
 

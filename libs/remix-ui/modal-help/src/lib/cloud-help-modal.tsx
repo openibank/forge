@@ -223,7 +223,7 @@ const WsCard: React.FC<WsCardProps> = ({ type, picked, onClick }) => {
       <div style={{ fontSize: 11, color: c.tm, lineHeight: 1.5, marginBottom: 10 }}>
         {isCloud
           ? "Syncs automatically to the cloud. Access from any device when logged in."
-          : "Stored in your browser. Works like Remix always has. Private to this device."}
+          : "Stored in your browser. Works like Forge always has. Private to this device."}
       </div>
 
       {/* Traits */}
@@ -397,7 +397,7 @@ const CloudHelpModal: React.FC<CloudHelpModalProps> = ({
 
           {/* ── Subtitle ── */}
           <div style={{ padding: "10px 24px 0", fontSize: 13, color: c.tm, lineHeight: 1.6 }}>
-                        Remix now has two kinds of Workspaces. You can use both — they live side-by-side.
+                        Forge now has two kinds of Workspaces. You can use both — they live side-by-side.
           </div>
 
           {/* ── Dual cards ── */}
@@ -449,7 +449,7 @@ const CloudHelpModal: React.FC<CloudHelpModalProps> = ({
               <div style={{ fontSize: 12, fontWeight: 500, color: c.tx }}>How to enable cloud</div>
             </div>
             <div style={{ fontSize: 11, color: c.tm, lineHeight: 1.5, marginBottom: 12 }}>
-                            Use the toggle in the top-left corner of the app, next to the Remix logo:
+                            Use the toggle in the top-left corner of the app, next to the Forge logo:
             </div>
             {/* Mini mockup of the top bar */}
             <div
@@ -463,7 +463,7 @@ const CloudHelpModal: React.FC<CloudHelpModalProps> = ({
                 gap: 10,
               }}
             >
-              {/* Remix logo placeholder */}
+              {/* Forge logo placeholder */}
               <div
                 style={{
                   width: 24,

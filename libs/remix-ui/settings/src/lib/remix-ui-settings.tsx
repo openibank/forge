@@ -156,7 +156,7 @@ const settingsSections: SettingsSection[] = [
           type: 'toggle',
           footnote: {
             text: 'settings.learnMoreAiCopilot',
-            link: 'https://remix-ide.readthedocs.io/en/latest/ai.html',
+            link: 'https://forge.creditchain.org/docs/ai.html',
             styleClass: 'text-primary'
           }
         },
@@ -168,7 +168,7 @@ const settingsSections: SettingsSection[] = [
           buttonOptions: {
             label: 'settings.viewPrivacyPolicy',
             action: 'link',
-            link: 'https://remix-ide.readthedocs.io/en/latest/ai.html'
+            link: 'https://forge.creditchain.org/docs/ai.html'
           }
         },
         // Ollama configuration is temporarily disabled - will be enabled later

@@ -272,7 +272,7 @@ export function RemixUiSkillsExplorerModal(props: RemixUiSkillsExplorerModalProp
 
   // Define basic skills that are always available to free users
   const basicSkillNames = [
-    'Why Ethereum'.toLowerCase(),
+    'Why CreditChain'.toLowerCase(),
     'Gas & Costs'.toLowerCase(),
     'Ship'.toLowerCase(),
     'Wallets'.toLowerCase(),
@@ -517,7 +517,7 @@ export function RemixUiSkillsExplorerModal(props: RemixUiSkillsExplorerModalProp
                     <>
                       <div className="category-title">Available Skills ({filteredSkills.length})</div>
                       <div className="category-description mb-4">
-                        Select one or more Ethereum development skills to add to your workspace
+                        Select one or more CreditChain and EVM development skills to add to your workspace
                       </div>
                       {!hasAdvancedSkills && (
                         <div onClick={() => plugin.call('planManager', 'open', { reason: 'feature-required', requiredFeature: Features.SKILLS_ADVANCED }) } className="alert alert-info mb-3" role="alert" style={{ cursor: 'pointer' }}>

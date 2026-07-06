@@ -7,7 +7,7 @@
   "editor.editorKeyboardShortcuts": "Scorciatoie della tastiera dell'Editor",
   "editor.editorKeyboardShortcuts.text1": "Formatta il codice nel file attuale",
   "editor.importantLinks": "Collegamenti importanti",
-  "editor.importantLinks.text1": "Sito web ufficiale del Progetto di Remix",
+  "editor.importantLinks.text1": "Sito web ufficiale del Progetto di Forge",
   "editor.importantLinks.text2": "Documentazione ufficiale",
   "editor.title1": "Avviso Codice incollato",
   "editor.title1.message1": "Hai appena incollato un frammento di codice o contratto nell'editor.",
@@ -31,6 +31,6 @@
   "editor.executeFreeFunction": "Esegui una funzione gratuita",
   "editor.executeFreeFunction2": "Esegui la funzione gratuita \"{name}\"",
   "editor.toastText1": "Questo può eseguire esclusivamente la funzion gratuita",
-  "editor.toastText2": "Ti preghiamo di andare alle impostazioni di Remix, per attivare le funzionalità dell'editor del codice, o attendi il caricameento dl contesto dell'editor attuale.",
+  "editor.toastText2": "Ti preghiamo di andare alle impostazioni di Forge, per attivare le funzionalità dell'editor del codice, o attendi il caricameento dl contesto dell'editor attuale.",
   "editor.text": "Il file è aperto in modalità di <b>sola lettura</b>."
 }

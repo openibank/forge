@@ -11,16 +11,23 @@ import * as path from 'path'
 import { Command } from 'commander';
 
 const program = new Command();
+const PACKAGE_NAME = '@creditchain/forged'
+const FORGE_DOCS_URL = 'https://forge.creditchain.org/assets/docs/forged.html'
+const commandName = process.env.FORGE_DAEMON_COMMAND || (path.basename(process.argv[1] || '').replace(/\.js$/, '') || 'forged')
 
 async function warnLatestVersion () {
-  const latest = await latestVersion('@remix-project/remixd')
   const pjson = require('../../package.json') // eslint-disable-line
-  if (semver.eq(latest, pjson.version)) {
-    console.log('\x1b[32m%s\x1b[0m', `[INFO] you are using the latest version ${latest}`)
-  } else if (semver.gt(latest, pjson.version)) {
-    console.log('\x1b[33m%s\x1b[0m', `[WARN] latest version of remixd is ${latest}, you are using ${pjson.version}`)
-    console.log('\x1b[33m%s\x1b[0m', '[WARN] please update using the following command:')
-    console.log('\x1b[33m%s\x1b[0m', '[WARN] yarn global add @remix-project/remixd')
+  try {
+    const latest = await latestVersion(PACKAGE_NAME)
+    if (semver.eq(latest, pjson.version)) {
+      console.log('\x1b[32m%s\x1b[0m', `[INFO] you are using the latest Forge daemon version ${latest}`)
+    } else if (semver.gt(latest, pjson.version)) {
+      console.log('\x1b[33m%s\x1b[0m', `[WARN] latest version of ${PACKAGE_NAME} is ${latest}, you are using ${pjson.version}`)
+      console.log('\x1b[33m%s\x1b[0m', '[WARN] please update using the following command:')
+      console.log('\x1b[33m%s\x1b[0m', `[WARN] npm install -g ${PACKAGE_NAME}`)
+    }
+  } catch (e) {
+    console.log('\x1b[33m%s\x1b[0m', `[INFO] ${PACKAGE_NAME} is not published on npm yet or the registry is unavailable; running local Forge daemon ${pjson.version}.`)
   }
 }
 
@@ -46,7 +53,8 @@ const ports = {
 const killCallBack: Array<any> = [] // any is function
 function startService<S extends 'git' | 'hardhat' | 'truffle' | 'slither' | 'folder' | 'foundry'> (service: S, callback: (ws: WS, sharedFolderClient: servicesList.Sharedfolder, error?:Error) => void) {
   const options = program.opts();
-  const socket = new WebSocket(ports[service], { remixIdeUrl: options.remixIde }, () => services[service](options.readOnly || false))
+  const forgeIdeUrl = options.forgeIde || options.remixIde
+  const socket = new WebSocket(ports[service], { remixIdeUrl: forgeIdeUrl }, () => services[service](options.readOnly || false))
   socket.start(callback)
   killCallBack.push(socket.close.bind(socket))
 }
@@ -65,13 +73,15 @@ function errorHandler (error: any, service: string) {
   program.version(version, '-v, --version')
 
   program
-    .description('Establish a two-way websocket connection between the local computer and Remix IDE for a folder')
-    .option('-u, --remix-ide  <url>', 'URL of remix instance allowed to connect')
-    .option('-s, --shared-folder <path>', 'Folder to share with Remix IDE (Default: CWD)')
+    .name(commandName)
+    .description('Establish a two-way websocket connection between this computer and Forge for a local smart-contract folder')
+    .option('-u, --forge-ide  <url>', 'URL of the Forge instance allowed to connect')
+    .option('--remix-ide  <url>', 'Legacy alias for --forge-ide')
+    .option('-s, --shared-folder <path>', 'Folder to share with Forge (Default: CWD)')
     .option('-i, --install <name>', 'Module name to install locally (Supported: ["slither"])')
     .option('-r, --read-only', 'Treat shared folder as read-only (experimental)')
     .on('--help', function () {
-      console.log('\nExample:\n\n    remixd -s ./shared_project -u http://localhost:8080')
+      console.log(`\nExample:\n\n    ${commandName} -s ./shared_project -u https://forge.creditchain.org`)
     }).parse(process.argv)
   // eslint-disable-next-line
   const options = program.opts();
@@ -82,17 +92,19 @@ function errorHandler (error: any, service: string) {
     process.exit(0)
   }
 
-  if (!options.remixIde) {
-    console.log('\x1b[33m%s\x1b[0m', '[WARN] You can only connect to remixd from one of the supported origins.')
+  const forgeIdeUrl = options.forgeIde || options.remixIde
+
+  if (!forgeIdeUrl) {
+    console.log('\x1b[33m%s\x1b[0m', '[WARN] You can only connect to forged from one of the supported Forge origins.')
   } else {
-    const isValid = await isValidOrigin(options.remixIde)
+    const isValid = await isValidOrigin(forgeIdeUrl)
     /* Allow unsupported origins and display warning. */
     if (!isValid) {
       console.log('\x1b[33m%s\x1b[0m', '[WARN] You are using IDE from an unsupported origin.')
-      console.log('\x1b[33m%s\x1b[0m', 'Check https://gist.github.com/EthereumRemix/091ccc57986452bbb33f57abfb13d173 for list of all supported origins.\n')
+      console.log('\x1b[33m%s\x1b[0m', `Check ${FORGE_DOCS_URL} for supported Forge origins.\n`)
       // return
     }
-    console.log('\x1b[33m%s\x1b[0m', '[WARN] You may now only use IDE at ' + options.remixIde + ' to connect to that instance')
+    console.log('\x1b[33m%s\x1b[0m', '[WARN] You may now only use Forge at ' + forgeIdeUrl + ' to connect to that instance')
   }
 
   if (!options.sharedFolder) options.sharedFolder = process.cwd() // if not specified, use the current folder
@@ -184,29 +196,33 @@ function errorHandler (error: any, service: string) {
   async function isValidOrigin (origin: string): Promise<any> {
     if (!origin) return false
     const domain = getDomain(origin)
-    const gistUrl = 'https://gist.githubusercontent.com/EthereumRemix/091ccc57986452bbb33f57abfb13d173/raw/59cedab38ae94cc72b68854b3706f11819e4a0af/origins.json'
+    const originsUrl = process.env.FORGED_ORIGINS_URL
+
+    if (originsUrl) {
+      try {
+        const { data } = (await Axios.get(originsUrl)) as { data: any }
+
+        try {
+          await writeJSON(path.resolve(path.join(__dirname, '../..', 'origins.json')), { data })
+        } catch (e) {
+          console.error(e)
+        }
+
+        const dataArray:string[] = data
+        return dataArray.includes(origin) ? dataArray.includes(origin) : dataArray.includes(domain)
+      } catch (e) {
+        console.log('\x1b[33m%s\x1b[0m', `[WARN] Could not fetch FORGED_ORIGINS_URL ${originsUrl}; falling back to bundled origins.`)
+      }
+    }
 
     try {
-      const { data } = (await Axios.get(gistUrl)) as { data: any }
+      // eslint-disable-next-line
+      const origins = require('../../origins.json')
+      const { data } = origins
 
-      try {
-        await writeJSON(path.resolve(path.join(__dirname, '../..', 'origins.json')), { data })
-      } catch (e) {
-        console.error(e)
-      }
-
-      const dataArray:string[] = data
-      return dataArray.includes(origin) ? dataArray.includes(origin) : dataArray.includes(domain)
+      return data.includes(origin) ? data.includes(origin) : data.includes(domain)
     } catch (e) {
-      try {
-        // eslint-disable-next-line
-        const origins = require('../../origins.json')
-        const { data } = origins
-
-        return data.includes(origin) ? data.includes(origin) : data.includes(domain)
-      } catch (e) {
-        return false
-      }
+      return false
     }
   }
 })()

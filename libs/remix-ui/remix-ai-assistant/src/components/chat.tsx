@@ -38,7 +38,7 @@ const AiChatIntro: React.FC<AiChatIntroProps> = ({ theme }) => {
   return (
     <div className="assistant-landing d-flex flex-column gap-1 mx-1 align-items-center justify-content-center text-center h-100 w-100" data-id="ai-assistant-landing">
       <div className="d-flex align-items-center justify-content-center" style={{ width: '80px', height: '80px' }}>
-        <img src={theme && theme.toLowerCase() === 'dark' ? assistantAvatar : assitantAvatarLight} alt="RemixAI logo" style={{ width: '48px', height: '48px' }} className="container-img" />
+        <img src={theme && theme.toLowerCase() === 'dark' ? assistantAvatar : assitantAvatarLight} alt="Forge Copilot logo" style={{ width: '48px', height: '48px' }} className="container-img" />
       </div>
       <p className="mb-4" style={{ fontSize: '0.875rem' }}>
         What do you want to build today?

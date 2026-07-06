@@ -69,14 +69,14 @@ function getSystemThemeFallback(): string {
 const OLLAMA_NOT_AVAILABLE_MESSAGE = [
   '**Ollama is not available.**',
   '',
-  'To use Ollama with Remix IDE:',
+  'To use Ollama with Forge:',
   '',
   '1. **Install Ollama**: Visit [ollama.ai](https://ollama.ai) to download',
   '2. **Start Ollama**: Run `ollama serve` in your terminal',
   '3. **Install a model**: Run `ollama pull codestral:latest`',
-  '4. **Configure CORS**: e.g `OLLAMA_ORIGINS=https://remix.ethereum.org ollama serve`',
+  '4. **Configure CORS**: e.g `OLLAMA_ORIGINS=https://forge.creditchain.org ollama serve`',
   '',
-  'See the [Ollama Setup Guide](https://github.com/ethereum/remix-project/blob/master/OLLAMA_SETUP.md) for detailed instructions.',
+  'See the [Ollama Setup Guide](https://github.com/openibank/forge/blob/main/OLLAMA_SETUP.md) for detailed instructions.',
   '',
   '*Switching back to default model for now.*'
 ].join('\n')
@@ -2611,7 +2611,7 @@ export const RemixUiRemixAiAssistant = React.forwardRef<
           <div className="ai-assistant-startup__logo">
             <i className="fa fa-spinner fa-spin fa-2x" aria-hidden="true"></i>
           </div>
-          <div className="ai-assistant-startup__title">Starting Remix AI Assistant</div>
+          <div className="ai-assistant-startup__title">Starting Forge Copilot</div>
           <div className="ai-assistant-startup__subtitle">Loading chat history...</div>
           <div data-id="remix-ai-assistant-loading"></div>
         </div>

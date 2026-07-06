@@ -13,7 +13,7 @@ const pluginProfile = {
   description: 'Audit Checklist Explorer Modal',
   methods: [],
   events: [],
-  maintainedBy: 'Remix',
+  maintainedBy: 'CreditChain',
   kind: 'checklistexplorermodal',
   location: 'none',
   version: packageJson.version,

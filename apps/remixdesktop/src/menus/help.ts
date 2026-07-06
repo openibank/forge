@@ -10,12 +10,12 @@ export default (
     label:  'Help',
     submenu: [
       {
-        label: `About Remix Desktop version ${app.getVersion()}`,
+        label: `About Forge Desktop version ${app.getVersion()}`,
         click(item, focusedWindow) {
           dialog.showMessageBox({
-            title: `About Remix`,
+            title: `About Forge`,
             message: `Version info`,
-            detail: `Remix Desktop version ${app.getVersion()}`,
+            detail: `Forge Desktop version ${app.getVersion()}`,
             buttons: [],
           });
         }
@@ -23,7 +23,7 @@ export default (
       {
         label: 'Report an issue',
         click(item, focusedWindow) {
-          shell.openExternal('https://github.com/remix-project-org/remix-project/issues/new?template=bug_report.md')
+          shell.openExternal('https://github.com/openibank/forge/issues/new?template=bug_report.md')
         }
       }
     ]

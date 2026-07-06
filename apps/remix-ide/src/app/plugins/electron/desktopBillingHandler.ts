@@ -5,7 +5,7 @@ export class DesktopBillingHandler extends ElectronPlugin {
     super({
       displayName: 'desktopBillingHandler',
       name: 'desktopBillingHandler',
-      description: 'Bridges web checkout completion back to Remix Desktop',
+      description: 'Bridges web checkout completion back to Forge Desktop',
     })
     this.methods = []
   }

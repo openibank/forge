@@ -1,5 +1,5 @@
 /**
- * PlanManagerPlugin — Remix `sidePanel` ViewPlugin for the
+ * PlanManagerPlugin — Forge `sidePanel` ViewPlugin for the
  * "Plan & Credits" experience.
  *
  * The plugin is a thin shell around `PlanManagerStore` (XState v5 actor).
@@ -76,7 +76,7 @@ const profile = {
   icon: PLAN_ICON,
   location: 'sidePanel',
   version: packageJson.version,
-  maintainedBy: 'Remix'
+  maintainedBy: 'CreditChain'
 }
 
 // Re-export public types for other packages.
@@ -109,7 +109,7 @@ export class PlanManagerPlugin extends ViewPlugin {
   // (see `openBillingOnWeb`). `desktopBillingReturn` is set on the *web*
   // instance that was launched from desktop (carries `?desktop_billing=1`):
   // once its purchase succeeds we hand control back to the desktop app via the
-  // remix://billing/complete protocol, mirroring the SSO login bridge.
+  // forge://billing/complete protocol, mirroring the SSO login bridge.
   private desktopBillingReturn = false
   private desktopReturnFired = false
   // The billing section the desktop user was sent to buy from (set on the
@@ -132,9 +132,9 @@ export class PlanManagerPlugin extends ViewPlugin {
       if (next !== lastResult) {
         lastResult = next
         this.emit('checkoutResultChanged', next)
-        // If this web instance was launched from Remix Desktop, hand the
+        // If this web instance was launched from Forge Desktop, hand the
         // successful purchase back to the desktop app (focus + refresh) the
-        // same way SSO login hands tokens back via the remix:// protocol.
+        // same way SSO login hands tokens back via the forge:// protocol.
         if (next?.kind === 'success' && this.desktopBillingReturn) {
           this.returnToDesktopAfterBilling()
         }
@@ -156,13 +156,13 @@ export class PlanManagerPlugin extends ViewPlugin {
   async onActivation(): Promise<void> {
     this.renderComponent()
 
-    // Detect whether this (web) instance was launched from Remix Desktop to
+    // Detect whether this (web) instance was launched from Forge Desktop to
     // complete a purchase. Captured once here so a later URL rewrite can't
     // lose the marker before checkout finishes.
     this.desktopBillingReturn = this.readDesktopBillingMarker()
 
     // On desktop, listen for the web checkout completing so we can refresh
-    // credits/plan once the user returns (the remix:// protocol already
+    // credits/plan once the user returns (the forge:// protocol already
     // brings the window forward).
     if (this.isDesktop()) {
       try {
@@ -314,13 +314,13 @@ export class PlanManagerPlugin extends ViewPlugin {
     const pending = this.store.getSnapshot().pendingCheckout
     if (pending) {
       this.trackCheckout('closed', pending.intent, reason)
-      // Our own signal: the user dismissed the Remix modal that hosts the
+      // Our own signal: the user dismissed the Forge modal that hosts the
       // Paddle frame (X / backdrop / Escape / panel close). Paddle's own
       // `checkout.closed` often does NOT fire here because we tear the frame
       // container down ourselves — so this is a distinct abandonment signal.
       reportCheckoutTelemetry('checkout.abandoned', {
         transactionId: (pending as any)?.transactionId,
-        message: `Remix checkout modal closed (${reason})`,
+        message: `Forge checkout modal closed (${reason})`,
         detail: { reason, intent: pending.intent, itemLabel: (pending as any)?.itemLabel },
       })
     }
@@ -1155,7 +1155,7 @@ export class PlanManagerPlugin extends ViewPlugin {
         return loc.origin
       }
     } catch { /* ignore */ }
-    return 'https://remix.ethereum.org'
+    return 'https://forge.creditchain.org'
   }
 
   /** Read the `desktop_billing` marker from the current URL (web instance). */
@@ -1182,7 +1182,7 @@ export class PlanManagerPlugin extends ViewPlugin {
    */
   private openBillingOnWeb(section: 'plans' | 'topup'): void {
     // Remember where we sent the user so the desktop confirmation screen can
-    // show the right intent when control comes back via remix://billing/complete.
+    // show the right intent when control comes back via forge://billing/complete.
     this.desktopPendingBillingSection = section
     const url = `${this.webBillingBaseUrl()}/?call=planManager//open//${section}&desktop_billing=1`
     try {
@@ -1198,7 +1198,7 @@ export class PlanManagerPlugin extends ViewPlugin {
 
   /**
    * Web instance (launched from desktop) finished a purchase: hand control
-   * back to the desktop app via the remix:// protocol, just like the SSO
+   * back to the desktop app via the forge:// protocol, just like the SSO
    * login bridge. The desktop side brings its window forward and refreshes.
    */
   private returnToDesktopAfterBilling(): void {
@@ -1207,7 +1207,7 @@ export class PlanManagerPlugin extends ViewPlugin {
     // Brief delay so the success screen is visible before we redirect.
     setTimeout(() => {
       try {
-        window.location.href = 'remix://billing/complete'
+        window.location.href = 'forge://billing/complete'
       } catch (err) {
         planManagerLogger.warn('[PlanManager] Failed to return to desktop', err)
       }
@@ -1233,7 +1233,7 @@ export class PlanManagerPlugin extends ViewPlugin {
     // user was sent to as the intent and keep the label generic; the plan/credit
     // cards below the confirmation render the precise, freshly-refreshed values.
     const intent: CheckoutIntent = this.desktopPendingBillingSection === 'topup' ? 'topup' : 'subscription'
-    const itemLabel = intent === 'subscription' ? 'Remix' : undefined
+    const itemLabel = intent === 'subscription' ? 'Forge' : undefined
     this.desktopPendingBillingSection = null
     this.setCheckoutResult({ kind: 'success', intent, itemLabel })
   }
@@ -2231,7 +2231,7 @@ const PlanManagerOverlay: React.FC<{
         )}
 
         {/*
-          Auth gate. Remix AI requires an account, so when the user is not
+          Auth gate. Forge Copilot requires an account, so when the user is not
           signed in we hide everything else (catalog, hero, alerts) and show
           a focused sign-up prompt. This takes precedence over the data state
           since none of the data-driven UI is meaningful without a user.
@@ -2628,7 +2628,7 @@ const PlanManagerOverlay: React.FC<{
           </div>
           <div className="pm-footer__vat">All prices exclude VAT/tax where applicable</div>
           <div className="pm-footer__links">
-            <a href="https://remix-ide.readthedocs.io/" target="_blank" rel="noreferrer">Docs</a>
+            <a href="https://forge.creditchain.org/docs" target="_blank" rel="noreferrer">Docs</a>
             <a href={DISCORD_URL} target="_blank" rel="noreferrer">Support</a>
           </div>
         </footer>
@@ -2976,7 +2976,7 @@ const UpgradePromoBanner: React.FC<{
   const isFree = planCtx.kind === 'no_subscription'
   const headline = isFree
     ? `Unlock ${planName}`
-    : `Get more from Remix AI — upgrade from ${planCtx.planName} to ${planName}`
+    : `Get more from Forge Copilot — upgrade from ${planCtx.planName} to ${planName}`
 
   return (
     <section className="pm-promo" aria-label="Upgrade your plan">
@@ -4111,7 +4111,7 @@ const PlansSection: React.FC<{
           compete visually with the priced cards. */}
       <a
         className="pm-enterprise-strip"
-        href="https://remix.live/contact"
+        href="https://forge.creditchain.org/support"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -4206,7 +4206,7 @@ const TopUpSection: React.FC<{
       </div>
       <div className="pm-topup__custom">
         <span>Need a custom amount?</span>
-        <a href="https://remix.live/contact" target="_blank" rel="noopener noreferrer">Contact us</a>
+        <a href="https://forge.creditchain.org/support" target="_blank" rel="noopener noreferrer">Contact us</a>
       </div>
     </div>
   )
@@ -4594,7 +4594,7 @@ const BETA_ALERT_COPY: Record<Exclude<PlanLifecycle, 'active' | 'trial'>, {
 }> = {
   expiring: {
     eyebrow: 'Beta program',
-    title: 'Thanks for shaping Remix.',
+    title: 'Thanks for shaping Forge.',
     lede: (days, expiresOn) =>
       `The free beta wraps up ${days <= 1 ? 'tomorrow' : `in ${days} days`}${expiresOn ? ` (${formatDate(expiresOn)})` : ''}. Your feedback got us here — now it's time to pick a plan that fits how you build.`,
     body: 'Pick any paid tier before your beta ends and your projects, history, and AI credits keep flowing without a hiccup. As a thank-you, your first month carries over a bonus credit pack.',
@@ -4677,7 +4677,7 @@ const PlanManagerSkeleton: React.FC = () => (
 
 /**
  * Sign-in prompt shown when the user opens the panel without an account.
- * Remix AI now requires authentication, so the panel pivots from "manage
+ * Forge Copilot now requires authentication, so the panel pivots from "manage
  * your plan" to "create your account" — anything plan- or catalog-related
  * is hidden by `PlanManagerOverlay` until `isAuthenticated` flips to true.
  *
@@ -4706,7 +4706,7 @@ const SignInPromptScreen: React.FC<{
             <i className="fas fa-sparkles"></i>
             <span>Account required</span>
           </div>
-          <h2 className="pm-signin__title">Create a free account to use RemixAI</h2>
+          <h2 className="pm-signin__title">Create a free account to use Forge Copilot</h2>
 
           <ul className="pm-signin__perks">
             <li><i className="fas fa-robot"></i> Solidity Assistant, Code Completion, and Security Audits</li>
@@ -4722,15 +4722,15 @@ const SignInPromptScreen: React.FC<{
             >
               {pending
                 ? <><i className="fas fa-spinner fa-spin"></i> Opening sign-in…</>
-                : <><i className="fas fa-right-to-bracket"></i> Sign in to Remix</>}
+                : <><i className="fas fa-right-to-bracket"></i> Sign in to Forge</>}
             </button>
           </div>
 
           <p className="pm-signin__legal">
             By continuing, you agree to the&nbsp;
-            <a href="https://remix-project.org/terms" target="_blank" rel="noreferrer">Terms of Service</a>
+            <a href="https://forge.creditchain.org/terms" target="_blank" rel="noreferrer">Terms of Service</a>
             &nbsp;and&nbsp;
-            <a href="https://remix-project.org/privacy" target="_blank" rel="noreferrer">Privacy Policy</a>.
+            <a href="https://forge.creditchain.org/privacy" target="_blank" rel="noreferrer">Privacy Policy</a>.
           </p>
         </div>
       </section>
@@ -4904,7 +4904,7 @@ const EmailVerificationScreen: React.FC<{
       )
 
       if (r.ok) {
-        setInfo('Email verified — unlocking Remix AI…')
+        setInfo('Email verified — unlocking Forge Copilot…')
         // Per the backend brief the JWT is NOT refreshed; we MUST re-pull
         // /permissions/ so `email_verified` flips to true.
         await plugin.call('auth', 'refreshPermissions').catch(() => {})
@@ -4952,8 +4952,8 @@ const EmailVerificationScreen: React.FC<{
           <>
             <h2 className="pm-signin__title">
               {isAddMode
-                ? 'Add an email to use Remix\u00a0AI'
-                : 'Confirm your email to use Remix\u00a0AI'}
+                ? 'Add an email to use Forge\u00a0AI'
+                : 'Confirm your email to use Forge\u00a0AI'}
             </h2>
             <p className="pm-signin__lede">
               {isAddMode
@@ -5080,9 +5080,9 @@ const EmailVerificationScreen: React.FC<{
 
         <p className="pm-signin__legal">
           We never share your email. By verifying you agree to the&nbsp;
-          <a href="https://remix-project.org/terms" target="_blank" rel="noreferrer">Terms</a>
+          <a href="https://forge.creditchain.org/terms" target="_blank" rel="noreferrer">Terms</a>
           &nbsp;and&nbsp;
-          <a href="https://remix-project.org/privacy" target="_blank" rel="noreferrer">Privacy Policy</a>.
+          <a href="https://forge.creditchain.org/privacy" target="_blank" rel="noreferrer">Privacy Policy</a>.
         </p>
       </div>
     </section>
@@ -5106,7 +5106,7 @@ const PlanManagerError: React.FC<{ message?: string | null; onRetry: () => void 
       </button>
       <a
         className="pm-empty__btn pm-empty__btn--ghost"
-        href="https://status.remix-project.org"
+        href="https://forge.creditchain.org/status"
         target="_blank"
         rel="noreferrer"
       >
@@ -5145,7 +5145,7 @@ const CHECKOUT_COPY: Record<CheckoutResultKind, {
     icon: 'fas fa-check',
     title: (intent, item) =>
       intent === 'topup' ? `${item || 'Credits'} added to your account` :
-        intent === 'subscription' ? `Welcome to ${/^remix/i.test(item || '') ? item : `Remix ${item || 'Pro'}`}!` :
+        intent === 'subscription' ? `Welcome to ${/^forge/i.test(item || '') ? item : `Forge ${item || 'Pro'}`}!` :
           intent === 'cancel' ? `${item || 'Subscription'} cancelled` :
             intent === 'reactivate' ? `${item || 'Subscription'} reactivated` :
               'Purchase confirmed',

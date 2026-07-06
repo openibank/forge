@@ -1,6 +1,6 @@
 /**
  * AssistantMachine — XState v5 machine that owns the answer to:
- *   "Can the user talk to Remix AI right now, and if not, what should we
+ *   "Can the user talk to Forge Copilot right now, and if not, what should we
  *    show them?"
  *
  * Modelled as parallel regions so unrelated dimensions (auth, permissions,

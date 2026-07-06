@@ -180,7 +180,7 @@ export class RemixMCPServer extends EventEmitter implements IRemixMCPServer {
         name: this._config.name,
         version: this._config.version
       },
-      instructions: `Remix IDE MCP Server initialized. Available tools: ${this._tools.list().length}, Resource providers: ${this._resources.list().length}. Configuration loaded from workspace.`
+      instructions: `Forge IDE MCP Server initialized. Available tools: ${this._tools.list().length}, Resource providers: ${this._resources.list().length}. Configuration loaded from workspace.`
     };
 
     try {

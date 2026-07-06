@@ -91,7 +91,7 @@ export function RunTabUI(props: RunTabProps) {
             message: <div className="px-3">
               <p>The smart contract has not been compiled with an EVM version that is compatible with the selected chain.</p>
               <ul className="px-3">
-                <li>Have Remix switch to a compatible EVM version for this chain and recompile the contract.</li>
+                <li>Have Forge switch to a compatible EVM version for this chain and recompile the contract.</li>
                 <li>Cancel to keep the current EVM version.</li>
               </ul>
               <p>To manually change the EVM version, go to the Advanced Configurations section of the Solidity compiler.</p>

@@ -134,7 +134,7 @@ export const InviteOverlay: React.FC<InviteOverlayProps> = ({
 
 /* ==================== Shared Helpers ==================== */
 
-const SWIRL_BG = 'https://raw.githubusercontent.com/remix-project-org/remix-dynamics/refs/heads/live/images/illusion.svg'
+const SWIRL_BG = 'https://raw.githubusercontent.com/openibank/forge-dynamics/refs/heads/live/images/illusion.svg'
 
 function formatExpiry(expiresAt: string | null | undefined): string | null {
   if (!expiresAt) return null
@@ -291,15 +291,15 @@ const SuccessModal: React.FC<{
               {isBeta ? (
                 <>
                   <p className="invite-modal-success-message" style={{ fontSize: '0.92rem', lineHeight: 1.6 }}>
-                    You've been selected to join the <strong>Remix v2 Private Beta Testing Program</strong>!
-                    You are now part of an exclusive group of builders who will shape the future of Remix.
+                    You've been selected to join the <strong>Forge v2 Private Beta Testing Program</strong>!
+                    You are now part of an exclusive group of builders who will shape the future of Forge.
                   </p>
                   <div className="invite-modal-section">
                     <h6 className="invite-modal-section-label">WHAT'S NOW UNLOCKED FOR YOU</h6>
                     <div className="invite-modal-perks-grid">
                       <div className="invite-modal-perk">
                         <i className="fas fa-robot invite-modal-perk-icon"></i>
-                        <span>Full Agentic RemixAI</span>
+                        <span>Full Agentic Forge Copilot</span>
                       </div>
                       <div className="invite-modal-perk">
                         <i className="fas fa-cloud invite-modal-perk-icon"></i>
@@ -321,7 +321,7 @@ const SuccessModal: React.FC<{
                     </div>
                     <div className="invite-modal-walkthrough-text">
                       <strong>You're needed here!</strong>
-                      <span>As a Beta Tester your feedback will directly influence the product. Thank you for helping us build the future of Remix!</span>
+                      <span>As a Beta Tester your feedback will directly influence the product. Thank you for helping us build the future of Forge!</span>
                     </div>
                   </div>
                 </>

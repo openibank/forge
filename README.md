@@ -1,44 +1,53 @@
 <p align="center">
-  <img src="./apps/remix-ide/src/assets/img/icon.png" alt="Remix Logo" width="200"/>
+  <img src="./apps/remix-ide/src/assets/img/forge-logo.svg" alt="Forge Logo" width="160"/>
 </p>
-<h3 align="center">Remix Project</h3>
+<h3 align="center">Forge</h3>
+<p align="center">AI-native smart contract studio for CreditChain.</p>
     
 <div align="center">
 
 
-[![CircleCI](https://img.shields.io/circleci/build/github/remix-project-org/remix-project?logo=circleci)](https://circleci.com/gh/remix-project-org/remix-project)
-[![Documentation Status](https://readthedocs.org/projects/remix-ide/badge/?version=latest)](https://remix-ide.readthedocs.io/en/latest/index.html)
-[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat&logo=github)](https://github.com/remix-project-org/remix-project/blob/master/CONTRIBUTING.md)
-[![GitHub contributors](https://img.shields.io/github/contributors/remix-project-org/remix-project?style=flat&logo=github)](https://github.com/remix-project-org/remix-project/graphs/contributors)
-[![Awesome Remix](https://img.shields.io/badge/Awesome--Remix-resources-green?logo=awesomelists)](https://github.com/remix-project-org/awesome-remix)
-[![GitHub](https://img.shields.io/github/license/remix-project-org/remix-project)](https://github.com/remix-project-org/remix-project/blob/master/LICENSE)
-[![Discord](https://img.shields.io/badge/join-discord-brightgreen.svg?style=flat&logo=discord)](https://discord.gg/MzhfCGstNA)
-[![X Follow](https://img.shields.io/twitter/follow/ethereumremix?style=flat&logo=x&color=green)](https://x.com/ethereumremix)
+[![GitHub](https://img.shields.io/github/license/openibank/forge)](https://github.com/openibank/forge/blob/forge/main/LICENSE)
+[![CreditChain](https://img.shields.io/badge/CreditChain-native-2378ff)](https://creditchain.org)
+[![Forge](https://img.shields.io/badge/Forge-forge.creditchain.org-f3c14b)](https://forge.creditchain.org)
 
 </div>
 
-## Remix Project
+## Forge
 
-**Remix Project** is a rich toolset including Remix IDE, a comprehensive smart contract development tool. The Remix Project also includes Remix Plugin Engine and Remix Libraries which are low-level tools for wider use.  
+**Forge** is the CreditChain-native smart contract development cloud, forked from Ethereum Remix. It keeps Remix's battle-tested Solidity IDE, plugin engine, compiler, debugger, testing, and deployment foundation while adding CreditChain-first networks, templates, verified contract import, AI-assisted engineering, audit workflows, deployment verification, and future Contract Passport infrastructure.
 
-## Remix IDE
-**Remix IDE** is used for the entire journey of contract development by users of any knowledge level. It fosters a fast development cycle and has a rich set of plugins with intuitive GUIs. The IDE comes in 2 flavors and a VSCode extension:
+Primary product identity:
 
-**Remix Online IDE**, see: [https://remix.ethereum.org](https://remix.ethereum.org)
+- Product: Forge
+- Domain: [https://forge.creditchain.org](https://forge.creditchain.org)
+- Repository: [https://github.com/openibank/forge](https://github.com/openibank/forge)
+- Deployment repository: [https://github.com/openibank/openibank.github.io](https://github.com/openibank/openibank.github.io)
+- Upstream baseline: [Ethereum Remix Project](https://github.com/remix-project-org/remix-project)
+- Positioning: AI-native smart contract studio for CreditChain
 
-:point_right: Supported browsers: Firefox v100.0.1 & Chrome v101.0.4951.64. No support for Remix's use on tablets or smartphones or telephones.
+## CreditChain MVP
 
-**Remix Desktop IDE**, see releases: [https://github.com/remix-project-org/remix-desktop/releases](https://github.com/remix-project-org/remix-desktop/releases)
+The first Forge milestone is a safe product-facing rebrand plus CreditChain foundations:
 
-![Remix screenshot](https://github.com/remix-project-org/remix-project/raw/master/apps/remix-ide/remix-screenshot-400h.png)
+- Visible app branding says Forge.
+- CreditChain mainnet, testnet, and local devnet configs live in `libs/forge/creditchain-config`.
+- The home screen exposes CreditChain quick actions.
+- The template picker includes CreditChain-native starting points.
+- The local filesystem daemon is packaged as `@creditchain/forged` with the `forged` command.
+- Internal Remix package names stay intact for upstream compatibility.
 
 
-## Remix libraries 
-Remix libraries are essential for Remix IDE's native plugins. Read more about libraries [here](libs/README.md)
+## Remix Upstream Compatibility
+
+Forge intentionally keeps internal package names such as `@remix-project/*`, `@remixproject/*`, `remix-ide`, and `RemixUi*` during phase 1. Do not run recursive renames until the product-facing rebrand, CreditChain network integration, and production build are stable.
+
+## Remix Libraries
+Remix libraries remain essential for Forge's native plugins. Read more about libraries [here](libs/README.md)
 
 ## Offline Usage
 
-The `gh-pages` branch of [remix-live](https://github.com/remix-project-org/remix-live) always has the latest stable build of Remix. It contains a ZIP file with the entire build. Download it to use offline.
+The `gh-pages` branch of [remix-live](https://github.com/remix-project-org/remix-live) is still useful as an upstream Remix reference. Forge production builds will be published for `forge.creditchain.org`.
 
 Note: It contains the latest supported version of Solidity available at the time of the packaging. Other compiler versions can be used online only.
 
@@ -60,26 +69,32 @@ yarn global add nx
 * Clone the GitHub repository (`wget` need to be installed first):
 
 ```bash
-git clone https://github.com/remix-project-org/remix-project.git
+git clone https://github.com/openibank/forge.git
 ```
-* Build and Run `remix-project`:
+* Build and Run `forge`:
 
-1. Move to project directory: `cd remix-project`
+1. Move to project directory: `cd forge`
 2. Install dependencies: `yarn install` or simply run `yarn`
 3. Build Remix libraries: `yarn run build:libs`
-4. Build Remix project: `yarn build`
+4. Build Forge project: `yarn build`
 5. Build and run project server: `yarn serve`. Optionally, run `yarn serve:hot` to enable hot module to reload for frontend updates.
 
-Open `http://127.0.0.1:8080` in your browser to load Remix IDE locally.
+Open `http://127.0.0.1:8080` in your browser to load Forge locally.
 
 Go to your `text editor` and start developing. The browser will automatically refresh when files are saved.
 
 ## Production Build
-To generate react production builds for remix-project.
+To generate React production builds for Forge.
 ```bash
 yarn run build:production
 ```
-Build can be found in `remix-project/dist/apps/remix-ide` directory.
+Build can be found in `forge/dist/apps/remix-ide` directory.
+
+Deploy the production artifact to GitHub Pages:
+
+```bash
+yarn deploy:forge:pages
+```
 
 ```bash
 yarn run serve:production

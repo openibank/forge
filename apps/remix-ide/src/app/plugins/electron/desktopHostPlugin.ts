@@ -10,7 +10,7 @@ const profile = {
   description: '',
   methods: [],
   events: ['connected'],
-  maintainedBy: 'Remix',
+  maintainedBy: 'CreditChain',
   kind: 'provider'
 }
 

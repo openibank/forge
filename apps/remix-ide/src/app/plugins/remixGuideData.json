@@ -1,18 +1,17 @@
 {
-  "title": "Remix Guide",
-  "description": "Watch videos to learn Remix and Solidity!",
- 
+  "title": "Forge Guide",
+  "description": "Watch videos to learn Forge and Solidity!",
   "sections": [
     {
-      "title": "Remix Essentials",
+      "title": "Forge Essentials",
       "hScrollable": "false",
       "cells": [
         {
-          "title": "Intro to Remix's Interface",
-          "titleTooltip":  "Learn how Remix is organized and some essential features",
+          "title": "Intro to Forge's Interface",
+          "titleTooltip": "Learn how Forge is organized and some essential features",
           "tagList": [
-            "Remix",
-            "Beginner" 
+            "Forge",
+            "Beginner"
           ],
           "authorURL": "",
           "expandViewElement": {
@@ -23,7 +22,7 @@
           "title": "Basic Workflows",
           "titleTooltip": "Learn about choosing a template, checking compiler errors, grabbing the ABI, deploying to local and public chains, and making a basic DApp.",
           "tagList": [
-            "Remix",
+            "Forge",
             "Beginner"
           ],
           "expandViewElement": {
@@ -31,10 +30,10 @@
           }
         },
         {
-          "title": "Using AI Tools in Remix",
-          "titleTooltip": "Find out how RemixAI can help you code.",
+          "title": "Using AI Tools in Forge",
+          "titleTooltip": "Find out how Forge Copilot can help you code.",
           "tagList": [
-            "Remix",
+            "Forge",
             "Beginner",
             "AI"
           ],
@@ -44,9 +43,9 @@
         },
         {
           "title": "Debugger",
-          "titleTooltip": "Learn to use the Remix Debugger.",
+          "titleTooltip": "Learn to use the Forge Debugger.",
           "tagList": [
-            "Remix",
+            "Forge",
             "Plugins"
           ],
           "expandViewElement": {
@@ -54,10 +53,10 @@
           }
         },
         {
-          "title": "Running Scripts in Remix",
-          "titleTooltip": "Automate Remix with JS/TS scripts.",
+          "title": "Running Scripts in Forge",
+          "titleTooltip": "Automate Forge with JS/TS scripts.",
           "tagList": [
-            "Remix",
+            "Forge",
             "Advanced"
           ],
           "expandViewElement": {
@@ -74,8 +73,8 @@
           "title": "Loading Files for Editing",
           "titleTooltip": "Learn how to clone repos, import files, and more file loading tricks.",
           "tagList": [
-            "Remix",
-            "Beginner" 
+            "Forge",
+            "Beginner"
           ],
           "authorURL": "",
           "expandViewElement": {
@@ -84,9 +83,9 @@
         },
         {
           "title": "Opening Dependencies",
-          "titleTooltip": "Learn the best practices of loading dependencies in Remix.",
+          "titleTooltip": "Learn the best practices of loading dependencies in Forge.",
           "tagList": [
-            "Remix",
+            "Forge",
             "Beginner"
           ],
           "expandViewElement": {
@@ -94,10 +93,10 @@
           }
         },
         {
-          "title": "Using the Remix Editor",
-          "titleTooltip": "Learn the tricks of the Remix Editor: autocomplete, quickfixes, importing, gas estimates, and more.",
+          "title": "Using the Forge Editor",
+          "titleTooltip": "Learn the tricks of the Forge Editor: autocomplete, quickfixes, importing, gas estimates, and more.",
           "tagList": [
-            "Remix",
+            "Forge",
             "Beginner"
           ],
           "expandViewElement": {
@@ -106,9 +105,9 @@
         },
         {
           "title": "Git & Version Control",
-          "titleTooltip": "Its important to use an external Repo to back up your work.  Learn about Git, Github integration and version control in Remix.",
+          "titleTooltip": "Its important to use an external Repo to back up your work.  Learn about Git, Github integration and version control in Forge.",
           "tagList": [
-            "Remix",
+            "Forge",
             "Beginner"
           ],
           "expandViewElement": {
@@ -117,9 +116,9 @@
         },
         {
           "title": "Connect to the Filesystem",
-          "titleTooltip": "Connect Remix to a specific folder on your hard drive. ",
+          "titleTooltip": "Connect Forge to a specific folder on your hard drive. ",
           "tagList": [
-            "Remix"
+            "Forge"
           ],
           "expandViewElement": {
             "videoID": "Sa3KXUxPJ9s"
@@ -165,8 +164,8 @@
           }
         },
         {
-          "title": "Remix VM & Forking",
-          "titleTooltip": "The Remix VM is the local in-browser test blockchain.  Learn about its features and how to fork and how to share the chain's state.",
+          "title": "Forge VM & Forking",
+          "titleTooltip": "The Forge VM is the local in-browser test blockchain.  Learn about its features and how to fork and how to share the chain's state.",
           "tagList": [
             "Solidity",
             "Beginner"
@@ -205,7 +204,7 @@
         },
         {
           "title": "Static Analysis",
-          "titleTooltip": "Use Slither and Solhint in Remix.",
+          "titleTooltip": "Use Slither and Solhint in Forge.",
           "tagList": [
             "Solidity",
             "Plugins"
@@ -216,7 +215,7 @@
         },
         {
           "title": "HardHat and Foundry",
-          "titleTooltip": "Use Remix on a HardHat or Foundry project and a local Hardhat or Anvil node.",
+          "titleTooltip": "Use Forge on a HardHat or Foundry project and a local Hardhat or Anvil node.",
           "tagList": [
             "Solidity",
             "Advanced"
@@ -248,7 +247,6 @@
         }
       ]
     },
-
     {
       "title": "Solidity Basics",
       "hScrollable": "false",

@@ -10,7 +10,7 @@ import { PluginViewWrapper } from '@remix-ui/helper'
 const profile = {
   name: 'menuicons',
   displayName: 'Vertical Icons',
-  description: 'Remix IDE vertical icons',
+  description: 'Forge vertical icons',
   version: packageJson.version,
   methods: ['select', 'unlinkContent', 'linkContent', 'activateAndSelect', 'getPluginState', 'toggle'],
   events: ['toggleContent', 'showContent']

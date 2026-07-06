@@ -491,7 +491,7 @@ export class GenerateDAppHandler extends BaseToolHandler {
       },
       chainId: {
         type: ['number', 'string'],
-        description: 'Target chain ID (e.g., 1 for mainnet, 11155111 for Sepolia, "vm-osaka" for Remix VM)'
+        description: 'Target chain ID (e.g., 1 for mainnet, 11155111 for Sepolia, "vm-osaka" for Forge VM)'
       },
       contractName: {
         type: 'string',
@@ -1129,7 +1129,7 @@ export class GenerateDAppHandler extends BaseToolHandler {
           `Now proceed to generate the DApp files directly using write_file.\n\n` +
           `---\n` +
           `TASK: Generate a new DApp frontend${isInlineMode ? ' in /frontend folder (inline mode)' : ''}\n` +
-          `CONTRACT: ${args.contractName} at ${args.contractAddress} on chain ${args.chainId}${isLocalVM ? ' (Remix VM)' : ''}\n` +
+          `CONTRACT: ${args.contractName} at ${args.contractAddress} on chain ${args.chainId}${isLocalVM ? ' (Forge VM)' : ''}\n` +
           `FUNCTIONS:\n${abiSummary}\n\n` +
           `USER DESIGN REQUEST: ${typeof args.description === 'string' ? args.description : JSON.stringify(args.description)}\n` +
           (args.isBaseMiniApp
@@ -1163,7 +1163,7 @@ export class GenerateDAppHandler extends BaseToolHandler {
           `3. NEVER create or modify dapp.config.json — it is managed by the system.\n` +
           (isLocalVM
             ? `\nREMIX VM RULES (LOCAL DEV MODE - CRITICAL):\n` +
-            `- Use window.ethereum directly: new ethers.BrowserProvider(window.ethereum). The Remix IDE preview provides it automatically.\n` +
+            `- Use window.ethereum directly: new ethers.BrowserProvider(window.ethereum). The Forge preview provides it automatically.\n` +
             `- Do NOT use window.__qdapp_getProvider(). Do NOT call wallet_switchEthereumChain or wallet_addEthereumChain.\n` +
             `- Do NOT show "Install MetaMask", "Wrong Network" warnings, or chain ID checks. The provider is always available and on the correct network.\n` +
             `- Simply connect: const provider = new ethers.BrowserProvider(window.ethereum); await provider.send("eth_requestAccounts", []); const signer = await provider.getSigner();\n` +
@@ -1533,7 +1533,7 @@ export class UpdateDAppHandler extends BaseToolHandler {
       const examplePaths = dappOps.resolvePath('src/App.jsx')
       const correctPathExample = `Correct: ${examplePaths}`
       const appKindLine = contractResolved
-        ? `CONTRACT ADDRESS: ${contractResolved.address} on chain ${contractResolved.chainId}${isLocalVM ? ' (Remix VM)' : ''}\n`
+        ? `CONTRACT ADDRESS: ${contractResolved.address} on chain ${contractResolved.chainId}${isLocalVM ? ' (Forge VM)' : ''}\n`
         : `APP KIND: Graph-only read-only DApp\n`
       const buildRules = isGraphOnlyUpdate ? QUICKDAPP_GRAPH_ONLY_BUILD_RULES : QUICKDAPP_BUILD_RULES
       const logicPreservation = isGraphOnlyUpdate
@@ -1555,7 +1555,7 @@ export class UpdateDAppHandler extends BaseToolHandler {
         ? ''
         : isLocalVM
           ? `\nREMIX VM RULES (LOCAL DEV MODE - CRITICAL):\n` +
-          `- Use window.ethereum directly: new ethers.BrowserProvider(window.ethereum). The Remix IDE preview provides it automatically.\n` +
+          `- Use window.ethereum directly: new ethers.BrowserProvider(window.ethereum). The Forge preview provides it automatically.\n` +
           `- Do NOT use window.__qdapp_getProvider(). Do NOT call wallet_switchEthereumChain or wallet_addEthereumChain.\n` +
           `- Do NOT show "Install MetaMask", "Wrong Network" warnings, or chain ID checks.\n` +
           `- MUST listen for window.ethereum accountsChanged and immediately update the visible connected account, signer, and contract instance when Deploy & Run account changes. Do not require a preview refresh.\n`
@@ -1816,7 +1816,7 @@ export class GenerateGraphDAppHandler extends BaseToolHandler {
       frontendMode: {
         type: 'string',
         enum: ['workspace', 'inline'],
-        description: 'Browser/web only: create in a new dedicated workspace (default) or inline in /frontend. Remix Desktop always forces inline.'
+        description: 'Browser/web only: create in a new dedicated workspace (default) or inline in /frontend. Forge Desktop always forces inline.'
       },
       setupOptionsConfirmed: {
         type: 'boolean',
@@ -1899,7 +1899,7 @@ export class GenerateGraphDAppHandler extends BaseToolHandler {
           message: 'Before generating files, ask the user once for Graph-only DApp setup options.',
           optionsToAsk: isDesktop
             ? [
-              'Location: Inline in /frontend only for Remix Desktop',
+              'Location: Inline in /frontend only for Forge Desktop',
               'Base mini-app: No (default) or Yes',
               'Design: defaults or style notes'
             ]
@@ -1915,7 +1915,7 @@ export class GenerateGraphDAppHandler extends BaseToolHandler {
           },
           fixedLocation: isDesktop ? 'inline' : undefined,
           nextAction: isDesktop
-            ? 'Ask only Base mini-app and Design, then STOP. Location is fixed to Inline in /frontend for Graph-only DApps on Remix Desktop. After the user answers, call generate_graph_dapp again with setupOptionsConfirmed=true, setupOptionsSummary, frontendMode="inline", isBaseMiniApp, description, and the same graphContext.'
+            ? 'Ask only Base mini-app and Design, then STOP. Location is fixed to Inline in /frontend for Graph-only DApps on Forge Desktop. After the user answers, call generate_graph_dapp again with setupOptionsConfirmed=true, setupOptionsSummary, frontendMode="inline", isBaseMiniApp, description, and the same graphContext.'
             : 'Ask Location (Workspace default or Inline), Base mini-app, and Design, then STOP. After the user answers, call generate_graph_dapp again with setupOptionsConfirmed=true, setupOptionsSummary, frontendMode set to the chosen Location, isBaseMiniApp, description, and the same graphContext.'
         })
       }
@@ -2336,7 +2336,7 @@ export function createDAppGeneratorTools(): RemixToolDefinition[] {
     },
     {
       name: 'generate_graph_dapp',
-      description: 'Set up a new read-only Graph-only DApp from a validated graphContext when no deployed contract should be used. Never use this for contract-backed DApps. Browser/web may use frontendMode="workspace" (default) or frontendMode="inline"; Remix Desktop always uses inline /frontend mode. Returns generation instructions — you MUST then write each DApp file using write_file, then call finalize_dapp_generation with workspaceName only.',
+      description: 'Set up a new read-only Graph-only DApp from a validated graphContext when no deployed contract should be used. Never use this for contract-backed DApps. Browser/web may use frontendMode="workspace" (default) or frontendMode="inline"; Forge Desktop always uses inline /frontend mode. Returns generation instructions — you MUST then write each DApp file using write_file, then call finalize_dapp_generation with workspaceName only.',
       inputSchema: new GenerateGraphDAppHandler().inputSchema,
       category: ToolCategory.WORKSPACE,
       permissions: ['dapp:generate', 'file:write'],

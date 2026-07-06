@@ -1,6 +1,6 @@
 (function(){
   try {
-    // 1) Determine theme from Remix config stored in localStorage
+    // 1) Determine theme from the local IDE config stored in localStorage
     var raw = localStorage.getItem('config-v0.8:.remix.config');
     var theme = '';
     if (raw) {
@@ -33,14 +33,14 @@
     var title = document.getElementById('pre-splash-title');
     var sub = document.getElementById('pre-splash-sub');
     if (isElectron) {
-      if (title) title.textContent = 'Remix Desktop';
+      if (title) title.textContent = 'Forge Desktop';
       if (sub) {
         var os = low.indexOf('mac') !== -1 ? 'macOS' : (low.indexOf('win') !== -1 ? 'Windows' : (low.indexOf('linux') !== -1 ? 'Linux' : ''));
         sub.textContent = os ? ('Loading… ' + os) : 'Loading…';
       }
     } else {
       // Web: match Preload case for consistency
-      if (title) title.textContent = 'REMIX IDE';
+      if (title) title.textContent = 'FORGE';
     }
   } catch (e) {
     // Last-resort fallback theme

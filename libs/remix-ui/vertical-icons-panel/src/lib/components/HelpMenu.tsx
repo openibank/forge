@@ -1,7 +1,8 @@
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
 import * as packageJson from '../../../../../../package.json'
-import { DISCORD_URL, GITHUB_URL, TWITTER_URL, YOUTUBE_URL, SUBSTACK_URL, REMIX_WEBSITE_URL, REMIX_DESKTOP_URL, REMIX_DOCS_URL } from '@remix-ui/helper'
+import { DISCORD_URL, TWITTER_URL, YOUTUBE_URL, SUBSTACK_URL } from '@remix-ui/helper'
+import { CREDITFORGE_LINKS } from '@forge/creditchain-config'
 
 interface HelpMenuProps {
   onClose: () => void
@@ -17,21 +18,21 @@ export function HelpMenu({ onClose }: HelpMenuProps) {
           <h3 className="hm-section-title">
             <FormattedMessage id="home.learn" defaultMessage="Learn" />
           </h3>
-          <a className="hm-row" href={REMIX_DOCS_URL} target="_blank" rel="noreferrer">
+          <a className="hm-row" href={CREDITFORGE_LINKS.docs} target="_blank" rel="noreferrer">
             <span className="hm-row-icon"><BookGlyph /></span>
             <span className="hm-row-text">
               <strong><FormattedMessage id="home.documentation" defaultMessage="Documentation" /></strong>
               <small><FormattedMessage id="home.documentationDesc" defaultMessage="Reference, guides, and plugin API" /></small>
             </span>
           </a>
-          <a className="hm-row" href="https://remix.ethereum.org/?#activate=LearnEth" target="_blank" rel="noreferrer">
+          <a className="hm-row" href={`${CREDITFORGE_LINKS.home}/?#activate=LearnEth`} target="_blank" rel="noreferrer">
             <span className="hm-row-icon"><CapGlyph /></span>
             <span className="hm-row-text">
               <strong><FormattedMessage id="home.tutorials" defaultMessage="Tutorials" /></strong>
-              <small><FormattedMessage id="home.tutorialsDesc" defaultMessage="LearnEth interactive tutorials" /></small>
+              <small><FormattedMessage id="home.tutorialsDesc" defaultMessage="CreditChain and Solidity tutorials" /></small>
             </span>
           </a>
-          <a className="hm-row" href="https://remix.ethereum.org/?#activate=remixGuide" target="_blank" rel="noreferrer">
+          <a className="hm-row" href={`${CREDITFORGE_LINKS.home}/?#activate=remixGuide`} target="_blank" rel="noreferrer">
             <span className="hm-row-icon"><SparkGlyph /></span>
             <span className="hm-row-text">
               <strong><FormattedMessage id="home.startLearning" defaultMessage="Start learning" /></strong>
@@ -48,7 +49,7 @@ export function HelpMenu({ onClose }: HelpMenuProps) {
             <a className="hm-social-btn" href={DISCORD_URL} title="Discord" target="_blank" rel="noreferrer">
               <DiscordGlyph /><span>Discord</span>
             </a>
-            <a className="hm-social-btn" href={GITHUB_URL} title="GitHub" target="_blank" rel="noreferrer">
+            <a className="hm-social-btn" href={CREDITFORGE_LINKS.repository} title="GitHub" target="_blank" rel="noreferrer">
               <GitHubGlyph /><span>GitHub</span>
             </a>
             <a className="hm-social-btn" href={TWITTER_URL} title="X" target="_blank" rel="noreferrer">
@@ -64,19 +65,19 @@ export function HelpMenu({ onClose }: HelpMenuProps) {
         </section>
 
         <section className="hm-section">
-          <a className="hm-row hm-row-cta" href={REMIX_DESKTOP_URL} target="_blank" rel="noreferrer">
+          <a className="hm-row hm-row-cta" href={CREDITFORGE_LINKS.home} target="_blank" rel="noreferrer">
             <span className="hm-row-icon hm-row-icon-cta"><DownloadGlyph /></span>
             <span className="hm-row-text">
-              <strong><FormattedMessage id="home.downloadDesktop" defaultMessage="Download Remix Desktop" /></strong>
-              <small><FormattedMessage id="home.downloadDesktopDesc" defaultMessage="macOS, Windows, Linux — work offline with the same UI" /></small>
+              <strong><FormattedMessage id="home.downloadDesktop" defaultMessage="Open Forge Cloud" /></strong>
+              <small><FormattedMessage id="home.downloadDesktopDesc" defaultMessage="CreditChain development at forge.creditchain.org" /></small>
             </span>
           </a>
         </section>
 
         <section className="hm-section hm-section-muted">
           <div className="hm-about-row">
-            <span className="hm-about-version">Remix v{(packageJson as any).version}</span>
-            <a className="hm-about-link" href={REMIX_WEBSITE_URL} target="_blank" rel="noreferrer">
+            <span className="hm-about-version">Forge v{(packageJson as any).version}</span>
+            <a className="hm-about-link" href={CREDITFORGE_LINKS.home} target="_blank" rel="noreferrer">
               <FormattedMessage id="home.website" defaultMessage="Website" />
             </a>
           </div>

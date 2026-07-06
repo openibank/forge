@@ -1,6 +1,6 @@
 {
-    "productName": "Remix-Desktop",
-    "appId": "org.ethereum.remix-ide",
+    "productName": "Forge-Desktop",
+    "appId": "org.creditchain.forge",
     "asar": true,
     "generateUpdatesFilesForAllChannels": false,
     "icon": "assets",
@@ -13,8 +13,8 @@
     "publish": [
         {
             "provider": "github",
-            "owner": "remix-project-org",
-            "repo": "remix-desktop",
+            "owner": "openibank",
+            "repo": "forge",
             "releaseType": "draft",
             "publishAutoUpdate": true
         }
@@ -32,7 +32,7 @@
         "createDesktopShortcut": "always",
         "allowToChangeInstallationDirectory": true,
         "oneClick": false,
-        "shortcutName": "Remix Desktop Insiders",
+        "shortcutName": "Forge Desktop Insiders",
         "differentialPackage": false
     },
     "win": {
@@ -53,9 +53,9 @@
     },
     "protocols": [
         {
-            "name": "Remix",
+            "name": "Forge",
             "schemes": [
-                "remix"
+                "forge"
             ]
         }
     ]

@@ -1,5 +1,5 @@
 /**
- * MCP (Model Context Protocol) types and interfaces for Remix AI integration
+ * MCP (Model Context Protocol) types and interfaces for Forge Copilot integration
  */
 
 export interface IMCPServer {

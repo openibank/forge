@@ -50,7 +50,7 @@ export interface DAppUserMessageOptions {
 // Helpers
 // ──────────────────────────────────────────────
 
-/** Safe hex conversion for chainId - returns '0x...' or 'N/A' for Remix VM / non-numeric IDs */
+/** Safe hex conversion for chainId - returns '0x...' or 'N/A' for Forge VM / non-numeric IDs */
 const safeChainHex = (chainId: number | string): string => {
   const n = Number(chainId)
   return Number.isNaN(n) || n === 0 ? 'N/A (Local VM)' : `0x${n.toString(16)}`
@@ -379,7 +379,7 @@ useEffect(() => {
   Do NOT rely on another file's import. Common mistake: Navbar.jsx uses \`ethers.BrowserProvider\` but forgets to import ethers -> "ethers is not defined" error.
 `,
 
-  /** Network context - handles Remix VM local environment */
+  /** Network context - handles Forge VM local environment */
   networkContext: (chainId: number | string, isLocalVM: boolean): string => {
     // Auto-detect: if chainId is non-numeric, it's definitely local VM
     const effectiveIsLocal = isLocalVM || isLocalVMChainId(chainId)
@@ -389,9 +389,9 @@ useEffect(() => {
     }
 
     return `
-**LOCAL DEVELOPMENT MODE (Remix VM)**
-This DApp targets a **Remix VM (local)** environment.
-The Remix IDE preview automatically provides \`window.ethereum\` connected to the VM - treat it like a normal Ethereum provider.
+**LOCAL DEVELOPMENT MODE (Forge VM)**
+This DApp targets a **Forge VM (local)** environment.
+The Forge preview automatically provides \`window.ethereum\` connected to the VM - treat it like a normal Ethereum provider.
 
 **CRITICAL RULES FOR REMIX VM:**
 1. **Use \`window.ethereum\` normally** - just do \`new ethers.BrowserProvider(window.ethereum)\` and get a signer.
@@ -400,7 +400,7 @@ The Remix IDE preview automatically provides \`window.ethereum\` connected to th
 4. **DO NOT show "Install MetaMask" messages.** The provider is always available.
 5. Put the contract address as a constant at the top with a local dev comment:
    \`\`\`javascript
-   // LOCAL DEV MODE - Remix VM
+   // LOCAL DEV MODE - Forge VM
    // To use on a real network: deploy your contract there and update this address.
    const CONTRACT_ADDRESS = "${typeof chainId === 'string' ? chainId : '0x...'}";
    \`\`\`
@@ -806,7 +806,7 @@ Generate complete, production-ready DApp frontends that integrate with deployed 
 - Integrate with smart contracts using ethers.js v6
 - Create wallet connection flows (MetaMask, EIP-6963 wallets)
 - Handle network switching and chain ID validation
-- Support both Remix VM (local) and real network deployments
+- Support both Forge VM (local) and real network deployments
 - Generate pixel-perfect UIs from image references (vision mode)
 - Transform Figma designs to responsive React code
 

@@ -9,7 +9,7 @@ export default function DidYouKnow () {
     const abortController = new AbortController()
     const signal = abortController.signal
     async function showRemixTips() {
-      const response = await axios.get('https://raw.githubusercontent.com/remix-project-org/remix-dynamics/main/ide/tips.json', { signal })
+      const response = await axios.get('https://raw.githubusercontent.com/openibank/forge-dynamics/main/ide/tips.json', { signal })
       if (signal.aborted) return
       const tips = response.data
       const index = Math.floor(Math.random() * (tips.length - 1))

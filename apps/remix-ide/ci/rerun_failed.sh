@@ -35,7 +35,7 @@ else
   FAILED_BASENAMES=""
   if [ -n "${CIRCLECI_TOKEN:-}" ]; then
     echo "Fetching last run failing tests for branch ${CIRCLE_BRANCH:-all} from workflow ${WORKFLOW_NAME}..."
-    FAILED_BASENAMES=$(node scripts/circleci-failed-tests.js --slug ${CIRCLECI_PROJECT_SLUG:-gh/remix-project-org/remix-project} --workflow "$WORKFLOW_NAME" --branch "${CIRCLE_BRANCH:-}" --jobs "remix-ide-browser" --limit 1 || true)
+    FAILED_BASENAMES=$(node scripts/circleci-failed-tests.js --slug ${CIRCLECI_PROJECT_SLUG:-gh/openibank/forge} --workflow "$WORKFLOW_NAME" --branch "${CIRCLE_BRANCH:-}" --jobs "remix-ide-browser" --limit 1 || true)
   else
     echo "CIRCLECI_TOKEN not set; cannot fetch failed tests. Exiting without running."
     exit 0

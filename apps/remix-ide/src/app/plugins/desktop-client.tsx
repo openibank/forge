@@ -18,7 +18,7 @@ const profile = {
   description: '',
   methods: ['init', 'sendAsync'],
   events: ['connected'],
-  maintainedBy: 'Remix',
+  maintainedBy: 'CreditChain',
   location: 'mainPanel',
 }
 

@@ -26,6 +26,44 @@ interface PluginInfo {
   description: string
 }
 
+const FORGE_FEATURED_PLUGINS: { caption: string, plugins: PluginInfo[] } = {
+  caption: 'Forge Toolkit',
+  plugins: [
+    {
+      pluginId: 'solidity',
+      pluginTitle: 'Solidity Compiler',
+      action: { type: 'methodCall', label: 'Open', pluginName: 'solidity', pluginMethod: 'activatePlugin' },
+      iconClass: 'fa-solid fa-code',
+      maintainedBy: 'CreditChain',
+      description: 'Compile CreditChain and EVM contracts with Forge defaults.'
+    },
+    {
+      pluginId: 'udapp',
+      pluginTitle: 'Deploy & Run',
+      action: { type: 'methodCall', label: 'Open', pluginName: 'udapp', pluginMethod: 'activatePlugin' },
+      iconClass: 'fa-solid fa-rocket',
+      maintainedBy: 'CreditChain',
+      description: 'Deploy, transact, pin, and inspect contracts across CreditChain and EVM networks.'
+    },
+    {
+      pluginId: 'contract-verification',
+      pluginTitle: 'Contract Verification',
+      action: { type: 'methodCall', label: 'Open', pluginName: 'contract-verification', pluginMethod: 'activatePlugin' },
+      iconClass: 'fa-solid fa-shield-halved',
+      maintainedBy: 'CreditChain',
+      description: 'Verify deployed contracts and prepare explorer-ready metadata.'
+    },
+    {
+      pluginId: 'remixaiassistant',
+      pluginTitle: 'Forge Copilot',
+      action: { type: 'methodCall', label: 'Open', pluginName: 'remixaiassistant', pluginMethod: 'activatePlugin' },
+      iconClass: 'fa-solid fa-wand-magic-sparkles',
+      maintainedBy: 'CreditChain',
+      description: 'Generate, explain, audit, and test CreditChain smart contracts.'
+    }
+  ]
+}
+
 function HomeTabFeaturedPlugins({ plugin }: HomeTabFeaturedPluginsProps) {
   const [activePlugins, setActivePlugins] = useState<string[]>([])
   const [loadingPlugins, setLoadingPlugins] = useState<string[]>([])
@@ -42,11 +80,12 @@ function HomeTabFeaturedPlugins({ plugin }: HomeTabFeaturedPluginsProps) {
       try {
         setIsLoading(true)
         const response = await axios.get(HOME_TAB_PLUGIN_LIST)
-        response.data && setPluginList(response.data)
+        const nextPluginList = response.data || FORGE_FEATURED_PLUGINS
+        setPluginList(nextPluginList)
 
-        if (response.data && response.data.plugins) {
+        if (nextPluginList.plugins) {
           const currentlyActive = []
-          for (const pluginInfo of response.data.plugins) {
+          for (const pluginInfo of nextPluginList.plugins) {
             if (await plugin.appManager.isActive(pluginInfo.pluginId)) {
               currentlyActive.push(pluginInfo.pluginId)
             }
@@ -56,6 +95,8 @@ function HomeTabFeaturedPlugins({ plugin }: HomeTabFeaturedPluginsProps) {
         setIsLoading(false)
       } catch (error) {
         console.error('Error fetching plugin list:', error)
+        setPluginList(FORGE_FEATURED_PLUGINS)
+        setIsLoading(false)
       }
     }
     getPluginList()

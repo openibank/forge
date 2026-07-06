@@ -1,5 +1,5 @@
 /**
- * Storage abstraction layer for RemixAI chat history persistence.
+ * Storage abstraction layer for Forge Copilot chat history persistence.
  * Supports pluggable backends (IndexedDB, S3, etc.)
  */
 

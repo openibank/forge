@@ -7,7 +7,7 @@ import { shell } from "electron";
 const profile: Profile = {
   name: 'githubAuthHandler',
   displayName: 'GitHub Auth Handler',
-  description: 'Handles GitHub authentication for Remix IDE',
+  description: 'Handles GitHub authentication for Forge',
 }
 
 export class GitHubAuthHandler extends ElectronBasePlugin {
@@ -21,7 +21,7 @@ export class GitHubAuthHandler extends ElectronBasePlugin {
     try {
       const response = await axios.post(`${endpointUrls.gitHubLoginProxy}/login/oauth/access_token`, {
         code,
-        redirect_uri: `remix://auth/callback`
+        redirect_uri: `forge://auth/callback`
       }, {
         headers: {
           'Content-Type': 'application/json',
@@ -92,7 +92,7 @@ export class GitHubAuthHandler extends ElectronBasePlugin {
 const clientProfile: Profile = {
   name: 'githubAuthHandler',
   displayName: 'GitHub Auth Handler',
-  description: 'Handles GitHub authentication for Remix IDE',
+  description: 'Handles GitHub authentication for Forge',
   methods: ['login'],
   events: ['GITHUB_AUTH_SUCCESS', 'GITHUB_AUTH_FAILURE'],
 }
@@ -104,7 +104,7 @@ class GitHubAuthHandlerClient extends ElectronBasePluginClient {
   async login(): Promise<void> {
     try {
       const clientId = await getClientId()
-      const redirectUri = `remix://auth/callback`
+      const redirectUri = `forge://auth/callback`
       const scope = 'repo gist user:email read:user'
       const url = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${encodeURIComponent(redirectUri)}&scope=${encodeURIComponent(scope)}&response_type=code`
       shell.openExternal(url); // open in browser

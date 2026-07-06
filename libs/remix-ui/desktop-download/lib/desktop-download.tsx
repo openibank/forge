@@ -34,8 +34,8 @@ interface DetectedDownload {
   size: number
 }
 
-const GITHUB_API_URL = 'https://api.github.com/repos/remix-project-org/remix-desktop/releases/latest'
-const CACHE_KEY = 'remix-desktop-release-cache'
+const GITHUB_API_URL = 'https://api.github.com/repos/openibank/forge/releases/latest'
+const CACHE_KEY = 'forge-desktop-release-cache'
 const CACHE_DURATION = 30 * 60 * 1000 // 30 minutes in milliseconds
 
 export const DesktopDownload: React.FC<DesktopDownloadProps> = ({
@@ -265,7 +265,7 @@ export const DesktopDownload: React.FC<DesktopDownloadProps> = ({
             values={{
               link: (
                 <a
-                  href="https://github.com/remix-project-org/remix-desktop/releases"
+                  href="https://github.com/openibank/forge/releases"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-decoration-none"
@@ -305,7 +305,7 @@ export const DesktopDownload: React.FC<DesktopDownloadProps> = ({
                 <span>
                   <FormattedMessage
                     id="desktopDownload.downloadSpan"
-                    defaultMessage="Download Remix Desktop {platform} {version}"
+                    defaultMessage="Download Forge Desktop {platform} {version}"
                     values={{
                       platform: getPlatformName(detectedDownload.platform),
                       version: releaseData.tag_name
@@ -317,7 +317,7 @@ export const DesktopDownload: React.FC<DesktopDownloadProps> = ({
           ) : (
             <CustomTooltip
               placement="top"
-              tooltipText={`Remix Desktop ${releaseData.tag_name} - Available for Windows, macOS, and Linux`}
+              tooltipText={`Forge Desktop ${releaseData.tag_name} - Available for Windows, macOS, and Linux`}
               tooltipId="desktop-download-tooltip"
             >
               <span
@@ -333,7 +333,7 @@ export const DesktopDownload: React.FC<DesktopDownloadProps> = ({
                 <span>
                   <FormattedMessage
                     id="desktopDownload.downloadSpanGeneric"
-                    defaultMessage="Download Remix Desktop {version}"
+                    defaultMessage="Download Forge Desktop {version}"
                     values={{ version: releaseData.tag_name }}
                   />
                 </span>
@@ -362,7 +362,7 @@ export const DesktopDownload: React.FC<DesktopDownloadProps> = ({
                   <span>
                     <FormattedMessage
                       id="desktopDownload.downloadCompactFull"
-                      defaultMessage="Download Remix Desktop {platform} {version}"
+                      defaultMessage="Download Forge Desktop {platform} {version}"
                       values={{
                         platform: getPlatformName(detectedDownload.platform),
                         version: releaseData.tag_name
@@ -391,7 +391,7 @@ export const DesktopDownload: React.FC<DesktopDownloadProps> = ({
             <>
               <CustomTooltip
                 placement="top"
-                tooltipText={`Remix Desktop ${releaseData.tag_name} - Available for Windows, macOS, and Linux`}
+                tooltipText={`Forge Desktop ${releaseData.tag_name} - Available for Windows, macOS, and Linux`}
                 tooltipId="desktop-download-tooltip"
               >
                 <a
@@ -405,7 +405,7 @@ export const DesktopDownload: React.FC<DesktopDownloadProps> = ({
                   <span>
                     <FormattedMessage
                       id="desktopDownload.downloadCompactGeneric"
-                      defaultMessage="Download Remix Desktop {version}"
+                      defaultMessage="Download Forge Desktop {version}"
                       values={{ version: releaseData.tag_name }}
                     />
                   </span>
@@ -427,7 +427,7 @@ export const DesktopDownload: React.FC<DesktopDownloadProps> = ({
         <div className="d-flex flex-column gap-2">
           <div className="d-flex align-items-center gap-2">
             <h5 className="mb-0">
-              <FormattedMessage id="desktopDownload.title" defaultMessage="Remix Desktop" />
+              <FormattedMessage id="desktopDownload.title" defaultMessage="Forge Desktop" />
             </h5>
             <span className="badge bg-primary">{releaseData.tag_name}</span>
           </div>

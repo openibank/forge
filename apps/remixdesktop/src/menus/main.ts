@@ -7,7 +7,7 @@ export default (
   const isMac = process.platform === 'darwin';
 
   return {
-    label: 'REMIX',
+    label: 'FORGE',
     submenu: [
       {
         label: 'Close',

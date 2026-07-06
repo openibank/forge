@@ -7,19 +7,19 @@ import { isE2ELocal } from "../main";
 const profile: Profile = {
   name: 'desktopAuthHandler',
   displayName: 'Desktop Auth Handler',
-  description: 'Handles SSO authentication for Remix Desktop via web bridge',
+  description: 'Handles SSO authentication for Forge Desktop via web bridge',
 }
 
 const clientProfile: Profile = {
   name: 'desktopAuthHandler',
   displayName: 'Desktop Auth Handler',
-  description: 'Handles SSO authentication for Remix Desktop via web bridge',
+  description: 'Handles SSO authentication for Forge Desktop via web bridge',
   methods: ['login'],
   events: ['onAuthSuccess', 'onAuthFailure'],
 }
 
-// The base URL for the Remix web IDE used for authentication
-const REMIX_WEB_URL =  isE2ELocal ? 'http://localhost:8080' : 'https://remix.ethereum.org'
+// The base URL for the Forge web IDE used for authentication
+const REMIX_WEB_URL =  isE2ELocal ? 'http://localhost:8080' : 'https://forge.creditchain.org'
 
 // State expires after 10 minutes
 const STATE_TTL_MS = 10 * 60 * 1000
@@ -47,8 +47,8 @@ export class DesktopAuthHandler extends ElectronBasePlugin {
   }
 
   /**
-   * Handle the SSO callback from the web IDE via remix:// protocol.
-   * Called from main.ts when remix://auth/sso-callback is intercepted.
+   * Handle the SSO callback from the web IDE via forge:// protocol.
+   * Called from main.ts when forge://auth/sso-callback is intercepted.
    */
   async handleSSOCallback(params: URLSearchParams): Promise<void> {
     const state = params.get('state')

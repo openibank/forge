@@ -3,7 +3,7 @@ import EventEmitter from 'events'
 
 /**
  * Event emitter for DeepAgent settings changes
- * Used to notify the RemixAI plugin when API key settings change
+ * Used to notify the Forge Copilot plugin when API key settings change
  */
 class DeepAgentSettingsEvents extends EventEmitter {
   private static instance: DeepAgentSettingsEvents
@@ -24,7 +24,7 @@ export const deepAgentSettingsEvents = DeepAgentSettingsEvents.getInstance()
 
 /**
  * Call this function when DeepAgent API key settings change
- * This will emit an event that the RemixAI plugin listens to
+ * This will emit an event that the Forge Copilot plugin listens to
  */
 export function onDeepAgentApiKeysChanged(): void {
   remixAILogger.log('[DeepAgent] API keys settings changed, emitting reinitialize event')

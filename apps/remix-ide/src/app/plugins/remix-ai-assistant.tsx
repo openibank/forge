@@ -10,14 +10,14 @@ import { appActionTypes, AppAction } from '@remix-ui/app'
 
 const profile = {
   name: 'remixaiassistant',
-  displayName: 'RemixAI Assistant',
-  icon: 'assets/img/remixai-logoAI.webp',
-  description: 'AI code assistant for Remix IDE',
+  displayName: 'Forge Copilot',
+  icon: 'assets/img/creditchain-logo.svg',
+  description: 'AI code assistant for Forge and CreditChain',
   kind: '',
   location: 'sidePanel',
-  documentation: 'https://remix-ide.readthedocs.io/en/latest/ai.html',
+  documentation: 'https://forge.creditchain.org/docs/ai',
   version: packageJson.version,
-  maintainedBy: 'Remix',
+  maintainedBy: 'CreditChain',
   permission: true,
   events: ['toolApprovalResponse', 'stopRequested'],
   methods: ['chatPipe', 'handleExternalMessage', 'getProfile', 'deleteConversation','loadConversations', 'newConversation', 'archiveConversation', 'respondToToolApproval', 'stopRequest', 'submitChatInput']

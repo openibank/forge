@@ -191,7 +191,7 @@ export const buildGraphRuntimeConfigScript = async (
 
   if (needsApiKey && !options.includeApiKey) {
     if (!apiKey) {
-      throw new Error('Add The Graph API key in Remix settings before deploying this DApp.');
+      throw new Error('Add The Graph API key in Forge settings before deploying this DApp.');
     }
 
     await Promise.all(gatewaySources.map(async source => {

@@ -1,4 +1,4 @@
-# Remix LearnEth Plugin
+# Forge LearnEth Plugin
 
 ## Available Scripts
 
@@ -22,10 +22,10 @@ Your app is ready to be deployed!
 
 ## Loading the plugin in remix
 
-When testing with localhost you should use the HTTP version of either REMIX or REMIX ALPHA. Click on the plugin manager icon and
+When testing with localhost you should use the HTTP version of either FORGE or FORGE ALPHA. Click on the plugin manager icon and
 add the plugin 'Connect to a local plugin'. Your plugin will be at http://localhost:2024/.
 
-## Setting up the REMIX IDE for working with the plugin
+## Setting up the FORGE IDE for working with the plugin
 
 The plugin only works when a compiler environment is loaded as well, for example on the home screen of the IDE you select 'Solidity' or 'Vyper'. Without this the plugin
 cannot compile and test files in the workshops.
@@ -34,7 +34,7 @@ cannot compile and test files in the workshops.
 
 You can create your own workshops that can be imported in the plugin.
 When importing a github repo the plugin will look for a directory structure describing the workshops.
-For example: https://github.com/remix-project-org/remix-workshops
+For example: https://github.com/openibank/forge-workshops
 
 ### Root directories
 
@@ -63,7 +63,7 @@ Level: a level of difficulty indicator ( 1 - 5 )
 
 Tags: an array of tags
 
-id: this is used by the system to let REMIX call startTutorial(repo,branch,id). See below for more instructions.
+id: this is used by the system to let FORGE call startTutorial(repo,branch,id). See below for more instructions.
 
 ### Steps
 
@@ -112,22 +112,22 @@ tags:
     - solidity
 ```
 
-### How to call these functions in the REMIX IDE
+### How to call these functions in the FORGE IDE
 
 ```
 (function ()  {
 try {
     // You don't need to add a separate addRepository before calling startTutorial, this is just an example
-    remix.call('LearnEth', 'addRepository', "remix-project-org/remix-workshops", "master")
-    remix.call('LearnEth', 'startTutorial', "remix-project-org/remix-workshops", "master", "basics")
-    remix.call('LearnEth', 'startTutorial', "remix-project-org/remix-workshops", "master", 2)
+    remix.call('LearnEth', 'addRepository', "openibank/forge-workshops", "master")
+    remix.call('LearnEth', 'startTutorial', "openibank/forge-workshops", "master", "basics")
+    remix.call('LearnEth', 'startTutorial', "openibank/forge-workshops", "master", 2)
 } catch (e) {
    console.log(e.message)
 }
 })()
 ```
 
-Then call this in the REMIX console
+Then call this in the FORGE console
 
 ```
 remix.exeCurrent()

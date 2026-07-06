@@ -140,7 +140,7 @@ class HardhatPluginClient extends ElectronBasePluginRemixdClient {
     }    
       
     async sync() {
-      console.log('syncing Hardhet with Remix...')
+      console.log('syncing Hardhat with Forge...')
       const currentFile = await this.call('fileManager', 'getCurrentFile')
       this.emitContract(basename(currentFile))
     }

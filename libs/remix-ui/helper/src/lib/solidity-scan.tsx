@@ -27,7 +27,7 @@ export const handleSolidityScan = async (api: any, compiledFileName: string) => 
       ws.addEventListener('error', console.error)
 
       ws.addEventListener('open', async () => {
-        await api.call('notification', 'toast', 'Loading scan result in Remix terminal...')
+        await api.call('notification', 'toast', 'Loading scan result in Forge terminal...')
       })
 
       ws.addEventListener('message', async (event) => {

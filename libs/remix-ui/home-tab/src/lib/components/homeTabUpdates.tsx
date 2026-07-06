@@ -11,6 +11,26 @@ interface HomeTabUpdatesProps {
   plugin: any
 }
 
+const FORGE_UPDATES: UpdateInfo[] = [
+  {
+    badge: 'CreditChain',
+    title: 'Forge is now CreditChain-first',
+    description: 'Build, audit, deploy, and verify CreditChain smart contracts from one EVM studio.',
+    descriptionList: [
+      'CreditChain network presets and wallet-add flow',
+      'Credit Score Registry starter workspace',
+      'Forge Copilot and Sentinel-oriented home flows'
+    ],
+    icon: 'assets/img/creditchain-logo.svg',
+    action: {
+      type: 'link',
+      label: 'Open Forge docs',
+      url: 'https://forge.creditchain.org/docs'
+    },
+    theme: 'creditchain'
+  }
+]
+
 function HomeTabUpdates({ plugin }: HomeTabUpdatesProps) {
   const [selectedUpdate, setSelectedUpdate] = useState<UpdateInfo | null>(null)
   const [isLoading, setIsLoading] = useState(true)
@@ -26,7 +46,7 @@ function HomeTabUpdates({ plugin }: HomeTabUpdatesProps) {
       try {
         setIsLoading(true)
         const response = await axios.get(HOME_TAB_NEW_UPDATES)
-        const updates = response.data
+        const updates = Array.isArray(response.data) && response.data.length > 0 ? response.data : FORGE_UPDATES
 
         const hasVisitedHomeBefore = localStorage.getItem('remix-home-visited')
         const isFirstTime = !hasVisitedHomeBefore
@@ -56,6 +76,8 @@ function HomeTabUpdates({ plugin }: HomeTabUpdatesProps) {
         setIsLoading(false)
       } catch (error) {
         console.error('Error fetching plugin list:', error)
+        setShowFirstTime(false)
+        setSelectedUpdate(FORGE_UPDATES[0])
         setIsLoading(false)
       }
     }

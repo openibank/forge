@@ -267,7 +267,7 @@ export const SolidityCompiler = (props: SolidityCompilerProps) => {
       </b>
       <br />
       Please join{' '}
-      <a href="https://gitter.im/ethereum/remix" target="blank">
+      <a href="https://forge.creditchain.org/community" target="blank">
         remix gitter channel
       </a>{' '}
       for more information.

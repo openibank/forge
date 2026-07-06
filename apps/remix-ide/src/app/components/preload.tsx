@@ -166,7 +166,7 @@ export const Preload = (props: PreloadProps) => {
           return () => {
             if (done) return
             done = true
-            window.location.replace('https://mobile.remix.live')
+            window.location.replace('https://forge.creditchain.org/mobile')
           }
         })()
 
@@ -198,7 +198,7 @@ export const Preload = (props: PreloadProps) => {
       })
       .catch((err) => {
         trackMatomoEvent?.({ category: 'App', action: 'PreloadError', name: err && err.message, isClick: false })
-        errorPreload('Error loading Remix:', err)
+        errorPreload('Error loading Forge:', err)
         setError(true)
       })
   }
@@ -264,15 +264,15 @@ export const Preload = (props: PreloadProps) => {
 
     const abortController = new AbortController()
     const signal = abortController.signal
-    async function showRemixTips() {
-      const response = await axios.get('https://raw.githubusercontent.com/remix-project-org/remix-dynamics/main/ide/tips.json', { signal })
+    async function showForgeTips() {
+      const response = await axios.get('https://raw.githubusercontent.com/openibank/forge-dynamics/main/ide/tips.json', { signal })
       if (signal.aborted) return
       const tips = response.data
       const index = Math.floor(Math.random() * (tips.length - 1))
       setTip(tips[index])
     }
     try {
-      showRemixTips()
+      showForgeTips()
     } catch (e) {
       logPreload(e)
     }
@@ -287,13 +287,13 @@ export const Preload = (props: PreloadProps) => {
       <div className="preload-container" >
         <div className="preload-main">
           <div className="preload-logo text-center">
-            <img src="assets/img/remix-logo-blue.png" alt="Remix logo" width="64" height="64" />
-            <div className="preload-title">REMIX IDE</div>
+            <img src="assets/img/creditchain-logo.svg" alt="CreditChain logo" width="64" height="64" />
+            <div className="preload-title">FORGE</div>
             <div className="preload-sub"><span className="version">v{version}</span></div>
           </div>
           {!supported ? (
             <div className="preload-info-container alert alert-warning">
-              Your browser does not support any of the filesystems required by Remix. Either change the settings in your browser or use a supported browser.
+              Your browser does not support any of the filesystems required by Forge. Either change the settings in your browser or use a supported browser.
             </div>
           ) : null}
           {error ? (
@@ -354,4 +354,3 @@ export const Preload = (props: PreloadProps) => {
     </>
   )
 }
-

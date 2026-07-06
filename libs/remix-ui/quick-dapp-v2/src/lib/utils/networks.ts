@@ -41,9 +41,9 @@ const NETWORK_NAMES: Record<number, string> = {
 export function getNetworkName(chainId: string | number): string {
   const chainIdStr = String(chainId);
 
-  // Handle Remix VM chain IDs (e.g. "vm-cancun", "vm-paris", "vm-shanghai")
+  // Handle Forge VM chain IDs (e.g. "vm-cancun", "vm-paris", "vm-shanghai")
   if (chainIdStr.startsWith('vm')) {
-    return 'Remix VM';
+    return 'Forge VM';
   }
 
   const id = Number(chainIdStr);

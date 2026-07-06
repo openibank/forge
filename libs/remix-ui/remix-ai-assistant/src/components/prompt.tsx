@@ -70,7 +70,7 @@ const SHORTCUT_CATEGORIES: ShortcutCategory[] = [
     label: 'Learn',
     prompts: [
       { text: 'What is a smart contract?', requiredFeatures: [Features.AI_SOLCODER]},
-      { text: 'How does gas work in Ethereum?', requiredFeatures: [Features.AI_SOLCODER]},
+      { text: 'How does gas work on CreditChain?', requiredFeatures: [Features.AI_SOLCODER]},
       { text: 'What is the difference between memory and storage in Solidity?', requiredFeatures: [Features.AI_SOLCODER]},
     ],
   },
@@ -78,8 +78,8 @@ const SHORTCUT_CATEGORIES: ShortcutCategory[] = [
     id: 'deploy',
     label: 'Deploy',
     prompts: [
-      { text: '/deploy this contract to Sepolia testnet', requiredFeatures: [Features.AI_SOLCODER]},
-      { text: 'How do I verify my contract on Etherscan?', requiredFeatures: [Features.AI_SOLCODER]},
+      { text: '/deploy this contract to CreditChain Testnet', requiredFeatures: [Features.AI_SOLCODER]},
+      { text: 'How do I verify my contract on the CreditChain explorer?', requiredFeatures: [Features.AI_SOLCODER]},
       { text: 'What network should I use for testing?', requiredFeatures: [Features.AI_SOLCODER]},
     ],
   },
@@ -217,7 +217,7 @@ export const PromptArea: React.FC<PromptAreaProps> = ({
     const cmds: Command[] = [
       { name: 'model', description: 'Switch AI model', category: 'Settings', action: handleSetModel, requiredFeatures: []},
     ]
-    if (handleOpenSettings) cmds.push({ name: 'settings', description: 'Open RemixAI settings', category: 'Settings', action: handleOpenSettings, requiredFeatures: []})
+    if (handleOpenSettings) cmds.push({ name: 'settings', description: 'Open Forge Copilot settings', category: 'Settings', action: handleOpenSettings, requiredFeatures: []})
     if (handleLoadSkills) {
       cmds.push({
         name: 'load-skills',
@@ -410,7 +410,7 @@ export const PromptArea: React.FC<PromptAreaProps> = ({
   const composerReady = aiRouteReady && isAuthenticated
   const needsSignIn = !aiRouteReady && !isAuthenticated && !!onSignIn
   const placeholderText = needsSignIn
-    ? 'Sign in to chat with RemixAI…'
+    ? 'Sign in to chat with Forge Copilot…'
     : aiRouteReady
       ? 'Type "/" for more options or ask me anything...'
       : 'Initialising agents…'

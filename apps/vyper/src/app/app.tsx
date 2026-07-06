@@ -186,11 +186,11 @@ const App = () => {
           </Accordion>
           <span className="w-100 px-3 mt-3 mb-1 small text-warning">
           Specify the{' '}
-            <a className="text-warning" target="_blank" href="https://remix-ide.readthedocs.io/en/latest/vyper.html#specify-vyper-version">
+            <a className="text-warning" target="_blank" href="https://forge.creditchain.org/docs/vyper.html#specify-vyper-version">
             compiler version
             </a>{' '}
           &{' '}
-            <a className="text-warning" href="https://remix-ide.readthedocs.io/en/latest/vyper.html#evm-version" target="_blank" rel="noopener noreferrer">
+            <a className="text-warning" href="https://forge.creditchain.org/docs/vyper.html#evm-version" target="_blank" rel="noopener noreferrer">
             EVM version
             </a>{' '}
           in the .vy file.

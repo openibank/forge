@@ -10,7 +10,7 @@ export const QuickDappBanner = ({ onClose, onStartNow }: QuickDappBannerProps) =
   return (
     <div className="quick-dapp-banner" data-id="quickDappBanner">
       <div className="quick-dapp-banner-content">
-        <img src="assets/img/remixAI_small.svg" alt="Remix AI" className="quick-dapp-banner-icon" />
+        <img src="assets/img/creditchain-logo.svg" alt="Forge Copilot" className="quick-dapp-banner-icon" />
         <span className="quick-dapp-banner-text">Create a DApp with your contracts</span>
         <button
           className="btn btn-ai quick-dapp-banner-btn"

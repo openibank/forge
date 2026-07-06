@@ -53,11 +53,11 @@ export default class TabProxy extends Plugin {
     // Listen for side panel plugin changes
     this.on('sidePanel', 'focusChanged', (pluginName) => {
       if (pluginName === 'debugger' && this.debuggingSessionActive) {
-        // Returning to debugger while debugging is in progress - show Ask RemixAI button
+        // Returning to debugger while debugging is in progress - show Ask Forge Copilot button
         this.isDebugging = true
         this.renderComponent()
       } else if (pluginName !== 'debugger' && pluginName !== 'remixaiassistant' && this.isDebugging) {
-        // Switching away from debugger - hide Ask RemixAI button (but not when showing AI assistant)
+        // Switching away from debugger - hide Ask Forge Copilot button (but not when showing AI assistant)
         this.isDebugging = false
         this.renderComponent()
       }
@@ -65,7 +65,7 @@ export default class TabProxy extends Plugin {
 
     // Also listen for menuicons changes (for main panel plugins)
     this.on('menuicons', 'showContent', (pluginName) => {
-      // Don't hide Ask RemixAI button when switching to AI assistant during debugging
+      // Don't hide Ask Forge Copilot button when switching to AI assistant during debugging
       if (pluginName !== 'debugger' && pluginName !== 'remixaiassistant' && this.isDebugging) {
         this.isDebugging = false
         this.renderComponent()

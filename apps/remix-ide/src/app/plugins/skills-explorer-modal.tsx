@@ -14,7 +14,7 @@ const pluginProfile = {
   description: 'Skills Explorer Modal',
   methods: ['loadSkill'],
   events: [],
-  maintainedBy: 'Remix',
+  maintainedBy: 'CreditChain',
   kind: 'skillsexplorermodal',
   location: 'none',
   version: packageJson.version,

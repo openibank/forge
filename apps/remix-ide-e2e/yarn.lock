@@ -12,6 +12,24 @@
   resolved "https://registry.yarnpkg.com/@adraffy/ens-normalize/-/ens-normalize-1.11.0.tgz#42cc67c5baa407ac25059fcd7d405cc5ecdb0c33"
   integrity sha512-/3DDPKHqqIqxUULp8yP4zODUY1i+2xvVWsv8A79xGWdCAG+8sb0hRh0Rk2QyOJUnnbyPUAZYcpBuRe3nS2OIUg==
 
+"@creditchain/forged@../../dist/libs/forged":
+  version "1.0.0"
+  dependencies:
+    "@remix-project/remix-solidity" "^0.5.36"
+    "@remixproject/plugin" "0.3.33"
+    "@remixproject/plugin-api" "0.3.33"
+    "@remixproject/plugin-utils" "0.3.33"
+    "@remixproject/plugin-ws" "0.3.33"
+    axios "1.12.0"
+    bn.js "^5.1.2"
+    chokidar "^2.1.8"
+    commander "^9.4.1"
+    fs-extra "^3.0.1"
+    isbinaryfile "^3.0.2"
+    latest-version "^5.1.0"
+    semver "^6.3.0"
+    ws "^7.3.0"
+
 "@ethereumjs/block@5.3.0", "@ethereumjs/block@^5.3.0":
   version "5.3.0"
   resolved "https://registry.yarnpkg.com/@ethereumjs/block/-/block-5.3.0.tgz#a22d615f825a3aa123189434263a6c1d43d4ac8f"
@@ -628,24 +646,6 @@
     string-similarity "^4.0.4"
     web3 "^4.1.1"
     webworkify-webpack "^2.1.5"
-
-"@remix-project/remixd@../../dist/libs/remixd":
-  version "0.6.60"
-  dependencies:
-    "@remix-project/remix-solidity" "^0.5.36"
-    "@remixproject/plugin" "0.3.33"
-    "@remixproject/plugin-api" "0.3.33"
-    "@remixproject/plugin-utils" "0.3.33"
-    "@remixproject/plugin-ws" "0.3.33"
-    axios "1.12.0"
-    bn.js "^5.1.2"
-    chokidar "^2.1.8"
-    commander "^9.4.1"
-    fs-extra "^3.0.1"
-    isbinaryfile "^3.0.2"
-    latest-version "^5.1.0"
-    semver "^6.3.0"
-    ws "^7.3.0"
 
 "@remixproject/plugin-api@0.3.33":
   version "0.3.33"

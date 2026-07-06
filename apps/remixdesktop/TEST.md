@@ -1,4 +1,4 @@
-# How to run and write tests for Remix Desktop
+# How to run and write tests for Forge Desktop
 
 
 ### Basic procedure of local testing

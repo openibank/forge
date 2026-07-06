@@ -14,8 +14,25 @@ import { useLocalStorage } from './hooks/useLocalStorage'
 import { getVerifier } from './Verifiers'
 import { ContractDropdownSelection } from './components/ContractDropdown'
 import { IntlProvider } from 'react-intl'
+import { CREDITCHAIN_NETWORKS } from '@forge/creditchain-config'
 
 const plugin = new ContractVerificationPluginClient()
+const creditChainVerificationChains: Chain[] = CREDITCHAIN_NETWORKS.map((network) => ({
+  name: network.name,
+  title: network.name,
+  chainId: network.chainId,
+  shortName: network.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''),
+  network: 'creditchain',
+  networkId: network.chainId,
+  nativeCurrency: {
+    name: network.currencySymbol,
+    symbol: network.currencySymbol,
+    decimals: 18
+  },
+  rpc: [network.rpcUrl],
+  faucets: network.faucetUrl ? [network.faucetUrl] : [],
+  infoURL: network.explorerUrl
+}))
 
 const App = () => {
   const [themeType, setThemeType] = useState<ThemeType>('dark')
@@ -67,8 +84,11 @@ const App = () => {
 
     fetch('https://chainid.network/chains.json')
       .then((response) => response.json())
-      .then((data) => setChains(data))
-      .catch((error) => console.error('Failed to fetch chains.json:', error))
+      .then((data) => setChains([...creditChainVerificationChains, ...data.filter((chain: Chain) => !creditChainVerificationChains.some((network) => network.chainId === chain.chainId))]))
+      .catch((error) => {
+        console.error('Failed to fetch chains.json:', error)
+        setChains(creditChainVerificationChains)
+      })
 
     const submissionUpdatedListener = () => {
       const latestSubmissions = window.localStorage.getItem('contract-verification:submitted-contracts')

@@ -153,7 +153,7 @@ export const Renderer = ({ message, opt, plugin, context }: RendererProps) => {
       }, 500)
       trackMatomoEvent?.({ category: 'ai', action: 'remixAI', name: 'error_explaining_SolidityError', isClick: true })
     } catch (err) {
-      console.error('unable to ask RemixAI')
+      console.error('unable to ask Forge Copilot')
       console.error(err)
     }
   }
@@ -186,8 +186,8 @@ export const Renderer = ({ message, opt, plugin, context }: RendererProps) => {
               data-id="ask-remix-ai-button"
               onClick={(event) => { event.preventDefault(); askGtp() }}
             >
-              <img src="assets/img/remixAI_small.svg" alt="Remix AI" className="explain-icon" />
-              <span>Ask RemixAI</span>
+              <img src="assets/img/creditchain-logo.svg" alt="Forge Copilot" className="explain-icon" />
+              <span>Ask Forge Copilot</span>
             </button>
 
           </div>

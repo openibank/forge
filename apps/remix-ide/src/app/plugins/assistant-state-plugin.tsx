@@ -79,7 +79,7 @@ const profile = {
   kind: '',
   location: 'none',
   version: packageJson.version,
-  maintainedBy: 'Remix'
+  maintainedBy: 'CreditChain'
 }
 
 type Unsubscribe = () => void

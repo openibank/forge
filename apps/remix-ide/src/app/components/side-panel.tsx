@@ -10,7 +10,7 @@ import { trackMatomoEvent } from '@remix-api'
 const sidePanel = {
   name: 'sidePanel',
   displayName: 'Side Panel',
-  description: 'Remix IDE side panel',
+  description: 'Forge side panel',
   version: packageJson.version,
   methods: ['addView', 'removeView', 'currentFocus', 'pinView', 'unPinView', 'focus', 'showContent', 'togglePanel', 'isPanelHidden']
 }

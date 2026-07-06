@@ -1,0 +1,8 @@
+{
+  "name": "forge-creditchain-config",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/forge/creditchain-config/src",
+  "projectType": "library",
+  "targets": {},
+  "tags": ["scope:forge", "type:config"]
+}

@@ -182,7 +182,7 @@ export type PluginManagerProfile = Profile & {
   description: string,
   kind?: string,
   location: 'sidePanel' | 'mainPanel' | 'none',
-  documentation: 'https://remix-ide.readthedocs.io/en/latest/plugin_manager.html',
+  documentation: 'https://forge.creditchain.org/docs/plugin_manager.html',
   version: any
   type: 'iframe' | 'ws'
   hash: string

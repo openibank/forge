@@ -1,5 +1,5 @@
 /**
- * Storage layer for RemixAI chat history persistence
+ * Storage layer for Forge Copilot chat history persistence
  */
 
 export * from './interfaces'

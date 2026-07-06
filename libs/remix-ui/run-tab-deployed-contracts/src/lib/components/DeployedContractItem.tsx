@@ -65,7 +65,7 @@ export function DeployedContractItem({ contract, index, registerRef, isKebabMenu
   useEffect(() => {
     plugin.call('udappEnv', 'getNetwork').then((net) => {
       if (net && net.name) {
-        const networkName = net.name === 'VM' ? 'Remix VM' : net.name
+        const networkName = net.name === 'VM' ? 'Forge VM' : net.name
 
         setNetworkName(networkName)
       }
@@ -753,7 +753,7 @@ IMPORTANT: In this turn, only ask STEP 1 and then STOP. After my next reply, con
             }}
             contract={contract}
             onCreateDapp={handleCreateDapp}
-            onNameContract={networkName !== 'Remix VM' ? handleNameContract : undefined}
+            onNameContract={networkName !== 'Forge VM' ? handleNameContract : undefined}
             onCopyABI={handleCopyABI}
             onSaveABI={handleSaveABI}
             onCopyBytecode={handleCopyBytecode}

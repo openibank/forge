@@ -299,17 +299,17 @@ const BaseAppWizard: React.FC = () => {
       }
 
       // Step 2: Build OG tags with screenshot IPFS URL
-      const ogImageUrl = screenshotIpfsUrl || 'https://remix.ethereum.org/assets/img/remix-logo-blue.png';
+      const ogImageUrl = screenshotIpfsUrl || 'https://forge.creditchain.org/assets/img/creditchain-logo.png';
       const twitterCardType = screenshotIpfsUrl ? 'summary_large_image' : 'summary';
 
       const ogTags = [
         `<meta property="og:title" content="${escapeHtmlAttr(title || 'DApp')}" />`,
-        `<meta property="og:description" content="${escapeHtmlAttr(details || 'Built with Remix QuickDApp')}" />`,
+        `<meta property="og:description" content="${escapeHtmlAttr(details || 'Built with Forge QuickDApp')}" />`,
         `<meta property="og:type" content="website" />`,
         ensUrlForOG ? `<meta property="og:url" content="${ensUrlForOG}" />` : '',
         `<meta name="twitter:card" content="${twitterCardType}" />`,
         `<meta name="twitter:title" content="${escapeHtmlAttr(title || 'DApp')}" />`,
-        `<meta name="twitter:description" content="${escapeHtmlAttr(details || 'Built with Remix QuickDApp')}" />`,
+        `<meta name="twitter:description" content="${escapeHtmlAttr(details || 'Built with Forge QuickDApp')}" />`,
         `<meta property="og:image" content="${ogImageUrl}" />`,
         `<meta name="twitter:image" content="${ogImageUrl}" />`,
       ].filter(Boolean).join('\n    ');
@@ -709,7 +709,7 @@ const BaseAppWizard: React.FC = () => {
                     </Alert>
                     {hasGraphGateway && (
                       <Alert variant="info" className="small p-2 mb-3">
-                        The Graph API key from Remix settings is sealed by Remix for this deployment. It is not embedded in the DApp, and visitors do not need their own key.
+                        The Graph API key from Forge settings is sealed by Forge for this deployment. It is not embedded in the DApp, and visitors do not need their own key.
                       </Alert>
                     )}
 

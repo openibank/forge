@@ -18,8 +18,8 @@ const profile = {
   icon: 'assets/img/unitTesting.webp',
   description: 'Write and run unit tests for your contracts in Solidity',
   location: 'sidePanel',
-  documentation: 'https://remix-ide.readthedocs.io/en/latest/unittesting.html',
-  maintainedBy: 'Remix'
+  documentation: 'https://forge.creditchain.org/docs/unittesting.html',
+  maintainedBy: 'CreditChain'
 }
 
 export default class TestTab extends ViewPlugin {
