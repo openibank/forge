@@ -35,11 +35,8 @@ fi
 
 # Source maps are useful during local development, but they add hundreds of
 # megabytes to the Pages artifact and are not required by the production app.
-rsync -a --delete --delete-excluded \
-  --filter='protect .git/' \
-  --exclude='.git/' \
-  --exclude='*.map' \
-  "$DIST_DIR/" "$PAGES_REPO_DIR/"
+rsync -a --delete --exclude='.git/' --exclude='*.map' "$DIST_DIR/" "$PAGES_REPO_DIR/"
+find "$PAGES_REPO_DIR" -path "$PAGES_REPO_DIR/.git" -prune -o -type f -name '*.map' -delete
 
 printf '%s\n' "$HOSTNAME" > "$PAGES_REPO_DIR/CNAME"
 touch "$PAGES_REPO_DIR/.nojekyll"
