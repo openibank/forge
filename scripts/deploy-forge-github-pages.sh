@@ -33,7 +33,9 @@ if [ "${FORGE_PAGES_SKIP_REMOTE_CHECK:-0}" != "1" ]; then
   esac
 fi
 
-rsync -a --delete --exclude .git "$DIST_DIR/" "$PAGES_REPO_DIR/"
+# Source maps are useful during local development, but they add hundreds of
+# megabytes to the Pages artifact and are not required by the production app.
+rsync -a --delete --delete-excluded --exclude .git --exclude '*.map' "$DIST_DIR/" "$PAGES_REPO_DIR/"
 
 printf '%s\n' "$HOSTNAME" > "$PAGES_REPO_DIR/CNAME"
 touch "$PAGES_REPO_DIR/.nojekyll"

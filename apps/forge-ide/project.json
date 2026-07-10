@@ -34,6 +34,11 @@
         "tsConfig": "apps/forge-ide/tsconfig.app.json",
         "assets": [
           "apps/forge-ide/src/assets",
+          {
+            "glob": "**/*",
+            "input": "apps/forge-ide/src/mobile",
+            "output": "mobile"
+          },
           "apps/forge-ide/src/index.html",
           "apps/forge-ide/src/404.html",
           "apps/forge-ide/src/favicon.ico",

@@ -1,4 +1,52 @@
 (function(){
+  var startupFailure = null;
+
+  function showStartupFailure(reason) {
+    var splash = document.getElementById('pre-splash');
+    if (!splash) return;
+
+    var sub = document.getElementById('pre-splash-sub');
+    if (sub) sub.textContent = 'Forge could not finish starting.';
+
+    var spinner = splash.querySelector('.spinner');
+    if (spinner) spinner.style.display = 'none';
+
+    var action = document.getElementById('pre-splash-retry');
+    if (!action) {
+      action = document.createElement('button');
+      action.id = 'pre-splash-retry';
+      action.type = 'button';
+      action.textContent = 'Retry Forge';
+      action.style.cssText = 'margin-top:16px;padding:9px 16px;border:0;border-radius:4px;background:#4aa3df;color:#111827;font:600 14px -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Arial,sans-serif;cursor:pointer';
+      action.onclick = function () {
+        var next = new URL(window.location.href);
+        next.searchParams.set('forge-recovery', String(Date.now()));
+        window.location.replace(next.toString());
+      };
+      splash.querySelector('.inner').appendChild(action);
+    }
+
+    if (reason && window.console) console.error('[Forge startup]', reason);
+  }
+
+  window.addEventListener('error', function (event) {
+    if (!document.getElementById('pre-splash')) return;
+    startupFailure = event.error || event.message || 'A startup asset failed to load';
+    showStartupFailure(startupFailure);
+  });
+
+  window.addEventListener('unhandledrejection', function (event) {
+    if (!document.getElementById('pre-splash')) return;
+    startupFailure = event.reason || 'A startup task failed';
+    showStartupFailure(startupFailure);
+  });
+
+  window.setTimeout(function () {
+    if (document.getElementById('pre-splash')) {
+      showStartupFailure(startupFailure || 'Startup timed out');
+    }
+  }, 30000);
+
   try {
     // 1) Determine theme from the local IDE config stored in localStorage
     var raw = localStorage.getItem('config-v0.8:.remix.config');
