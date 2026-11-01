@@ -1,17 +1,19 @@
 export const creditchain = {
-  chainId: 777777,
-  name: 'CreditChain',
-  currency: 'CDC',
-  explorerUrl: 'https://scan.creditchain.org',
-  rpcUrl: 'https://rpc.creditchain.org'
+  // Argos mainnet: planned / NOT LAUNCHED — do not offer as connectable
+  chainId: 2026042405,
+  name: 'CreditChain Mainnet',
+  currency: 'CCC',
+  explorerUrl: '',
+  rpcUrl: ''
 }
 
 export const creditchainTestnet = {
-  chainId: 777778,
+  // Argos testnet (active); also https://argos.creditchain.org
+  chainId: 2026042404,
   name: 'CreditChain Testnet',
-  currency: 'tCDC',
-  explorerUrl: 'https://testnet-scan.creditchain.org',
-  rpcUrl: 'https://testnet-rpc.creditchain.org'
+  currency: 'CCC',
+  explorerUrl: 'https://scan.creditchain.org',
+  rpcUrl: 'https://testnet.creditchain.org'
 }
 
 export const mainnet = {

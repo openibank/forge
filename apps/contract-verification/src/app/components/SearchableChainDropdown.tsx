@@ -87,7 +87,7 @@ export const CustomToggle = React.forwardRef(
 
 export const SearchableChainDropdown: React.FC<DropdownProps> = ({ label, id, setSelectedChain, selectedChain }) => {
   const { chains } = React.useContext(AppContext)
-  const priorityChainIds = [777777, 777778, 31337, 1, 11155111, 17000]
+  const priorityChainIds = [2026042404, 2026042405, 31337, 1, 11155111, 17000]
   const intl = useIntl()
 
   // Add CreditChain and core EVM chains to the head of the chains list. Sort the rest alphabetically.

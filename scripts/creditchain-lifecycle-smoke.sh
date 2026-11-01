@@ -3,7 +3,7 @@ set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
 EXAMPLE_DIR="$ROOT_DIR/examples/creditchain-lifecycle"
-RPC_URL="${CREDITCHAIN_RPC_URL:-${CREDITCHAIN_MAINNET_RPC_URL:-https://rpc.creditchain.org}}"
+RPC_URL="${CREDITCHAIN_RPC_URL:-${CREDITCHAIN_TESTNET_RPC_URL:-https://testnet.creditchain.org}}"
 SCAN_URL="${CREDITCHAIN_SCAN_URL:-https://scan.creditchain.org}"
 BROWSER_URL="${CREDITCHAIN_BROWSER_URL:-https://browser.creditchain.org}"
 CONTRACT_ADDRESS="${CREDITFORGE_CONTRACT_ADDRESS:-}"
